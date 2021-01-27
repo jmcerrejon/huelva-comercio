@@ -1,0 +1,123 @@
+<Alloy>
+    <View class="v_container">
+        <Widget id="tabbedbar" class="tabbedbar" src="com.imobicloud.tabbedbar" onClick="tabbedbarClick"/>
+        <ScrollableView id="scrollableView">
+            <View id="vwCandidates" class="info v_container">
+                <ListView id="lvCandidates" searchView="searchBarCandidates" onItemclick="doOpenCandidate" defaultItemTemplate="defaultTemplate">
+                    <RefreshControl id="refreshCandidates" onRefreshstart="reset" type="candidates"/>
+
+                    <SearchBar id="searchBarCandidates" onReturn="doSearch" type="candidates" showCancel="false"/>
+
+                    <Widget id="isCandidate" src="nl.fokkezb.infiniteScroll" onEnd="myLoaderCandidates"/>
+
+                    <Templates>
+                        <ItemTemplate id="noDataTemplate" name="noDataTemplate">
+                            <View bindId="vwNoCandidates" class="v_container" top="0">
+                                <ImageView image="/images/candidates.png" width="175"></ImageView>
+
+                                <Label bindId="lbHeaderCandidates" class="lbHeaderCandidates" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER"></Label>
+
+                                <Button bindId="candidateButton" class="btn" top="10" onClick="handlePdfDocument"></Button>
+                            </View>
+                        </ItemTemplate>
+                        <ItemTemplate name="defaultTemplate">
+                            <View class="h_container">
+                                <View width="15%" height="Ti.UI.FILL">
+                                    <Label class="fa icon" text="\uf508"/>
+                                </View>
+                                <View width="85%" class="v_container">
+                                    <Label bindId="title" class="text font18Medium" height="40" width="Ti.UI.FILL"/>
+
+                                    <Label bindId="occupation" class="text font14" height="20" width="Ti.UI.FILL"/>
+                                </View>
+                            </View>
+                        </ItemTemplate>
+                    </Templates>
+                    <HeaderView>
+                        <View class="headerContainer">
+                            <View class="h_container" height="30">
+                                <View width="10%">
+                                </View>
+                                <View width="80%">
+                                    <Label class="headerTitle font20">Candidatos</Label>
+                                </View>
+                                <View width="10%">
+                                </View>
+                            </View>
+                            <Label class="headerDescription font14" height="65">Los afiliados podrán ver posibles candidatos para su empresa.</Label>
+                            <View id="vwSectors" class="v_container">
+                                <Require src="/partials/_textfield" class="textField" id="filterSectorCandidates" noTrad="true"></Require>
+                            </View>
+                        </View>
+                    </HeaderView>
+                    <ListSection id="noData">
+                        <ListItem template="noDataTemplate" vwNoCandidates:height="0" candidateButton:title="SUBIR MI CURRÍCULUM"
+                            lbHeaderCandidates:text="Presenta tu currículum para que contacten contigo los afiliados que estén interesados">
+                        </ListItem>
+                    </ListSection>
+                    <ListSection dataCollection="candidates">
+                        <ListItem class="lstItems" itemId="{id}" title:text="{full_name}" occupation:text="{occupation}"/>
+                    </ListSection>
+                </ListView>
+            </View>
+            <View id="vwEmployments" class="info v_container">
+                <ListView id="lvEmployments" searchView="searchBarEmployments" onItemclick="doOpenEmployment"
+                    defaultItemTemplate="defaultTemplate">
+                    <RefreshControl id="refreshEmployments" onRefreshstart="reset" type="employments"/>
+                    <SearchBar id="searchBarEmployments" onReturn="doSearch" type="employments" showCancel="false"/>
+                    <Widget id="is" src="nl.fokkezb.infiniteScroll" onEnd="myLoaderEmployments"/>
+                    <Templates>
+                        <ItemTemplate id="noDataTemplate" name="noDataTemplate">
+                            <View bindId="vwNoEmployments" class="v_container" top="0">
+                                <ImageView image="/images/jobs.png" width="175"></ImageView>
+                                <Label bindId="lbHeaderEmployments" color="gray" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER"
+                                    text="No hay publicada ninguna demanda...\n¡Sé el primero!"></Label>
+                                <Button bindId="employmentButton" class="btn" top="5" onClick="doAddEmployment"
+                                    title="PUBLICAR OFERTA"></Button>
+                            </View>
+                        </ItemTemplate>
+                        <ItemTemplate name="defaultTemplate">
+                            <View class="h_container">
+                                <View width="15%" height="Ti.UI.FILL">
+                                    <Label class="fa icon" text="\uf508"/>
+                                </View>
+                                <View width="85%" class="v_container">
+                                    <Label bindId="title" class="text font16" height="40"/>
+                                    <Label bindId="afiliate" class="text font12" height="20"/>
+                                    <Label bindId="date" class="text font12" height="20"/>
+                                </View>
+                            </View>
+                        </ItemTemplate>
+                    </Templates>
+                    <HeaderView>
+                        <View class="headerContainer">
+                            <View class="h_container" height="30">
+                                <View width="10%">
+                                </View>
+                                <View width="80%">
+                                    <Label class="headerTitle font20">Centro de negocio</Label>
+                                </View>
+                                <View width="10%">
+                                    <Label id="employmentIconButton" class="fa font20" onClick="doAddEmployment"/>
+                                </View>
+                            </View>
+                            <Label class="headerDescription font14" height="65">Publica demandas de empleo o busca empresas que requieran servicios que puedan interesarle.</Label>
+                            <View id="vwSectorsEmployments" class="v_container">
+                                <Require src="/partials/_textfield" class="textField" id="filterSectorEmployments" noTrad="true"></Require>
+                            </View>
+                        </View>
+                    </HeaderView>
+                    <ListSection id="noData">
+                        <ListItem template="noDataTemplate" vwNoCandidates:height="0" vwNoEmployments:height="0"
+                            vwSectorsEmployments:height="30">
+                        </ListItem>
+                    </ListSection>
+                    <ListSection dataCollection="employments">
+                        <ListItem class="lstItems" itemId="{id}" title:text="{title}"
+                            date:text="Publicado: {created_at}" afiliate:text="Empresa: {user_name}"/>
+                    </ListSection>
+                </ListView>
+            </View>
+        </ScrollableView>
+    </View>
+</Alloy>

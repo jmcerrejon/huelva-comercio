@@ -1,0 +1,546 @@
+".vNavBar" : {
+    width: Ti.UI.FILL,
+    height: Ti.UI.SIZE
+}
+
+".fa" : {
+    font: {
+        fontFamily: Alloy.CFG.FONTS.fa
+    }
+}
+
+".fabrands" : {
+    font: {
+        fontFamily: Alloy.CFG.FONTS.fabrands
+    }
+}
+
+".fareg" : {
+    font: {
+        fontFamily: Alloy.CFG.FONTS.fareg
+    }
+}
+
+".falight" : {
+    font: {
+        fontFamily: Alloy.CFG.FONTS.falight
+    }
+}
+
+".ma" : {
+    font: {
+        fontFamily: "MaterialIcons-Regular"
+    }
+}
+
+"Window[platform=android]" : {
+    theme: "Theme.Custom",
+    windowSoftInputMode: Ti.UI.Android.SOFT_INPUT_ADJUST_PAN
+}
+
+"Window" : {
+    navBarHidden: true,
+    backgroundColor: "white",
+    orientationModes: [Ti.UI.PORTRAIT]
+}
+
+"NavigationWindow" : {
+    orientationModes: [Ti.UI.PORTRAIT]
+}
+
+"Button[platform=android]" : {
+    backgroundColor: Alloy.CFG.COLORS.main,
+    touchFeedback: true,
+    touchFeedbackColor: "#EEEEEE",
+}
+
+"TextField" : {
+    color: Alloy.CFG.COLORS.dark_gray
+}
+
+"TextArea[platform=android]" : {
+    color: Alloy.CFG.COLORS.dark_gray
+}
+
+"ListItem[platform=ios]" : {
+    selectionStyle: Ti.UI.iOS.ListViewCellSelectionStyle.NONE,
+    selectedBackgroundColor: "transparent"
+}
+
+"ScrollView" : {
+    contentWidth: "100%",
+    scrollType: "vertical"
+}
+
+"SearchBar" : {
+    autocapitalization: Ti.UI.TEXT_AUTOCAPITALIZATION_NONE,
+    autocorrect: false,
+    cancelButtonTitle: "Cancelar",
+    hiddenBehavior: Ti.UI.HIDDEN_BEHAVIOR_GONE,
+    hintText: "Escriba aquí para filtrar"
+}
+
+"Label" : {
+    color: Alloy.CFG.COLORS.main
+}
+
+".required" : {
+    required: true
+}
+
+".txt" : {
+    top: 10,
+    left: 25,
+    right: 25,
+    height: 50,
+    clearButtonMode: Ti.UI.INPUT_BUTTONMODE_ONFOCUS,
+    paddingLeft: 20,
+    font: {
+        fontFamily: Alloy.CFG.FONTS.light,
+        fontSize: 15
+    },
+    color: Alloy.CFG.COLORS.black,
+    borderColor: Alloy.CFG.COLORS.gray,
+    borderRadius: 4,
+    autocorrect: false,
+    autocapitalization: Ti.UI.TEXT_AUTOCAPITALIZATION_NONE
+}
+
+".text-center" : {
+    textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER
+}
+
+".main-color" : {
+    color: Alloy.CFG.COLORS.main
+}
+
+".no-touch-enable" : {
+    touchEnabled: false
+}
+
+".keyboard-numeric" : {
+    keyboardType: Ti.UI.KEYBOARD_TYPE_NUMBER_PAD,
+    autocorrect: false
+}
+
+".keyboard-mail" : {
+    keyboardType: Ti.UI.KEYBOARD_TYPE_EMAIL,
+    autocapitalization: Ti.UI.TEXT_AUTOCAPITALIZATION_NONE,
+    autocorrect: false
+}
+
+".keyboard-web" : {
+    keyboardType: Ti.UI.KEYBOARD_TYPE_URL,
+    autocapitalization: Ti.UI.TEXT_AUTOCAPITALIZATION_NONE,
+    autocorrect: false
+}
+
+"TextField[platform=android]" : {
+    hintTextColor: Alloy.CFG.COLORS.gray,
+    backgroundColor: "transparent",
+    padding: {
+        left: 30
+    }
+}
+
+"TextField[platform=android formFactor=tablet]" : {
+    padding: {
+        left: 50
+    }
+}
+
+".fill-email" : {
+    autofillType: Ti.UI.AUTOFILL_TYPE_EMAIL
+}
+
+".fill-name" : {
+    autofillType: Ti.UI.AUTOFILL_TYPE_NAME
+}
+
+".fill-job" : {
+    autofillType: Ti.UI.AUTOFILL_TYPE_JOB_TITLE
+}
+
+".fill-phone" : {
+    autofillType: Ti.UI.AUTOFILL_TYPE_PHONE
+}
+
+".fill-website" : {
+    autofillType: Ti.UI.AUTOFILL_TYPE_URL
+}
+
+"ScrollView[platform=ios]" : {
+    keyboardDismissMode: Ti.UI.iOS.KEYBOARD_DISMISS_MODE_ON_DRAG
+}
+
+"TabGroup" : {
+    navBarHidden: true,
+    orientationModes: [Ti.UI.PORTRAIT]
+}
+
+".back" : {
+    backgroundImage: "/images/common/back.png",
+    width: 95,
+    left: 0,
+    height: 44,
+    title: "     Volver",
+    color: "black",
+    font: {
+        fontFamily: Alloy.CFG.FONTS.bold,
+        fontSize: "11sp"
+    },
+    selectedColor: Alloy.CFG.COLORS.main
+}
+
+".field" : {
+    width: Ti.UI.FILL,
+    returnKeyType: Ti.UI.RETURNKEY_NEXT,
+    clearButtonMode: Ti.UI.INPUT_BUTTONMODE_ONFOCUS,
+    height: 45,
+    paddingLeft: 20,
+    backgroundColor: "white",
+    borderRadius: 3,
+    width: Ti.UI.FILL,
+    font: {
+        fontFamily: Alloy.CFG.FONTS.light,
+        fontSize: 15
+    },
+    color: Alloy.CFG.COLORS.black,
+    hintTextColor: "#717171",
+    borderColor: Alloy.CFG.COLORS.main2,
+    autocorrect: false,
+    autocapitalization: Ti.UI.TEXT_AUTOCAPITALIZATION_NONE
+}
+
+".field[platform=ios]" : {
+    padding: {
+        left: 15,
+        top: 10,
+        bottom: 10,
+        right: 15
+    },
+    tintColor: Alloy.CFG.COLORS.main2
+}
+
+".btn" : {
+    font: {
+        fontFamily: Alloy.CFG.FONTS.light,
+        fontSize: 15
+    },
+    color: "white",
+    height: 50,
+    backgroundColor: Alloy.CFG.COLORS.main2,
+    borderRadius: 5,
+    left: "20%",
+    right: "20%"
+}
+
+".btn-alert" : {
+    font: {
+        fontFamily: Alloy.CFG.FONTS.light,
+        fontSize: 15
+    },
+    color: "white",
+    height: 35,
+    backgroundColor: "red",
+    borderRadius: 5,
+    left: "20%",
+    right: "20%"
+}
+
+".btn-medium" : {
+    top: 5,
+    width: 120,
+    height: 35,
+    font: {
+        fontFamily: Alloy.CFG.FONTS.light,
+        fontSize: 15
+    },
+    color: "white",
+    backgroundColor: Alloy.CFG.COLORS.main2,
+    borderRadius: 5
+}
+
+".lblTitleLight" : {
+    font: {
+        fontFamily: Alloy.CFG.FONTS.light,
+        fontSize: 24
+    }
+}
+
+".lblTitleMedium" : {
+    font: {
+        fontFamily: Alloy.CFG.FONTS.medium,
+        fontSize: 24
+    }
+}
+
+".tf" : {
+    autocorrect: false,
+    colorFont: "white",
+    colorFocus: Alloy.CFG.COLORS.main2,
+    colorDefault: Alloy.CFG.COLORS.main2,
+    colorPattern: Alloy.CFG.COLORS.main2,
+    returnKey: Ti.UI.RETURNKEY_NEXT
+}
+
+".v_container" : {
+    width: Ti.UI.FILL,
+    height: Ti.UI.SIZE,
+    layout: "vertical"
+}
+
+".h_container" : {
+    width: Ti.UI.SIZE,
+    height: Ti.UI.SIZE,
+    layout: "horizontal"
+}
+
+".separator-half-min" : {
+    height: 25
+}
+
+".separator-min" : {
+    height: 50
+}
+
+".separator-medium" : {
+    height: 100
+}
+
+".separator-max" : {
+    height: 200
+}
+
+// Fonts
+
+".font10" : {
+    font: {
+        fontSize: 10,
+        fontFamily: "Poppins-Regular"
+    }
+}
+".font11" : {
+    font: {
+        fontSize: 11,
+        fontFamily: "Poppins-Regular"
+    }
+}
+".font10Medium" : {
+    font: {
+        fontSize: 10,
+        fontFamily: "Poppins-Medium"
+    }
+}
+".font11Light" : {
+    font: {
+        fontSize: 11,
+        fontFamily: "Poppins-Medium"
+    }
+}
+".font11Medium" : {
+    font: {
+        fontSize: 11,
+        fontFamily: "Poppins-Medium"
+    }
+}
+".font10Light" : {
+    font: {
+        fontSize: 10,
+        fontFamily: "Poppins-Light"
+    }
+}
+".font8Light" : {
+    font: {
+        fontSize: 8,
+        fontFamily: "Poppins-Light"
+    }
+}
+".font12" : {
+    font: {
+        fontSize: 12,
+        fontFamily: "Poppins-Regular"
+    }
+}
+".font12Medium" : {
+    font: {
+        fontSize: 12,
+        fontFamily: "Poppins-Medium"
+    }
+}
+".font12Light" : {
+    font: {
+        fontSize: 12,
+        fontFamily: "Poppins-Light"
+    }
+}
+".font14" : {
+    font: {
+        fontSize: 14,
+        fontFamily: "Poppins-Regular"
+    }
+}
+".font14Light" : {
+    font: {
+        fontSize: 14,
+        fontFamily: "Poppins-Light"
+    }
+}
+".font14Medium" : {
+    font: {
+        fontSize: 14,
+        fontFamily: "Poppins-Medium"
+    }
+}
+".font15" : {
+    font: {
+        fontSize: 15,
+        fontFamily: "Poppins-Regular"
+    }
+}
+".font15Light" : {
+    font: {
+        fontSize: 15,
+        fontFamily: "Poppins-Light"
+    }
+}
+".font16" : {
+    font: {
+        fontSize: 16,
+        fontFamily: "Poppins-Regular"
+    }
+}
+".font16Light" : {
+    font: {
+        fontSize: 16,
+        fontFamily: "Poppins-Light"
+    }
+}
+".font16Medium" : {
+    font: {
+        fontSize: 16,
+        fontFamily: "Poppins-Medium"
+    }
+}
+".font18" : {
+    font: {
+        fontSize: 18,
+        fontFamily: "Poppins-Regular"
+    }
+}
+".font18Light" : {
+    font: {
+        fontSize: 18,
+        fontFamily: "Poppins-Light"
+    }
+}
+".font18Medium" : {
+    font: {
+        fontSize: 18,
+        fontFamily: "Poppins-Medium"
+    }
+}
+".font20" : {
+    font: {
+        fontSize: 20
+    }
+}
+".font20Light" : {
+    font: {
+        fontSize: 20,
+        fontFamily: "Poppins-Light"
+    }
+}
+".font20Medium" : {
+    font: {
+        fontSize: 20,
+        fontFamily: "Poppins-Medium"
+    }
+}
+
+".logoContainer" : {
+    width: "20%",
+    height: 40
+}
+
+".logoImage" : {
+    width: 60,
+    height: 60,
+    backgroundColor: Alloy.CFG.COLORS.white,
+    defaultImage: "/images/logo.png",
+    brokenLinkImage: "/images/logo.png",
+    rounded: false
+}
+
+// Calendar
+".imc-calendar" : {
+    top: 0,
+    width: Ti.UI.FILL,
+    height: Ti.UI.SIZE,
+    backgroundColor: "white",
+    borderColor: "transparent",
+    borderWidth: 1
+}
+
+".imc-calendar-month" : {
+    height: Ti.UI.SIZE,
+    top: 0,
+    layout: "vertical"
+}
+
+".imc-calendar-weeks" : {
+    height: 32,
+    top: 0.5,
+    layout: "horizontal",
+    backgroundColor: "transparent"
+}
+
+".imc-calendar-week" : {
+    width: "14%",
+    height: 32,
+    left: 0.5
+}
+
+".imc-calendar-week-label" : {
+    color: "black",
+    font: {
+        fontSize: 13,
+        fontFamily: "HelveticaNeue-Light"
+    }
+}
+
+".imc-calendar-dates" : {
+    height: Ti.UI.SIZE,
+    bottom: 0.5,
+    layout: "horizontal"
+}
+
+".imc-calendar-date" : {
+    width: "14%",
+    height: 33,
+    top: 0.5,
+    left: 0.5
+}
+
+".imc-calendar-date-label" : {
+    color: "black",
+    font: {
+        fontSize: 13,
+        fontFamily: "HelveticaNeue-Light"
+    },
+    touchEnabled: false
+}
+
+".imc-calendar-today" : {
+    backgroundColor: Alloy.CFG.COLORS.main
+}
+
+".imc-calendar-today-label" : {
+    color: "black"
+}
+
+".imc-calendar-disabled" : {}
+
+".imc-calendar-disabled-label" : {
+    color: "grey"
+}

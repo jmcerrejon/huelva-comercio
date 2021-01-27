@@ -1,0 +1,48 @@
+<Alloy>
+	<ScrollView class="v_container" top="0">
+		<RefreshControl id="refreshListView" onRefreshstart="reset"/>
+		<View id="calendarContainerView" class="v_container">
+			<View class="h_container">
+				<View class="button-arrow" onClick="prevMonth">
+					<Label class="fa" color="Alloy.CFG.COLORS.main2" text="\uf053"/>
+				</View>
+
+				<Label id="lMonth" class="font16Light" text="enero"/>
+
+				<View class="button-arrow" onClick="nextMonth">
+					<Label class="fa" color="Alloy.CFG.COLORS.main2" text="\uf054"/>
+				</View>
+			</View>
+
+			<Widget id="vCalendar" src="com.imobicloud.calendar" onChange="calendarChange"/>
+		</View>
+		<ListView id="listView" onItemclick="doAction" defaultItemTemplate="defaultTemplate">
+			<Templates>
+				<ItemTemplate name="defaultTemplate">
+					<View bindId="viewPost" class="h_container touchDisabled" top="10" bottom="10">
+						<View class="newsDate">
+							<Label bindId="lbDay" class="font20Medium" top="14" color="Alloy.CFG.COLORS.main2" text="01"/>
+							<Label class="fareg calendarIcon" text="\uf133"/>
+						</View>
+						<View bindId="vwCalendarDetail" class="newsInfo">
+							<Label bindId="postTitle" id="postTitle" class="v_container font12Medium touchDisabled" left="5" maxLines="2"/>
+
+							<Label bindId="postDateFormatted" class="font10 touchDisabled" id="postDateFormatted" left="5"/>
+
+							<!-- <Label bindId="postBody" id="postBody" class="font10 touchDisabled" top="10"
+								left="5"/> -->
+						</View>
+						<View bindId="vwCalendarIcon" class="newsImage">
+							<Label class="fareg touchDisabled" text="\uf271"/>
+						</View>
+					</View>
+				</ItemTemplate>
+			</Templates>
+			<ListSection dataCollection="schedules" dataTransform="transformCollection">
+				<ListItem itemId="{id}" lbDay:text="{day}"
+					postTitle:text="{event_title}"
+					postDateFormatted:text="{data_formatted}"/>
+			</ListSection>
+		</ListView>
+	</ScrollView>
+</Alloy>

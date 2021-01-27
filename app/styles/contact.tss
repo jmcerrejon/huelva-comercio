@@ -1,0 +1,97 @@
+"Label[platform=android]" : {
+	color: Alloy.CFG.COLORS.gray
+}
+
+"#scrollView" : {
+	layout: "vertical",
+	scrollType: "vertical",
+	disableBounce: false,
+	backgroundGradient: {
+        type: "linear",
+        startPoint: { x: "50%", y: "0%" },
+        endPoint: { x: "50%", y: "100%" },
+        colors: [{
+			color: "#fff",
+			offset: 0.50
+		}, {
+			color: Alloy.CFG.COLORS.main2,
+			offset: 1.0
+		}]
+	}
+}
+
+".icons": {
+	top: 30,
+	color: Alloy.CFG.COLORS.main,
+	font: {
+		fontSize: 32
+	},
+}
+
+".social-icons": {
+	font: {
+		fontSize: 32
+	}
+}
+
+'#contactInfo': {
+	top: 60,
+	color: Alloy.CFG.COLORS.main,
+	text: Alloy.CFG.phone
+}
+
+"#addressInfo" : {
+	top: 60,
+	color: Alloy.CFG.COLORS.main,
+	left: 1,
+	right: 1,
+	textAlign: "center",
+	text: Alloy.CFG.address
+}
+
+".headerLabel" : {
+	top: 0,
+	height: 50,
+	color: Alloy.CFG.COLORS.main,
+	font: {
+		fontSize: 22
+	}
+}
+
+".info" : {
+	top: 5,
+	width: Ti.UI.FILL,
+	height: Ti.UI.SIZE
+}
+
+".textField[platform=ios]" : {
+	height: 40
+}
+
+".textField": {
+	top: 10,
+	left: 40,
+	right: 40,
+	padding: {
+        left: 15
+    },
+	color: "black",
+	autocapitalization:  Titanium.UI.TEXT_AUTOCAPITALIZATION_NONE,
+	autocorrect: false,
+    height: 40,
+	hintTextColor: Alloy.CFG.COLORS.dark_gray,
+	backgroundColor: Alloy.CFG.COLORS.gray,
+	borderRadius: 3,
+}
+
+".privacyAttributtedString": {
+    attributes: [{
+        type: Ti.UI.ATTRIBUTE_UNDERLINES_STYLE,
+        value: Titanium.UI.ATTRIBUTE_UNDERLINE_STYLE_SINGLE,
+        range: [0, 54],
+    }]
+}
+
+'.touchDisabled': {
+	touchEnabled: false
+}

@@ -1,0 +1,78 @@
+<Alloy>
+    <Require id="navbar" src="/partials/_navbar" onClick="doOpenSettings"></Require>
+    <ListView id="listView" onItemclick="doOpenPost" defaultItemTemplate="defaultTemplate">
+        <RefreshControl id="refreshListView" onRefreshstart="reset"/>
+        <Widget id="is" src="nl.fokkezb.infiniteScroll" onEnd="myLoader"/>
+        <Templates>
+            <ItemTemplate name="noNewsFound" height="0">
+                <View id="vwNoNewsFound" class="v_container">
+                    <Label class="font14" left="10" right="10" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER" text="No se han encontrado noticias relacionadas.\nVuelva a recargar las noticias." />
+
+                    <Button class="btn-medium" onClick="reset" title="RECARGAR" top="20"></Button>
+                </View>
+            </ItemTemplate>
+            <ItemTemplate name="defaultTemplate">
+                <View bindId="viewPost" width="Ti.UI.FILL" height="Ti.UI.SIZE" top="10" bottom="10">
+                    <View class="h_container" dataCollection="news">
+                        <View class="newsImage" bindId="image" id="image">
+                        </View>
+                        <View class="newsInfo">
+                            <Label bindId="postTitle" id="postTitle" class="v_container font12Medium touchDisabled" left="5" />
+
+                            <Label bindId="postDateFormatted" class="font10" id="postDateFormatted" left="5" />
+
+                            <Label bindId="postBody" id="postBody" class="font10 touchDisabled" top="10" left="5" />
+                        </View>
+                    </View>
+                </View>
+            </ItemTemplate>
+        </Templates>
+        <HeaderView>
+            <View class="headerContainer">
+                <!-- Ads -->
+                <ScrollableView id="scrollableView" dataCollection="banners" onSingletap="doOpenLink" onTouchstart="touchStart">
+                    <ImageView class="scrollableViewContainer" image="{img_path}" url="{url}" ns="AvImageview"></ImageView>
+                </ScrollableView>
+
+                <!-- About us, covenants & Services  -->
+                <View class="h_container" width="Ti.UI.FILL" height="50" top="15">
+                    <View class="containerMediumSizeButton" onClick="goToMeetUsWebLink">
+                        <Label class="fa icoLinks" text="\uf1ad" />
+                        <Label class="labelMediumSizeButton">CONÓCENOS</Label>
+                    </View>
+                    <View class="containerMediumSizeButton" onClick="goToCovenantLink" left="5">
+                        <Label class="fa icoLinks" text="\uf2b5" />
+                        <Label class="labelMediumSizeButton">CONVENIOS</Label>
+                    </View>
+                    <View class="containerMediumSizeButton" width="Ti.UI.FILL" onClick="goToServicesWebLink" left="5">
+                        <Label class="fa icoLinks" text="\uf0a1" />
+                        <Label class="labelMediumSizeButton">SERVICIOS</Label>
+                    </View>
+                </View>
+
+                <View class="v_container">
+                    <View class="h_container" width="Ti.UI.FILL" height="50">
+                        <View width="10%"></View>
+                        <View width="80%">
+                            <View class="titleNewsContainer">
+                                <Label class="fa lblIconTitleLight" text="\uf1ea" />
+                                <Label class="lblTitleLight" text=" NOTICIAS" />
+                            </View>
+                        </View>
+                        <View width="Ti.UI.FILL" onClick="searchNews">
+                            <Label class="fa icoSearch" text="\uf002" />
+                        </View>
+                    </View>
+                    <View class="blueLine"></View>
+                </View>
+            </View>
+        </HeaderView>
+        <ListSection id="sectionNoNewsFound">
+            <ListItem template="noNewsFound"></ListItem>
+        </ListSection>
+        <ListSection dataCollection="news" dataTransform="transformCollection">
+            <ListItem itemId="{id}" image:backgroundImage="{image}" viewPost:url="{link}" postTitle:text="{title}"
+                postDateFormatted:text="{date_formatted}" postBody:text="{content}" />
+        </ListSection>
+    </ListView>
+</Alloy>

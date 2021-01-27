@@ -1,0 +1,6 @@
+<Alloy>
+	<Window id="webviewWin">
+		<Require id="navbar" src="/partials/_navbar" onClick="close"></Require>
+		<WebView id="webview" onlink="checkLink" onBeforeload="setCurrentURL"></WebView>
+	</Window>
+</Alloy>

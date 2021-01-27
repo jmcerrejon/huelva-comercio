@@ -1,0 +1,13 @@
+/*
+".tabbedbar": { width: Ti.UI.SIZE, height: 29, layout: 'horizontal', 
+	backgroundColor: '#fff', borderColor: '#e52d5b', borderRadius: 4, borderWidth: 1, 
+	index: 0, 
+	labels: [{ title: 'Current Location' }, { title: 'Anywhere' }],
+	Tab: { width: 118, backgroundColor: '#e52d5b' },
+	TabOn: { backgroundColor: '#e52d5b' },
+	TabOff: { backgroundColor: 'transparent' },
+	TabTitle: { font: { fontSize: 12.66, fontFamily: 'Poppins-Regular' } },
+	TabTitleOn: { color: '#fff' },
+	TabTitleOff: { color: '#e52d5b' },
+}
+*/

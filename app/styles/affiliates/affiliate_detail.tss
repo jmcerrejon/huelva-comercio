@@ -1,0 +1,68 @@
+"#wAffiliateDetail": {
+	width: Ti.UI.FILL,
+	height: Ti.UI.FILL,
+	layout: "vertical"
+}
+
+'Label[platform=android]': {
+	color: Alloy.CFG.COLORS.black
+}
+
+".scrollView": {
+	width: "95%",
+	height: Ti.UI.FILL,
+	layout: "vertical",
+	scrollType: "vertical",
+	disableBounce: false
+}
+
+".icons": {
+	color: Alloy.CFG.COLORS.main,
+	font: {
+		fontSize: 32
+	},
+}
+
+'.btnContainer': {
+	top: 10
+}
+
+".textField": {
+	container : {
+		borderColor: "#EEE",
+	},
+	separator : {
+		visible: false
+	}
+}
+
+'.cameraIcon' : {
+	width: 35,
+    image: '/images/camera.png'
+}
+
+'.logoContainer' : {
+    width: 80,
+    height: 80
+}
+
+'.headerInfo': {
+    width: Ti.UI.SIZE,
+    height: Ti.UI.SIZE,
+    layout: 'vertical',
+    bottom: 20
+}
+
+'.logoImage': {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    borderWidth: 2,
+    borderColor: Alloy.CFG.COLORS.main,
+    contentMode: Alloy.Globals.CONTENT_MODE_FILL,
+    rounded: true
+}
+
+'#logoEdit': {
+	backgroundColor: 'gray'
+}

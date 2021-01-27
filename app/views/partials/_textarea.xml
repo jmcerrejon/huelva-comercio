@@ -1,0 +1,9 @@
+<Alloy>
+	<View id="container" height="Ti.UI.SIZE" layout="vertical" >
+		<View id="container2">
+			<View id="background"></View>
+			<TextArea id="textfield" module="xp.ui"></TextArea>
+			<View class="separator" id="separator"></View>
+		</View>
+	</View>
+</Alloy>

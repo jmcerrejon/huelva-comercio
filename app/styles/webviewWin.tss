@@ -1,0 +1,17 @@
+'#webviewWin': {
+	navBarHidden: true,
+	layout: 'vertical'
+}
+
+'#webviewWin[platform=ios]': {
+	top: -20,
+	modal: true
+}
+
+'#webview': {
+	width: Ti.UI.FILL,
+	height: Ti.UI.FILL,
+	ignoreSslError: true,
+	loading: true,
+	enableZoomControls: false
+}

@@ -1,0 +1,88 @@
+"#win": {
+	backgroundGradient: {
+        type: "linear",
+        startPoint: { x: "50%", y: "0%" },
+        endPoint: { x: "50%", y: "100%" },
+        colors: [{
+			color: "#fff",
+			offset: 0.70
+		}, {
+			color: Alloy.CFG.COLORS.main2,
+			offset: 1.0
+		}]
+	}
+}
+
+"#win[platform=android]": {
+	theme: "Theme.Login",
+	activityEnterTransition: Ti.UI.Android.TRANSITION_SLIDE_LEFT
+}
+
+"#email": {
+	hintText: "E-mail",
+	autocapitalization: Ti.UI.TEXT_AUTOCAPITALIZATION_NONE,
+	keyboardType: Ti.UI.KEYBOARD_TYPE_EMAIL,
+	required: true
+}
+
+"#password": {
+	hintText: "Contraseña que deseas en esta app",
+	lblRight : {
+		text: "\uf06e",
+			color: "gray",
+			touchEnabled: true,
+	},
+	passwordMask: true,
+	required : true
+}
+
+"#passwordConfirm": {
+	hintText: "Vuelve a escribir la contraseña",
+	passwordMask: true,
+	required: true
+}
+
+"#lbInfo": {
+	height: Ti.UI.SIZE,
+	textAlign: Ti.UI.TEXT_ALIGNMENT_JUSTIFY,
+	text: "Como afiliado, regístrate con el E-mail que nos facilitaste al inscribirte en CECA. Luego valida tu usuario en el correo que te enviaremos cuando te registres."
+}
+
+".privacyAttributtedString": {
+    attributes: [{
+        type: Ti.UI.ATTRIBUTE_UNDERLINES_STYLE,
+        value: Titanium.UI.ATTRIBUTE_UNDERLINE_STYLE_SINGLE,
+        range: [0, 63],
+    }]
+}
+
+"#btnReadPrivacy[platform=android]": {
+	color: Alloy.CFG.COLORS.main,
+	backgroundColor: Alloy.CFG.COLORS.white,
+	backgroundSelectedColor: "#fff"
+}
+
+"#lbPrivacyInfo": {
+	width: Ti.UI.FILL,
+	height: Ti.UI.SIZE,
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER
+}
+
+".btn": {
+	top: 25,
+	title: "REGISTRARSE"
+}
+
+".recoveryLabel": {
+    width: Ti.UI.SIZE,
+    height: Ti.UI.SIZE,
+    color: Alloy.CFG.COLORS.dark_gray
+}
+
+".recoveryAttributtedString": {
+    attributes: [{
+        type: Ti.UI.ATTRIBUTE_UNDERLINES_STYLE,
+        value: Titanium.UI.ATTRIBUTE_UNDERLINE_STYLE_SINGLE,
+        range: [0, 10],
+    }]
+}

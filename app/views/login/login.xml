@@ -1,0 +1,32 @@
+<Alloy>
+	<NavigationWindow module="xp.ui" id="nav">
+		<Window id="win">
+			<ScrollView class="container">
+				<View class="headerContainer">
+					<Label class="titleLbl lblTitleMedium" />
+
+					<ImageView id="imgCorporate" image="/images/slider-foe_medium.jpg"></ImageView>
+				</View>
+
+				<View class="bodyContainer">
+					<Label class="lblTitleLight" text="¿Eres afiliado?"/>
+					<Label class="font12" text="Primero debes registrarte en la app y luego accede" top="10" color="gray" />
+
+					<Require src="/partials/_textfield" class="required keyboard-mail" id="login" onNext="next"  next="password"  ></Require>
+
+					<View height="10"></View>
+
+					<Require src="/partials/_textfield" id="password" onNext="doSignin" onClickLblRight="activePasswordMask" onPrevious="previous" previous="login" ></Require>
+
+					<View class="vwButtonOptions">
+						<Button class="btn-medium" title="REGÍSTRATE" onClick="doOpenSignup" />
+
+						<Button class="btn-medium" title="ACCEDE" onClick="doSignin" left="50" />
+					</View>
+				</View>
+
+				<Button class="lblBtn" onClick="doGoToDashboard" title="Accede sin registro"></Button>
+			</ScrollView>
+		</Window>
+	</NavigationWindow>
+</Alloy>

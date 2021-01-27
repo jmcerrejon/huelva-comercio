@@ -1,0 +1,63 @@
+<Alloy>
+    <ScrollView id="scrollView">
+        <ImageView id="imgCorporate" width="Ti.UI.FILL" image="/images/slider-foe_medium.jpg"></ImageView>
+        <View class="h_container" height="130">
+            <View class="info" id="viewContact" width="50%" onClick="call">
+                <Label class="fa icons" top="10" text="\uf095"/>
+                <Label id="contactInfo"/>
+            </View>
+            <View class="info vlayout" id="viewAddress" onClick="selectLocation">
+                <Label class="fa icons" top="10" text="\uf5a0"/>
+                <Label id="addressInfo"/>
+            </View>
+        </View>
+    </View>
+    <View class="h_container" height="80">
+        <View class="info" id="viewContact" width="50%" onClick="openTwitter">
+            <Label class="fabrands social-icons" color="#1ca1f1" text="\uf099"/>
+        </View>
+        <View class="info vlayout" id="viewAddress" width="Ti.UI.FILL" onClick="openFacebook">
+            <Label class="fabrands social-icons" color="#4266b2" text="\uf082"/>
+        </View>
+    </View>
+</View>
+<View class="touchDisabled" width="150" height="150" top="-100">
+    <ImageView class="touchDisabled" image="/images/about.png"></ImageView>
+</View>
+<View id="viewForm" class="v_container" height="Ti.UI.SIZE" onClick="lostFocus">
+    <Label class="headerLabel">Solicita información</Label>
+    <TextField class="textField" id="user" hintText="Correo electrónico" keyboardType="Ti.UI.KEYBOARD_TYPE_EMAIL">
+        <KeyboardToolbar platform="ios">
+            <Toolbar>
+                <Items>
+                    <Button enabled="false">Anterior</Button>
+                    <Button id="secondFieldNext" onClick="focusField">Siguiente</Button>
+                    <FlexSpace/>
+                    <Button systemButton="DONE" onClick="sendEmail"/>
+                </Items>
+            </Toolbar>
+        </KeyboardToolbar>
+    </TextField>
+    <TextArea class="textField" id="content" suppressReturn="false" height="120" module="xp.ui">
+        <KeyboardToolbar platform="ios">
+            <Toolbar>
+                <Items>
+                    <Button id="firstFieldNext" onClick="focusField">Anterior</Button>
+                    <Button enabled="false">Siguiente</Button>
+                    <FlexSpace/>
+                    <Button systemButton="DONE" onClick="sendEmail"/>
+                </Items>
+            </Toolbar>
+        </KeyboardToolbar>
+    </TextArea>
+    <Button id="connect" class="btn" top="20" title="ENVIAR" onClick="sendEmail" />
+    <View class="separator-half-min"></View>
+    <Label class="font12Light v_container text-center" color="white" onClick="doReadPrivacy">
+        <AttributedString class="privacyAttributtedString">
+					Términos, Condiciones de uso\ny Política de Privacidad Huelva Comercio
+        </AttributedString>
+    </Label>
+    <View class="separator-min"></View>
+</View>
+</ScrollView>
+</Alloy>

@@ -1,0 +1,90 @@
+"#win[platform=android]": {
+	theme: "Theme.Login",
+	activityEnterAnimation: Titanium.UI.Android.TRANSITION_FADE_IN
+}
+
+".container" : {
+	layout: "vertical",
+	height: Ti.UI.SIZE
+}
+
+".headerContainer": {
+	height: 150,
+	layout: "vertical"
+}
+
+".bodyContainer": {
+	height: Ti.UI.SIZE,
+	layout: "vertical",
+	left: 20,
+	right: 20
+}
+
+".titleLbl": {
+	left: "33%",
+	right: "33%",
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+	text: "Huelva Comercio",
+	font : {
+		fontFamily: Alloy.CFG.FONTS.bold, fontSize: 24
+	},
+	color : Alloy.CFG.COLORS.main,
+	bottom: 20,
+}
+
+'.vwButtonOptions': {
+	top: 20,
+	bottom: 20,
+	layout: "horizontal",
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE
+}
+
+"#login": {
+	autocapitalization: Ti.UI.TEXT_AUTOCAPITALIZATION_NONE,
+	hintText: "  Escribe aquí tu Email",
+	hintTextTitle : "Email",
+	container : {
+		borderColor: "#EEE",
+	},
+	separator : {
+		visible: false
+	}
+}
+
+"#password": {
+	hintText: "  Escribe aquí tu contraseña",
+	autocorrect: false,
+	hintTextTitle : "Contraseña",
+	passwordMask: true,
+	returnKeyType: Ti.UI.RETURNKEY_SEND,
+	lblRight : {
+		text: "\uf06e",
+		color: "gray",
+		touchEnabled: true
+	},
+	container : {
+		borderColor: "#EEE",
+	},
+	separator : {
+		visible: false
+	}
+}
+
+".form": {
+	height: Ti.UI.SIZE,
+	layout: "vertical",
+	left: "10%",
+	right: "10%"
+}
+
+".lblBtn": {
+	font : {
+		fontFamily: Alloy.CFG.FONTS.regular,
+		fontSize: 15
+	},
+	color : Alloy.CFG.COLORS.main,
+	backgroundColor: "transparent",
+	height: 40,
+	top : 25
+}

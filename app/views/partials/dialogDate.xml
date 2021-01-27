@@ -1,0 +1,12 @@
+<Alloy>
+  <Window id="win" backgroundColor="#30000000" onOpen="handleOpen">
+    <View class="winStyle" id="main" height="Ti.UI.SIZE" bubbleParent="false" backgroundColor="white" borderRadius="7" module="xp.ui">
+      <View id="padding" height="Ti.UI.SIZE" bubbleParent="false" top="20" bottom="0" left="15" right="15" layout="vertical" >
+        <Label id="title" class="lbl"/>
+        <Label class="warningAge"/>
+        <View id="pickerContent" height="Ti.UI.SIZE"></View>
+        <Button class="btn" title="ACEPTAR" bottom="10" id="btnNext" onClick="valid"  />
+      </View>
+    </View>
+  </Window>
+</Alloy>

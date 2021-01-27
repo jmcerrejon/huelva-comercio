@@ -1,0 +1,64 @@
+".navbar[platform=ios]": {
+  top : Alloy.Globals.top,
+  height : 44,
+  backgroundColor: Alloy.CFG.COLORS.white
+}
+
+".navbar[platform=android]": {
+  top : 0,
+  height : 44
+}
+
+"#logo": {
+  image: '/images/common/logo.png',
+  backgroundImage: null,
+  top : 2,
+  bottom : 2,
+}
+
+"#title": {
+  font : { fontFamily: Alloy.CFG.FONTS.bold, fontSize: 16 },
+  textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+  color : Alloy.CFG.COLORS.main,
+  backgroundColor: Alloy.CFG.COLORS.white,
+  borderRadius: 3,
+  width: "80%",
+  height: 25
+  
+}
+
+"#container[platform=ios]": {
+  height: Ti.UI.SIZE,
+  backgroundColor: Alloy.CFG.COLORS.white
+}
+
+"#container[platform=android]": {
+  height: Ti.UI.SIZE,
+  backgroundColor: Alloy.CFG.COLORS.white
+}
+
+"#btnLeft": {
+  backgroundImage: null,
+  title : "\uf053",
+  font : { fontSize : '25sp' },
+  color : Alloy.CFG.COLORS.main2,
+  backgroundColor: 'white',
+  left : 0,
+  width: 40,
+  height: 40,
+  visible: false,
+  borderColor: 'transparent'
+}
+
+"#btnRight": {
+  title : "\uf013",
+  font : { fontSize : '25sp' },
+  color : Alloy.CFG.COLORS.main,
+  right: 0,
+  width: 50,
+  height: 50,
+  backgroundImage: null,
+  backgroundColor: 'white',
+  visible: false,
+  borderColor: 'transparent'
+}

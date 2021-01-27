@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ti:app xmlns:ti="http://ti.appcelerator.org">
+    <id>com.soporttec.ceca</id>
+    <name>Huelva Comercio</name>
+    <version>1.0.0</version>
+    <publisher>Soporttec, S.L.</publisher>
+    <url>https://ceca.es/</url>
+    <description/>
+    <copyright>not specified</copyright>
+    <icon>appicon.png</icon>
+    <fullscreen>false</fullscreen>
+    <navbar-hidden>true</navbar-hidden>
+    <analytics>false</analytics>
+    <transpile>true</transpile>
+    <guid>af6f65e8-8a1f-46c9-9999-68786e7564e3</guid>
+    <property name="ti.ui.defaultunit" type="string">dp</property>
+    <property name="run-on-main-thread" type="bool">true</property>
+    <property name="ti.android.root.reappears.restart" type="bool">true</property>
+    <property name="ti.android.bug2373.finishfalseroot" type="bool">true</property>
+    <ios>
+        <team-id>WDS48L3DS9</team-id>
+        <enable-launch-screen-storyboard>true</enable-launch-screen-storyboard>
+        <use-app-thinning>true</use-app-thinning>
+        <use-jscore-framework>true</use-jscore-framework>
+        <default-background-color>#ffffff</default-background-color>
+        <plist>
+            <dict>
+                <key>aps-environment</key>
+                <string>development</string>
+                <key>CFBundleVersion</key>
+                <string>0</string>
+                <key>UIUserInterfaceStyle</key>
+                <string>Light</string>
+                <key>ITSAppUsesNonExemptEncryption</key>
+                <false />
+                <key>NSLocalNetworkUsageDescription</key>
+                <string>Necesitamos acceso a la Red para que funcione la aplicación</string>
+                <key>UISupportedInterfaceOrientations~iphone</key>
+                <array>
+                    <string>UIInterfaceOrientationPortrait</string>
+                </array>
+                <key>UISupportedInterfaceOrientations~ipad</key>
+                <array>
+                    <string>UIInterfaceOrientationPortrait</string>
+                </array>
+                <key>UIRequiresPersistentWiFi</key>
+                <false/>
+                <key>UIPrerenderedIcon</key>
+                <false/>
+                <key>UIStatusBarHidden</key>
+                <false/>
+                <key>UIStatusBarStyle</key>
+                <string>UIStatusBarStyleDefault</string>
+                <key>LSApplicationQueriesSchemes</key>
+                <array>
+                    <string>fb</string>
+                    <string>instagram</string>
+                    <string>whatsapp</string>
+                    <string>twitter</string>
+                    <string>comgooglemaps</string>
+                </array>
+            </dict>
+        </plist>
+        <entitlements>
+            <dict>
+                <key>com.apple.developer.icloud-container-identifiers</key>
+                <array>
+                    <string>iCloud.com.sopportec.ceca</string>
+                </array>
+                <key>com.apple.developer.icloud-services</key>
+                <array>
+                    <string>CloudDocuments</string>
+                </array>
+                <key>com.apple.developer.ubiquity-container-identifiers</key>
+                <array>
+                    <string>iCloud.com.sopportec.ceca</string>
+                </array>
+                <key>com.apple.developer.ubiquity-kvstore-identifier</key>
+                <string>WDS48L3DS9.com.sopportec.ceca</string>
+            </dict>
+        </entitlements>
+    </ios>
+    <android xmlns:android="http://schemas.android.com/apk/res/android">
+        <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.sopportec.ceca" android:versionCode="23" android:versionName="1.0.0">
+            <uses-sdk android:minSdkVersion="24" android:targetSdkVersion="29" />
+            <application android:theme="@style/Theme.Custom" android:hardwareAccelerated="true" android:allowBackup="false" android:requestLegacyExternalStorage="true" android:icon="@mipmap/ic_launcher" android:roundIcon="@mipmap/ic_launcher_round">
+                <meta-data android:name="com.google.firebase.messaging.default_notification_icon" android:resource="@drawable/notification_icon" />
+                <activity android:name=".HuelvaComercioActivity" android:configChanges="fontScale|keyboard|keyboardHidden|layoutDirection|locale|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode|density" android:label="@string/app_name" android:theme="@style/Theme.Custom" android:alwaysRetainTaskState="true">
+                    <intent-filter>
+                        <action android:name="android.intent.action.MAIN" />
+                        <category android:name="android.intent.category.LAUNCHER" />
+                    </intent-filter>
+                </activity>
+            </application>
+            <uses-permission android:name="android.permission.INTERNET" />
+        </manifest>
+    </android>
+    <modules>
+        <module platform="android" version="11.0.40">ti.playservices</module>
+        <module>firebase.core</module>
+        <module>firebase.cloudmessaging</module>
+        <module platform="android">ti.bottomsheet</module>
+        <module platform="android">com.skypanther.tirotate</module>
+        <module platform="android">org.iotashan.TiTouchImageView</module>
+        <module platform="android">fr.squirrel.pdfview</module>
+        <module>av.imageview</module>
+        <module>ti.animation</module>
+        <!-- <module>hyperloop</module> -->
+    </modules>
+    <deployment-targets>
+        <target device="android">true</target>
+        <target device="ipad">false</target>
+        <target device="iphone">true</target>
+    </deployment-targets>
+    <sdk-version>9.3.1.GA</sdk-version>
+    <plugins>
+        <plugin version="1.0">ti.alloy</plugin>
+    </plugins>
+    <property name="appc-app-id" type="string">601137cfcfdd36727762736f</property>
+</ti:app>

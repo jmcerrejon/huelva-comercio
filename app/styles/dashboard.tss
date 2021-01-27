@@ -1,0 +1,81 @@
+'TabGroup[platform=android]': {
+    theme: "Theme.Custom",
+    smoothScrollOnTabClick: false,
+    swipeable: false,
+    modal: true,
+    tabsBackgroundColor: "white",
+    backgroundColor: "white",
+    style: Titanium.UI.Android.TABS_STYLE_BOTTOM_NAVIGATION
+}
+
+'TabGroup[platform=ios]': {
+    navbarHidden: true,
+    tabsTintColor: Alloy.CFG.COLORS.main,
+    backgroundColor: "white",
+    unselectedItemTintColor: Alloy.CFG.COLORS.gray
+}
+
+'#main': {
+    icon: "/images/home-solid.png",
+    title: "Inicio",
+    activeTitleColor: Alloy.CFG.COLORS.main,
+    touchFeedback: true,
+    activeIconIsMask: true,
+    touchFeedbackColor: "white",
+    titleColor: Alloy.CFG.COLORS.dark_gray,
+    activeIcon: "/images/groupActive.png"
+}
+
+'#events': {
+    icon: "/images/calendar-alt-regular.png",
+    title: "Agenda",
+    activeTitleColor: Alloy.CFG.COLORS.main,
+    touchFeedback: true,
+    activeIconIsMask: true,
+    touchFeedbackColor: "white",
+    titleColor: Alloy.CFG.COLORS.dark_gray,
+    activeIcon: "/images/profileActive.png"
+}
+
+'#affiliates': {
+    icon: "/images/thumbtack-solid.png",
+    title: "Asoc / Afiliados",
+    activeTitleColor: Alloy.CFG.COLORS.main,
+    touchFeedback: true,
+    activeIconIsMask: true,
+    touchFeedbackColor: "white",
+    titleColor: Alloy.CFG.COLORS.dark_gray,
+    activeIcon: "/images/groupActive.png"
+}
+
+'#offers': {
+    icon: "/images/comments-regular.png",
+    title: "Demanda",
+    activeTitleColor: Alloy.CFG.COLORS.main,
+    touchFeedback: true,
+    activeIconIsMask: true,
+    touchFeedbackColor: "white",
+    titleColor: Alloy.CFG.COLORS.dark_gray,
+    activeIcon: "/images/groupActive.png"
+}
+
+'#contact': {
+    icon: "/images/user-solid.png",
+    title: "Contacto",
+    activeTitleColor: Alloy.CFG.COLORS.main,
+    activeIconIsMask: true,
+    touchFeedback: true,
+    touchFeedbackColor: "white",
+    titleColor: Alloy.CFG.COLORS.dark_gray,
+    activeIcon: "/images/profileActive.png"
+}
+
+'.navbar': {
+    logo : {
+        visible: true
+    }
+}
+
+'.defaultWinProp': {
+    navBarHidden: true,
+}

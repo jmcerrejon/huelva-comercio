@@ -1,0 +1,53 @@
+<Alloy>
+    <TabGroup id="tabGroup" theme="Theme.Custom" onFocus="focus">
+        <Tab id="main" class="tabIconSize">
+            <Window id="mainCtrl" class="defaultWinProp">
+                <View id="mainContent" layout="vertical" opacity="0">
+                    <Require src="/home/home"></Require>
+                </View>
+            </Window>
+        </Tab>
+        <Tab id="events">
+            <Window id="eventsCtrl" class="defaultWinProp" onFocus="focusWindow">
+                <View layout="vertical">
+                    <Require src="/partials/_navbar" class="navbar"></Require>
+                    <View id="eventsContent" opacity="0">
+                        <Require src="/schedule"></Require>
+                    </View>
+                </View>
+            </Window>
+        </Tab>
+        <Tab id="affiliates">
+            <NavigationWindow id="nwAffiliates" module="navigationWindow">
+                <Window id="affiliatesCtrl" class="defaultWinProp" onFocus="focusWindow">
+                    <View layout="vertical">
+                        <Require src="/partials/_navbar" class="navbar"></Require>
+                        <View id="affiliatesContent" opacity="0">
+                            <Require src="/affiliates/associations"></Require>
+                        </View>
+                    </View>
+                </Window>
+            </NavigationWindow>
+        </Tab>
+        <Tab id="offers">
+            <Window id="offersCtrl" class="defaultWinProp" onFocus="focusWindow">
+                <View layout="vertical">
+                    <Require src="/partials/_navbar" class="navbar"></Require>
+                    <View id="offersContent" opacity="0">
+                        <Require src="/employments/employments"></Require>
+                    </View>
+                </View>
+            </Window>
+        </Tab>
+        <Tab id="contact">
+            <Window id="contactCtrl" class="defaultWinProp">
+                <View layout="vertical">
+                    <Require src="/partials/_navbar" class="navbar"></Require>
+                    <View id="contactContent" opacity="0">
+                        <Require src="/contact"></Require>
+                    </View>
+                </View>
+            </Window>
+        </Tab>
+    </TabGroup>
+</Alloy>

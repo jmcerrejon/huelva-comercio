@@ -1,0 +1,40 @@
+"#wAffiliates": {
+	layout: "vertical",
+	modal: true,
+	height: Ti.UI.FILL,
+	width: Ti.UI.FILL,
+	navBarHidden:true
+}
+
+"#wAffiliates [platform=android]": {
+	activityEnterTransition:Ti.UI.Android.TRANSITION_SLIDE_RIGHT
+}
+
+"Label[platform=android]" : {
+	color: Alloy.CFG.COLORS.gray
+}
+
+"ListItem" : {
+	accessoryType: Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE,
+	color: Alloy.CFG.COLORS.gray,
+	height: 80,
+}
+
+".text": {
+	top: 5,
+	left: 5,
+	width: "90%",
+	color: Alloy.CFG.COLORS.main,
+	font: {
+		fontFamily: Alloy.CFG.FONTS.light,
+	},
+}
+
+".icon": {
+	top: "30%",
+	left: "25%",
+	color: Alloy.CFG.COLORS.main,
+	font: {
+		fontSize: 30
+	}
+}

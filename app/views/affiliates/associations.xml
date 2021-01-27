@@ -1,0 +1,26 @@
+<Alloy>
+	<View class="v_container">
+		<ListView id="lView" searchView="searchBar" onItemclick="doOpenAffiliates" defaultItemTemplate="defaultTemplate">
+			<RefreshControl id="refreshListView" onRefreshstart="reset" />
+			<SearchBar id="searchBar" onReturn="doSearchAssociation" showCancel="false"/>
+			<Widget id="is" src="nl.fokkezb.infiniteScroll" onEnd="myLoaderAssociations" />
+			<Templates>
+				<ItemTemplate name="defaultTemplate">
+					<View class="h_container">
+							<View class="logoContainer">
+								<ImageView bindId="logo" class="logoImage" contentMode="Alloy.Globals.CONTENT_MODE_FIT" platform="ios" module="av.imageview"></ImageView>
+								<ImageView bindId="logo" class="logoImage" platform="android"></ImageView>
+							</View>
+						<View width="79%" class="v_container">
+							<Label bindId="title" class="text font14" height="40" />
+							<Label bindId="afiliate" class="text font12" height="20" />
+						</View>
+					</View>
+				</ItemTemplate>
+			</Templates>
+			<ListSection dataCollection="associations" dataTransform="parseAssociation">
+				<ListItem itemId="{id}" logo:image="{logoUrl}" title:text="{name}" afiliate:text="{acronym}" icon:text="{icon}" />
+			</ListSection>
+		</ListView>
+	</View>
+</Alloy>

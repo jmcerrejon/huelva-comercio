@@ -11,10 +11,10 @@
 
 "#textContent": {
   font: {
-		fontFamily: Alloy.CFG.FONTS.regular,
+		fontFamily: "Roboto-Light",
 		fontSize: 12
 	},
-	color: Alloy.CFG.COLORS.black,
+	color: '#1e40af',
   textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
   width: Ti.UI.SIZE
 }

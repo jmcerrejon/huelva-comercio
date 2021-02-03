@@ -27,18 +27,16 @@ const cantShare = false;
             });
         },
     });
-
-    $.navbar.load({
-        btnLeft: {
-            visible: false,
-        },
-        nav: {
-            backgroundColor: 'white',
-        },
-    });
-
+    // $.navbar.load({
+    //     btnLeft: {
+    //         visible: false,
+    //     },
+    //     nav: {
+    //         backgroundColor: 'white',
+    //     },
+    // });
     const interval = setInterval(function () {
-        if ($.scrollableView.getViews().length === 1) {
+        if ($.scrollableView.views.length === 1) {
             scrollableLoop = false;
             clearInterval(interval);
             interval = null;
@@ -46,7 +44,7 @@ const cantShare = false;
         }
         if (scrollableLoop) {
             if (
-                $.scrollableView.getViews().length - 1 ==
+                $.scrollableView.views.length - 1 ==
                 $.scrollableView.currentPage
             ) {
                 $.scrollableView.scrollToView(0);
@@ -200,22 +198,6 @@ function transformCollection(model) {
         modelJSON['image'] == '' ? '/images/logo_256.jpg' : modelJSON['image'];
 
     return modelJSON;
-}
-
-if (OS_IOS) {
-    $.listView.addEventListener('scrolling', doScroll);
-
-    function doScroll(e) {
-        const offset =
-            $.scrollableView.height === 0
-                ? OFFSET_CHANGE_HEADER_TITLE - SCROLLABLEVIEW_HEIGHT
-                : OFFSET_CHANGE_HEADER_TITLE;
-        $.navbar.load({
-            title: {
-                text: e.targetContentOffset > offset ? 'Noticias' : 'Inicio',
-            },
-        });
-    }
 }
 
 function touchStart(e) {

@@ -1,78 +1,153 @@
-const fcm = require('firebase.cloudmessaging');
+// const fcm = require('firebase.cloudmessaging');
+const IS_A_NEW_REGISTRY = true;
+const MAX_TRY_SIGN_IN = 3;
 let settings = Ti.App.Properties.getObject('settings');
+let signInAttempts = 0;
 
-/**
- * @method Controller
- * Display login view
- * @param  {Arguments} args Arguments passed to the controller
- */
-(function constructor(args) {
-    if (args.closeApp && OS_ANDROID) {
-        $.win.addEventListener('androidback', () => {
-            var activity = Titanium.Android.currentActivity;
-            activity.finish();
-        });
+function doLostFocus() {
+    _.each([$.txtEmail, $.txtPassword], function (val) {
+        val.blur();
+    });
+}
+
+function doFocusPasswordField() {
+    $.txtPassword.focus();
+}
+
+function validatePasswordAndRegister() {
+    if (!$.txtPassword.hasText()) {
+        return;
     }
-})($.args);
-
-function activePasswordMask(e) {
-    var isMasked = $.password.lblRight.text === '\uf06e';
-    $.password.textfield.setPasswordMask(isMasked);
-    $.password.lblRight = {
-        text: !isMasked ? '\uf06e' : '\uf070',
-        color: 'gray'
-    };
+    doRegister();
 }
 
-/**
- * doSignup - open Signup or Lost password
- *
- * @param  {Object} e clicked object
- */
-function doOpenSignup(e) {
-    $.nav.openWindow(Alloy.createController('signup/signup', e).getView());
+// Register
+
+function doRegister() {
+    if (!canSubmit(IS_A_NEW_REGISTRY)) {
+        return;
+    }
+    Alloy.Globals.loading.show('Espere unos instantes...');
+    Alloy.Globals.Api.signup(
+        {
+            body: {
+                email: $.txtEmail.value,
+                password: $.txtPassword.value,
+            },
+        },
+        function (response) {
+            if (response.success) {
+                Alloy.Globals.showMessage(
+                    'Revise la bandeja de su correo electrónico y valide su usuario.',
+                    'Registro'
+                );
+            }
+        }
+    );
 }
 
-/**
- * connect - connection function
- *
- * @param  {object} e
- */
-function doSignin(e) {
-    var email = $.login.getValue();
-    var password = $.password.getValue();
+// Sign In
 
-    if (!require('core').valideEmail(email)) {
-        Alloy.Globals.showMessage('Por favor, introduce un Email válido');
+function doSignIn(e) {
+    if (!canSubmit()) {
+        return;
+    }
+
+    Alloy.Globals.loading.show('Comprobando...');
+    Alloy.Globals.Api.signin(
+        {
+            email: $.txtEmail.value,
+            password: $.txtPassword.value,
+            device_name: OS_IOS ? 'ios' : 'android',
+        },
+        (response) => {
+            if (!response.success) {
+                signInAttempts++;
+                if (signInAttempts === MAX_TRY_SIGN_IN) {
+                    sendChangePassword();
+                    return;
+                }
+
+                Alloy.Globals.showMessage(
+                    response.content.message,
+                    'Sin acceso'
+                );
+                return;
+            }
+            saveUserAndConnect(response.data);
+            Alloy.createController('index').getView();
+        }
+    );
+}
+
+// Forgot Password
+
+function sendChangePassword() {
+    var dialog = Ti.UI.createAlertDialog({
+        title: 'No recuerda su contraseña',
+        message:
+            '¿Desea que le enviemos un nuevo correo para cambiar la contraseña?',
+        buttonNames: ['No', 'Si, por favor'],
+        cancel: 0,
+    });
+    dialog.addEventListener('click', function (e) {
+        if (e.index === e.source.cancel) {
+            signInAttempts = 0;
+            return;
+        }
+
+        // TODO Reset password
+        Alloy.Globals.Api.resetPassword(
+            {
+                email: $.txtEmail.value,
+            },
+            (response) => {
+                Alloy.Globals.showMessage(
+                    response.message,
+                    'Cambio de contraseña'
+                );
+            }
+        );
+    });
+    dialog.show();
+}
+
+function canSubmit(isRegister = false) {
+    if (!$.txtEmail.hasText() || !$.txtPassword.hasText()) {
+        Alloy.Globals.showMessage('Rellene los campos');
+        return false;
+    }
+
+    if (!require('core').valideEmail($.txtEmail.value)) {
+        Alloy.Globals.showMessage(
+            'El Email no tiene un formato correcto.',
+            'Email inválido'
+        );
 
         return false;
     }
 
-    if (password && email) {
-        Alloy.Globals.loading.show('Comprobando...');
-        //WS LOGIN
-        var obj = {
-            email,
-            password
-        };
-
-        Alloy.Globals.Api.signin({
-            body: obj
-        }, (response) => {
-            if (!response.success) {
-                Alloy.Globals.showMessage(response.content.message, 'Sin acceso');
-                return;
-            }
-
-            saveUserAndConnect(response.data);
-            (!response.data.association.sector_id) || handlePushNotifBySectorId(response.data.association.sector_id);
-            Alloy.createController('index').getView();
-        });
+    if (isRegister) {
+        console.log(`isRegister=${isRegister}`);
+        if ($.accept_privacy.value === false) {
+            Alloy.Globals.showMessage(
+                'Primero debe aceptar las condiciones de privacidad.'
+            );
+            return false;
+        }
     }
+
+    return true;
 }
 
-function handlePushNotifBySectorId(sectorId) {
-    (settings['demands']) ? fcm.subscribeToTopic(`sector_${sectorId}`): fcm.unsubscribeFromTopic(`sector_${sectorId}`);
+function doReadPrivacy() {
+    Alloy.createController('webviewWin', {
+        url: Alloy.CFG.url_privacy,
+        title: 'Huelva Comercio',
+        share: false,
+    })
+        .getView()
+        .open();
 }
 
 function doGoToDashboard() {
@@ -81,35 +156,74 @@ function doGoToDashboard() {
     Alloy.createController('dashboard').getView().open();
 }
 
-function next(e) {
-    if ($[e.source.next]) $[e.source.next].focus();
-}
-
-function previous(e) {
-    if ($[e.source.previous]) $[e.source.previous].focus();
-}
-
 function saveUserAndConnect(user = null) {
-    if (user) {
-        Ti.App.Properties.setBool('guest', false);
-        Alloy.Globals.guest = false;
-        Ti.App.Properties.setObject('user', user);
-        Alloy.Globals.user = user;
-        Ti.App.Properties.setString('token', user.token);
-        Alloy.Globals.token = user.token;
-        
+    Ti.App.Properties.setBool('guest', _.isNull(user));
+    Alloy.Globals.guest = _.isNull(user);
+    Ti.App.Properties.setObject('user', _.isNull(user) ? null : user);
+    Alloy.Globals.user = _.isNull(user) ? null : user;
+    Ti.App.Properties.setString(
+        'token',
+        _.isNull(user) ? null : user.device_token
+    );
+    Alloy.Globals.token = _.isNull(user) ? null : user.device_token;
+    Ti.App.Properties.setBool('isConnected', true);
+
+    if (!_.isNull(user)) {
         // We need this for refresh token in the file
         Alloy.Globals.Api.setRequestHeaders({
-            'Accept': 'application/json',
+            Accept: 'application/json',
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + Alloy.Globals.token
+            Authorization: 'Bearer ' + Alloy.Globals.token,
         });
-    } else {
-        Ti.App.Properties.setBool('guest', true);
-        Alloy.Globals.guest = true;
-        Ti.App.Properties.setObject('user', null);
-        Ti.App.Properties.setString('token', null);
-        Alloy.Globals.user = Alloy.Globals.token = null;
     }
-    Ti.App.Properties.setBool('isConnected', true);
+
+    printGlobalVars();
 }
+
+function printGlobalVars() {
+    console.log('printGlobalVars...');
+    console.log(
+        'guest = ' +
+            Ti.App.Properties.getBool('guest') +
+            ' | Alloy.Globals.guest = ' +
+            Alloy.Globals.guest
+    );
+
+    console.log(
+        'user = ' +
+            JSON.stringify(Ti.App.Properties.getObject('user'), null, 2) +
+            ' | Alloy.Globals.user = ' +
+            JSON.stringify(Alloy.Globals.user, null, 2)
+    );
+    console.log(
+        'token = ' +
+            Ti.App.Properties.getString('token') +
+            ' | Alloy.Globals.token = ' +
+            Alloy.Globals.token
+    );
+}
+
+// TODO Optional features if we are in time
+
+// function handlePushNotifBySectorId(sectorId) {
+//     settings['demands']
+//         ? fcm.subscribeToTopic(`sector_${sectorId}`)
+//         : fcm.unsubscribeFromTopic(`sector_${sectorId}`);
+// }
+
+// function next(e) {
+//     if ($[e.source.next]) $[e.source.next].focus();
+// }
+
+// function previous(e) {
+//     if ($[e.source.previous]) $[e.source.previous].focus();
+// }
+
+// function activePasswordMask(e) {
+//     var isMasked = $.password.lblRight.text === '\uf06e';
+//     $.password.textfield.setPasswordMask(isMasked);
+//     $.password.lblRight = {
+//         text: !isMasked ? '\uf06e' : '\uf070',
+//         color: 'gray',
+//     };
+// }

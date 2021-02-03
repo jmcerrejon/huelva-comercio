@@ -1,32 +1,79 @@
 <Alloy>
-	<NavigationWindow module="xp.ui" id="nav">
-		<Window id="win">
-			<ScrollView class="container">
-				<View class="headerContainer">
-					<Label class="titleLbl lblTitleMedium" />
+    <NavigationWindow module="xp.ui" id="nav">
+        <Window id="win" backgroundImage="/images/backgrounds/AqueuxAqua.jpg" navBarHidden="true">
+            <ScrollView class="vertical" onClick="doLostFocus">
 
-					<ImageView id="imgCorporate" image="/images/slider-foe_medium.jpg"></ImageView>
-				</View>
+                <!-- Logo -->
 
-				<View class="bodyContainer">
-					<Label class="lblTitleLight" text="¿Eres afiliado?"/>
-					<Label class="font12" text="Primero debes registrarte en la app y luego accede" top="10" color="gray" />
+                <View class="w-full">
+                    <ImageView class="w-48 mt-14 rounded-3xl" image="/images/logo_512.png" />
+                </View>
 
-					<Require src="/partials/_textfield" class="required keyboard-mail" id="login" onNext="next"  next="password"  ></Require>
+                <View class="w-11/12 -mt-8 bg-blue-300 shadow-2xl rounded-3xl vertical">
 
-					<View height="10"></View>
+                    <!-- Free access -->
 
-					<Require src="/partials/_textfield" id="password" onNext="doSignin" onClickLblRight="activePasswordMask" onPrevious="previous" previous="login" ></Require>
+                    <View class="mt-4 vertical h-auto w-full">
+                        <View class="w-32 h-8 border-blue-500 rounded-xl" onClick="doGoToDashboard">
+                            <Label class="w-auto h-auto mt-1 text-sm text-blue-900 ">Acceso libre</Label>
+                        </View>
 
-					<View class="vwButtonOptions">
-						<Button class="btn-medium" title="REGÍSTRATE" onClick="doOpenSignup" />
+                        <View class="w-auto h-auto">
+                            <View class="w-11/12 border-blue-900" height="1"></View>
 
-						<Button class="btn-medium" title="ACCEDE" onClick="doSignin" left="50" />
-					</View>
-				</View>
+                            <Label class="w-6 text-center bg-blue-300 text-blue-900">o</Label>
+                        </View>
+                    </View>
+                    <View class="mx-4 mt-4 vertical">
 
-				<Button class="lblBtn" onClick="doGoToDashboard" title="Accede sin registro"></Button>
-			</ScrollView>
-		</Window>
-	</NavigationWindow>
+                        <!-- Email and Password -->
+
+                        <Label class="w-full mt-2 ml-1 text-sm text-left text-blue-900 keyboard-mail">Correo electrónico</Label>
+
+                        <TextField value="ulysess@gmail.com" id="txtEmail" class="w-screen h-10 pl-2 mt-1 text-base text-gray-800 border-blue-500 rounded-xl bg-gray-50" onReturn="doFocusPasswordField" autocorrect="false" autofillType="Ti.UI.AUTOFILL_TYPE_EMAIL" autocapitalization="Ti.UI.TEXT_AUTOCAPITALIZATION_NONE" returnKeyType="Ti.UI.RETURNKEY_NEXT" keyboardType="Ti.UI.KEYBOARD_TYPE_EMAIL" hintText="Email" />
+
+                        <Label class="w-full mt-4 ml-1 text-sm text-left text-blue-900">Contraseña</Label>
+
+                        <TextField value="secret" id="txtPassword" class="w-screen h-10 pl-2 mt-1 text-base text-gray-800 border-blue-500 rounded-xl bg-gray-50" returnKeyType="Ti.UI.RETURNKEY_DONE" hintText="Password" passwordMask="true" />
+
+                        <!-- Forgotten password -->
+
+                        <!-- <View class="w-screen mt-1 horizontal">
+                            <View class="w-1/3 mx-0 horizontal">
+                            </View>
+
+                            <View class="w-2/3 mx-0 horizontal" onClick="doGoToDashboard">
+                                <Button class="w-screen text-sm text-right text-blue-800 font-roboto-light">¿Contraseña olvidada?</Button>
+                            </View>
+                        </View> -->
+
+                        <!-- Accept privacy policy checkbox -->
+
+                        <View class="w-screen mt-2 mb-2 vertical">
+                            <View class="w-screen mx-0 horizontal">
+                                <Require src="/partials/_checkbox" id="accept_privacy" text="Acepto los Términos, Condiciones de uso y Política de Privacidad de esta aplicación."></Require>
+                            </View>
+                        </View>
+
+                        <!-- Sign up / Sign In -->
+
+                        <View class="w-full h-16 horizontal">
+                            <Require src="partials/button" text="Registrarse" onClick="doRegister" typeButton="warning"></Require>
+
+                            <Require src="partials/button" text="Acceder" onClick="doSignIn"></Require>
+                        </View>
+
+                        <!-- Privacy Policy terms -->
+
+                        <View class="w-screen h-auto mt-2 mb-8 bg-gray-100 rounded-xl vertical" onClick="doReadPrivacy">
+                            <Label class="h-auto mt-2 text-xs text-center text-lightBlue-700 font-roboto-light">Creando una cuenta, aceptas nuestros</Label>
+
+                            <Button class="h-auto mb-1 ml-3 mr-3 text-xs font-semibold text-center text-blue-500 font-roboto-bold">Términos y condiciones</Button>
+                        </View>
+
+                    </View>
+                </View>
+            </ScrollView>
+        </Window>
+    </NavigationWindow>
 </Alloy>

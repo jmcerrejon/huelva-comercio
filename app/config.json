@@ -1,60 +1,63 @@
 {
-	"global": {
-		"name": "Federación Onubense De Empresarios",
-		"address": "Avda. de la Ría nº 3,\nCP 21001",
-		"phone": "959 20 83 00",
-		"mail": "info@foe.es",
-		"url": "https://foe.es",
-		"url_privacy": "https://foe.es/politica-privacidad-app-foe/",
-		"twitter": "https://twitter.com/foehuelva",
-		"facebook_url": "https://www.facebook.com/FOEHuelva",
-		"facebook_scheme": "fb://profile/778628908875260",
-		"FONTS": {
-			"light": "Helvetica-Light",
-			"regular": "Helvetica-Regular",
-			"bold": "Helvetica-Bold",
-			"fabrands": "FontAwesome5Brands-Regular",
-			"fareg": "FontAwesome5Pro-Regular",
-			"falight": "FontAwesome5ProLight",
-			"fa": "FontAwesome5Pro-Solid"
-		},
-		"COLORS": {
-			"main": "#2561a0",
-			"main2": "#125798",
-			"black": "#222222",
-			"gray": "#dbdfe2",
-			"dark_gray": "#969696",
-			"text": "#9896a4",
-			"white": "#fff",
-			"bg_default": "#f0f0f5",
-			"bg_blue": "#0060a5"
-		},
-		"crash": {
-			"email": "cerrejon@soporttec.es"
-		},
-		"logEnable": true
-	},
-	"env:development": {
-		"baseapi": "https://foe.soporttec.es/api/",
-		"baseurl": "https://foe.soporttec.es"
-	},
-	"env:test": {
-		"baseapi": "https://foe.soporttec.es/api/",
-		"baseurl": "https://foe.soporttec.es"
-	},
-	"env:production": {
-		"baseapi": "https://foe.soporttec.es/api/",
-		"baseurl": "https://foe.soporttec.es"
-	},
-	"os:android": {},
-	"os:ios": {},
-	"dependencies": {
-		"nl.fokkezb.loading": "*",
-		"de.manumaticx.pagingcontrol": "*",
-		"input-materialdesign": "*",
-		"fr.squirrel.zoomimage": "*",
-		"nl.fokkezb.infiniteScroll": "*",
-		"com.imobicloud.calendar": "*",
-		"com.imobicloud.tabbedbar": "*"
-	}
+    "global": {
+        "name": "CCEAA",
+        "address": "Avda. de la Ría nº 3,\nCP 21001",
+        "phone": "959 20 83 00",
+        "mail": "daniel@foe.es",
+        "url": "https://foe.es",
+        "url_privacy": "https://foe.es/politica-privacidad-app-foe/",
+        "twitter": "https://twitter.com/foehuelva",
+        "facebook_url": "https://www.facebook.com/FOEHuelva",
+        "facebook_scheme": "fb://profile/778628908875260",
+        "FONTS": {
+            "light": "Helvetica-Light",
+            "regular": "Helvetica-Regular",
+            "bold": "Helvetica-Bold",
+            "fabrands": "FontAwesome5Brands-Regular",
+            "fareg": "FontAwesome5Pro-Regular",
+            "falight": "FontAwesome5ProLight",
+            "fa": "FontAwesome5Pro-Solid"
+        },
+        "COLORS": {
+            "main": "#2561a0",
+            "main2": "#125798",
+            "black": "#222222",
+            "gray": "#dbdfe2",
+            "dark_gray": "#969696",
+            "text": "#9896a4",
+            "white": "#fff",
+            "bg_default": "#f0f0f5",
+            "bg_blue": "#0060a5"
+        },
+        "crash": {
+            "email": "cerrejon@soporttec.es"
+        },
+        "logEnable": true
+    },
+    "env:development": {
+        "baseapi": "http://comm.test/api/",
+        "baseurl": "http://comm.test"
+    },
+    "env:test": {
+        "baseapi": "http://comm.test/api/",
+        "baseurl": "http://comm.test"
+    },
+    "env:production": {
+        "baseapi": "http://comm.test/api/",
+        "baseurl": "http://comm.test"
+    },
+    "os:android": {
+        "baseapi": "http://192.168.0.110/api/",
+        "baseurl": "http://comm.test"
+    },
+    "os:ios": {},
+    "dependencies": {
+        "nl.fokkezb.loading": "*",
+        "de.manumaticx.pagingcontrol": "*",
+        "input-materialdesign": "*",
+        "fr.squirrel.zoomimage": "*",
+        "nl.fokkezb.infiniteScroll": "*",
+        "com.imobicloud.calendar": "*",
+        "com.imobicloud.tabbedbar": "*"
+    }
 }

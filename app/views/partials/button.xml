@@ -1,0 +1,9 @@
+<Alloy>
+    <View class="w-1/2">
+        <View class="w-11/12" onClick="doClick">
+            <View id="vwShadow" class="w-screen h-10 mt-2 bg-blue-700 rounded-xl"></View>
+
+            <Label id="btnClick" class="w-screen h-10 mt-1 text-base font-bold text-white bg-blue-500 rounded-xl text-center" text="$.args.text"></Label>
+        </View>
+    </View>
+</Alloy>

@@ -171,7 +171,7 @@ function renderSectorList(sectors, firstElementName) {
 
 function setInputValues(item) {
     for (var key in item) {
-        _.isUndefined($[key].getViews().buttonWrapper)
+        _.isUndefined($[key].views.buttonWrapper)
             ? $[key].setValue(item[key])
             : $[key].setActive(item[key]);
     }
@@ -221,7 +221,7 @@ function editMode() {
                     : $.args.sectors[0].name
             );
         }
-        $[formElements[0]].getViews().textfield.focus();
+        $[formElements[0]].views.textfield.focus();
     }
 }
 
@@ -291,7 +291,7 @@ function hasMissingField(fields) {
     let d = [];
     _.each(fields, function (elem, key) {
         if (!elem) {
-            let view = $[key].getViews();
+            let view = $[key].views;
             if (view) {
                 if (view.textfield && view.textfield.required) {
                     d.push(view.textfield.hintTextTitle + '');
@@ -587,7 +587,7 @@ function openRemotePdf(url) {
 }
 
 function doLostFocus() {
-    $.description.getViews().textfield.blur();
+    $.description.views.textfield.blur();
 }
 
 if (OS_ANDROID) {

@@ -67,7 +67,7 @@ function renderSectorstList(sectors, firstElementName) {
 
 function setInputValues(item) {
     for (var key in item) {
-        _.isUndefined($[key].getViews().buttonWrapper)
+        _.isUndefined($[key].views.buttonWrapper)
             ? $[key].setValue(item[key])
             : $[key].setActive(item[key]);
     }
@@ -125,7 +125,7 @@ function editMode() {
             );
         }
 
-        $[formElements[0]].getViews().textfield.focus();
+        $[formElements[0]].views.textfield.focus();
     }
 }
 
@@ -165,7 +165,7 @@ function hasMissingField(fields) {
     let d = [];
     _.each(fields, function (elem, key) {
         if (!elem) {
-            let view = $[key].getViews();
+            let view = $[key].views;
             if (view) {
                 if (view.textfield && view.textfield.required) {
                     d.push(view.textfield.hintTextTitle + '');
@@ -265,7 +265,7 @@ function previous(e) {
 }
 
 function doLostFocus() {
-    $.requirements.getViews().textfield.blur();
+    $.requirements.views.textfield.blur();
 }
 
 function copy2Clipboard() {

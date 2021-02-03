@@ -1,10 +1,10 @@
 const utils = require('/utils');
 let elements = {
-    'address': [],
-    'phones': [],
-    'emails': [],
-    'websites': [],
-    'visible': true
+    address: [],
+    phones: [],
+    emails: [],
+    websites: [],
+    visible: true,
 };
 let editModeEnable = false;
 let updateAffiliate = false;
@@ -12,28 +12,28 @@ let updateAffiliate = false;
 (function constructor(args) {
     let options = {
         btnLeft: {
-            visible: true
+            visible: true,
         },
         title: {
             visible: true,
-            text: args.data.name
-        }
+            text: args.data.name,
+        },
     };
     handleImageLogo(args.data.logo_path);
     if (canEdit(args.data.affiliate_id)) {
         options.btnRight = {
             visible: true,
-            title: '\uf044'
+            title: '\uf044',
         };
         setInputValues({
-            'visible': args.data.visible || '',
-            'address': args.data.address || '',
-            'phone1': args.data.phone1 || '',
-            'phone2': args.data.phone2 || '',
-            'email1': args.data.email1 || '',
-            'email2': args.data.email2 || '',
-            'email3': args.data.email3 || '',
-            'web': args.data.web || 'https://'
+            visible: args.data.visible || '',
+            address: args.data.address || '',
+            phone1: args.data.phone1 || '',
+            phone2: args.data.phone2 || '',
+            email1: args.data.email1 || '',
+            email2: args.data.email2 || '',
+            email3: args.data.email3 || '',
+            web: args.data.web || 'https://',
         });
     }
 
@@ -41,20 +41,29 @@ let updateAffiliate = false;
 
     renderElements('address', [args.data.address]);
     renderElements('phones', [args.data.phone1, args.data.phone2]);
-    renderElements('emails', [args.data.email1, args.data.email2, args.data.email3]);
+    renderElements('emails', [
+        args.data.email1,
+        args.data.email2,
+        args.data.email3,
+    ]);
     renderElements('websites', [args.data.web]);
 })($.args);
 
 function handleImageLogo(logo = null) {
-    (!logo) ? $.vw_logo.height = 0 : $.logoEdit.image = $.logoShow.image = logo;	
+    !logo
+        ? ($.vw_logo.height = 0)
+        : ($.logoEdit.image = $.logoShow.image = logo);
 }
 
 function canEdit(affiliateId) {
-    return ((Alloy.Globals.guest === false) && Alloy.Globals.user.affiliate_id === affiliateId);
+    return (
+        Alloy.Globals.guest === false &&
+        Alloy.Globals.user.affiliate_id === affiliateId
+    );
 }
 
 function renderElements(item, argsData) {
-    const tmpElements = argsData.filter(element => Boolean(element));
+    const tmpElements = argsData.filter((element) => Boolean(element));
 
     if (tmpElements.length == 0) {
         $['vw_' + item].height = 0;
@@ -66,14 +75,22 @@ function renderElements(item, argsData) {
 
 function setInputValues(item) {
     for (var key in item) {
-        (_.isUndefined($[key].getViews().buttonWrapper)) ? $[key].setValue(item[key]) : $[key].setActive(item[key]);
+        _.isUndefined($[key].views.buttonWrapper)
+            ? $[key].setValue(item[key])
+            : $[key].setActive(item[key]);
     }
     changeCheckboxVisibleText();
 }
 
 function changeCheckboxVisibleText() {
-    $.visible.setText(($.visible.textContent.activer) ? 'Mi empresa estará publicada en esta aplicación': 'NO quiero que mi empresa aparezca en esta aplicación');
-    $.lbVisible.width = $.lbVisible.height = (!$.visible.textContent.activer) ? Ti.UI.SIZE : 0;
+    $.visible.setText(
+        $.visible.textContent.activer
+            ? 'Mi empresa estará publicada en esta aplicación'
+            : 'NO quiero que mi empresa aparezca en esta aplicación'
+    );
+    $.lbVisible.width = $.lbVisible.height = !$.visible.textContent.activer
+        ? Ti.UI.SIZE
+        : 0;
 }
 
 function doActionNavbar(e) {
@@ -92,20 +109,21 @@ function editMode() {
     editModeEnable = !editModeEnable;
     $.navbar.load({
         btnRight: {
-            title: (editModeEnable) ? '\uf06e' : '\uf044'
-        }
+            title: editModeEnable ? '\uf06e' : '\uf044',
+        },
     });
-    $.vwEdit.height = (editModeEnable) ? Ti.UI.SIZE : '0';
-    $.vwShow.height = (editModeEnable) ? '0' : Ti.UI.SIZE;
+    $.vwEdit.height = editModeEnable ? Ti.UI.SIZE : '0';
+    $.vwShow.height = editModeEnable ? '0' : Ti.UI.SIZE;
 }
 
 function close() {
     if (updateAffiliate) {
         var alertDialog = Ti.UI.createAlertDialog({
             title: 'Afiliado actualizado',
-            message: 'Ha modificado datos de la empresa. ¿Desea guardar los cambios?',
+            message:
+                'Ha modificado datos de la empresa. ¿Desea guardar los cambios?',
             buttonNames: ['No', 'Sí'],
-            cancelButton: 0
+            cancelButton: 0,
         });
         alertDialog.addEventListener('click', function (e) {
             if (e.index === 0) {
@@ -116,32 +134,37 @@ function close() {
             Alloy.Globals.loading.show('Enviando...');
 
             const body = {
-                'visible': $.visible.getValue(),
-                'address': $.address.getValue(),
-                'phone1': $.phone1.getValue(),
-                'phone2': $.phone2.getValue(),
-                'email1': $.email1.getValue(),
-                'email2': $.email2.getValue(),
-                'email3': $.email3.getValue(),
-                'web': getWebsiteValue()
+                visible: $.visible.getValue(),
+                address: $.address.getValue(),
+                phone1: $.phone1.getValue(),
+                phone2: $.phone2.getValue(),
+                email1: $.email1.getValue(),
+                email2: $.email2.getValue(),
+                email3: $.email3.getValue(),
+                web: getWebsiteValue(),
             };
 
-            Alloy.Globals.Api.updateAffiliate({
-                body
-            }, (response) => {
-                Alloy.Globals.loading.hide();
-                if (!response.success) {
-                    Alloy.Globals.showMessage(`Hubo un problema al actualizar el afiliado. Contacte con ${Alloy.CFG.global.mail}`);
-                    return;
+            Alloy.Globals.Api.updateAffiliate(
+                {
+                    body,
+                },
+                (response) => {
+                    Alloy.Globals.loading.hide();
+                    if (!response.success) {
+                        Alloy.Globals.showMessage(
+                            `Hubo un problema al actualizar el afiliado. Contacte con ${Alloy.CFG.global.mail}`
+                        );
+                        return;
+                    }
+
+                    setAffiliateOnUser(response.data);
+
+                    OS_IOS && Alloy.Globals.affiliatesWin.popToRootWindow();
+                    OS_ANDROID && $.wAffiliateDetail.close();
+
+                    Alloy.Globals.showMessage(response.message);
                 }
-
-                setAffiliateOnUser(response.data);
-
-                (OS_IOS) && Alloy.Globals.affiliatesWin.popToRootWindow();
-                (OS_ANDROID) && $.wAffiliateDetail.close();
-
-                Alloy.Globals.showMessage(response.message);
-            });
+            );
         });
         alertDialog.show();
     } else {
@@ -151,13 +174,13 @@ function close() {
 
 function getWebsiteValue(params) {
     const PROTOCOL_SIZE = 8;
-    return ($.web.getValue().length > PROTOCOL_SIZE) ? $.web.getValue() : '';
+    return $.web.getValue().length > PROTOCOL_SIZE ? $.web.getValue() : '';
 }
 
 function setAffiliateOnUser(data) {
-    let user = Ti.App.Properties.getObject("user");
+    let user = Ti.App.Properties.getObject('user');
     user.affiliate = data;
-    Ti.App.Properties.setObject("user", user);
+    Ti.App.Properties.setObject('user', user);
     Alloy.Globals.user = user;
 }
 
@@ -175,7 +198,9 @@ function doAction(params) {
             showOptionDialog({
                 title: 'Ver en el mapa',
                 options: elements['address'],
-                source: (OS_IOS) ? 'https://maps.apple.com/?z=8&t=m&q=' : 'https://www.google.com/maps/search/'
+                source: OS_IOS
+                    ? 'https://maps.apple.com/?z=8&t=m&q='
+                    : 'https://www.google.com/maps/search/',
             });
             break;
 
@@ -183,7 +208,7 @@ function doAction(params) {
             showOptionDialog({
                 title: 'Llamar al teléfono',
                 options: elements['phones'],
-                source: 'tel://'
+                source: 'tel://',
             });
             break;
 
@@ -191,14 +216,14 @@ function doAction(params) {
             showOptionDialog({
                 title: 'Enviar un correo',
                 options: elements['emails'],
-                source: 'email'
+                source: 'email',
             });
             break;
 
         case 'vw_websites':
             showOptionDialog({
                 title: 'Visitar página web',
-                options: elements['websites']
+                options: elements['websites'],
             });
             break;
     }
@@ -209,17 +234,19 @@ function showOptionDialog({title, options, source = ''}) {
     const resultOptionDialog = Ti.UI.createOptionDialog({
         title,
         options: tmpOptions,
-        cancel: 0
+        cancel: 0,
     });
     resultOptionDialog.addEventListener('click', function onClick(e) {
         if (e.index === 0) {
             return;
         }
 
-        (source === 'email') ? utils.openEmailForm({
-            'email': tmpOptions[e.index]
-        }) : Ti.Platform.openURL(source + tmpOptions[e.index]);
-        
+        source === 'email'
+            ? utils.openEmailForm({
+                  email: tmpOptions[e.index],
+              })
+            : Ti.Platform.openURL(source + tmpOptions[e.index]);
+
         resultOptionDialog.removeEventListener('click', onClick);
     });
     resultOptionDialog.show();
@@ -231,31 +258,37 @@ function changeLogo() {
 
 function doPictureSelected({index}) {
     switch (index) {
-    case 0:
-        utils.requestCameraPermission(function () {
-            Ti.Media.showCamera({
-                success: uploadImage,
-                cancel: function () {},
-                error: function () {
-                    Alloy.Globals.showMessage('Hubo un problema al usar la cámara. Revise los permisos en su dispositivo.', 'No se tiene acceso a la cámara')
-                },
-                saveToPhotoGallery: false,
-                mediaTypes: [Ti.Media.MEDIA_TYPE_PHOTO],
+        case 0:
+            utils.requestCameraPermission(function () {
+                Ti.Media.showCamera({
+                    success: uploadImage,
+                    cancel: function () {},
+                    error: function () {
+                        Alloy.Globals.showMessage(
+                            'Hubo un problema al usar la cámara. Revise los permisos en su dispositivo.',
+                            'No se tiene acceso a la cámara'
+                        );
+                    },
+                    saveToPhotoGallery: false,
+                    mediaTypes: [Ti.Media.MEDIA_TYPE_PHOTO],
+                });
             });
-        });
-        break;
-    case 1:
-        Ti.Media.openPhotoGallery({
-            mediaTypes: [Titanium.Media.MEDIA_TYPE_PHOTO],
-            success: uploadImage,
-            error: function () {
-                Alloy.Globals.showMessage('Hubo un problema al abrir la galería. Revise los permisos en su dispositivo.', 'No se tiene acceso a la galería')
-            }
-        });
-        break;
+            break;
+        case 1:
+            Ti.Media.openPhotoGallery({
+                mediaTypes: [Titanium.Media.MEDIA_TYPE_PHOTO],
+                success: uploadImage,
+                error: function () {
+                    Alloy.Globals.showMessage(
+                        'Hubo un problema al abrir la galería. Revise los permisos en su dispositivo.',
+                        'No se tiene acceso a la galería'
+                    );
+                },
+            });
+            break;
 
-    default:
-        break;
+        default:
+            break;
     }
 
     function uploadImage({media}) {
@@ -268,21 +301,30 @@ function doPictureSelected({index}) {
             onload: function (response) {
                 Alloy.Globals.loading.hide();
                 if (!response.success) {
-                    Alloy.Globals.showMessage('Vaya, hubo un problema al obtener la imagen. Inténtelo de nuevo mas tarde.', 'Error en la subida')
+                    Alloy.Globals.showMessage(
+                        'Vaya, hubo un problema al obtener la imagen. Inténtelo de nuevo mas tarde.',
+                        'Error en la subida'
+                    );
                 }
 
                 $.logoEdit.image = $.logoShow.image = imageResized;
             },
             onerror: function () {
                 Alloy.Globals.loading.hide();
-                Alloy.Globals.showMessage('Vaya, hubo un problema al obtener la imagen. Inténtelo de nuevo mas tarde.', 'Error en la subida')
+                Alloy.Globals.showMessage(
+                    'Vaya, hubo un problema al obtener la imagen. Inténtelo de nuevo mas tarde.',
+                    'Error en la subida'
+                );
             },
-            timeout: 120000
+            timeout: 120000,
         });
         client.open('POST', Alloy.CFG.baseapi + 'affiliates/upload/logo/');
-        client.setRequestHeader('Authorization', 'Bearer ' + Alloy.Globals.token);
+        client.setRequestHeader(
+            'Authorization',
+            'Bearer ' + Alloy.Globals.token
+        );
         client.send({
-            logo: imageResized
+            logo: imageResized,
         });
     }
 }

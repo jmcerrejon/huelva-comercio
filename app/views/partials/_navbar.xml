@@ -1,12 +1,11 @@
 <Alloy>
-	<View id="container">
-		<View id="nav" class="navbar">
+    <View id="container">
+        <View id="nav" class="navbar">
+            <Button id="btnLeft" class="fa" onClick="actions" type="back"></Button>
 
-			<Button id="btnLeft" class="fa" onClick="actions" type="back"></Button>
+            <Label id="title" text="Inicio"/>
 
-			<Label id="title" text="Inicio"/>
-
-			<Button id="btnRight" class="fa" onClick="actions" type="action" />
-		</View>
-	</View>
+            <Button id="btnRight" class="fa" onClick="actions" type="action" />
+        </View>
+    </View>
 </Alloy>

@@ -1,10 +1,12 @@
 ".navbar[platform=ios]": {
   top : Alloy.Globals.top,
+  width: Ti.UI.FILL,
   height : 44,
-  backgroundColor: Alloy.CFG.COLORS.white
+  backgroundColor: Alloy.CFG.COLORS.white,
 }
 
 ".navbar[platform=android]": {
+  width: Ti.UI.FILL,
   top : 0,
   height : 44
 }
@@ -24,15 +26,16 @@
   borderRadius: 3,
   width: "80%",
   height: 25
-  
 }
 
 "#container[platform=ios]": {
+  width: Ti.UI.FILL,
   height: Ti.UI.SIZE,
-  backgroundColor: Alloy.CFG.COLORS.white
+  backgroundColor: Alloy.CFG.COLORS.white,
 }
 
 "#container[platform=android]": {
+  width: Ti.UI.FILL,
   height: Ti.UI.SIZE,
   backgroundColor: Alloy.CFG.COLORS.white
 }

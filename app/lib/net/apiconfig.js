@@ -13,7 +13,8 @@ exports.config = {
     methods: [
         {
             name: 'signin',
-            post: 'auth/login',
+            post:
+                'auth/user/login?email=<email>&password=<password>&device_name=<device_name>',
             onError: (response, callback) => {
                 Alloy.Globals.loading.hide();
                 if (_.isFunction(callback)) {
@@ -23,7 +24,7 @@ exports.config = {
         },
         {
             name: 'signup',
-            post: 'auth/register',
+            post: 'auth/user/register',
             onError: (response) => {
                 Alloy.Globals.loading.hide();
                 Ti.UI.createAlertDialog({
@@ -48,7 +49,7 @@ exports.config = {
         },
         {
             name: 'resetPassword',
-            post: 'auth/reset-password?email=<email>&password=<password>',
+            post: 'auth/reset-password?email=<email>',
         },
         {
             name: 'photos',

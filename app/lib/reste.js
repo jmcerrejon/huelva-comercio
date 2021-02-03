@@ -89,12 +89,10 @@ var main = function() {
         var formEncode = false;
 
         //set some defaults
-        http.setTimeout(config.timeout || 10000);
+        http.timeout = config.timeout || 10000;
 
         if (_.has(config, "validatesSecureCertificate")) {
-            http.setValidatesSecureCertificate(
-                config.validatesSecureCertificate
-            );
+            http.validatesSecureCertificate = config.validatesSecureCertificate;
         }
 
         // open the url and check if we're overrding with

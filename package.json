@@ -5,6 +5,10 @@
     "main": "index.js",
     "scripts": {
         "run-server": "cd /Users/ulysess/Documents/sc/www/comm && sudo php artisan serve --port=80 --host=192.168.0.110",
+        "purge:dev_mode": "purgetss d",
+        "purge:production": "purgetss",
+        "purge:build_custom": "purgetss b",
+        "purge:auto_update": "purgetss a",
         "ios-simulator": "tios -f",
         "ios-real-liveview": "tn --ios --device --device-id 00008030-001C691001C0802E -V 'JOSE CERREJON GONZALEZ (324YU3WC5Y)' --liveview",
         "package-for-distribution": "sh builder.sh",
@@ -14,10 +18,6 @@
         "website_fontawesone": "open https://fontawesome.com/icons?d=gallery",
         "ticon": "ticons assets --orig-dpi @3x --max-dpi xxxhdpi ~/Documents/Appcelerator_Studio_Workspace/foe-ahora/app/assets/iphone/images/ ~/Documents/Appcelerator_Studio_Workspace/foe-ahora/app/assets",
         "splashes": "ticons splashes DefaultIcon.png -s 9.3.1",
-        "tserver": "tishadow server",
-        "tsrupdate": "tishadow run --update",
-        "tsclear": "tishadow clear",
-        "stop-liveview-server": "stopliveview",
         "del-folders": "rm -rf i18n && rm -rf platform"
     },
     "repository": {

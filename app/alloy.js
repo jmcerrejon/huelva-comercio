@@ -12,6 +12,7 @@ Alloy.Globals.token = Ti.App.Properties.getString('token', '');
 Alloy.Globals.deviceToken = Ti.App.Properties.getString('deviceToken', '');
 Alloy.Globals.user = Ti.App.Properties.getObject('user', null);
 Alloy.Globals.guest = Ti.App.Properties.getBool('guest', false);
+Alloy.Globals.isAffiliate = Ti.App.Properties.getBool('isAffiliate', false);
 Alloy.Globals.background = Ti.App.Properties.getBool('background', false);
 Alloy.Globals.candidate = Ti.App.Properties.getObject('candidate', null);
 Alloy.Globals.affiliatesWin = null;

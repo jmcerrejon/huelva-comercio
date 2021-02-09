@@ -1,6 +1,7 @@
 // const fcm = require('firebase.cloudmessaging');
-const IS_A_NEW_REGISTRY = true;
-const MAX_TRY_SIGN_IN = 3;
+const isANewRegistry = true;
+const maxTrySignIn = 3;
+
 let settings = Ti.App.Properties.getObject('settings');
 let signInAttempts = 0;
 
@@ -15,18 +16,15 @@ function doFocusPasswordField() {
 }
 
 function validatePasswordAndRegister() {
-    if (!$.txtPassword.hasText()) {
-        return;
-    }
+    if (!$.txtPassword.hasText()) return;
     doRegister();
 }
 
 // Register
 
 function doRegister() {
-    if (!canSubmit(IS_A_NEW_REGISTRY)) {
-        return;
-    }
+    if (!canSubmit(isANewRegistry)) return;
+
     Alloy.Globals.loading.show('Espere unos instantes...');
     Alloy.Globals.Api.signup(
         {
@@ -49,9 +47,7 @@ function doRegister() {
 // Sign In
 
 function doSignIn(e) {
-    if (!canSubmit()) {
-        return;
-    }
+    if (!canSubmit()) return;
 
     Alloy.Globals.loading.show('Comprobando...');
     Alloy.Globals.Api.signin(
@@ -63,7 +59,7 @@ function doSignIn(e) {
         (response) => {
             if (!response.success) {
                 signInAttempts++;
-                if (signInAttempts === MAX_TRY_SIGN_IN) {
+                if (signInAttempts === maxTrySignIn) {
                     sendChangePassword();
                     return;
                 }
@@ -76,6 +72,7 @@ function doSignIn(e) {
             }
             saveUserAndConnect(response.data);
             Alloy.createController('index').getView();
+            $.login.close();
         }
     );
 }
@@ -128,8 +125,8 @@ function canSubmit(isRegister = false) {
     }
 
     if (isRegister) {
-        console.log(`isRegister=${isRegister}`);
-        if ($.accept_privacy.value === false) {
+        console.log(`isRegister = ${isRegister}`);
+        if ($.accept_privacy.getValue() === false) {
             Alloy.Globals.showMessage(
                 'Primero debe aceptar las condiciones de privacidad.'
             );
@@ -157,15 +154,23 @@ function doGoToDashboard() {
 }
 
 function saveUserAndConnect(user = null) {
+    const hasAffiliate = !_.isNull(user.affiliate) && !_.isNull(user.affiliate);
+
+    Ti.App.Properties.setBool('isAffiliate', hasAffiliate);
+    Alloy.Globals.isAffiliate = hasAffiliate;
+
     Ti.App.Properties.setBool('guest', _.isNull(user));
     Alloy.Globals.guest = _.isNull(user);
+
     Ti.App.Properties.setObject('user', _.isNull(user) ? null : user);
     Alloy.Globals.user = _.isNull(user) ? null : user;
+
     Ti.App.Properties.setString(
         'token',
         _.isNull(user) ? null : user.device_token
     );
     Alloy.Globals.token = _.isNull(user) ? null : user.device_token;
+
     Ti.App.Properties.setBool('isConnected', true);
 
     if (!_.isNull(user)) {
@@ -200,6 +205,12 @@ function printGlobalVars() {
             Ti.App.Properties.getString('token') +
             ' | Alloy.Globals.token = ' +
             Alloy.Globals.token
+    );
+    console.log(
+        'is affiliate = ' +
+            Ti.App.Properties.getBool('isAffiliate') +
+            ' | Alloy.Globals.isAffiliate = ' +
+            Alloy.Globals.isAffiliate
     );
 }
 

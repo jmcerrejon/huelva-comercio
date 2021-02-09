@@ -1,44 +1,43 @@
 <Alloy>
-    <NavigationWindow module="xp.ui" id="nav">
-        <Window id="win" backgroundImage="/images/backgrounds/AqueuxAqua.jpg" navBarHidden="true">
-            <ScrollView class="vertical" onClick="doLostFocus">
+    <Window backgroundImage="/images/backgrounds/AqueuxAqua.jpg" navBarHidden="true">
+        <ScrollView class="vertical" onClick="doLostFocus">
 
-                <!-- Logo -->
+            <!-- Logo -->
 
-                <View class="w-full">
-                    <ImageView class="w-48 mt-14 rounded-3xl" image="/images/logo_512.png" />
-                </View>
+            <View class="w-full">
+                <ImageView class="w-48 mt-14 rounded-3xl" image="/images/logo_512.png" />
+            </View>
 
-                <View class="w-11/12 -mt-8 bg-blue-300 shadow-2xl rounded-3xl vertical">
+            <View class="w-11/12 -mt-8 bg-blue-300 shadow-2xl rounded-3xl vertical">
 
-                    <!-- Free access -->
+                <!-- Free access -->
 
-                    <View class="mt-4 vertical h-auto w-full">
-                        <View class="w-32 h-8 border-blue-500 rounded-xl" onClick="doGoToDashboard">
-                            <Label class="w-auto h-auto mt-1 text-sm text-blue-900 ">Acceso libre</Label>
-                        </View>
-
-                        <View class="w-auto h-auto">
-                            <View class="w-11/12 border-blue-900" height="1"></View>
-
-                            <Label class="w-6 text-center bg-blue-300 text-blue-900">o</Label>
-                        </View>
+                <View class="mt-4 vertical h-auto w-full">
+                    <View class="w-32 h-8 border-blue-500 rounded-xl" onClick="doGoToDashboard">
+                        <Label class="w-auto h-auto mt-1 text-sm text-blue-900 ">Acceso libre</Label>
                     </View>
-                    <View class="mx-4 mt-4 vertical">
 
-                        <!-- Email and Password -->
+                    <View class="w-auto h-auto">
+                        <View class="w-11/12 border-blue-900" height="1"></View>
 
-                        <Label class="w-full mt-2 ml-1 text-sm text-left text-blue-900 keyboard-mail">Correo electrónico</Label>
+                        <Label class="w-6 text-center bg-blue-300 text-blue-900">o</Label>
+                    </View>
+                </View>
+                <View class="mx-4 mt-4 vertical">
 
-                        <TextField value="ulysess@gmail.com" id="txtEmail" class="w-screen h-10 pl-2 mt-1 text-base text-gray-800 border-blue-500 rounded-xl bg-gray-50" onReturn="doFocusPasswordField" autocorrect="false" autofillType="Ti.UI.AUTOFILL_TYPE_EMAIL" autocapitalization="Ti.UI.TEXT_AUTOCAPITALIZATION_NONE" returnKeyType="Ti.UI.RETURNKEY_NEXT" keyboardType="Ti.UI.KEYBOARD_TYPE_EMAIL" hintText="Email" />
+                    <!-- Email and Password -->
 
-                        <Label class="w-full mt-4 ml-1 text-sm text-left text-blue-900">Contraseña</Label>
+                    <Label class="w-full mt-2 ml-1 text-sm text-left text-blue-900 keyboard-mail">Correo electrónico</Label>
 
-                        <TextField value="secret" id="txtPassword" class="w-screen h-10 pl-2 mt-1 text-base text-gray-800 border-blue-500 rounded-xl bg-gray-50" returnKeyType="Ti.UI.RETURNKEY_DONE" hintText="Password" passwordMask="true" />
+                    <TextField value="ulysess@gmail.com" id="txtEmail" class="w-screen h-10 pl-2 mt-1 text-base text-gray-800 border-blue-500 rounded-xl bg-gray-50" onReturn="doFocusPasswordField" autocorrect="false" autofillType="Ti.UI.AUTOFILL_TYPE_EMAIL" autocapitalization="Ti.UI.TEXT_AUTOCAPITALIZATION_NONE" returnKeyType="Ti.UI.RETURNKEY_NEXT" keyboardType="Ti.UI.KEYBOARD_TYPE_EMAIL" hintText="Email" />
 
-                        <!-- Forgotten password -->
+                    <Label class="w-full mt-4 ml-1 text-sm text-left text-blue-900">Contraseña</Label>
 
-                        <!-- <View class="w-screen mt-1 horizontal">
+                    <TextField value="secret" id="txtPassword" class="w-screen h-10 pl-2 mt-1 text-base text-gray-800 border-blue-500 rounded-xl bg-gray-50" returnKeyType="Ti.UI.RETURNKEY_DONE" hintText="Password" passwordMask="true" />
+
+                    <!-- Forgotten password -->
+
+                    <!-- <View class="w-screen mt-1 horizontal">
                             <View class="w-1/3 mx-0 horizontal">
                             </View>
 
@@ -47,33 +46,32 @@
                             </View>
                         </View> -->
 
-                        <!-- Accept privacy policy checkbox -->
+                    <!-- Accept privacy policy checkbox -->
 
-                        <View class="w-screen mt-2 mb-2 vertical">
-                            <View class="w-screen mx-0 horizontal">
-                                <Require src="/partials/_checkbox" id="accept_privacy" text="Acepto los Términos, Condiciones de uso y Política de Privacidad de esta aplicación."></Require>
-                            </View>
+                    <View class="w-screen mt-2 mb-2 vertical">
+                        <View class="w-screen mx-0 horizontal">
+                            <Require src="/partials/_checkbox" id="accept_privacy" text="Acepto los Términos, Condiciones de uso y Política de Privacidad de esta aplicación."></Require>
                         </View>
-
-                        <!-- Sign up / Sign In -->
-
-                        <View class="w-full h-16 horizontal">
-                            <Require src="partials/button" text="Registrarse" onClick="doRegister" typeButton="warning"></Require>
-
-                            <Require src="partials/button" text="Acceder" onClick="doSignIn"></Require>
-                        </View>
-
-                        <!-- Privacy Policy terms -->
-
-                        <View class="w-screen h-auto mt-2 mb-8 bg-gray-100 rounded-xl vertical" onClick="doReadPrivacy">
-                            <Label class="h-auto mt-2 text-xs text-center text-lightBlue-700 font-roboto-light">Creando una cuenta, aceptas nuestros</Label>
-
-                            <Button class="h-auto mb-1 ml-3 mr-3 text-xs font-semibold text-center text-blue-500 font-roboto-bold">Términos y condiciones</Button>
-                        </View>
-
                     </View>
+
+                    <!-- Sign up / Sign In -->
+
+                    <View class="w-full h-16 horizontal">
+                        <Require src="partials/button" text="Registrarse" onClick="doRegister" typeButton="warning"></Require>
+
+                        <Require src="partials/button" text="Acceder" onClick="doSignIn"></Require>
+                    </View>
+
+                    <!-- Privacy Policy terms -->
+
+                    <View class="w-screen h-auto mt-2 mb-8 bg-gray-100 rounded-xl vertical" onClick="doReadPrivacy">
+                        <Label class="h-auto mt-2 text-xs text-center text-lightBlue-700 font-roboto-light">Creando una cuenta, aceptas nuestros</Label>
+
+                        <Button class="h-auto mb-1 ml-3 mr-3 text-xs font-semibold text-center text-blue-500 font-roboto-bold">Términos y condiciones</Button>
+                    </View>
+
                 </View>
-            </ScrollView>
-        </Window>
-    </NavigationWindow>
+            </View>
+        </ScrollView>
+    </Window>
 </Alloy>

@@ -7,45 +7,35 @@
                 </View>
             </Window>
         </Tab>
-        <Tab id="events">
-            <Window id="eventsCtrl" class="defaultWinProp" onFocus="focusWindow">
-                <View layout="vertical">
-                    <Require src="/partials/_navbar" class="navbar"></Require>
-                    <View id="eventsContent" opacity="0">
-                        <Require src="/schedule"></Require>
-                    </View>
+        <Tab id="affiliates" if="Alloy.Globals.isAffiliate">
+            <!-- <NavigationWindow id="nwAffiliates" module="navigationWindow"> -->
+            <Window id="affiliatesCtrl" class="defaultWinProp" onFocus="focusWindow">
+                <View id="affiliatesContent" opacity="0">
+                    <Require src="/affiliates/associations"></Require>
                 </View>
             </Window>
+            <!-- </NavigationWindow> -->
         </Tab>
-        <Tab id="affiliates">
-            <NavigationWindow id="nwAffiliates" module="navigationWindow">
-                <Window id="affiliatesCtrl" class="defaultWinProp" onFocus="focusWindow">
-                    <View layout="vertical">
-                        <Require src="/partials/_navbar" class="navbar"></Require>
-                        <View id="affiliatesContent" opacity="0">
-                            <Require src="/affiliates/associations"></Require>
-                        </View>
-                    </View>
-                </Window>
-            </NavigationWindow>
+        <Tab id="associations">
+            <!-- <NavigationWindow id="nwAssociations" module="navigationWindow"> -->
+            <Window id="associationsCtrl" class="defaultWinProp" onFocus="focusWindow">
+                <View id="associationsContent" opacity="0">
+                    <Require src="/affiliates/associations"></Require>
+                </View>
+            </Window>
+            <!-- </NavigationWindow> -->
         </Tab>
         <Tab id="offers">
             <Window id="offersCtrl" class="defaultWinProp" onFocus="focusWindow">
-                <View layout="vertical">
-                    <Require src="/partials/_navbar" class="navbar"></Require>
-                    <View id="offersContent" opacity="0">
-                        <Require src="/employments/employments"></Require>
-                    </View>
+                <View id="offersContent" opacity="0">
+                    <Require src="/employments/employments"></Require>
                 </View>
             </Window>
         </Tab>
         <Tab id="contact">
             <Window id="contactCtrl" class="defaultWinProp">
-                <View layout="vertical">
-                    <Require src="/partials/_navbar" class="navbar"></Require>
-                    <View id="contactContent" opacity="0">
-                        <Require src="/contact"></Require>
-                    </View>
+                <View id="contactContent" opacity="0">
+                    <Require src="/contact"></Require>
                 </View>
             </Window>
         </Tab>

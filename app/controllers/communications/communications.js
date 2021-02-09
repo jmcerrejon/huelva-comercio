@@ -1,2 +1,11 @@
-// Arguments passed into this controller can be accessed via the `$.args` object directly or:
-var args = $.args;
+function doOpenServices() {
+    console.log('service');
+}
+
+function doOpenCovenants() {
+    console.log('covenant');
+}
+
+function doOpenPDF(item) {
+    console.log('pdf');
+}

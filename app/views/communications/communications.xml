@@ -1,4 +1,43 @@
 <Alloy>
-	<View class="container">
-	</View>
+    <ScrollView class="w-full h-full">
+        <View class="w-full h-full vertical" backgroundImage="/images/backgrounds/AqueuxAqua.jpg">
+
+            <!-- Navigation Bar buttons -->
+
+            <Require id="reqNavbar" src="/partials/navbar" title="Comunicaciones"></Require>
+
+            <!-- Body -->
+
+            <View id="vwFav" class="w-full h-full vertical bg-white">
+
+                <!-- Services, covenants buttons -->
+
+                <View class="w-full h-auto horizontal">
+                    <View class="w-1/2 h-20" onClick="doOpenServices">
+                        <Label class="no-touch-enable">Servicios</Label>
+                    </View>
+
+                    <View class="w-1/2 h-20" onClick="doOpenCovenants">
+                        <Label class="no-touch-enable">Convenios</Label>
+                    </View>
+                </View>
+
+                <!-- Header -->
+
+                <View class="w-full h-10">
+                    <Label>Comunicados</Label>
+                </View>
+
+                <!-- Communications -->
+
+                <View class="w-11/12 h-auto vertical">
+                    <ImageView id="imgMain" class="w-1/2" image="/images/about.png"></ImageView>
+                    <Label class="w-full text-2xl mb-2 text-center">El gobierno aprueba una ayuda para fomentar la digitalización en las empresas de los sectores más afectados</Label>
+                    <Label class="w-full text-sm mb-2 text-right">12/02/2021 14:12</Label>
+                    <Label class="w-full text-justify mb-2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Explicabo quia, suscipit animi itaque molestias adipisci, ipsum excepturi laboriosam, incidunt voluptate inventore ipsam illum</Label>
+                    <Require src="partials/button" buttonType="pdf" onClick="doOpenPDF"></Require>
+                </View>
+            </View>
+        </View>
+    </ScrollView>
 </Alloy>

@@ -1,5 +1,5 @@
 <Alloy>
-    <View class="w-1/2">
+    <View id="vwContainer" class="w-1/2">
         <View class="w-11/12" onClick="doClick">
             <View id="vwShadow" class="w-screen h-10 mt-2 bg-blue-700 rounded-xl"></View>
 

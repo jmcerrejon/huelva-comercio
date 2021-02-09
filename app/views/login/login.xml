@@ -57,7 +57,7 @@
                     <!-- Sign up / Sign In -->
 
                     <View class="w-full h-16 horizontal">
-                        <Require src="partials/button" text="Registrarse" onClick="doRegister" typeButton="warning"></Require>
+                        <Require src="partials/button" text="Registrarse" onClick="doRegister" buttonType="warning"></Require>
 
                         <Require src="partials/button" text="Acceder" onClick="doSignIn"></Require>
                     </View>
@@ -67,7 +67,7 @@
                     <View class="w-screen h-auto mt-2 mb-8 bg-gray-100 rounded-xl vertical" onClick="doReadPrivacy">
                         <Label class="h-auto mt-2 text-xs text-center text-lightBlue-700 font-roboto-light">Creando una cuenta, aceptas nuestros</Label>
 
-                        <Button class="h-auto mb-1 ml-3 mr-3 text-xs font-semibold text-center text-blue-500 font-roboto-bold">Términos y condiciones</Button>
+                        <Label class="h-auto mb-1 ml-3 mr-3 text-xs font-semibold text-center text-blue-500 font-roboto-bold">Términos y condiciones</Label>
                     </View>
 
                 </View>

@@ -3,7 +3,7 @@
 })();
 
 function setButtonColor() {
-    if (!$.args.typeButton) {
+    if (!$.args.buttonType) {
         return;
     }
 
@@ -12,7 +12,10 @@ function setButtonColor() {
         back: '#1d4ed8',
     };
 
-    switch ($.args.typeButton) {
+    switch ($.args.buttonType) {
+        case 'pdf':
+            $.vwContainer.width = '25%';
+            $.btnClick.text = 'Ver PDF';
         case 'warning':
             backgroundColor = {
                 front: '#f43f5e',

@@ -33,9 +33,9 @@ const tabStacks = [
 
 if (Alloy.Globals.isAffiliate) {
     tabStacks.splice(1, 0, {
-        tabId: 'affiliates',
-        winId: 'affiliatesCtrl',
-        winName: 'Afiliados',
+        tabId: 'communications',
+        winId: 'communicationsCtrl',
+        winName: 'Comunicados',
         hasSettingsEnabled: false,
     });
 }
@@ -260,12 +260,13 @@ function notification(data) {
 }
 
 function closeSession() {
+    // TODO Call sign out
     Ti.App.removeEventListener('pause', enableBackground);
     Ti.App.removeEventListener('resume', resume);
     removeProperties();
     require('/dao/database').reset('variable');
     $.tabGroup.close();
-    Alloy.createController('/login/login', {
+    Alloy.createController('dashboard', {
         closeApp: true,
     })
         .getView()
@@ -276,8 +277,11 @@ Alloy.Globals.events.on('closeSession', closeSession);
 function removeProperties() {
     Ti.App.Properties.removeProperty('');
     Ti.App.Properties.setBool('guest', true);
+    Ti.App.Properties.setBool('isAffiliate', false);
+    Ti.App.Properties.setObject('user', null);
     Alloy.Globals.guest = true;
-    Alloy.Globals.token = Alloy.Globals.user = null;
+    Alloy.Globals.isAffiliate = false;
+    Alloy.Globals.token = Alloy.Globals.deviceToken = Alloy.Globals.user = null;
     Ti.App.Properties.setBool('isConnected', false);
     Alloy.Globals.events.off();
 }

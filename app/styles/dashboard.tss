@@ -37,6 +37,17 @@
     activeIcon: "/images/profileActive.png"
 }
 
+'#communications': {
+    icon: "/images/thumbtack-solid.png",
+    title: "Comunicados",
+    activeTitleColor: Alloy.CFG.COLORS.main,
+    touchFeedback: true,
+    activeIconIsMask: true,
+    touchFeedbackColor: "white",
+    titleColor: Alloy.CFG.COLORS.dark_gray,
+    activeIcon: "/images/groupActive.png"
+}
+
 '#associations': {
     icon: "/images/thumbtack-solid.png",
     title: "Asociaciones",

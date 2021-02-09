@@ -7,11 +7,11 @@
                 </View>
             </Window>
         </Tab>
-        <Tab id="affiliates" if="Alloy.Globals.isAffiliate">
+        <Tab id="communications" if="Alloy.Globals.isAffiliate">
             <!-- <NavigationWindow id="nwAffiliates" module="navigationWindow"> -->
-            <Window id="affiliatesCtrl" class="defaultWinProp" onFocus="focusWindow">
-                <View id="affiliatesContent" opacity="0">
-                    <Require src="/affiliates/associations"></Require>
+            <Window id="communicationsCtrl" class="defaultWinProp" onFocus="focusWindow">
+                <View id="communicationsContent" opacity="0">
+                    <Require src="/communications/communications"></Require>
                 </View>
             </Window>
             <!-- </NavigationWindow> -->

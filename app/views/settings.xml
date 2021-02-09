@@ -1,77 +1,70 @@
 <Alloy>
-	<Window id="settings">
-		<View class="vNavBar">
-			<Require id="navbar" src="/partials/_navbar" onClick="close"></Require>
-		</View>
-		<ListView id="elementsList" defaultItemTemplate="default" onItemclick="doSelectOption" canScroll="false">
-			<Templates>
-				<ItemTemplate name="default">
-					<View id="itemContainer">
-						<Label class="fa icon" bindId="icon" id="icon" text="\uf0c0"/>
+    <Window id="settings">
+        <View class="vNavBar">
+            <Require id="navbar" src="/partials/_navbar" onClick="close"></Require>
+        </View>
+        <ListView id="elementsList" defaultItemTemplate="default" onItemclick="doSelectOption" canScroll="false">
+            <Templates>
+                <ItemTemplate name="default">
+                    <View id="itemContainer">
+                        <Label class="fa icon" bindId="icon" id="icon" text="\uf0c0"/>
 
-						<Label class="name" bindId="name" id="name"/>
-					</View>
-				</ItemTemplate>
-				<ItemTemplate name="tplNotifications">
-					<View id="mainView" class="v_container" height="Ti.UI.SIZE">
-						<View height="50" backgroundColor="white">
-							<View height="Ti.UI.SIZE" left="0" width="80%">
-								<Label bindId="lblAmIAvailable" id="lblAmIAvailable" color="black" left="15"/>
-							</View>
-							<View height="Ti.UI.SIZE" right="0">
-								<Switch bindId="swAmIAvailable" id="swAmIAvailable" value="false" right="15"
-									onChange="doChangeSwitch"/>
-							</View>
-						</View>
-						<View height="Ti.UI.SIZE" backgroundColor="#edecf2" platform="ios">
-							<Label bindId="lblDescription" id="lblDescription" class="lbl_info"/>
-						</View>
-						<View height="Ti.UI.SIZE" backgroundColor="white" platform="android">
-							<Label bindId="lblDescription" id="lblDescription" class="lbl_info"/>
-						</View>
-					</View>
-				</ItemTemplate>
-			</Templates>
-			<ListSection>
-				<HeaderView platform="ios">
-					<View backgroundColor="#edecf2" height="35">
-						<Label class="lbl_settings_header">NOTIFICACIONES</Label>
-					</View>
-				</HeaderView>
-				<HeaderView platform="android">
-					<View height="35" backgroundColor="white">
-						<Label class="lbl_settings_header">Notificaciones</Label>
-					</View>
-				</HeaderView>
-				<ListItem template="tplNotifications" lblAmIAvailable:text="Noticias" lblAmIAvailable:textId="news"
-					lblDescription:text="Cuando está activado, le notificaremos de todas las noticias que publiquemos."
-					swAmIAvailable:id="news" swAmIAvailable:value="false"></ListItem>
-				<ListItem template="tplNotifications" lblAmIAvailable:text="Eventos" lblAmIAvailable:textId="events"
-					lblDescription:text="Cuando está activado, le notificaremos de todos los eventos que publiquemos."
-					swAmIAvailable:id="events" swAmIAvailable:value="false"></ListItem>
-				<ListItem template="tplNotifications" lblAmIAvailable:text="Centro de Negocios" lblAmIAvailable:textId="demands"
-					lblDescription:text="Cuando está activado, le notificaremos de nuevas publicaciones para su sector en el Centro de negocios si es afiliado."
-					swAmIAvailable:id="demands" swAmIAvailable:value="false"></ListItem>
-			</ListSection>
-			<ListSection id="section">
-				<HeaderView platform="ios">
-					<View backgroundColor="#edecf2" height="35">
-						<Label class="lbl_settings_header">SESIÓN</Label>
-					</View>
-				</HeaderView>
-				<HeaderView platform="android">
-					<View height="35" backgroundColor="white">
-						<Label class="lbl_settings_header">Sesión</Label>
-					</View>
-				</HeaderView>
-			</ListSection>
-			<ListSection>
-				<HeaderView>
-					<View backgroundColor="#edecf2" height="800" onClick="showHiddenInfo">
-						<Label id="lblVersion" class="lbl_info">Versión</Label>
-					</View>
-				</HeaderView>
-			</ListSection>
-		</ListView>
-	</Window>
+                        <Label class="name" bindId="name" id="name"/>
+                    </View>
+                </ItemTemplate>
+                <ItemTemplate name="tplNotifications">
+                    <View id="mainView" class="v_container" height="Ti.UI.SIZE">
+                        <View height="50" backgroundColor="white">
+                            <View height="Ti.UI.SIZE" left="0" width="80%">
+                                <Label bindId="lblAmIAvailable" id="lblAmIAvailable" color="black" left="15"/>
+                            </View>
+                            <View height="Ti.UI.SIZE" right="0">
+                                <Switch bindId="swAmIAvailable" id="swAmIAvailable" value="false" right="15" onChange="doChangeSwitch"/>
+                            </View>
+                        </View>
+                        <View height="Ti.UI.SIZE" backgroundColor="#edecf2" platform="ios">
+                            <Label bindId="lblDescription" id="lblDescription" class="lbl_info"/>
+                        </View>
+                        <View height="Ti.UI.SIZE" backgroundColor="white" platform="android">
+                            <Label bindId="lblDescription" id="lblDescription" class="lbl_info"/>
+                        </View>
+                    </View>
+                </ItemTemplate>
+            </Templates>
+            <ListSection>
+                <HeaderView platform="ios">
+                    <View backgroundColor="#edecf2" height="35">
+                        <Label class="lbl_settings_header">NOTIFICACIONES</Label>
+                    </View>
+                </HeaderView>
+                <HeaderView platform="android">
+                    <View height="35" backgroundColor="white">
+                        <Label class="lbl_settings_header">Notificaciones</Label>
+                    </View>
+                </HeaderView>
+                <ListItem template="tplNotifications" lblAmIAvailable:text="Noticias" lblAmIAvailable:textId="news" lblDescription:text="Cuando está activado, le notificaremos de todas las noticias que publiquemos." swAmIAvailable:id="news" swAmIAvailable:value="false"></ListItem>
+                <!-- <ListItem template="tplNotifications" lblAmIAvailable:text="Eventos" lblAmIAvailable:textId="events" lblDescription:text="Cuando está activado, le notificaremos de todos los eventos que publiquemos." swAmIAvailable:id="events" swAmIAvailable:value="false"></ListItem>
+                <ListItem template="tplNotifications" lblAmIAvailable:text="Centro de Negocios" lblAmIAvailable:textId="demands" lblDescription:text="Cuando está activado, le notificaremos de nuevas publicaciones para su sector en el Centro de negocios si es afiliado." swAmIAvailable:id="demands" swAmIAvailable:value="false"></ListItem> -->
+            </ListSection>
+            <ListSection id="section">
+                <HeaderView platform="ios">
+                    <View backgroundColor="#edecf2" height="35">
+                        <Label class="lbl_settings_header">SESIÓN</Label>
+                    </View>
+                </HeaderView>
+                <HeaderView platform="android">
+                    <View height="35" backgroundColor="white">
+                        <Label class="lbl_settings_header">Sesión</Label>
+                    </View>
+                </HeaderView>
+            </ListSection>
+            <ListSection>
+                <HeaderView>
+                    <View backgroundColor="#edecf2" height="800" onClick="showHiddenInfo">
+                        <Label id="lblVersion" class="lbl_info">Versión</Label>
+                    </View>
+                </HeaderView>
+            </ListSection>
+        </ListView>
+    </Window>
 </Alloy>

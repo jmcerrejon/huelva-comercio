@@ -1,0 +1,46 @@
+<Alloy>
+    <View id="vwBody" class="w-full h-18 mt-2 vertical">
+
+        <!-- Navigation Bar buttons -->
+
+        <View class="w-full h-8 mt-6 horizontal">
+            <View id="vwLeftIcon" class="w-1/5 h-auto" onClick="doLogin">
+                <Label id="lblLeftButton"></Label>
+            </View>
+
+            <View class="w-3/5 h-auto vertical">
+                <Label id="lblTitle" class="text-xl text-white" text="$.args.title"></Label>
+            </View>
+
+            <View class="w-1/5 h-auto" onClick="toggleViewSearchVisibility">
+                <Label id="lblRightButton"></Label>
+            </View>
+        </View>
+
+        <!-- Search bar -->
+
+        <View id="vwSearch" class="w-full h-1 vertical">
+            <!-- <View id="vwSearch" class="w-full h-18 vertical"> -->
+            <View class="w-full horizontal">
+                <View class="w-1/5 h-10 mt-4"></View>
+
+                <View class="w-3/5 h-10 bg-white border-2 border-gray-400 rounded-2xl horizontal">
+                    <!-- <SearchBar id="search" platform="android" class="w-full h-12 ml-2 mr-2 text-gray-400" showCancel="false" />
+                            <SearchBar id="search" platform="ios" class="w-full h-10 text-gray-400 rounded-10" showCancel="false" /> -->
+
+                    <View class="w-1/12"></View>
+
+                    <TextField id="txtSearch" class="w-9/12 h-10 text-gray-400" autocorrect="false" returnKeyType="Ti.UI.RETURNKEY_SEARCH" hintText="Buscar..." autocapitalization="false" onReturn="doAction" />
+
+                    <View class="w-2/12">
+                        <Label class="w-auto h-8 text-lg text-gray-400 fas fa-search"></Label>
+                    </View>
+                </View>
+
+                <View class="w-1/5 h-10">
+                    <Label class="text-2xl text-white fas fa-filter"></Label>
+                </View>
+            </View>
+        </View>
+    </View>
+</Alloy>

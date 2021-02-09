@@ -3,92 +3,71 @@
 
         <View class="w-full h-full vertical" backgroundImage="/images/backgrounds/AqueuxAqua.jpg">
 
-            <!-- Header -->
+            <!-- Navigation Bar buttons -->
 
-            <View class="w-full h-auto mt-4 vertical">
+            <Require id="reqNavbar" src="/partials/navbar" title="Inicio" leftIcon="text-2xl text-white fas fa-user" rightIcon="text-2xl text-white fas fa-search" onLogin="doLogin" onClick="doFilter"></Require>
 
-                <!-- Navigation Bar buttons -->
+            <!-- Body -->
 
-                <View class="w-full mt-6 h-12 horizontal">
-                    <View class="w-1/5 h-auto">
-                        <Label class="text-2xl text-white fas fa-user"></Label>
-                        <!-- <Label class="text-2xl text-white fas fa-chevron-left"></Label> -->
-                    </View>
+            <ListView id="listView" class="w-full h-full vertical" onItemclick="doOpenPost" defaultItemTemplate="defaultTemplate">
+                <RefreshControl id="refreshListView" onRefreshstart="reset"/>
+                <Widget id="is" src="nl.fokkezb.infiniteScroll" onEnd="myLoader"/>
+                <Templates>
+                    <ItemTemplate name="noNewsFound" height="0">
+                        <View id="vwNoNewsFound" class="vertical">
+                            <Label class="font14" left="10" right="10" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER" text="No se han encontrado noticias relacionadas.\nVuelva a recargar las noticias." />
 
-                    <View class="w-3/5 h-auto vertical">
-                        <Label class="text-xl text-white">Inicio</Label>
-                    </View>
-
-                    <View class="w-1/5 h-auto">
-                        <!-- <Label class="text-2xl text-white fas fa-cog fa-fw"></Label> -->
-                        <Label class="text-2xl text-white fas fa-search"></Label>
-                    </View>
-                </View>
-
-                <!-- ./ End header -->
-
-                <!-- Body -->
-
-                <ListView id="listView" class="w-full h-full vertical" onItemclick="doOpenPost" defaultItemTemplate="defaultTemplate">
-                    <RefreshControl id="refreshListView" onRefreshstart="reset"/>
-                    <Widget id="is" src="nl.fokkezb.infiniteScroll" onEnd="myLoader"/>
-                    <Templates>
-                        <ItemTemplate name="noNewsFound" height="0">
-                            <View id="vwNoNewsFound" class="vertical">
-                                <Label class="font14" left="10" right="10" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER" text="No se han encontrado noticias relacionadas.\nVuelva a recargar las noticias." />
-
-                                <Button class="btn-medium" onClick="reset" title="RECARGAR" top="20"></Button>
-                            </View>
-                        </ItemTemplate>
-                        <ItemTemplate name="defaultTemplate">
-                            <View bindId="viewPost" class="vertical" width="Ti.UI.FILL" height="Ti.UI.SIZE" top="10" bottom="10">
-                                <View class="horizontal" dataCollection="news">
-                                    <View class="newsImage" bindId="image" id="image">
-                                    </View>
-                                    <View class="newsInfo">
-                                        <Label bindId="postTitle" id="postTitle" class="vertical font12Medium touchDisabled" left="5" />
-
-                                        <Label bindId="postDateFormatted" class="font10" id="postDateFormatted" left="5" />
-
-                                        <Label bindId="postBody" id="postBody" class="font10 touchDisabled" top="10" left="5" />
-                                    </View>
+                            <Button class="btn-medium" onClick="reset" title="RECARGAR" top="20"></Button>
+                        </View>
+                    </ItemTemplate>
+                    <ItemTemplate name="defaultTemplate">
+                        <View bindId="viewPost" class="vertical" width="Ti.UI.FILL" height="Ti.UI.SIZE" top="10" bottom="10">
+                            <View class="horizontal" dataCollection="news">
+                                <View class="newsImage" bindId="image" id="image">
                                 </View>
-                            </View>
-                        </ItemTemplate>
-                    </Templates>
-                    <HeaderView>
-                        <View class="headerContainer">
-                            <!-- Ads -->
-                            <ScrollableView id="scrollableView" dataCollection="banners" onSingletap="doOpenLink" onTouchstart="touchStart">
-                                <ImageView class="scrollableViewContainer" image="{img_path}" url="{url}" ns="AvImageview"></ImageView>
-                            </ScrollableView>
+                                <View class="newsInfo">
+                                    <Label bindId="postTitle" id="postTitle" class="vertical font12Medium touchDisabled" left="5" />
 
-                            <View class="vertical">
-                                <View class="horizontal" width="Ti.UI.FILL" height="50">
-                                    <View width="10%"></View>
-                                    <View width="80%">
-                                        <View class="titleNewsContainer">
-                                            <Label class="fa lblIconTitleLight" text="\uf1ea" />
-                                            <Label class="lblTitleLight" text=" NOTICIAS" />
-                                        </View>
-                                    </View>
-                                    <View width="Ti.UI.FILL" onClick="searchNews">
-                                        <Label class="fa icoSearch" text="\uf002" />
-                                    </View>
+                                    <Label bindId="postDateFormatted" class="font10" id="postDateFormatted" left="5" />
+
+                                    <Label bindId="postBody" id="postBody" class="font10 touchDisabled" top="10" left="5" />
                                 </View>
-                                <View class="blueLine"></View>
                             </View>
                         </View>
-                    </HeaderView>
-                    <ListSection id="sectionNoNewsFound">
-                        <ListItem template="noNewsFound"></ListItem>
-                    </ListSection>
-                    <ListSection dataCollection="news" dataTransform="transformCollection">
-                        <ListItem itemId="{id}" image:backgroundImage="{image}" viewPost:url="{link}" postTitle:text="{title}" postDateFormatted:text="{date_formatted}" postBody:text="{content}" />
-                    </ListSection>
-                </ListView>
+                    </ItemTemplate>
+                </Templates>
+                <HeaderView>
+                    <View class="headerContainer">
+                        <!-- Ads -->
+                        <ScrollableView id="scrollableView" dataCollection="banners" onSingletap="doOpenLink" onTouchstart="touchStart">
+                            <ImageView class="scrollableViewContainer" image="{img_path}" url="{url}" ns="AvImageview"></ImageView>
+                        </ScrollableView>
 
-            </View>
+                        <View class="vertical">
+                            <View class="horizontal" width="Ti.UI.FILL" height="50">
+                                <View width="10%"></View>
+                                <View width="80%">
+                                    <View class="titleNewsContainer">
+                                        <Label class="fa lblIconTitleLight" text="\uf1ea" />
+                                        <Label class="lblTitleLight" text=" NOTICIAS" />
+                                    </View>
+                                </View>
+                                <View width="Ti.UI.FILL" onClick="searchNews">
+                                    <Label class="fa icoSearch" text="\uf002" />
+                                </View>
+                            </View>
+                            <View class="blueLine"></View>
+                        </View>
+                    </View>
+                </HeaderView>
+                <ListSection id="sectionNoNewsFound">
+                    <ListItem template="noNewsFound"></ListItem>
+                </ListSection>
+                <ListSection dataCollection="news" dataTransform="transformCollection">
+                    <ListItem itemId="{id}" image:backgroundImage="{image}" viewPost:url="{link}" postTitle:text="{title}" postDateFormatted:text="{date_formatted}" postBody:text="{content}" />
+                </ListSection>
+            </ListView>
+
         </ScrollView>
     </Alloy>
     <!-- <Require id="navbar" src="/partials/_navbar" onClick="doOpenSettings"></Require>

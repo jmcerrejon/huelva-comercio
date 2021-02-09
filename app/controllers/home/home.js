@@ -219,7 +219,11 @@ function doFilter() {
 }
 
 function doLogin() {
-    console.log('Do login');
+    if (!Alloy.Globals.guest) {
+        doOpenSettings();
+        return;
+    }
+
     Alloy.createController('login/login')
         .getView()
         .open(

@@ -213,3 +213,22 @@ function renderNotFoundTemplate(sizeData = 1) {
     // Remove Infinity Scroll when show not items availables on search (Remember do $.is.show() later)
     $.is.hide();
 }
+
+function doFilter() {
+    console.log('Do filter');
+}
+
+function doLogin() {
+    console.log('Do login');
+    Alloy.createController('login/login')
+        .getView()
+        .open(
+            OS_IOS
+                ? {
+                      modal: true,
+                      modalTransitionStyle:
+                          Ti.UI.iOS.MODAL_TRANSITION_STYLE_COVER_VERTICAL,
+                  }
+                : {}
+        );
+}

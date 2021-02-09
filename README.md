@@ -12,6 +12,10 @@
 
 Dev with ♥️ using [Axway Titanium](https://www.axway.com)
 
+### [ Use ]
+
+-   You must to generate a valid app.tss. Just run npm run `purgetss`
+
 ### [ 📦 ]
 
 -   https://github.com/jasonkneen/RESTe

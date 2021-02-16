@@ -44,7 +44,10 @@ function doLogin(params) {
 function doAction(e) {
     if (e.value.length < MIN_CHARACTER_SEARCH) {
         Alloy.Globals.showMessage('Por favor, escriba al menos 3 caracteres.');
+        return;
     }
     Alloy.Globals.loading.show('Buscando...');
-    $.trigger('click');
+    $.trigger('click', e);
+    $.txtSearch.value = '';
+    toggleViewSearchVisibility();
 }

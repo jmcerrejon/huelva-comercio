@@ -9,17 +9,17 @@
 
             <!-- Body -->
 
-            <ListView id="listView" class="w-full h-full vertical bg-white" onItemclick="doOpenPost" defaultItemTemplate="defaultTemplate">
+            <ListView id="listView" class="w-full vertical bg-white" height="90%" onItemclick="doOpenPost" defaultItemTemplate="defaultTemplate">
                 <RefreshControl id="refreshListView" onRefreshstart="reset"/>
 
                 <Widget id="is" src="nl.fokkezb.infiniteScroll" onEnd="myLoader"/>
 
                 <Templates>
-                    <ItemTemplate name="noNewsFound" height="0">
-                        <View id="vwNoNewsFound" class="vertical">
+                    <ItemTemplate name="noNewsFound">
+                        <View bindId="vwNoNewsFound" class="vertical w-0 h-0">
                             <Label class="font14 text-center" left="10" right="10" text="No se han encontrado noticias relacionadas.\nVuelva a recargar las noticias." />
 
-                            <Button class="btn-medium" onClick="reset" title="RECARGAR" top="20"></Button>
+                            <Button onClick="reset" title="RECARGAR" top="20"></Button>
                         </View>
                     </ItemTemplate>
 
@@ -58,6 +58,11 @@
                 <ListSection dataCollection="news" dataTransform="transformCollection">
                     <ListItem itemId="{id}" image:backgroundImage="{image}" viewPost:url="{link}" postTitle:text="{title}" postDateFormatted:text="{date_formatted}" postBody:text="{content}" />
                 </ListSection>
+
+                <FooterView>
+                    <View id="lvwFooter" class="w-full h-10">
+                    </View>
+                </FooterView>
             </ListView>
         </View>
     </ScrollView>

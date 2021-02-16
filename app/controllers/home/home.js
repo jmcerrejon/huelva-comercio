@@ -18,6 +18,7 @@ const cantShare = false;
         page: currentPage++,
         success: (res) => {
             Alloy.Globals.loading.hide(); // It comes from login.js
+            renderNotFoundTemplate(res.length);
             POSTS_PER_PAGE = res.length;
             $.is.init($.listView);
             $.is.setOptions({
@@ -27,14 +28,7 @@ const cantShare = false;
             });
         },
     });
-    // $.navbar.load({
-    //     btnLeft: {
-    //         visible: false,
-    //     },
-    //     nav: {
-    //         backgroundColor: 'white',
-    //     },
-    // });
+
     const interval = setInterval(function () {
         if ($.scrollableView.views.length === 1) {
             scrollableLoop = false;
@@ -204,18 +198,28 @@ function touchStart(e) {
     scrollableLoop = false;
 }
 
-function renderNotFoundTemplate(sizeData = 1) {
-    let item = $.listView.sections[0].getItemAt(0);
-    item.properties = {
-        height: sizeData === 0 ? '250' : 0,
-    };
-    $.listView.sections[0].updateItemAt(0, item);
+function renderNotFoundTemplate(sizeData) {
+    let item = $.listView.sections[0].items[0];
+    // item.properties = {
+    //     height: sizeData === 0 ? '250' : 0,
+    // };
+    // $.listView.sections[0].updateItemAt(0, item);
     // Remove Infinity Scroll when show not items availables on search (Remember do $.is.show() later)
     $.is.hide();
 }
 
-function doFilter() {
-    console.log('Do filter');
+function doFilter(e) {
+    currentPage = 1;
+    Alloy.Collections.news.fetch({
+        page: currentPage,
+        query: e.value,
+        success: (data) => {
+            if (data.length === 0) {
+                alert('No se encontraron resultados.');
+                reset();
+            }
+        },
+    });
 }
 
 function doLogin() {

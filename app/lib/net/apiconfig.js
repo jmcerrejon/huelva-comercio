@@ -65,8 +65,7 @@ exports.config = {
         },
         {
             name: 'readNews',
-            get: 'https://foe.soporttec.es/api/news?page=<page>&q=<query>',
-            // get: 'news?page=<page>&q=<query>',
+            get: 'news?page=<page>&q=<query>',
         },
         {
             name: 'readNewsletter',

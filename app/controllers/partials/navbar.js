@@ -23,10 +23,14 @@ function handleSearchView() {
 }
 
 function toggleViewSearchVisibility() {
-    if ($.vwBody) {
-        $.vwBody.animate(
+    if (OS_IOS) {
+        $.vwSearch.height = isViewSearchVisible ? 0 : 60;
+        isViewSearchVisible ? $.txtSearch.blur() : $.txtSearch.focus();
+        isViewSearchVisible = !isViewSearchVisible;
+    } else {
+        $.vwSearch.animate(
             {
-                bottom: isViewSearchVisible ? 0 : 60,
+                height: isViewSearchVisible ? 0 : 60,
                 duration: 250,
             },
             () => {

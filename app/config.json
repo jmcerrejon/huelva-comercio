@@ -47,7 +47,7 @@
         "baseurl": "http://comm.test"
     },
     "os:android": {
-        "baseapi": "http://192.168.0.110/api/",
+        "baseapi": "http://192.168.1.37/api/",
         "baseurl": "http://comm.test"
     },
     "os:ios": {},

@@ -4,7 +4,7 @@
     "description": "👨🏻‍💻 Jose Manuel Cerrejon Gonzalez",
     "main": "index.js",
     "scripts": {
-        "run-server": "cd /Users/ulysess/Documents/sc/www/comm && sudo php artisan serve --port=80 --host=192.168.0.110",
+        "run-server": "cd /Users/ulysess/Documents/sc/www/comm && sudo php artisan serve --port=80 --host=192.168.1.37",
         "purge:dev_mode": "purgetss d",
         "purge:production": "purgetss",
         "purge:build_custom": "purgetss b",

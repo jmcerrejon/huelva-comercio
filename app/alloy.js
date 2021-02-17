@@ -16,7 +16,6 @@ Alloy.Globals.isAffiliate = Ti.App.Properties.getBool('isAffiliate', false);
 Alloy.Globals.background = Ti.App.Properties.getBool('background', false);
 Alloy.Globals.candidate = Ti.App.Properties.getObject('candidate', null);
 Alloy.Globals.affiliatesWin = null;
-Alloy.Globals.offersWin = null;
 Alloy.Globals.androidDataPush = null;
 Alloy.Globals.showMessage = (message, title = 'Atención') => {
     if (!_.isUndefined(Alloy.Globals.loading)) {

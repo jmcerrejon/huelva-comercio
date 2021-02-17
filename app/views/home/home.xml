@@ -42,7 +42,8 @@
                     </ItemTemplate>
                 </Templates>
 
-                <HeaderView>
+                <!-- TODO Fix issue with ScrollableView on Android and remove platform=ios -->
+                <HeaderView platform="ios">
                     <View class="w-full h-auto vertical">
                         <!-- Ads -->
                         <ScrollableView class="w-full m-2" id="scrollableView" dataCollection="banners" onSingletap="doOpenLink" onTouchstart="touchStart">
@@ -52,6 +53,7 @@
                         <Label>NOTICIAS</Label>
                     </View>
                 </HeaderView>
+
                 <ListSection id="sectionNoNewsFound">
                     <ListItem template="noNewsFound"></ListItem>
                 </ListSection>

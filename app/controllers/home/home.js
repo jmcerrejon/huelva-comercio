@@ -10,8 +10,10 @@ const cantShare = false;
 (function constructor() {
     Alloy.Collections.banners.fetch({
         success: (res) => {
-            $.scrollableView.height =
-                res.length === 0 ? 0 : SCROLLABLEVIEW_HEIGHT;
+            if (!_.isUndefined($.scrollableView)) {
+                $.scrollableView.height =
+                    res.length === 0 ? 0 : SCROLLABLEVIEW_HEIGHT;
+            }
         },
     });
     Alloy.Collections.news.fetch({
@@ -30,13 +32,16 @@ const cantShare = false;
     });
 
     const interval = setInterval(function () {
-        if ($.scrollableView.views.length === 1) {
+        if (
+            !_.isUndefined($.scrollableView) &&
+            $.scrollableView.views.length === 1
+        ) {
             scrollableLoop = false;
             clearInterval(interval);
             interval = null;
             return;
         }
-        if (scrollableLoop) {
+        if (!_.isUndefined($.scrollableView) && scrollableLoop) {
             if (
                 $.scrollableView.views.length - 1 ==
                 $.scrollableView.currentPage

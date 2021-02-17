@@ -76,8 +76,8 @@ exports.config = {
             get: 'covenants',
         },
         {
-            name: 'readSectors',
-            get: 'sectors',
+            name: 'readServices',
+            get: 'services',
         },
         {
             name: 'readEvents',
@@ -243,6 +243,16 @@ exports.config = {
                     name: 'news',
                     content: 'data',
                     read: 'readNews',
+                },
+                {
+                    name: 'services',
+                    content: 'data',
+                    read: 'readServices',
+                },
+                {
+                    name: 'covenants',
+                    content: 'data',
+                    read: 'readCovenants',
                 },
                 {
                     name: 'newsletters',

@@ -53,6 +53,8 @@
                 <string>UIStatusBarStyleDefault</string>
                 <key>LSApplicationQueriesSchemes</key>
                 <array>
+                    <string>http</string>
+                    <string>https</string>
                     <string>fb</string>
                     <string>instagram</string>
                     <string>whatsapp</string>

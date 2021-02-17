@@ -2,7 +2,6 @@
 /Resources
 /platform
 /i18n
-app/styles/app*
 build.log
 build
 npm-debug.log

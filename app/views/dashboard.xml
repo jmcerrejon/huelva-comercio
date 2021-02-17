@@ -8,13 +8,13 @@
             </Window>
         </Tab>
         <Tab id="communications" if="Alloy.Globals.isAffiliate">
-            <!-- <NavigationWindow id="nwAffiliates" module="navigationWindow"> -->
-            <Window id="communicationsCtrl" class="defaultWinProp" onFocus="focusWindow">
-                <View id="communicationsContent" opacity="0">
-                    <Require src="/communications/communications"></Require>
-                </View>
-            </Window>
-            <!-- </NavigationWindow> -->
+            <NavigationWindow id="nwAffiliates" module="navigationWindow">
+                <Window id="communicationsCtrl" class="defaultWinProp" onFocus="focusWindow">
+                    <View id="communicationsContent" opacity="0">
+                        <Require src="/affiliates/communications"></Require>
+                    </View>
+                </Window>
+            </NavigationWindow>
         </Tab>
         <Tab id="associations">
             <!-- <NavigationWindow id="nwAssociations" module="navigationWindow"> -->

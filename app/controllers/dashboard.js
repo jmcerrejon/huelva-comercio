@@ -51,9 +51,9 @@ let oldTab = 'main';
     Alloy.Globals.events.off('openWindowInTab');
     Alloy.Globals.affiliatesWin = $.nwAffiliates;
     Alloy.Globals.offersWin = $.offers;
-    // if (OS_IOS) {
-    // $.nwAffiliates.hideNavBar();
-    // }
+    if (OS_IOS) {
+        $.nwAffiliates.hideNavBar();
+    }
 })();
 
 if (OS_ANDROID) {

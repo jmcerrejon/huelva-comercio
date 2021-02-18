@@ -5,20 +5,20 @@
 
         <Require id="reqNavbar" src="/partials/navbar" title="Afiliados"></Require>
 
-        <ListView id="lView" onItemclick="doOpenAffiliates" defaultItemTemplate="defaultTemplate">
+        <ListView id="lView" class="bg-white w-full h-full" onItemclick="doOpenAffiliates" defaultItemTemplate="defaultTemplate">
             <RefreshControl id="refreshListView" onRefreshstart="reset"/>
 
             <Widget id="is" src="nl.fokkezb.infiniteScroll" onEnd="myLoaderAssociations"/>
 
             <Templates>
                 <ItemTemplate name="defaultTemplate">
-                    <View class="h_container">
+                    <View class="horizontal w-full h-auto">
                         <View class="logoContainer">
                             <ImageView bindId="logo" class="logoImage" module="av.imageview"></ImageView>
                         </View>
 
-                        <View width="79%" class="v_container">
-                            <Label bindId="title" class="font16Light" left="0" color="Alloy.CFG.COLORS.main" height="40"/>
+                        <View width="79%" class="vertical">
+                            <Label bindId="title" class="lni-16 ml-0 text-lightBlue-600 h-10"/>
                         </View>
                     </View>
                 </ItemTemplate>

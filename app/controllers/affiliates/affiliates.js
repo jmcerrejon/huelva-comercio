@@ -9,12 +9,11 @@ const search = {
 };
 let isSearchBarVisible = false;
 
-function initListView(query, associationId) {
+function initListView(query) {
     Alloy.Globals.Api.readAffiliates(
         {
             page: 1,
             query: query,
-            association_id: 66,
         },
         (response) => {
             init({
@@ -29,7 +28,7 @@ function initListView(query, associationId) {
 }
 
 Alloy.Globals.events.on('affiliates', () => {
-    initListView(search['affiliates'].query, 66);
+    initListView(search['affiliates'].query);
     Alloy.Globals.events.off('affiliates');
 });
 
@@ -69,7 +68,6 @@ function myLoaderAssociations(e) {
 function myLoader({model, currentPage, itemsPerPage, element}) {
     Alloy.Collections[model].fetch({
         page: pageControl[currentPage],
-        association_id: 66,
         query: search[model].query,
         add: true,
         success: function (collection) {
@@ -105,7 +103,6 @@ function resetListView({model, currentPage, infScrollWidget, refreshControl}) {
     pageControl[currentPage] = 1;
     Alloy.Collections[model].fetch({
         page: pageControl[currentPage],
-        association_id: $.args.data.id,
         query: search[model].query,
         success: (collection) => {
             $[refreshControl].endRefreshing();

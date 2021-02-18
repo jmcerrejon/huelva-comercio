@@ -167,9 +167,7 @@ exports.config = {
         },
         {
             name: 'readAffiliates',
-            get:
-                'https://foe.soporttec.es/api/affiliates/?page=<page>&q=<query>&association_id=<association_id>',
-            // 'affiliates/?page=<page>&q=<query>&association_id=<association_id>',
+            get: 'affiliates/?page=<page>&q=<query>',
         },
         {
             name: 'readProfessions',

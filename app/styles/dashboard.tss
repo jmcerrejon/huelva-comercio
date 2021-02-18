@@ -27,7 +27,7 @@
 }
 
 '#communications': {
-    icon: "/images/thumbtack-solid.png",
+    icon: "/images/Newspaper.png",
     title: "Comunicados",
     activeTitleColor: Alloy.CFG.COLORS.main,
     touchFeedback: true,

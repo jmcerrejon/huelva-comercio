@@ -57,7 +57,6 @@
         "input-materialdesign": "*",
         "fr.squirrel.zoomimage": "*",
         "nl.fokkezb.infiniteScroll": "*",
-        "com.imobicloud.calendar": "*",
         "com.imobicloud.tabbedbar": "*"
     }
 }

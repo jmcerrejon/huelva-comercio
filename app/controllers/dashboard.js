@@ -31,14 +31,14 @@ const tabStacks = [
     },
 ];
 
-// if (Alloy.Globals.isAffiliate) {
-//     tabStacks.splice(1, 0, {
-//         tabId: 'communications',
-//         winId: 'communicationsCtrl',
-//         winName: 'Comunicados',
-//         hasSettingsEnabled: false,
-//     });
-// }
+if (Alloy.Globals.isAffiliate) {
+    tabStacks.splice(1, 0, {
+        tabId: 'communications',
+        winId: 'communicationsCtrl',
+        winName: 'Comunicados',
+        hasSettingsEnabled: false,
+    });
+}
 
 let oldTab = 'main';
 

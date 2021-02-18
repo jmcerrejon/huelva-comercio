@@ -12,9 +12,9 @@ const tabStacks = [
         hasSettingsEnabled: true,
     },
     {
-        tabId: 'associations',
-        winId: 'associationsCtrl',
-        winName: 'Asociaciones',
+        tabId: 'affiliates',
+        winId: 'affiliatesCtrl',
+        winName: 'Afilia2',
         hasSettingsEnabled: false,
     },
     {
@@ -31,14 +31,14 @@ const tabStacks = [
     },
 ];
 
-if (Alloy.Globals.isAffiliate) {
-    tabStacks.splice(1, 0, {
-        tabId: 'communications',
-        winId: 'communicationsCtrl',
-        winName: 'Comunicados',
-        hasSettingsEnabled: false,
-    });
-}
+// if (Alloy.Globals.isAffiliate) {
+//     tabStacks.splice(1, 0, {
+//         tabId: 'communications',
+//         winId: 'communicationsCtrl',
+//         winName: 'Comunicados',
+//         hasSettingsEnabled: false,
+//     });
+// }
 
 let oldTab = 'main';
 
@@ -49,10 +49,12 @@ let oldTab = 'main';
 
     Alloy.Globals.events.off('popToRootWindow');
     Alloy.Globals.events.off('openWindowInTab');
+    Alloy.Globals.privateAreaWin = $.nwPrivateArea;
     Alloy.Globals.affiliatesWin = $.nwAffiliates;
     Alloy.Globals.offersWin = $.offers;
     if (OS_IOS) {
-        $.nwAffiliates.hideNavBar();
+        if ($.nwPrivateArea) $.nwPrivateArea.hideNavBar();
+        if ($.nwAffiliates) $.nwAffiliates.hideNavBar();
     }
 })();
 
@@ -76,7 +78,7 @@ function focusWindow(e) {
             break;
 
         case 'affiliatesCtrl':
-            Alloy.Globals.events.trigger('associations');
+            Alloy.Globals.events.trigger('affiliates');
             break;
     }
 }

@@ -1,27 +1,32 @@
 <Alloy>
-	<Window id="wAffiliates">
-		<Require id="navbar" src="/partials/_navbar" onClick="close"></Require>
-		<View class="v_container">
-			<ListView id="lView" onItemclick="doOpenAffiliates" defaultItemTemplate="defaultTemplate">
-				<SearchBar id="searchBar" onReturn="doSearchAffiliate" showCancel="false"/>
-				<RefreshControl id="refreshListView" onRefreshstart="reset"/>
-				<Widget id="is" src="nl.fokkezb.infiniteScroll" onEnd="myLoaderAssociations"/>
-				<Templates>
-					<ItemTemplate name="defaultTemplate">
-						<View class="h_container">
-							<View class="logoContainer">
-								<ImageView bindId="logo" class="logoImage" module="av.imageview"></ImageView>
-							</View>
-							<View width="79%" class="v_container">
-								<Label bindId="title" class="font16Light" left="0" color="Alloy.CFG.COLORS.main" height="40"/>
-							</View>
-						</View>
-					</ItemTemplate>
-				</Templates>
-				<ListSection dataCollection="affiliates" dataTransform="doTransform">
-					<ListItem itemId="{id}" logo:image="{logoUrl}" title:text="{name}" afiliate:text="{phone1}"/>
-				</ListSection>
-			</ListView>
-		</View>
-	</Window>
+    <View class="w-full h-full vertical" backgroundImage="/images/backgrounds/AqueuxAqua.jpg">
+
+        <!-- Navigation Bar buttons -->
+
+        <Require id="reqNavbar" src="/partials/navbar" title="Afiliados"></Require>
+
+        <ListView id="lView" onItemclick="doOpenAffiliates" defaultItemTemplate="defaultTemplate">
+            <RefreshControl id="refreshListView" onRefreshstart="reset"/>
+
+            <Widget id="is" src="nl.fokkezb.infiniteScroll" onEnd="myLoaderAssociations"/>
+
+            <Templates>
+                <ItemTemplate name="defaultTemplate">
+                    <View class="h_container">
+                        <View class="logoContainer">
+                            <ImageView bindId="logo" class="logoImage" module="av.imageview"></ImageView>
+                        </View>
+
+                        <View width="79%" class="v_container">
+                            <Label bindId="title" class="font16Light" left="0" color="Alloy.CFG.COLORS.main" height="40"/>
+                        </View>
+                    </View>
+                </ItemTemplate>
+            </Templates>
+
+            <ListSection dataCollection="affiliates" dataTransform="doTransform">
+                <ListItem itemId="{id}" logo:image="{logoUrl}" title:text="{name}" afiliate:text="{phone1}"/>
+            </ListSection>
+        </ListView>
+    </View>
 </Alloy>

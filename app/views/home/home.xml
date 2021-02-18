@@ -32,6 +32,7 @@
                                 <View class="h-auto m-3 text-gray-600 vertical">
                                     <View class="w-screen horizontal">
                                         <Label bindId="postTitle" id="postTitle" class="w-full text-2xl font-thin text-gray-600">Card Content</Label>
+
                                         <Label bindId="postDateFormatted" class="w-full text-right mb-2 text-sm font-semibold text-gray-500">Nov 3rd, 2019</Label>
                                     </View>
 
@@ -42,29 +43,30 @@
                     </ItemTemplate>
                 </Templates>
 
-                <!-- TODO Fix issue with ScrollableView on Android and remove platform=ios -->
-                <HeaderView platform="ios">
-                    <View class="w-full h-auto vertical">
-                        <!-- Ads -->
-                        <ScrollableView class="w-full m-2" id="scrollableView" dataCollection="banners" onSingletap="doOpenLink" onTouchstart="touchStart">
-                            <ImageView image="{img_path}" url="{url}" ns="AvImageview"></ImageView>
-                        </ScrollableView>
-
-                        <Label>NOTICIAS</Label>
-                    </View>
-                </HeaderView>
-
                 <ListSection id="sectionNoNewsFound">
                     <ListItem template="noNewsFound"></ListItem>
                 </ListSection>
                 <ListSection dataCollection="news" dataTransform="transformCollection">
-                    <ListItem itemId="{id}" image:backgroundImage="{image}" viewPost:url="{link}" postTitle:text="{title}" postDateFormatted:text="{date_formatted}" postBody:text="{content}" />
-                </ListSection>
+                    <HeaderView>
+                        <View class="w-full h-auto vertical">
 
-                <FooterView>
-                    <View id="lvwFooter" class="w-full h-10">
-                    </View>
-                </FooterView>
+                            <!-- Ads -->
+
+                            <ScrollableView class="w-full m-2" id="scrollableView" dataCollection="banners" onSingletap="doOpenLink" onTouchstart="touchStart">
+                                <ImageView image="{img_path}" url="{url}" ns="AvImageview"></ImageView>
+                            </ScrollableView>
+
+                            <Label>NOTICIAS</Label>
+                        </View>
+                    </HeaderView>
+
+                    <ListItem itemId="{id}" image:backgroundImage="{image}" viewPost:url="{link}" postTitle:text="{title}" postDateFormatted:text="{date_formatted}" postBody:text="{content}" />
+
+                    <FooterView>
+                        <View id="lvwFooter" class="w-full h-10">
+                        </View>
+                    </FooterView>
+                </ListSection>
             </ListView>
         </View>
     </ScrollView>

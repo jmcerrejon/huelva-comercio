@@ -1,43 +1,66 @@
 <Alloy>
-    <ScrollView class="w-full h-full">
-        <View class="w-full h-full vertical" backgroundImage="/images/backgrounds/AqueuxAqua.jpg">
+    <View class="w-full h-full vertical" backgroundImage="/images/backgrounds/AqueuxAqua.jpg">
 
-            <!-- Navigation Bar buttons -->
+        <!-- Navigation Bar buttons -->
 
-            <Require id="reqNavbar" src="/partials/navbar" title="Comunicaciones"></Require>
+        <Require id="reqNavbar" src="/partials/navbar" title="Comunicaciones"></Require>
 
-            <!-- Body -->
+        <ListView id="listView" class="bg-white w-full h-full" defaultItemTemplate="defaultTemplate">
+            <RefreshControl id="refreshListView" onRefreshstart="reset" />
 
-            <View id="vwFav" class="w-full h-full vertical bg-white">
+            <Widget id="is" src="nl.fokkezb.infiniteScroll" onEnd="myLoader" />
 
-                <!-- Services, covenants buttons -->
+            <Templates>
+                <ItemTemplate name="defaultTemplate">
+                    <View class="w-11/12 h-auto vertical">
+                        <Label bindId="title" class="w-full text-xl mb-2 text-center" value="title"></Label>
 
-                <View class="w-full h-auto horizontal">
-                    <View class="w-1/2 h-20" onClick="doOpenServices">
-                        <Label class="no-touch-enable">Servicios</Label>
+                        <Label bindId="published_at" class="w-full text-sm mb-2 text-right" value="dd/mm/YYYY H:m"></Label>
+
+                        <Label bindId="msgDescription" class="w-full text-justify mb-2"></Label>
+
+                        <View bindId="pdf" id="vwContainer" class="w-1/4 mb-4" url="test.pdf" onClick="doOpenPDF">
+                            <View class="w-11/12 no-touch-enable">
+                                <View id="vwShadow" class="w-screen h-8 mt-2 bg-rose-800 rounded-xl no-touch-enable"></View>
+
+                                <Label id="btnClick" class="w-screen h-8 mt-1 text-sm font-bold text-white bg-rose-500 rounded-xl text-center no-touch-enable" text="Abrir pdf"></Label>
+                            </View>
+                        </View>
                     </View>
+                </ItemTemplate>
+            </Templates>
 
-                    <View class="w-1/2 h-20" onClick="doOpenCovenants">
-                        <Label class="no-touch-enable">Convenios</Label>
+            <ListSection id="lstSection" dataCollection="newsletters">
+                <HeaderView>
+                    <View id="vwFav" class="w-full h-auto vertical bg-white">
+
+                        <!-- Services, covenants buttons -->
+
+                        <View class="w-full h-auto horizontal">
+                            <View class="w-1/2 h-20" onClick="doOpenServices">
+                                <Label class="no-touch-enable">Servicios</Label>
+                            </View>
+
+                            <View class="w-1/2 h-20" onClick="doOpenCovenants">
+                                <Label class="no-touch-enable">Convenios</Label>
+                            </View>
+                        </View>
+
+                        <!-- Header -->
+
+                        <View class="w-full h-10">
+                            <Label>Comunicados</Label>
+                        </View>
                     </View>
-                </View>
+                </HeaderView>
 
-                <!-- Header -->
+                <ListItem itemId="{id}" title:text="{title}" published_at:text="{published_at}" msgDescription:text="{description}" pdf:url="{file_name}" />
 
-                <View class="w-full h-10">
-                    <Label>Comunicados</Label>
-                </View>
-
-                <!-- Communications -->
-
-                <View class="w-11/12 h-auto vertical">
-                    <ImageView id="imgMain" class="w-1/2" image="/images/about.png"></ImageView>
-                    <Label class="w-full text-2xl mb-2 text-center">El gobierno aprueba una ayuda para fomentar la digitalización en las empresas de los sectores más afectados</Label>
-                    <Label class="w-full text-sm mb-2 text-right">12/02/2021 14:12</Label>
-                    <Label class="w-full text-justify mb-2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Explicabo quia, suscipit animi itaque molestias adipisci, ipsum excepturi laboriosam, incidunt voluptate inventore ipsam illum</Label>
-                    <Require src="partials/button" buttonType="pdf" onClick="doOpenPDF"></Require>
-                </View>
-            </View>
-        </View>
-    </ScrollView>
+                <FooterView>
+                    <View id="lvwFooter" class="w-full h-10">
+                    </View>
+                </FooterView>
+            </ListSection>
+        </ListView>
+    </View>
 </Alloy>

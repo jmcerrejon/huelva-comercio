@@ -56,10 +56,6 @@ exports.config = {
             get: 'photos',
         },
         {
-            name: 'getScheduleByMonthYear',
-            get: 'schedule?month=<month>&year=<year>',
-        },
-        {
             name: 'readBanners',
             get: 'banners',
         },
@@ -170,13 +166,10 @@ exports.config = {
             put: 'notifications/<device_token>',
         },
         {
-            name: 'readAssociations',
-            get: 'associations?page=<page>&q=<query>',
-        },
-        {
             name: 'readAffiliates',
             get:
-                'affiliates/?page=<page>&q=<query>&association_id=<association_id>',
+                'https://foe.soporttec.es/api/affiliates/?page=<page>&q=<query>&association_id=<association_id>',
+            // 'affiliates/?page=<page>&q=<query>&association_id=<association_id>',
         },
         {
             name: 'readProfessions',
@@ -286,17 +279,6 @@ exports.config = {
             ],
         },
         {
-            name: 'schedule',
-            id: 'event_id',
-            collections: [
-                {
-                    name: 'schedules',
-                    content: 'data',
-                    read: 'getScheduleByMonthYear',
-                },
-            ],
-        },
-        {
             name: 'employment',
             id: 'id',
             create: 'postEmployment',
@@ -307,17 +289,6 @@ exports.config = {
                     name: 'employments',
                     content: 'data',
                     read: 'readEmployments',
-                },
-            ],
-        },
-        {
-            name: 'association',
-            id: 'id',
-            collections: [
-                {
-                    name: 'associations',
-                    content: 'data',
-                    read: 'readAssociations',
                 },
             ],
         },

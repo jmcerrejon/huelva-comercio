@@ -17,7 +17,7 @@ function doOpenPDF(item) {
 }
 
 function openInsideNavWindow({model, path}) {
-    Alloy.Globals.affiliatesWin.openWindow(
+    Alloy.Globals.privateAreaWin.openWindow(
         Alloy.createController(path, {
             model,
         }).getView()

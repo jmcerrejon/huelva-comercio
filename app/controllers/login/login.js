@@ -150,11 +150,12 @@ function doReadPrivacy() {
 function doGoToDashboard() {
     Alloy.Globals.loading.show('Cargando contenido...');
     saveUserAndConnect();
+    $.login.close();
     Alloy.createController('dashboard').getView().open();
 }
 
 function saveUserAndConnect(user = null) {
-    const hasAffiliate = !_.isNull(user.affiliate) && !_.isNull(user.affiliate);
+    const hasAffiliate = !_.isNull(user) && !_.isNull(user.affiliate);
 
     Ti.App.Properties.setBool('isAffiliate', hasAffiliate);
     Alloy.Globals.isAffiliate = hasAffiliate;

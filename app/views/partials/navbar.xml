@@ -38,5 +38,7 @@
                 </View>
             </View>
         </View>
+
+        <ImageView class="w-full h-auto" image="/images/rectangle_rounded_corners_60.png"></ImageView>
     </View>
 </Alloy>

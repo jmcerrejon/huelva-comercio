@@ -1,73 +1,71 @@
 <Alloy>
-    <ScrollView>
 
-        <View class="w-full h-full vertical" backgroundImage="/images/backgrounds/AqueuxAqua.jpg">
+    <View class="w-full h-full vertical" backgroundImage="/images/backgrounds/AqueuxAqua.jpg">
 
-            <!-- Navigation Bar buttons -->
+        <!-- Navigation Bar buttons -->
 
-            <Require id="reqNavbar" src="/partials/navbar" title="Inicio" leftIcon="text-2xl text-white fas fa-user" rightIcon="text-2xl text-white fas fa-search" onLogin="doLogin" onClick="doFilter"></Require>
+        <Require id="reqNavbar" src="/partials/navbar" title="Inicio" leftIcon="text-2xl text-white fas fa-user" rightIcon="text-2xl text-white fas fa-search" onLogin="doLogin" onClick="doFilter"></Require>
 
-            <!-- Body -->
+        <!-- Body -->
 
-            <ListView id="listView" class="w-full vertical bg-white" height="90%" onItemclick="doOpenPost" defaultItemTemplate="defaultTemplate">
-                <RefreshControl id="refreshListView" onRefreshstart="reset"/>
+        <ListView id="listView" class="w-full vertical bg-white" height="90%" onItemclick="doOpenPost" defaultItemTemplate="defaultTemplate">
+            <RefreshControl id="refreshListView" onRefreshstart="reset"/>
 
-                <Widget id="is" src="nl.fokkezb.infiniteScroll" onEnd="myLoader"/>
+            <Widget id="is" src="nl.fokkezb.infiniteScroll" onEnd="myLoader"/>
 
-                <Templates>
-                    <ItemTemplate name="noNewsFound">
-                        <View bindId="vwNoNewsFound" class="vertical w-0 h-0">
-                            <Label class="font14 text-center" left="10" right="10" text="No se han encontrado noticias relacionadas.\nVuelva a recargar las noticias." />
+            <Templates>
+                <ItemTemplate name="bannerHeader">
+                </ItemTemplate>
 
-                            <Button onClick="reset" title="RECARGAR" top="20"></Button>
-                        </View>
-                    </ItemTemplate>
+                <ItemTemplate name="noNewsFound">
+                    <View bindId="vwNoNewsFound" class="vertical w-0 h-0">
+                        <Label class="font14 text-center" left="10" right="10" text="No se han encontrado noticias relacionadas.\nVuelva a recargar las noticias." />
 
-                    <ItemTemplate name="defaultTemplate">
-                        <View bindId="viewPost" class="w-full h-auto mb-3">
-                            <View class="w-11/12 bg-white border-gray-400 rounded-lg vertical clip-enabled">
-                                <View class="w-full h-52 shadow-md" bindId="image" id="image">
+                        <Button onClick="reset" title="RECARGAR" top="20"></Button>
+                    </View>
+                </ItemTemplate>
+
+                <ItemTemplate name="defaultTemplate">
+                    <View bindId="viewPost" class="w-full h-auto mb-3 bg-white">
+                        <View class="w-11/12 bg-white border-gray-400 rounded-lg vertical clip-enabled">
+                            <View class="w-full h-52 shadow-md" bindId="image" id="image">
+                            </View>
+
+                            <View class="h-auto m-3 text-gray-600 vertical">
+                                <View class="w-screen horizontal">
+                                    <Label bindId="postTitle" id="postTitle" class="w-full text-2xl font-thin text-gray-600">Card Content</Label>
+
+                                    <Label bindId="postDateFormatted" class="w-full text-right mb-2 text-sm font-semibold text-gray-500">Nov 3rd, 2019</Label>
                                 </View>
 
-                                <View class="h-auto m-3 text-gray-600 vertical">
-                                    <View class="w-screen horizontal">
-                                        <Label bindId="postTitle" id="postTitle" class="w-full text-2xl font-thin text-gray-600">Card Content</Label>
-
-                                        <Label bindId="postDateFormatted" class="w-full text-right mb-2 text-sm font-semibold text-gray-500">Nov 3rd, 2019</Label>
-                                    </View>
-
-                                    <Label bindId="postBody" id="postBody" class="w-screen font-normal text-gray-500 text-justify">This is some card content to demonstrate how the cards work.</Label>
-                                </View>
+                                <Label bindId="postBody" id="postBody" class="w-screen font-normal text-gray-500 text-justify">This is some card content to demonstrate how the cards work.</Label>
                             </View>
                         </View>
-                    </ItemTemplate>
-                </Templates>
+                    </View>
+                </ItemTemplate>
+            </Templates>
 
-                <ListSection id="sectionNoNewsFound">
-                    <ListItem template="noNewsFound"></ListItem>
-                </ListSection>
-                <ListSection dataCollection="news" dataTransform="transformCollection">
-                    <HeaderView>
-                        <View class="w-full h-auto vertical">
+            <ListSection id="sectionBanner">
+                <HeaderView>
+                    <View id="vwBody" class="w-full h-auto vertical">
+                        <ScrollableView class="w-full h-auto bg-white" id="scrollableView" dataCollection="banners" onSingletap="doOpenLink" onTouchstart="touchStart">
+                            <ImageView image="{img_path}" url="{url}" ns="AvImageview"></ImageView>
+                        </ScrollableView>
+                    </View>
+                </HeaderView>
+                <ListItem template="bannerHeader"></ListItem>
+            </ListSection>
+            <ListSection id="sectionNoNewsFound">
+                <ListItem template="noNewsFound"></ListItem>
+            </ListSection>
+            <ListSection dataCollection="news" dataTransform="transformCollection">
+                <ListItem itemId="{id}" image:backgroundImage="{image}" viewPost:url="{link}" postTitle:text="{title}" postDateFormatted:text="{date_formatted}" postBody:text="{content}" />
 
-                            <!-- Ads -->
-
-                            <ScrollableView class="w-full m-2" id="scrollableView" dataCollection="banners" onSingletap="doOpenLink" onTouchstart="touchStart">
-                                <ImageView image="{img_path}" url="{url}" ns="AvImageview"></ImageView>
-                            </ScrollableView>
-
-                            <Label>NOTICIAS</Label>
-                        </View>
-                    </HeaderView>
-
-                    <ListItem itemId="{id}" image:backgroundImage="{image}" viewPost:url="{link}" postTitle:text="{title}" postDateFormatted:text="{date_formatted}" postBody:text="{content}" />
-
-                    <FooterView>
-                        <View id="lvwFooter" class="w-full h-10">
-                        </View>
-                    </FooterView>
-                </ListSection>
-            </ListView>
-        </View>
-    </ScrollView>
+                <FooterView>
+                    <View id="lvwFooter" class="w-full h-10">
+                    </View>
+                </FooterView>
+            </ListSection>
+        </ListView>
+    </View>
 </Alloy>

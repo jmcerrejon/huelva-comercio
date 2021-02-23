@@ -48,7 +48,7 @@
             <ListSection id="sectionBanner">
                 <HeaderView>
                     <View id="vwBody" class="w-full h-auto vertical">
-                        <ScrollableView class="w-full h-auto bg-white" id="scrollableView" dataCollection="banners" onSingletap="doOpenLink" onTouchstart="touchStart">
+                        <ScrollableView class="w-full h-auto mb-4 bg-white" id="scrollableView" dataCollection="banners" onSingletap="doOpenLink" onTouchstart="touchStart">
                             <ImageView image="{img_path}" url="{url}" ns="AvImageview"></ImageView>
                         </ScrollableView>
                     </View>

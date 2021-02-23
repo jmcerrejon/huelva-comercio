@@ -8,10 +8,59 @@
 
             <!-- Body -->
 
-            <View id="vwFav" class="w-full h-full vertical bg-white">
-                <Label class="fas fa-heart"></Label>
+            <View id="vwBody" class="w-full h-full bg-white vertical">
+                <View class="mx-8 vertical">
+                    <Label class="w-full mt-2 ml-1 text-sm text-left text-blue-900">Correo electrónico</Label>
 
-                <Label class="text-xs">Contacto</Label>
+                    <TextField class="w-screen h-10 pl-2 mt-1 text-base text-gray-800 border-blue-500 rounded-xl bg-gray-50" returnKeyType="Ti.UI.RETURNKEY_NEXT" keyboardType="Ti.UI.KEYBOARD_TYPE_EMAIL" hintText="Email" hintTextColor="#CBD6E9" />
+
+                    <Label class="w-full mt-4 ml-1 text-sm text-left text-blue-900">Mensaje</Label>
+
+                    <TextArea class="w-screen h-20 pl-2 mt-1 text-base text-gray-800 border-blue-500 rounded-xl bg-gray-50" hintText="Escribe aquí y ponte en contacto con nosotros" hintTextColor="#CBD6E9" />
+
+                    <View >
+                        <Button class="w-screen h-10 mt-5 bg-blue-700 rounded-xl"></Button>
+
+                        <Button class="w-screen h-10 mt-4 text-base font-bold text-white bg-blue-500 rounded-xl">Enviar</Button>
+                    </View>
+                </View>
+
+                <View class="h-10 mx-8 mt-4 horizontal">
+                    <View class="w-1/2 mt-2">
+                        <View id="vwFacebook" class="horizontal">
+                            <Label class="text-blue-500 fab fa-facebook"></Label>
+
+                            <Label class="ml-2 text-blue-500">Facebook</Label>
+                        </View>
+                    </View>
+
+                    <View class="w-1/2 mt-2">
+                        <View id="vwTwitter" class="horizontal">
+                            <Label class="text-blue-400 fab fa-twitter"></Label>
+
+                            <Label class="ml-2 text-blue-500">Twitter</Label>
+                        </View>
+                    </View>
+                </View>
+
+                <View class="h-10 mx-8 mt-4 horizontal">
+                    <View class="w-1/2 mt-2">
+                        <View id="vwFacebook" class="horizontal">
+                            <Label class="text-blue-500 fa fa-phone"></Label>
+
+                            <Label class="ml-2 text-blue-500">65754224524</Label>
+                        </View>
+                    </View>
+
+                    <View class="w-1/2 mt-2">
+                        <View id="vwTwitter" class="horizontal">
+                            <Label class="text-blue-5 00 fa fa-mail-bulk"></Label>
+
+                            <Label class="ml-2 text-blue-500">daniel@foe.es</Label>
+                        </View>
+                    </View>
+                </View>
+
             </View>
         </View>
     </ScrollView>

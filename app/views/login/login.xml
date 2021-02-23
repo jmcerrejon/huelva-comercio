@@ -13,9 +13,7 @@
                 <!-- Free access -->
 
                 <View class="mt-4 vertical h-auto w-full">
-                    <View class="w-32 h-8 border-blue-500 rounded-xl" onClick="doGoToDashboard">
-                        <Label class="w-auto h-auto mt-1 text-sm text-blue-900 ">Acceso libre</Label>
-                    </View>
+                    <Require src="partials/button" text="Acceso libre" onClick="doGoToDashboard"></Require>
 
                     <View class="w-auto h-auto">
                         <View class="w-11/12 border-blue-900" height="1"></View>

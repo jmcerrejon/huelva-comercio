@@ -50,7 +50,7 @@
 
 '#affiliates': {
     icon: "/images/thumbtack-solid.png",
-    title: "Afiliados",
+    title: "Asociados",
     activeTitleColor: Alloy.CFG.COLORS.main,
     touchFeedback: true,
     activeIconIsMask: true,

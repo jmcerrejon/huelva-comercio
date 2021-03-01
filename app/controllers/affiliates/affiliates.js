@@ -142,17 +142,12 @@ function close() {
 }
 
 function doSearchAffiliate(e) {
-    if (e.value.length < 3) {
-        Alloy.Globals.showMessage('Escriba al menos 3 caracteres.');
-        return;
-    }
+    const searchText = e.source.value;
+
     pageControl.currentPage = 1;
-    search['affiliates'].query = e.value;
+    search['affiliates'].query = searchText;
     Alloy.Collections.affiliates.reset();
-    initListView(search['affiliates'].query, $.args.data.id);
-    $.searchBar.value = '';
-    $.searchBar.hide();
-    $.searchBar.show();
+    initListView(search['affiliates'].query);
     $.is.load();
     $.is.mark();
 }

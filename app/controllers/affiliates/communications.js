@@ -3,6 +3,7 @@ let postsPerPage = 10;
 let query = '';
 const SCROLLABLEVIEW_HEIGHT = 175;
 const collectionName = 'newsletters';
+let pdfFile = null;
 
 // console.log(JSON.stringify($.args, null, 2));
 
@@ -83,7 +84,7 @@ function doOpenCovenants(e) {
 }
 
 function doOpenPDF(item) {
-    console.log('pdf');
+    openRemotePdf(item.source.url);
 }
 
 function openInsideNavWindow({model, path}) {
@@ -92,4 +93,40 @@ function openInsideNavWindow({model, path}) {
             model,
         }).getView()
     );
+}
+
+function openRemotePdf(url) {
+    Alloy.Globals.loading.show();
+    var client = Ti.Network.createHTTPClient({
+        onload: function () {
+            var f = Ti.Filesystem.getFile(
+                Ti.Filesystem.applicationDataDirectory,
+                'file.pdf'
+            );
+            f.write(this.responseData);
+            if (OS_IOS) {
+                var docViewer = Ti.UI.iOS.createDocumentViewer({
+                    url: f.nativePath,
+                });
+                docViewer.show();
+            } else {
+                var win = $.UI.create('Window');
+                var pdfView = require('fr.squirrel.pdfview').createView({
+                    height: Ti.UI.FILL,
+                    width: Ti.UI.FILL,
+                    file: f,
+                });
+                win.add(pdfView);
+                win.open();
+            }
+
+            Alloy.Globals.loading.hide();
+        },
+        onerror: function () {
+            Alloy.Globals.loading.hide();
+            Alloy.Globals.showMessage('Fichero no encontrado.');
+        },
+    });
+    client.open('GET', url);
+    client.send();
 }

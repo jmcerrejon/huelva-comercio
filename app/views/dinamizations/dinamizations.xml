@@ -1,0 +1,34 @@
+<Alloy>
+
+    <View class="w-full h-full vertical" backgroundImage="/images/backgrounds/AqueuxAqua.jpg">
+
+        <!-- Navigation Bar buttons -->
+
+        <Require id="reqNavbar" src="/partials/navbar" title="Dinamización"></Require>
+
+        <!-- Body -->
+
+        <View class="w-full h-full vertical bg-white">
+            <View id="vwGuest" class="w-full h-auto vertical">
+                <ImageView class="w-1/2" image="images/candidates.png"></ImageView>
+
+                <Label class="text-2xl">Regístrate</Label>
+
+                <Label class="text-xs text-center w-1/2 mt-4">Regístrate o accede para obtener descuentos, sorteos y mucho más</Label>
+
+                <Require src="partials/button" text="¡Vamos allá!" onClick="doOpenSign"></Require>
+            </View>
+
+            <ScrollView id="scrDinamizations" class="vertical w-0 h-0">
+                <View id="vwDinamizacions" class="vertical w-full h-auto" dataCollection="dinamizations">
+                    <View class="vertical w-full h-auto" id="vwContainer" itemLink="{link}" onClick="doOpenURL">
+                        <ImageView class="no-touch-enable" image="/images/thumbtack-solid.png"></ImageView>
+                        <Label class="mt-10 text-center no-touch-enable" text="{title}"></Label>
+                        <Label class="m-3 h-auto text-justify no-touch-enable" text="{content}"></Label>
+                    </View>
+                </View>
+            </ScrollView>
+        </View>
+    </View>
+
+</Alloy>

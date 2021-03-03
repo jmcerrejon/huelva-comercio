@@ -28,7 +28,7 @@
         <Tab id="offers">
             <Window id="offersCtrl" class="defaultWinProp" onFocus="focusWindow">
                 <View id="offersContent" opacity="0">
-                    <Require src="/employments/employments"></Require>
+                    <Require src="/dinamizations/dinamizations"></Require>
                 </View>
             </Window>
         </Tab>

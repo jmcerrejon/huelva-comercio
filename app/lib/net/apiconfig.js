@@ -76,37 +76,8 @@ exports.config = {
             get: 'services',
         },
         {
-            name: 'readEvents',
-            get: 'events?page=<page>',
-        },
-        {
-            name: 'readEmployments',
-            get: 'employments?page=<page>&sector_id=<sector_id>&q=<query>',
-        },
-        {
-            name: 'postEmployment',
-            post: 'employments',
-            onError: (response) => {
-                let message =
-                    'Verifique que ha introducido todos los datos y son correctos';
-                if (response.content && response.content.message) {
-                    message = response.content.message;
-                }
-                Alloy.Globals.loading.hide();
-                Ti.UI.createAlertDialog({
-                    title: 'Se ha producido un error',
-                    message,
-                    ok: 'Vale',
-                }).show();
-            },
-        },
-        {
-            name: 'updateEmployment',
-            put: 'employments/<objectId>',
-        },
-        {
-            name: 'delEmployment',
-            delete: 'employments/<objectId>',
+            name: 'readDinamizations',
+            get: 'dinamizations',
         },
         {
             name: 'readCandidates',
@@ -251,9 +222,9 @@ exports.config = {
                     read: 'readNewsletter',
                 },
                 {
-                    name: 'events',
+                    name: 'dinamizations',
                     content: 'data',
-                    read: 'readEvents',
+                    read: 'readDinamizations',
                 },
             ],
         },
@@ -273,20 +244,6 @@ exports.config = {
             collections: [
                 {
                     name: 'selected_appointments',
-                },
-            ],
-        },
-        {
-            name: 'employment',
-            id: 'id',
-            create: 'postEmployment',
-            update: 'updateEmployment',
-            delete: 'delEmployment',
-            collections: [
-                {
-                    name: 'employments',
-                    content: 'data',
-                    read: 'readEmployments',
                 },
             ],
         },

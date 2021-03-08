@@ -1,34 +1,33 @@
 {
   "project_info": {
-    "project_number": "340604151620",
-    "firebase_url": "https://foeahora.firebaseio.com",
-    "project_id": "foeahora",
-    "storage_bucket": "foeahora.appspot.com"
+    "project_number": "791937875156",
+    "project_id": "ceca-b4f30",
+    "storage_bucket": "ceca-b4f30.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:340604151620:android:349eab5eb50d282a5b1911",
+        "mobilesdk_app_id": "1:791937875156:android:2f5c77e5c15ca13a804f41",
         "android_client_info": {
-          "package_name": "com.sopportec.foeahora"
+          "package_name": "com.soporttec.ceca"
         }
       },
       "oauth_client": [
         {
-          "client_id": "340604151620-l3poatr2rco800g3j097fs6ogdmo56p2.apps.googleusercontent.com",
+          "client_id": "791937875156-885c7te55bkv69m5q726ikhjqo4sanbg.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDWEKOYCiUfj8oCBxnwvF4qzOIYdRjDhik"
+          "current_key": "AIzaSyCDBFEpk9HDyBKH1xDi5iVeKGcdQ4FZuGo"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "340604151620-l3poatr2rco800g3j097fs6ogdmo56p2.apps.googleusercontent.com",
+              "client_id": "791937875156-885c7te55bkv69m5q726ikhjqo4sanbg.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

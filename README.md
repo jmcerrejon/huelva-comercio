@@ -32,6 +32,8 @@ Dev with ♥️ using [Axway Titanium](https://www.axway.com)
 
 -   https://github.com/jasonkneen/TiCons-CLI
 
+-   https://github.com/macCesar/purgeTSS/
+
 ### Issues
 
 -   _error: Missing private key for signing certificate. Failed to locate the private key matching certificate in the keychain. To sign with this signing certificate, install its private key in your keychain. If you don't have the private key, select a different signing certificate for CODE_SIGN_IDENTITY in the build settings editor._

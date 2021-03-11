@@ -16,7 +16,6 @@
     <property name="ti.ui.defaultunit" type="string">dp</property>
     <property name="run-on-main-thread" type="bool">true</property>
     <property name="ti.android.root.reappears.restart" type="bool">true</property>
-    <property name="ti.android.bug2373.finishfalseroot" type="bool">true</property>
     <ios>
         <team-id>WDS48L3DS9</team-id>
         <enable-launch-screen-storyboard>true</enable-launch-screen-storyboard>
@@ -50,7 +49,7 @@
                 <key>UIStatusBarHidden</key>
                 <false/>
                 <key>UIStatusBarStyle</key>
-                <string>UIStatusBarStyleDefault</string>
+                <string>UIStatusBarStyleLightContent</string>
                 <key>LSApplicationQueriesSchemes</key>
                 <array>
                     <string>http</string>
@@ -64,22 +63,6 @@
             </dict>
         </plist>
         <entitlements>
-            <dict>
-                <key>com.apple.developer.icloud-container-identifiers</key>
-                <array>
-                    <string>iCloud.com.sopportec.ceca</string>
-                </array>
-                <key>com.apple.developer.icloud-services</key>
-                <array>
-                    <string>CloudDocuments</string>
-                </array>
-                <key>com.apple.developer.ubiquity-container-identifiers</key>
-                <array>
-                    <string>iCloud.com.sopportec.ceca</string>
-                </array>
-                <key>com.apple.developer.ubiquity-kvstore-identifier</key>
-                <string>WDS48L3DS9.com.sopportec.ceca</string>
-            </dict>
         </entitlements>
     </ios>
     <android xmlns:android="http://schemas.android.com/apk/res/android">
@@ -114,7 +97,7 @@
         <target device="ipad">false</target>
         <target device="iphone">true</target>
     </deployment-targets>
-    <sdk-version>9.3.1.GA</sdk-version>
+    <sdk-version>9.3.2.GA</sdk-version>
     <plugins>
         <plugin version="1.0">ti.alloy</plugin>
     </plugins>

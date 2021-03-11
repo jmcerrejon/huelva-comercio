@@ -4,7 +4,7 @@
     "description": "👨🏻‍💻 Jose Manuel Cerrejon Gonzalez",
     "main": "index.js",
     "scripts": {
-        "run-server": "cd /Users/ulysess/Documents/sc/www/comm && sudo php artisan serve --port=80 --host=192.168.1.37",
+        "run-server": "cd /Users/ulysess/Documents/sc/www/comm && sudo php artisan serve --port=80 --host=192.168.3.5",
         "purge:dev_mode": "purgetss d",
         "purge:production": "purgetss",
         "purge:build_custom": "purgetss b",
@@ -12,12 +12,13 @@
         "ios-simulator": "tios -f",
         "ios-real-liveview": "tn --ios --device --device-id 00008030-001C691001C0802E -V 'JOSE CERREJON GONZALEZ (324YU3WC5Y)' --liveview",
         "package-for-distribution": "sh builder.sh",
+        "backup": "sh backup.sh",
         "open-app-store-connect-ios": "open -a safari https://appstoreconnect.apple.com/WebObjects/iTunesConnect.woa/ra/ng/app/1495066260",
-        "open-google-play-console-android": "open -a firefox https://play.google.com/apps/publish/?account=5560231313135593029#ManageReleasesPlace:p=com.sopportec.foeahora&appid=4972180229743516314",
+        "open-google-play-console-android": "open -a firefox https://play.google.com/apps/publish/?account=5560231313135593029#ManageReleasesPlace:p=com.sopportec.ceca",
         "tand": "tand -f",
         "website_fontawesone": "open https://fontawesome.com/icons?d=gallery",
-        "ticon": "ticons assets --orig-dpi @3x --max-dpi xxxhdpi ~/Documents/Appcelerator_Studio_Workspace/foe-ahora/app/assets/iphone/images/ ~/Documents/Appcelerator_Studio_Workspace/foe-ahora/app/assets",
-        "splashes": "ticons splashes DefaultIcon.png -s 9.3.1",
+        "ticon": "ticons assets --orig-dpi @3x --max-dpi xxxhdpi ~/Documents/Appcelerator/ceca/app/assets/iphone/images/ ~/Documents/Appcelerator/ceca/app/assets",
+        "splashes": "ticons splashes DefaultIcon.png -s 9.3.2",
         "del-folders": "rm -rf i18n && rm -rf platform"
     },
     "repository": {

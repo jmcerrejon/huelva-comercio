@@ -4,7 +4,7 @@
 
         <!-- Navigation Bar buttons -->
 
-        <Require id="reqNavbar" src="/partials/navbar" title="Inicio" leftIcon="text-2xl text-white fas fa-user" rightIcon="text-2xl text-white fas fa-search" onLogin="doLogin" onClick="doFilter"></Require>
+        <Require id="reqNavbar" src="/partials/navbar" title="Inicio" leftIcon="text-2xl text-white lni lni-user" rightIcon="text-2xl text-white lni lni-search-alt" onLogin="doLogin" onClick="doFilter"></Require>
 
         <!-- Body -->
 

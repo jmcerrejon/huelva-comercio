@@ -27,7 +27,7 @@
 }
 
 '#communications': {
-    icon: "/images/Newspaper.png",
+    icon: "/images/newspaper.png",
     title: "Comunicados",
     activeTitleColor: Alloy.CFG.COLORS.main,
     touchFeedback: true,
@@ -49,7 +49,7 @@
 }
 
 '#affiliates': {
-    icon: "/images/thumbtack-solid.png",
+    icon: "/images/affiliates.png",
     title: "Asociados",
     activeTitleColor: Alloy.CFG.COLORS.main,
     touchFeedback: true,
@@ -60,7 +60,7 @@
 }
 
 '#offers': {
-    icon: "/images/comments-regular.png",
+    icon: "/images/tags.png",
     title: "Dinamización",
     activeTitleColor: Alloy.CFG.COLORS.main,
     touchFeedback: true,
@@ -71,7 +71,7 @@
 }
 
 '#contact': {
-    icon: "/images/user-solid.png",
+    icon: "/images/contact.png",
     title: "Contacto",
     activeTitleColor: Alloy.CFG.COLORS.main,
     activeIconIsMask: true,

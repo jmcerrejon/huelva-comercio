@@ -29,7 +29,7 @@
                     <TextField id="txtSearch" class="w-9/12 h-10 text-gray-400" autocorrect="false" returnKeyType="Ti.UI.RETURNKEY_SEARCH" hintText="Buscar..." autocapitalization="false" onReturn="doAction" />
 
                     <View class="w-2/12">
-                        <Label class="w-auto h-8 text-lg text-gray-400 fas fa-search"></Label>
+                        <Label class="w-auto h-8 text-lg text-gray-400 lni lni-search-alt"></Label>
                     </View>
                 </View>
 

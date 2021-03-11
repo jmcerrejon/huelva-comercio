@@ -3,7 +3,7 @@
 
         <!-- Navigation Bar buttons -->
 
-        <Require id="reqNavbar" src="/partials/navbar" title="Asociados" rightIcon="text-2xl text-white fas fa-search" onClick="doSearchAffiliate"></Require>
+        <Require id="reqNavbar" src="/partials/navbar" title="Asociados" rightIcon="text-2xl text-white lni lni-search-alt" onClick="doSearchAffiliate"></Require>
 
         <ListView id="lView" class="bg-white w-full h-full" onItemclick="doOpenAffiliates" defaultItemTemplate="defaultTemplate">
             <RefreshControl id="refreshListView" onRefreshstart="reset"/>

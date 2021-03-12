@@ -12,7 +12,7 @@ stop_liveview() {
     local LATEST_SDK_VERSION
     local LIVE_SERVER_PATH
     TITANIUM_SDK_PATH="$HOME/Library/Application Support/Titanium/mobilesdk/osx/"
-    LATEST_SDK_VERSION=$(ls "$TITANIUM_SDK_PATH" | head -n 1)
+    LATEST_SDK_VERSION=$(ls -t "$TITANIUM_SDK_PATH" | head -n 1)
     LIVE_SERVER_PATH="${TITANIUM_SDK_PATH}/${LATEST_SDK_VERSION}/node_modules/liveview/bin/liveview-server"
 
     if [[ -e $LIVE_SERVER_PATH ]]; then

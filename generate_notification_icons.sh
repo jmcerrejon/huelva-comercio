@@ -1,8 +1,9 @@
 #!/bin/sh
 
 # See https://github.com/hansemannn/titanium-firebase-cloud-messaging
+# Help to make icon: https://romannurik.github.io/AndroidAssetStudio/index.html
 
-ICON_SOURCE="app/platform/android/res/drawable-xxxhdpi/notification_icon.png"
+ICON_SOURCE="app/platform/android/res/drawable-xxxhdpi/notification_icon.png" # 96x96
 if [ -f "$ICON_SOURCE" ]; then
     mkdir -p "app/platform/android/res/drawable-xxhdpi"
     mkdir -p "app/platform/android/res/drawable-xhdpi"

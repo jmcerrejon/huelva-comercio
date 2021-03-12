@@ -9,11 +9,11 @@ clear
 
 stop_liveview() {
     local TITANIUM_SDK_PATH
-    local LATEST_SDK_VERSION
+    local SELECTED_SDK_VERSION
     local LIVE_SERVER_PATH
-    TITANIUM_SDK_PATH="$HOME/Library/Application Support/Titanium/mobilesdk/osx/"
-    LATEST_SDK_VERSION=$(ls -t "$TITANIUM_SDK_PATH" | head -n 1)
-    LIVE_SERVER_PATH="${TITANIUM_SDK_PATH}/${LATEST_SDK_VERSION}/node_modules/liveview/bin/liveview-server"
+    TITANIUM_SDK_PATH=$(ti config paths.sdks)
+    SELECTED_SDK_VERSION=$(ti config sdk.selected)
+    LIVE_SERVER_PATH="${TITANIUM_SDK_PATH}/mobilesdk/osx/${SELECTED_SDK_VERSION}/node_modules/liveview/bin/liveview-server"
 
     if [[ -e $LIVE_SERVER_PATH ]]; then
         printf "\nStopping Live servers..."
@@ -36,7 +36,7 @@ backup() {
     printf "Zipping...\n"
     zip -qq -r "$PROJECT_NAME"_"$DATE".zip "$PROJECT_NAME" -x ".DS*" -x "__MACOSX" -x "$PROJECT_NAME/node_modules/*"
     printf "\nDone!...\n\n"
-    ls -la "$PROJECT_NAME"_*
+    ls -lat "$PROJECT_NAME"_*
 }
 
 stop_liveview

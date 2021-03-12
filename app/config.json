@@ -5,9 +5,9 @@
         "phone": "959 20 83 00",
         "mail": "daniel@foe.es",
         "url": "https://foe.es",
-        "url_privacy": "https://foe.es/politica-privacidad-app-foe/",
-        "twitter": "https://twitter.com/foehuelva",
-        "facebook_url": "https://www.facebook.com/FOEHuelva",
+        "url_privacy": "https://huelvacomercio.soporttec.es/politica-de-privacidad/",
+        "twitter": "https://twitter.com",
+        "facebook_url": "https://www.facebook.com",
         "facebook_scheme": "fb://profile/778628908875260",
         "FONTS": {
             "light": "Helvetica-Light",
@@ -43,12 +43,12 @@
         "baseurl": "http://comm.test"
     },
     "env:production": {
-        "baseapi": "http://comm.test/api/",
-        "baseurl": "http://comm.test"
+        "baseapi": "https://ceca.soporttec.es/api/",
+        "baseurl": "https://ceca.soporttec.es"
     },
     "os:android": {
-        "baseapi": "http://192.168.1.37/api/",
-        "baseurl": "http://comm.test"
+        "baseapi": "https://ceca.soporttec.es/api/",
+        "baseurl": "https://ceca.soporttec.es"
     },
     "os:ios": {},
     "dependencies": {

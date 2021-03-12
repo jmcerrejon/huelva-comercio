@@ -1,9 +1,9 @@
 <Alloy>
     <Window title="Servicios">
         <ScrollView class="vertical w-full h-full">
-            <View class="vertical w-full h-auto" dataCollection="services">
+            <View class="vertical w-11/12 h-auto mt-4" dataCollection="services">
                 <View class="vertical w-full h-auto" id="vwContainer" itemLink="{link}" onClick="doOpenURL">
-                    <ImageView class="no-touch-enable" image="/images/thumbtack-solid.png"></ImageView>
+                    <ImageView class="no-touch-enable" image="{image}" defaultImage="/images/logo.png"></ImageView>
                     <Label class="mt-10 text-center no-touch-enable" text="{title}"></Label>
                     <Label class="m-3 h-auto text-justify no-touch-enable" text="{content}"></Label>
                 </View>

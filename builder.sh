@@ -8,7 +8,8 @@ ios() {
     DISTRIBUTION_NAME="Apple Distribution: SOPORTTEC SERVICIOS INFORMATICOS INTEGRADOS PARA EMPRESAS SL (WDS48L3DS9)"
     PP_UUID="20bb2139-0cd2-4a65-8195-fc4b5421e4c0"
 
-    appc run -p ios -T dist-appstore --log-level info --project-dir "$PROJECT_DIR" --distribution-name "$DISTRIBUTION_NAME" --pp-uuid "$PP_UUID"
+    # appc run -p ios -T dist-appstore --log-level info --project-dir "$PROJECT_DIR" --distribution-name "$DISTRIBUTION_NAME" --pp-uuid "$PP_UUID"
+    ti build -f --platform ios --project-dir "$PROJECT_DIR" --deploy-type production --distribution-name "$DISTRIBUTION_NAME" --keychain --pp-uuid "$PP_UUID" --target dist-appstore --no-progress-bars --no-prompt --no-banner --prompt-type socket-bundle --prompt-port 53711
 }
 
 # ANDROID

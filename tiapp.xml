@@ -12,7 +12,7 @@
     <navbar-hidden>true</navbar-hidden>
     <analytics>false</analytics>
     <transpile>true</transpile>
-    <guid>af6f65e8-8a1f-46c9-9999-68786e7564e3</guid>
+    <guid>ABC1C1AF-F34C-4EF3-A410-3997FEB6E980</guid>
     <property name="ti.ui.defaultunit" type="string">dp</property>
     <property name="run-on-main-thread" type="bool">true</property>
     <property name="ti.android.root.reappears.restart" type="bool">true</property>
@@ -101,5 +101,4 @@
     <plugins>
         <plugin version="1.0">ti.alloy</plugin>
     </plugins>
-    <property name="appc-app-id" type="string">601137cfcfdd36727762736f</property>
 </ti:app>

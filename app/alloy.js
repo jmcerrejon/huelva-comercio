@@ -81,7 +81,7 @@ if (OS_IOS) {
 // Push notifications
 require('notifications')();
 
-Alloy.Globals.top = OS_IOS ? (Alloy.Globals.Device.isiPhoneX ? 40 : 20) : 0;
+Alloy.Globals.top = OS_IOS ? (Alloy.Globals.Device.isiPhoneX ? 20 : 0) : 0;
 Alloy.Globals.footerHeight = OS_IOS
     ? Alloy.Globals.Device.isiPhoneX
         ? 74

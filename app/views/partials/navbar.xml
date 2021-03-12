@@ -1,5 +1,5 @@
 <Alloy>
-    <View id="vwBody" class="w-full h-18 mt-2 vertical">
+    <View id="vwBody" class="w-full h-18 vertical" top="Alloy.Globals.top">
 
         <!-- Navigation Bar buttons -->
 

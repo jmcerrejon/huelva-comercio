@@ -3,10 +3,6 @@
 	backgroundColor: Alloy.CFG.COLORS.bg_default,
 }
 
-"#settings[if=Alloy.Globals.Device.isiPhoneX]": {
-	top: -37
-}
-
 "#settings[platform=android]": {
 	layout: "vertical",
 	backgroundColor: Alloy.CFG.COLORS.white

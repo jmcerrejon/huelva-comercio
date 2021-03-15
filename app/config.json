@@ -35,8 +35,8 @@
         "logEnable": true
     },
     "env:development": {
-        "baseapi": "http://comm.test/api/",
-        "baseurl": "http://comm.test"
+        "baseapi": "https://ceca.soporttec.es/api/",
+        "baseurl": "https://ceca.soporttec.es"
     },
     "env:test": {
         "baseapi": "http://comm.test/api/",

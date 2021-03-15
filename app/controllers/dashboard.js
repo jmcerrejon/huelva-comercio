@@ -49,12 +49,12 @@ let oldTab = 'main';
 
     Alloy.Globals.events.off('popToRootWindow');
     Alloy.Globals.events.off('openWindowInTab');
-    Alloy.Globals.privateAreaWin = $.nwPrivateArea;
-    Alloy.Globals.affiliatesWin = $.nwAffiliates;
+    Alloy.Globals.privateAreaWin = $.communications;
+    Alloy.Globals.affiliatesWin = $.affiliates;
     Alloy.Globals.offersWin = $.offers;
     if (OS_IOS) {
-        if ($.nwPrivateArea) $.nwPrivateArea.hideNavBar();
-        if ($.nwAffiliates) $.nwAffiliates.hideNavBar();
+        if ($.communicationsCtrl) $.communicationsCtrl.hideNavBar();
+        if ($.affiliatesCtrl) $.affiliatesCtrl.hideNavBar();
     }
 })();
 

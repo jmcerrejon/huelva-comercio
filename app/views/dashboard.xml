@@ -8,22 +8,18 @@
             </Window>
         </Tab>
         <Tab id="communications" if="Alloy.Globals.isAffiliate">
-            <NavigationWindow id="nwPrivateArea" module="navigationWindow">
-                <Window id="communicationsCtrl" class="defaultWinProp" onFocus="focusWindow">
-                    <View id="communicationsContent" opacity="0">
-                        <Require src="/affiliates/communications"></Require>
-                    </View>
-                </Window>
-            </NavigationWindow>
+            <Window id="communicationsCtrl" class="defaultWinProp" onFocus="focusWindow">
+                <View id="communicationsContent" opacity="0">
+                    <Require src="/affiliates/communications"></Require>
+                </View>
+            </Window>
         </Tab>
         <Tab id="affiliates">
-            <NavigationWindow id="nwAffiliates" module="navigationWindow">
-                <Window id="affiliatesCtrl" class="defaultWinProp" onFocus="focusWindow">
-                    <View id="affiliatesContent" opacity="0">
-                        <Require src="/affiliates/affiliates"></Require>
-                    </View>
-                </Window>
-            </NavigationWindow>
+            <Window id="affiliatesCtrl" class="defaultWinProp" onFocus="focusWindow">
+                <View id="affiliatesContent" opacity="0">
+                    <Require src="/affiliates/affiliates"></Require>
+                </View>
+            </Window>
         </Tab>
         <Tab id="offers">
             <Window id="offersCtrl" class="defaultWinProp" onFocus="focusWindow">

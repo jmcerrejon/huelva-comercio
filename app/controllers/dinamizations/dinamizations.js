@@ -3,11 +3,10 @@
         $.vwGuest.width = $.vwGuest.height = 0;
         $.scrDinamizations.width = '100%';
         $.scrDinamizations.height = '85%';
+        Alloy.Collections['dinamizations'].fetch({
+            success: (res) => {},
+        });
     }
-
-    Alloy.Collections['dinamizations'].fetch({
-        success: (res) => {},
-    });
 })($.args);
 
 function doOpenSign(params) {

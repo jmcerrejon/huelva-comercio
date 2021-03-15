@@ -1,4 +1,4 @@
-// const fcm = require('firebase.cloudmessaging');
+const fcm = require('firebase.cloudmessaging');
 const isANewRegistry = true;
 const maxTrySignIn = 3;
 
@@ -35,7 +35,7 @@ function doRegister() {
         },
         function (response) {
             if (response.success) {
-                Alloy.Globals.showMessage(
+                alert(
                     'Revise la bandeja de su correo electrónico y valide su usuario.',
                     'Registro'
                 );
@@ -64,10 +64,7 @@ function doSignIn(e) {
                     return;
                 }
 
-                Alloy.Globals.showMessage(
-                    response.content.message,
-                    'Sin acceso'
-                );
+                alert(response.content.message, 'Sin acceso');
                 return;
             }
             saveUserAndConnect(response.data);
@@ -99,10 +96,7 @@ function sendChangePassword() {
                 email: $.txtEmail.value,
             },
             (response) => {
-                Alloy.Globals.showMessage(
-                    response.message,
-                    'Cambio de contraseña'
-                );
+                alert(response.message, 'Cambio de contraseña');
             }
         );
     });
@@ -111,15 +105,12 @@ function sendChangePassword() {
 
 function canSubmit(isRegister = false) {
     if (!$.txtEmail.hasText() || !$.txtPassword.hasText()) {
-        Alloy.Globals.showMessage('Rellene los campos');
+        alert('Rellene los campos');
         return false;
     }
 
     if (!require('core').valideEmail($.txtEmail.value)) {
-        Alloy.Globals.showMessage(
-            'El Email no tiene un formato correcto.',
-            'Email inválido'
-        );
+        alert('El Email no tiene un formato correcto.', 'Email inválido');
 
         return false;
     }
@@ -127,9 +118,7 @@ function canSubmit(isRegister = false) {
     if (isRegister) {
         console.log(`isRegister = ${isRegister}`);
         if ($.accept_privacy.getValue() === false) {
-            Alloy.Globals.showMessage(
-                'Primero debe aceptar las condiciones de privacidad.'
-            );
+            alert('Primero debe aceptar las condiciones de privacidad.');
             return false;
         }
     }

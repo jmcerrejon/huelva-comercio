@@ -1,11 +1,11 @@
 <Alloy>
-    <View class="w-full h-full vertical" backgroundImage="/images/backgrounds/AqueuxAqua.jpg">
+    <View class="w-full h-full vertical">
 
         <!-- Navigation Bar buttons -->
 
         <Require id="reqNavbar" src="/partials/navbar" title="Asociados" rightIcon="text-2xl text-white lni lni-search-alt" onClick="doSearchAffiliate"></Require>
 
-        <ListView id="lView" class="bg-white w-full h-full" onItemclick="doOpenAffiliates" defaultItemTemplate="defaultTemplate">
+        <ListView id="lView" class="w-11/12 vertical bg-white -mt-5" onItemclick="doOpenAffiliates" defaultItemTemplate="defaultTemplate">
             <RefreshControl id="refreshListView" onRefreshstart="reset"/>
 
             <Widget id="is" src="nl.fokkezb.infiniteScroll" onEnd="myLoaderAssociations"/>

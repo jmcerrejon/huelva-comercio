@@ -1,6 +1,6 @@
 <Alloy>
 
-    <View class="w-full h-full vertical" backgroundImage="/images/backgrounds/AqueuxAqua.jpg">
+    <View class="w-full h-full vertical">
 
         <!-- Navigation Bar buttons -->
 
@@ -8,7 +8,7 @@
 
         <!-- Body -->
 
-        <ListView id="listView" class="w-full vertical bg-white" height="90%" onItemclick="doOpenPost" defaultItemTemplate="defaultTemplate">
+        <ListView id="listView" class="w-11/12 vertical bg-white -mt-5" height="90%" onItemclick="doOpenPost" defaultItemTemplate="defaultTemplate">
             <RefreshControl id="refreshListView" onRefreshstart="reset"/>
 
             <Widget id="is" src="nl.fokkezb.infiniteScroll" onEnd="myLoader"/>

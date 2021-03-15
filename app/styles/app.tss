@@ -58,6 +58,10 @@
     orientationModes: [Ti.UI.PORTRAIT]
 }
 
+"ListView" : {
+    showVerticalScrollIndicator: false
+}
+
 "NavigationWindow" : {
     orientationModes: [Ti.UI.PORTRAIT]
 }

@@ -1,6 +1,6 @@
 <Alloy>
     <ScrollView id="scrollView">
-        <View class="w-full h-full vertical" backgroundImage="/images/backgrounds/AqueuxAqua.jpg">
+        <View class="w-full h-full vertical">
 
             <!-- Navigation Bar buttons -->
 

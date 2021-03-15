@@ -42,6 +42,10 @@
     windowSoftInputMode: Ti.UI.Android.SOFT_INPUT_ADJUST_PAN
 }
 
+"ListView" : {
+    showVerticalScrollIndicator: false
+}
+
 "Window" : {
     navBarHidden: true,
     backgroundColor: "white",
@@ -69,11 +73,6 @@
 "ListItem[platform=ios]" : {
     selectionStyle: Ti.UI.iOS.ListViewCellSelectionStyle.NONE,
     selectedBackgroundColor: "transparent"
-}
-
-"ScrollView" : {
-    contentWidth: "100%",
-    scrollType: "vertical"
 }
 
 "SearchBar" : {

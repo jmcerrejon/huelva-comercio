@@ -1,5 +1,10 @@
 <Alloy>
-    <View id="vwBody" class="w-full h-18 vertical" top="Alloy.Globals.top">
+    <View id="vwBody" class="w-full h-18 vertical mt-0" zIndex="-1" backgroundImage="/images/backgrounds/AqueuxAqua.jpg">
+
+        <!-- Top margin -->
+
+        <View class="w-full h-auto vertical test" top="Alloy.Globals.top">
+        </View>
 
         <!-- Navigation Bar buttons -->
 

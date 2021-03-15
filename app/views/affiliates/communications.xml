@@ -1,11 +1,11 @@
 <Alloy>
-    <View class="w-full h-full vertical" backgroundImage="/images/backgrounds/AqueuxAqua.jpg">
+    <View class="w-full h-full vertical">
 
         <!-- Navigation Bar buttons -->
 
         <Require id="reqNavbar" src="/partials/navbar" title="Comunicaciones"></Require>
 
-        <ListView id="listView" class="bg-white w-full h-full" defaultItemTemplate="defaultTemplate">
+        <ListView id="listView" class="bg-white w-11/12 h-full -mt-5" defaultItemTemplate="defaultTemplate">
             <RefreshControl id="refreshListView" onRefreshstart="reset" />
 
             <Widget id="is" src="nl.fokkezb.infiniteScroll" onEnd="myLoader" />

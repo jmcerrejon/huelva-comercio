@@ -1,6 +1,6 @@
 <Alloy>
 
-    <View class="w-full h-full vertical" backgroundImage="/images/backgrounds/AqueuxAqua.jpg">
+    <View class="w-full h-full vertical">
 
         <!-- Navigation Bar buttons -->
 
@@ -8,7 +8,7 @@
 
         <!-- Body -->
 
-        <View class="w-full h-full vertical bg-white">
+        <View class="w-11/12 h-full vertical bg-white -mt-5">
             <View id="vwGuest" class="w-full h-auto vertical">
                 <ImageView class="w-1/2" image="images/candidates.png"></ImageView>
 
@@ -23,7 +23,9 @@
                 <View id="vwDinamizacions" class="vertical w-full h-auto" dataCollection="dinamizations">
                     <View class="vertical w-full h-auto" id="vwContainer" itemLink="{link}" onClick="doOpenURL">
                         <ImageView class="no-touch-enable" image="{image}" defaultImage="/images/logo.png"></ImageView>
+
                         <Label class="mt-10 text-center no-touch-enable" text="{title}"></Label>
+
                         <Label class="m-3 h-auto text-justify no-touch-enable" text="{content}"></Label>
                     </View>
                 </View>

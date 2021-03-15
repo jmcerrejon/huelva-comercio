@@ -107,10 +107,6 @@
                     Ti.App.Properties.setString('deviceToken', e.fcmToken);
                     Alloy.Globals.deviceToken = e.fcmToken;
 
-                    if (ENV_DEV) {
-                        console.log('Subscribed for test...');
-                        fcm.subscribeToTopic('test');
-                    }
                     fcm.subscribeToTopic('news');
                     fcm.subscribeToTopic('events');
                 }

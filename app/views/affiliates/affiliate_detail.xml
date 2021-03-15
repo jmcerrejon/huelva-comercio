@@ -3,7 +3,7 @@
         <Require id="navbar" src="/partials/_navbar" onClick="doActionNavbar"></Require>
 
         <ScrollView class="scrollView">
-            <View id="vwEdit" class="v_container" height="0">
+            <View id="vwEdit" class="v_container" height="0" width="0">
                 <Label class="font12Light main-color" width="Ti.UI.FILL" text="Desde aquí podrá actualizar los datos que tenemos de su empresa. Se actualizarán automáticamente para todos los afiliados."></Label>
 
                 <View class="logoContainer" onClick="changeLogo" height="Ti.UI.SIZE" width="Ti.UI.SIZE">

@@ -2,7 +2,7 @@
     if (!Alloy.Globals.guest) {
         $.vwGuest.width = $.vwGuest.height = 0;
         $.scrDinamizations.width = '100%';
-        $.scrDinamizations.height = '85%';
+        $.scrDinamizations.height = '100%';
         Alloy.Collections['dinamizations'].fetch({
             success: (res) => {},
         });

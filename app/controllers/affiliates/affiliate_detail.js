@@ -50,6 +50,10 @@ let updateAffiliate = false;
 })($.args);
 
 function handleImageLogo(logo = null) {
+    if (_.isUndefined($.vw_logo)) {
+        return;
+    }
+
     !logo
         ? ($.vw_logo.height = 0)
         : ($.logoEdit.image = $.logoShow.image = logo);
@@ -65,6 +69,9 @@ function canEdit(affiliateId) {
 function renderElements(item, argsData) {
     const tmpElements = argsData.filter((element) => Boolean(element));
 
+    if (_.isUndefined($['lb_' + item])) {
+        return;
+    }
     if (tmpElements.length == 0) {
         $['vw_' + item].height = 0;
         return;

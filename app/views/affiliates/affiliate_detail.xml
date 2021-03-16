@@ -1,5 +1,5 @@
 <Alloy>
-    <Window id="wAffiliateDetail" class="v_container">
+    <Window id="wAffiliateDetail" class="v_container" tabBarHidden="true">
         <Require id="reqNavbar" src="/partials/navbar" title="$.args.data.name" leftIcon="text-2xl text-white fas fa-chevron-left" onLogin="close"></Require>
 
         <ScrollView class="scrollView bg-white">

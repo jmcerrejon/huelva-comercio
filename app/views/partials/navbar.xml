@@ -1,23 +1,23 @@
 <Alloy>
-    <View id="vwBody" class="w-full h-18 vertical mt-0" zIndex="-1" backgroundImage="/images/backgrounds/AqueuxAqua.jpg">
+    <View id="vwBody" class="w-full h-18 vertical mt-0" zIndex="-1" backgroundImage="/images/backgrounds/AqueuxAqua_navbar.jpg" backgroundRepeat="false">
 
         <!-- Top margin -->
 
-        <View class="w-full h-auto vertical test" top="Alloy.Globals.top">
+        <View class="w-full h-auto vertical" top="Alloy.Globals.top">
         </View>
 
         <!-- Navigation Bar buttons -->
 
-        <View class="w-full h-8 mt-6 horizontal">
-            <View id="vwLeftIcon" class="w-1/5 h-auto" onClick="doLogin">
+        <View class="w-full h-12 mt-4 horizontal">
+            <View id="vwLeftIcon" class="w-1/6 h-auto" onClick="doLogin">
                 <Label id="lblLeftButton"></Label>
             </View>
 
-            <View class="w-3/5 h-auto vertical">
-                <Label id="lblTitle" class="text-xl text-white" text="$.args.title"></Label>
+            <View class="w-4/6 h-12 vertical">
+                <Label id="lblTitle" class="h-12 text-xl text-white text-center" text="$.args.title"></Label>
             </View>
 
-            <View class="w-1/5 h-auto" onClick="toggleViewSearchVisibility">
+            <View class="w-1/6 h-auto" onClick="toggleViewSearchVisibility">
                 <Label id="lblRightButton"></Label>
             </View>
         </View>

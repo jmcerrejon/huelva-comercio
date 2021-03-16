@@ -47,6 +47,7 @@ let updateAffiliate = false;
         args.data.email3,
     ]);
     renderElements('websites', [args.data.web]);
+    $.wAffiliateDetail.tabBarHidden = true;
 })($.args);
 
 function handleImageLogo(logo = null) {

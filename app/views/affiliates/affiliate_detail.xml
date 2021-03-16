@@ -1,8 +1,8 @@
 <Alloy>
     <Window id="wAffiliateDetail" class="v_container">
-        <Require id="navbar" src="/partials/_navbar" onClick="doActionNavbar"></Require>
+        <Require id="reqNavbar" src="/partials/navbar" title="$.args.data.name" leftIcon="text-2xl text-white fas fa-chevron-left" onLogin="close"></Require>
 
-        <ScrollView class="scrollView">
+        <ScrollView class="scrollView bg-white">
             <View id="vwEdit" class="v_container" height="0" width="0">
                 <Label class="font12Light main-color" width="Ti.UI.FILL" text="Desde aquí podrá actualizar los datos que tenemos de su empresa. Se actualizarán automáticamente para todos los afiliados."></Label>
 
@@ -44,25 +44,25 @@
 
                 <View id="vw_address" class="v_container" onClick="doAction">
                     <Label class="fa icons no-touch-enable" text="\uf5a0"/>
-                    <Label id="lb_address" class="text-center main-color no-touch-enable" top="5"> - </Label>
+                    <Label id="lb_address" class="text-center main-color no-touch-enable w-full" top="5"> - </Label>
                     <View class="separator-min no-touch-enable"></View>
                 </View>
 
                 <View id="vw_phones" class="v_container" onClick="doAction">
                     <Label class="fa icons no-touch-enable" text="\uf095"/>
-                    <Label id="lb_phones" class="text-center main-color no-touch-enable" top="5"> - </Label>
+                    <Label id="lb_phones" class="text-center main-color no-touch-enable w-full" top="5"> - </Label>
                     <View class="separator-min no-touch-enable"></View>
                 </View>
 
                 <View id="vw_emails" class="v_container" onClick="doAction">
                     <Label class="headerSection no-touch-enable">E-MAIL</Label>
-                    <Label id="lb_emails" class="text-center main-color no-touch-enable" top="5"> - </Label>
+                    <Label id="lb_emails" class="text-center main-color no-touch-enable w-full" top="5"> - </Label>
                     <View class="separator-min no-touch-enable"></View>
                 </View>
 
                 <View id="vw_websites" class="v_container" onClick="doAction">
                     <Label class="headerSection no-touch-enable">WEB</Label>
-                    <Label id="lb_websites" class="text-center main-color no-touch-enable" top="5"> - </Label>
+                    <Label id="lb_websites" class="text-center main-color no-touch-enable w-full" top="5"> - </Label>
                     <View class="separator-min no-touch-enable"></View>
                 </View>
 

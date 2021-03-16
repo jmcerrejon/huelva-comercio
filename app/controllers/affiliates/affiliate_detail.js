@@ -37,7 +37,7 @@ let updateAffiliate = false;
         });
     }
 
-    $.navbar.load(options);
+    // $.navbar.load(options);
 
     renderElements('address', [args.data.address]);
     renderElements('phones', [args.data.phone1, args.data.phone2]);
@@ -114,11 +114,11 @@ function doActionNavbar(e) {
 
 function editMode() {
     editModeEnable = !editModeEnable;
-    $.navbar.load({
-        btnRight: {
-            title: editModeEnable ? '\uf06e' : '\uf044',
-        },
-    });
+    // $.navbar.load({
+    //     btnRight: {
+    //         title: editModeEnable ? '\uf06e' : '\uf044',
+    //     },
+    // });
     $.vwEdit.height = editModeEnable ? Ti.UI.SIZE : '0';
     $.vwShow.height = editModeEnable ? '0' : Ti.UI.SIZE;
 }

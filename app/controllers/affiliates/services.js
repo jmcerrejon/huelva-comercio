@@ -7,3 +7,7 @@
 function doOpenURL(params) {
     Ti.Platform.openURL(params.source.itemLink);
 }
+
+function close() {
+    $.services.close();
+}

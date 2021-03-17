@@ -191,7 +191,7 @@ function resume(e) {
     }
 
     if (OS_IOS) {
-        Ti.UI.iOS.setAppBadge(0);
+        Ti.UI.iOS.appBadge = 0;
     }
 
     if (OS_ANDROID) {

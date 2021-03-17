@@ -4,16 +4,6 @@ const fcm = require('firebase.cloudmessaging');
 let showHiddenInfoCounter = 0;
 
 (function constructor() {
-    $.navbar.load({
-        btnLeft: {
-            title: '\uf00d',
-            visible: true,
-        },
-        title: {
-            visible: true,
-            text: 'Ajustes',
-        },
-    });
     renderView();
     getGlobalVariableInfo();
 })();
@@ -28,30 +18,19 @@ function close() {
 function saveSettings() {
     Ti.App.Properties.setObject('settings', settings);
 
-    Alloy.Globals.Api.updateNotificationSettings(
-        {
-            device_token: Alloy.Globals.deviceToken,
-            body: {
-                enabled_notif_news: settings['news'] ? 1 : 0,
-                enabled_notif_events: settings['events'] ? 1 : 0,
-                enabled_notif_demands: settings['demands'] ? 1 : 0,
-            },
-        },
-        (response) => {
-            settings['news']
-                ? fcm.subscribeToTopic('news')
-                : fcm.unsubscribeFromTopic('news');
-            settings['events']
-                ? fcm.subscribeToTopic('events')
-                : fcm.unsubscribeFromTopic('events');
-            if (!Alloy.Globals.guest) {
-                const sectorId = user.association.sector_id;
-                settings['demands']
-                    ? fcm.subscribeToTopic(`sector_${sectorId}`)
-                    : fcm.unsubscribeFromTopic(`sector_${sectorId}`);
-            }
-        }
-    );
+    // TODO Handle notifications. Refactor this.
+    settings['news']
+        ? fcm.subscribeToTopic('news')
+        : fcm.unsubscribeFromTopic('news');
+    settings['events']
+        ? fcm.subscribeToTopic('events')
+        : fcm.unsubscribeFromTopic('events');
+    // if (!Alloy.Globals.guest) {
+    //     const sectorId = user.association.sector_id;
+    //     settings['demands']
+    //         ? fcm.subscribeToTopic(`sector_${sectorId}`)
+    //         : fcm.unsubscribeFromTopic(`sector_${sectorId}`);
+    // }
 }
 
 function renderView() {

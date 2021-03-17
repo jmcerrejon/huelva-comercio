@@ -99,18 +99,9 @@
 
             console.log('Token mismatch... Refreshing token!: ' + e.fcmToken);
 
-            Alloy.Globals.Api.sendDeviceToken4Notifications(
-                {
-                    device_token: e.fcmToken,
-                },
-                (response) => {
-                    Ti.App.Properties.setString('deviceToken', e.fcmToken);
-                    Alloy.Globals.deviceToken = e.fcmToken;
-
-                    fcm.subscribeToTopic('news');
-                    fcm.subscribeToTopic('events');
-                }
-            );
+            Ti.App.Properties.setString('deviceToken', e.fcmToken);
+            Alloy.Globals.deviceToken = e.fcmToken;
+            fcm.subscribeToTopic('news');
         }
 
         function onMessage(response) {

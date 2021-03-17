@@ -15,6 +15,7 @@ Alloy.Globals.guest = Ti.App.Properties.getBool('guest', false);
 Alloy.Globals.isAffiliate = Ti.App.Properties.getBool('isAffiliate', false);
 Alloy.Globals.background = Ti.App.Properties.getBool('background', false);
 Alloy.Globals.candidate = Ti.App.Properties.getObject('candidate', null);
+Alloy.Globals.tabGroup = null;
 Alloy.Globals.privateAreaWin = null;
 Alloy.Globals.affiliatesWin = null;
 Alloy.Globals.androidDataPush = null;

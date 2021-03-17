@@ -49,6 +49,7 @@ let oldTab = 'main';
 
     Alloy.Globals.events.off('popToRootWindow');
     Alloy.Globals.events.off('openWindowInTab');
+    Alloy.Globals.tabGroup = $.tabGroup;
     Alloy.Globals.privateAreaWin = $.communications;
     Alloy.Globals.affiliatesWin = $.affiliates;
     Alloy.Globals.offersWin = $.offers;

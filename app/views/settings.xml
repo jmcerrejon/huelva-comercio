@@ -1,8 +1,6 @@
 <Alloy>
-    <Window id="settings">
-        <View class="vNavBar">
-            <Require id="navbar" src="/partials/_navbar" onClick="close"></Require>
-        </View>
+    <Window id="settings" class="vertical" navBarHidden="true" tabBarHidden="true">
+        <Require id="reqNavbar" src="/partials/navbar" title="Ajustes" leftIcon="text-2xl text-white fas fa-chevron-left" onLogin="close"></Require>
         <ListView id="elementsList" defaultItemTemplate="default" onItemclick="doSelectOption" canScroll="false">
             <Templates>
                 <ItemTemplate name="default">

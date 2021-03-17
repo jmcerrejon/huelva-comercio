@@ -149,6 +149,10 @@ function saveUserAndConnect(user = null) {
     Ti.App.Properties.setBool('isAffiliate', hasAffiliate);
     Alloy.Globals.isAffiliate = hasAffiliate;
 
+    if (hasAffiliate) {
+        Alloy.Globals.isLeadership = !!user.affiliate.leaderships;
+    }
+
     Ti.App.Properties.setBool('guest', _.isNull(user));
     Alloy.Globals.guest = _.isNull(user);
 
@@ -201,6 +205,12 @@ function printGlobalVars() {
             Ti.App.Properties.getBool('isAffiliate') +
             ' | Alloy.Globals.isAffiliate = ' +
             Alloy.Globals.isAffiliate
+    );
+    console.log(
+        'is leadership = ' +
+            Ti.App.Properties.getBool('isLeadership') +
+            ' | Alloy.Globals.isLeadership = ' +
+            Alloy.Globals.isLeadership
     );
 }
 

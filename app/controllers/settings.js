@@ -69,11 +69,13 @@ function initSwitchNotifications() {
     itemDemands = section.getItemAt(2);
 
     itemNew.swAmIAvailable.value = settings.news;
-    // itemEvents.swAmIAvailable.value = settings.events;
+    if (!_.isUndefined(itemEvents)) {
+        itemEvents.swAmIAvailable.value = settings.events;
+    }
     // itemDemands.swAmIAvailable.value = settings.demands;
 
     section.updateItemAt(0, itemNew);
-    // section.updateItemAt(1, itemEvents);
+    section.updateItemAt(1, itemEvents);
     // section.updateItemAt(2, itemDemands);
 }
 

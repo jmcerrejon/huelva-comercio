@@ -281,9 +281,11 @@ function removeProperties() {
     Ti.App.Properties.removeProperty('');
     Ti.App.Properties.setBool('guest', true);
     Ti.App.Properties.setBool('isAffiliate', false);
+    Ti.App.Properties.setBool('isLeadership', false);
     Ti.App.Properties.setObject('user', null);
     Alloy.Globals.guest = true;
     Alloy.Globals.isAffiliate = false;
+    Alloy.Globals.isLeadership = false;
     Alloy.Globals.token = Alloy.Globals.deviceToken = Alloy.Globals.user = null;
     Ti.App.Properties.setBool('isConnected', false);
     Alloy.Globals.events.off();

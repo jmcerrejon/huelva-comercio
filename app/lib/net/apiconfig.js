@@ -40,7 +40,7 @@ exports.config = {
         },
         {
             name: 'me',
-            post: 'auth/me',
+            post: 'me',
             onError: (response, callback) => {
                 if (_.isFunction(callback)) {
                     callback(response);

@@ -148,16 +148,13 @@ function setAlertDialogProperties() {
 }
 
 function doOpenSettings() {
-    const view = Alloy.createController('settings').getView();
-    view.open(
-        OS_IOS
-            ? {
-                  modal: true,
-                  modalTransitionStyle:
-                      Titanium.UI.iOS.MODAL_TRANSITION_STYLE_COVER_VERTICAL,
-              }
-            : {}
-    );
+    if (OS_IOS) {
+        Alloy.Globals.tabGroup.tabs[0].openWindow(
+            Alloy.createController('settings').getView()
+        );
+    } else {
+        Alloy.createController('settings').getView().open();
+    }
 }
 
 function doOpenLink(banner) {
@@ -244,4 +241,21 @@ function doLogin() {
                   }
                 : {}
         );
+}
+
+function openView({model, index, path}) {
+    const data = Alloy.Collections[model].get(index).toJSON();
+    if (OS_IOS) {
+        Alloy.Globals.affiliatesWin.openWindow(
+            Alloy.createController(path, {
+                data,
+            }).getView()
+        );
+    } else {
+        Alloy.createController(path, {
+            data,
+        })
+            .getView()
+            .open();
+    }
 }

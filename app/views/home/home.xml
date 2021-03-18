@@ -3,11 +3,11 @@
 
         <!-- Navigation Bar buttons -->
 
-        <Require id="reqNavbar" src="/partials/navbar" title="Inicio" leftIcon="text-2xl text-white lni lni-user" rightIcon="text-2xl text-white lni lni-search-alt" onLogin="doLogin" onClick="doFilter"></Require>
+        <Require id="reqNavbar" src="/partials/navbar" title="Inicio" leftIcon="text-2xl text-white lni lni-user" rightIcon="text-2xl text-white lni lni-search-alt" filterVisibility="text-2xl text-white fas fa-filter" onLogin="doLogin" onClick="doSearch" onFilter="doFilter"></Require>
 
         <!-- Body -->
 
-        <ListView id="listView" class="w-11/12 vertical bg-white -mt-5" height="90%" onItemclick="doOpenPost" defaultItemTemplate="defaultTemplate">
+        <ListView id="listView" class="w-11/12 vertical bg-white -mt-5" separatorStyle="Ti.UI.TABLE_VIEW_SEPARATOR_STYLE_NONE" height="90%" onItemclick="doOpenPost" defaultItemTemplate="defaultTemplate">
             <RefreshControl id="refreshListView" onRefreshstart="reset"/>
 
             <Widget id="is" src="nl.fokkezb.infiniteScroll" onEnd="myLoader"/>
@@ -26,18 +26,18 @@
 
                 <ItemTemplate name="defaultTemplate">
                     <View bindId="viewPost" class="w-full h-auto mb-3 bg-white">
-                        <View class="w-11/12 bg-white border-gray-400 rounded-lg vertical clip-enabled">
+                        <View bindId="vwContainer" class="w-11/12 bg-white rounded-xl vertical clip-enabled">
                             <View class="w-full h-52 shadow-md" bindId="image" id="image">
                             </View>
 
                             <View class="h-auto m-3 text-gray-600 vertical">
                                 <View class="w-screen horizontal">
-                                    <Label bindId="postTitle" id="postTitle" class="w-full text-2xl font-thin text-gray-600">Card Content</Label>
+                                    <Label bindId="postTitle" id="postTitle" class="w-full text-2xl font-thin text-gray-600">Contenido Exclusivo</Label>
 
-                                    <Label bindId="postDateFormatted" class="w-full text-right mb-2 text-sm font-semibold text-gray-500">Nov 3rd, 2019</Label>
+                                    <Label bindId="postDateFormatted" class="w-full text-right mb-2 text-sm font-semibold text-gray-500"></Label>
                                 </View>
 
-                                <Label bindId="postBody" id="postBody" class="w-screen font-normal text-gray-500 text-justify">This is some card content to demonstrate how the cards work.</Label>
+                                <Label bindId="postBody" id="postBody" class="w-screen font-normal text-gray-500 text-justify">¡Regístrate para obtener información sobre ofertas y descuentos!</Label>
                             </View>
                         </View>
                     </View>
@@ -50,6 +50,10 @@
                         <ScrollableView class="w-full h-auto mb-4 bg-white" id="scrollableView" dataCollection="banners" onSingletap="doOpenLink" onTouchstart="touchStart">
                             <ImageView image="{img_path}" url="{url}" ns="AvImageview"></ImageView>
                         </ScrollableView>
+
+                        <View id="vwRegisterWarning" if="Alloy.Globals.guest" class="w-11/12 h-auto vertical test rounded-lg mb-2" onClick="doLogin">
+                            <Label class="w-full h-auto text-center text-red-500 mt-2 mb-2">¡Regístrate para obtener información sobre ofertas y descuentos!</Label>
+                        </View>
                     </View>
                 </HeaderView>
                 <ListItem template="bannerHeader"></ListItem>
@@ -58,7 +62,7 @@
                 <ListItem template="noNewsFound"></ListItem>
             </ListSection>
             <ListSection dataCollection="news" dataTransform="transformCollection">
-                <ListItem itemId="{id}" image:backgroundImage="{image}" viewPost:url="{link}" postTitle:text="{title}" postDateFormatted:text="{date_formatted}" postBody:text="{content}" />
+                <ListItem itemId="{id}" image:backgroundImage="{image}" vwContainer:borderColor="{exclusive}" viewPost:url="{link}" postTitle:text="{title}" postDateFormatted:text="{date_formatted}" postBody:text="{content}" />
 
                 <FooterView>
                     <View id="lvwFooter" class="w-full h-10">

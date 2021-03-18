@@ -38,8 +38,8 @@
                     </View>
                 </View>
 
-                <View class="w-1/5 h-10">
-                    <!-- <Label class="text-2xl text-white fas fa-filter"></Label> -->
+                <View class="w-1/5 h-10" onClick="doFilter">
+                    <Label id="lblFilter"></Label>
                 </View>
             </View>
         </View>

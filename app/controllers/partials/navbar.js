@@ -6,17 +6,20 @@ const debouncedToggleViewSearchVisibility = _.debounce(
     true
 );
 
-(function constructor() {
-    if (_.isUndefined($.args.title)) {
+(function constructor(args) {
+    if (_.isUndefined(args.title)) {
         $.lblTitle.text = 'Principal';
     }
-    if (!_.isUndefined($.args.leftIcon)) {
-        $.addClass($.lblLeftButton, $.args.leftIcon);
+    if (!_.isUndefined(args.leftIcon)) {
+        $.addClass($.lblLeftButton, args.leftIcon);
     }
-    if (!_.isUndefined($.args.rightIcon)) {
-        $.addClass($.lblRightButton, $.args.rightIcon);
+    if (!_.isUndefined(args.rightIcon)) {
+        $.addClass($.lblRightButton, args.rightIcon);
     }
-})();
+    if (!_.isUndefined(args.filterVisibility)) {
+        $.addClass($.lblFilter, args.filterVisibility);
+    }
+})($.args);
 
 function handleSearchView() {
     debouncedToggleViewSearchVisibility();
@@ -43,6 +46,10 @@ function toggleViewSearchVisibility() {
 
 function doLogin(params) {
     $.trigger('login');
+}
+
+function doFilter() {
+    $.trigger('filter');
 }
 
 function doAction(e) {

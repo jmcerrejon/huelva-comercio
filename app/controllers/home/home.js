@@ -18,6 +18,7 @@ const cantShare = false;
     });
     Alloy.Collections.news.fetch({
         page: currentPage++,
+        guest: Alloy.Globals.guest,
         success: (res) => {
             Alloy.Globals.loading.hide(); // It comes from login.js
             renderNotFoundTemplate(res.length);
@@ -190,8 +191,16 @@ function openURL(url, title = 'CECA (web)', share) {
 
 function transformCollection(model) {
     let modelJSON = model.toJSON();
+    const isExclusive = modelJSON['exclusive'];
+
+    // if (Alloy.Globals.guest === true && isExclusive) {
+    //     modelJSON = {};
+    // }
+    // modelJSON['exclusive'] = isExclusive ? 'red' : 'gray';
     modelJSON['image'] =
-        modelJSON['image'] == '' ? '/images/logo_256.jpg' : modelJSON['image'];
+        _.isUndefined(modelJSON['image']) || modelJSON['image'] == ''
+            ? 'images/logo_256.png'
+            : modelJSON['image'];
 
     return modelJSON;
 }
@@ -211,10 +220,35 @@ function renderNotFoundTemplate(sizeData) {
 }
 
 function doFilter(e) {
+    if (Alloy.Globals.guest) {
+        Alloy.Globals.showMessage(
+            'Puedes filtrar por contenido exclusivo si eres usuario registrado',
+            'Información'
+        );
+        return;
+    }
+
+    currentPage = 1;
+    Alloy.Collections.news.fetch({
+        page: currentPage,
+        query: '',
+        guest: Alloy.Globals.guest,
+        exclusive: true,
+        success: (data) => {
+            if (data.length === 0) {
+                alert('No se encontraron resultados.');
+                reset();
+            }
+        },
+    });
+}
+
+function doSearch(e) {
     currentPage = 1;
     Alloy.Collections.news.fetch({
         page: currentPage,
         query: e.value,
+        guest: Alloy.Globals.guest,
         success: (data) => {
             if (data.length === 0) {
                 alert('No se encontraron resultados.');

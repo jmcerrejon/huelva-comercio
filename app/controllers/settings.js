@@ -6,6 +6,7 @@ let showHiddenInfoCounter = 0;
 (function constructor() {
     renderView();
     getGlobalVariableInfo();
+    setEmail();
 })();
 
 function close() {
@@ -13,6 +14,16 @@ function close() {
         saveSettings();
     }
     $.settings.close();
+}
+
+function setEmail(params) {
+    if (Alloy.Globals.user.email) {
+        $.lblEmail.text = Alloy.Globals.user.email;
+    }
+    if (Alloy.Globals.isAffiliate) {
+        $.lblAffiliateName.text = Alloy.Globals.user.affiliate.name;
+        $.addClass($.lblAffiliateName, 'w-auto h-auto text-gray-500 mt-2');
+    }
 }
 
 function saveSettings() {

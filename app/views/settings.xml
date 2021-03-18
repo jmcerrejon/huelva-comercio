@@ -1,7 +1,14 @@
 <Alloy>
     <Window id="settings" class="vertical" navBarHidden="true" tabBarHidden="true">
         <Require id="reqNavbar" src="/partials/navbar" title="Ajustes" leftIcon="text-2xl text-white fas fa-chevron-left" onLogin="close"></Require>
-        <ListView id="elementsList" defaultItemTemplate="default" onItemclick="doSelectOption" canScroll="false">
+        <View class="w-full h-auto vertical bg-white">
+            <View if="!Alloy.Globals.guest" class="w-full h-auto vertical mb-4 mt-2">
+                <Label class="text-3xl text-gray-400 lni lni-user"></Label>
+                <Label id="lblEmail" class="h-auto text-gray-500 mt-2">No registrado</Label>
+                <Label id="lblAffiliateName" class="w-0 h-0 text-gray-500"></Label>
+            </View>
+        </View>
+        <ListView id="elementsList" class="w-full" backgroundColor="#edecf2" defaultItemTemplate="default" onItemclick="doSelectOption" canScroll="true" separatorStyle="Ti.UI.TABLE_VIEW_SEPARATOR_STYLE_NONE">
             <Templates>
                 <ItemTemplate name="default">
                     <View id="itemContainer">
@@ -11,8 +18,8 @@
                     </View>
                 </ItemTemplate>
                 <ItemTemplate name="tplNotifications">
-                    <View id="mainView" class="v_container" height="Ti.UI.SIZE">
-                        <View height="50" backgroundColor="white">
+                    <View id="mainView" class="v_container w-full h-auto">
+                        <View class="w-full" height="50" backgroundColor="white">
                             <View height="Ti.UI.SIZE" left="0" width="80%">
                                 <Label bindId="lblAmIAvailable" id="lblAmIAvailable" color="black" left="15"/>
                             </View>
@@ -31,12 +38,12 @@
             </Templates>
             <ListSection>
                 <HeaderView platform="ios">
-                    <View backgroundColor="#edecf2" height="35">
+                    <View backgroundColor="#edecf2" class="w-full" height="35">
                         <Label class="lbl_settings_header">NOTIFICACIONES</Label>
                     </View>
                 </HeaderView>
                 <HeaderView platform="android">
-                    <View height="35" backgroundColor="white">
+                    <View class="w-full" height="35" backgroundColor="white">
                         <Label class="lbl_settings_header">Notificaciones</Label>
                     </View>
                 </HeaderView>
@@ -46,19 +53,19 @@
             </ListSection>
             <ListSection id="section">
                 <HeaderView platform="ios">
-                    <View backgroundColor="#edecf2" height="35">
+                    <View backgroundColor="#edecf2" class="w-full" height="35">
                         <Label class="lbl_settings_header">SESIÓN</Label>
                     </View>
                 </HeaderView>
                 <HeaderView platform="android">
-                    <View height="35" backgroundColor="white">
+                    <View height="35" backgroundColor="white" class="w-full">
                         <Label class="lbl_settings_header">Sesión</Label>
                     </View>
                 </HeaderView>
             </ListSection>
             <ListSection>
                 <HeaderView>
-                    <View backgroundColor="#edecf2" height="800" onClick="showHiddenInfo">
+                    <View id="vwContainer" backgroundColor="#edecf2" height="1000" onClick="showHiddenInfo">
                         <Label id="lblVersion" class="lbl_info">Versión</Label>
                     </View>
                 </HeaderView>

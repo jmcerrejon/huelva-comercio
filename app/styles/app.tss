@@ -607,6 +607,7 @@
 '.shadow-2xl': { viewShadowOffset: { x: 0, y: 16 }, viewShadowRadius: 16, viewShadowColor: '#77000000' }
 '.shadow-md': { viewShadowOffset: { x: 0, y: 4 }, viewShadowRadius: 4, viewShadowColor: '#77000000' }
 '.text-2xl': { font: { fontSize: 24 } }
+'.text-3xl': { font: { fontSize: 30 } }
 '.text-base': { font: { fontSize: 16 } }
 '.text-blue-400': { color: '#60a5fa' }
 '.text-blue-500': { color: '#3b82f6' }

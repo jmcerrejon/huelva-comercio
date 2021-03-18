@@ -5,8 +5,6 @@ const SCROLLABLEVIEW_HEIGHT = 175;
 const collectionName = 'newsletters';
 let pdfFile = null;
 
-// console.log(JSON.stringify($.args, null, 2));
-
 (function constructor(args) {
     Alloy.Collections[collectionName].fetch({
         page: currentPage++,
@@ -130,3 +128,7 @@ function openRemotePdf(url) {
     client.open('GET', url);
     client.send();
 }
+
+Alloy.Globals.events.on('refreshCommunications', () => {
+    reset();
+});

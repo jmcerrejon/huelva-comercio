@@ -224,7 +224,7 @@ Alloy.Globals.events.on('handle_notification', notification);
 
 function refreshNewsAndSchedule() {
     Alloy.Globals.events.trigger('refreshNews');
-    Alloy.Globals.events.trigger('refreshSchedule');
+    Alloy.Globals.events.trigger('refreshCommunications');
 }
 
 function notification(data) {
@@ -236,27 +236,19 @@ function notification(data) {
 
     switch (data.tag) {
         case 'news':
-            title = 'Noticia';
-        case 'events':
-            refreshNewsAndSchedule();
+            title = 'Ofertas y promos';
             Alloy.createController('webviewWin', {
                 url: data.url,
                 title,
             })
                 .getView()
                 .open();
-            break;
-
-        case `sector_${data.sectorId}`:
-            if (Alloy.Globals.background) {
-                Ti.App.Properties.setBool('background', false);
-                Alloy.Globals.background = false;
-                Alloy.Globals.events.trigger('demmand_notification', data);
-            } else {
-                Alloy.Globals.showMessage(data.body, 'Centro de Negocio');
-            }
+        case 'events':
+            refreshNewsAndSchedule();
+            $.tabGroup.setActiveTab($.communications);
             break;
     }
+
     if (OS_ANDROID) {
         Alloy.Globals.androidDataPush = null;
     }

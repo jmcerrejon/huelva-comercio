@@ -55,7 +55,7 @@ function renderView() {
     //     });
     // }
     $.section.setItems(content);
-    const version = Ti.App.getVersion();
+    const version = Ti.App.version;
     const year = '\n©' + new Date().getFullYear();
     $.lblVersion.text = `Versión ${version} ${year} Soporttec, S.L. `;
     initSwitchNotifications();
@@ -69,7 +69,7 @@ function initSwitchNotifications() {
     itemDemands = section.getItemAt(2);
 
     itemNew.swAmIAvailable.value = settings.news;
-    if (!_.isUndefined(itemEvents)) {
+    if (Alloy.Globals.isAffiliate && !_.isUndefined(itemEvents)) {
         itemEvents.swAmIAvailable.value = settings.events;
     }
     // itemDemands.swAmIAvailable.value = settings.demands;

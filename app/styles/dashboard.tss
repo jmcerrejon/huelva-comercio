@@ -12,7 +12,7 @@
     navbarHidden: true,
     tabsTintColor: Alloy.CFG.COLORS.main,
     backgroundColor: "white",
-    unselectedItemTintColor: Alloy.CFG.COLORS.gray
+    unselectedItemTintColor: 'gray'
 }
 
 '#main': {

@@ -151,6 +151,7 @@ function saveUserAndConnect(user = null) {
 
     if (hasAffiliate) {
         Alloy.Globals.isLeadership = !!user.affiliate.leaderships;
+        Ti.App.Properties.setBool('isLeadership', !!user.affiliate.leaderships);
     }
 
     Ti.App.Properties.setBool('guest', _.isNull(user));

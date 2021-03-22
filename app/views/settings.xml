@@ -48,7 +48,7 @@
                     </View>
                 </HeaderView>
                 <ListItem template="tplNotifications" lblAmIAvailable:text="Noticias" lblAmIAvailable:textId="news" lblDescription:text="Cuando está activado, le notificaremos de todas las noticias que publiquemos." swAmIAvailable:id="news" swAmIAvailable:value="false"></ListItem>
-                <ListItem template="tplNotifications" if="Alloy.Globals.isLeadership" lblAmIAvailable:text="Comunicados" lblAmIAvailable:textId="events" lblDescription:text="Cuando está activado, le notificaremos de todos los comunicados que publiquemos para la junta directiva." swAmIAvailable:id="events" swAmIAvailable:value="false"></ListItem>
+                <ListItem template="tplNotifications" if="Alloy.Globals.isAffiliate" lblAmIAvailable:text="Comunicados" lblAmIAvailable:textId="events" lblDescription:text="Cuando está activado, le notificaremos de todos los comunicados que publiquemos para la junta directiva." swAmIAvailable:id="events" swAmIAvailable:value="false"></ListItem>
                 <!-- <ListItem template="tplNotifications" lblAmIAvailable:text="Centro de Negocios" lblAmIAvailable:textId="demands" lblDescription:text="Cuando está activado, le notificaremos de nuevas publicaciones para su sector en el Centro de negocios si es afiliado." swAmIAvailable:id="demands" swAmIAvailable:value="false"></ListItem> -->
             </ListSection>
             <ListSection id="section">

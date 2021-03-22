@@ -37,12 +37,16 @@
                         <!-- Services, covenants buttons -->
 
                         <View class="w-full h-auto horizontal">
-                            <View class="w-1/2 h-20" onClick="doOpenServices">
+                            <View class="w-1/3 h-20" onClick="doOpenServices">
                                 <Label class="no-touch-enable">Servicios</Label>
                             </View>
 
-                            <View class="w-1/2 h-20" onClick="doOpenCovenants">
+                            <View class="w-1/3 h-20" onClick="doOpenCovenants">
                                 <Label class="no-touch-enable">Convenios</Label>
+                            </View>
+
+                            <View class="w-1/3 h-20" onClick="doOpenLeaderShip">
+                                <Label class="no-touch-enable">Junta</Label>
                             </View>
                         </View>
 

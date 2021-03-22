@@ -1,5 +1,5 @@
 (function constructor(args) {
-    Alloy.Collections[args.model || 'covenants'].fetch({
+    Alloy.Collections['services'].fetch({
         success: (res) => {},
     });
 })($.args);

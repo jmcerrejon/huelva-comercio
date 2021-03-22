@@ -69,6 +69,10 @@ exports.config = {
             get: 'newsletters?page=<page>',
         },
         {
+            name: 'readLeadershipNewsletter',
+            get: 'newsletters?page=<page>&leadership=true',
+        },
+        {
             name: 'readCovenants',
             get: 'covenants',
         },
@@ -221,6 +225,11 @@ exports.config = {
                     name: 'newsletters',
                     content: 'data',
                     read: 'readNewsletter',
+                },
+                {
+                    name: 'leadership',
+                    content: 'data',
+                    read: 'readLeadershipNewsletter',
                 },
                 {
                     name: 'dinamizations',

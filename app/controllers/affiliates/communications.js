@@ -43,7 +43,6 @@ function reset() {
 }
 
 function myLoader(element) {
-    console.log('Inf Scroll with myLoader()');
     Alloy.Collections[collectionName].fetch({
         page: currentPage,
         query: '',
@@ -81,7 +80,15 @@ function doOpenCovenants(e) {
     });
 }
 
+function doOpenLeaderShip(e) {
+    openInsideNavWindow({
+        model: 'leadership',
+        path: 'affiliates/leadership',
+    });
+}
+
 function doOpenPDF(item) {
+    console.log('PDF', JSON.stringify(item.source.url, null, 2));
     openRemotePdf(item.source.url);
 }
 

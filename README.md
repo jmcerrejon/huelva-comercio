@@ -24,8 +24,6 @@ Dev with ♥️ using [Axway Titanium](https://www.axway.com)
 
 -   https://github.com/hansemannn/titanium-firebase-cloud-messaging
 
--   https://github.com/hansemannn/titanium-ios-document-picker
-
 -   https://github.com/jasonkneen/UTiL/blob/master/docs/xp.ui.md
 
 -   https://github.com/AndreaVitale/av.imageview

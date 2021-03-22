@@ -1,0 +1,44 @@
+<Alloy>
+    <Window clas="w-full h-full vertical" navBarHidden="true" tabBarHidden="true">
+
+        <!-- Navigation Bar buttons -->
+
+        <Require id="reqNavbar" src="/partials/navbar" title="Junta directiva" leftIcon="text-2xl text-white fas fa-chevron-left" onLogin="close"></Require>
+
+        <ListView id="listView" class="bg-white w-11/12 h-full" top="92" defaultItemTemplate="defaultTemplate">
+            <RefreshControl id="refreshListView" onRefreshstart="reset" />
+
+            <Widget id="is" src="nl.fokkezb.infiniteScroll" onEnd="myLoader" />
+
+            <Templates>
+                <ItemTemplate name="defaultTemplate">
+                    <View class="w-11/12 h-auto vertical">
+                        <Label bindId="title" class="w-full text-xl mb-2 text-center" value="title"></Label>
+
+                        <Label bindId="published_at" class="w-full text-sm mb-2 text-right" value="dd/mm/YYYY H:m"></Label>
+
+                        <Label bindId="msgDescription" class="w-full text-justify mb-2"></Label>
+
+                        <View bindId="pdf" id="vwContainer" class="w-1/4 mb-4" url="test.pdf" onClick="doOpenPDF">
+                            <View class="w-11/12 no-touch-enable">
+                                <View id="vwShadow" class="w-screen h-8 mt-2 bg-rose-800 rounded-xl no-touch-enable"></View>
+
+                                <Label id="btnClick" class="w-screen h-8 mt-1 text-sm font-bold text-white bg-rose-500 rounded-xl text-center no-touch-enable" text="Abrir pdf"></Label>
+                            </View>
+                        </View>
+                    </View>
+                </ItemTemplate>
+            </Templates>
+
+            <ListSection id="lstSection" dataCollection="leadership">
+
+                <ListItem itemId="{id}" title:text="{title}" published_at:text="{published_at}" msgDescription:text="{description}" pdf:url="{file_name}" />
+
+                <FooterView>
+                    <View id="lvwFooter" class="w-full h-10">
+                    </View>
+                </FooterView>
+            </ListSection>
+        </ListView>
+    </Window>
+</Alloy>

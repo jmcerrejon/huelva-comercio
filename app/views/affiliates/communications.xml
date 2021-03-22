@@ -30,23 +30,23 @@
                 </ItemTemplate>
             </Templates>
 
-            <ListSection id="lstSection" dataCollection="newsletters">
+            <ListSection id="lstSection" dataCollection="newsletters" dataTransform="doTransform">
                 <HeaderView>
                     <View id="vwFav" class="w-full h-auto vertical bg-white">
 
                         <!-- Services, covenants buttons -->
 
-                        <View class="w-full h-auto horizontal">
-                            <View class="w-1/3 h-20" onClick="doOpenServices">
-                                <Label class="no-touch-enable">Servicios</Label>
+                        <View class="w-auto h-auto horizontal">
+                            <View id="vwServices" class="w-auto h-20" onClick="doOpenServices">
+                                <Label class="w-auto no-touch-enable m-2">Servicios</Label>
                             </View>
 
-                            <View class="w-1/3 h-20" onClick="doOpenCovenants">
-                                <Label class="no-touch-enable">Convenios</Label>
+                            <View id="vwCovenant" class="w-auto h-20" onClick="doOpenCovenants">
+                                <Label class="w-auto no-touch-enable m-2">Convenios</Label>
                             </View>
 
-                            <View class="w-1/3 h-20" onClick="doOpenLeaderShip">
-                                <Label class="no-touch-enable">Junta</Label>
+                            <View if="Alloy.Globals.isLeadership" id="vwLeaderShip" class="w-auto h-20" onClick="doOpenLeaderShip">
+                                <Label class="w-auto no-touch-enable m-2">Junta</Label>
                             </View>
                         </View>
 
@@ -58,7 +58,7 @@
                     </View>
                 </HeaderView>
 
-                <ListItem itemId="{id}" title:text="{title}" published_at:text="{published_at}" msgDescription:text="{description}" pdf:url="{file_name}" />
+                <ListItem itemId="{id}" title:text="{title}" published_at:text="{published_at}" msgDescription:text="{description}" pdf:url="{file_name}" pdf:height="{pdf_button_height}" />
 
                 <FooterView>
                     <View id="lvwFooter" class="w-full h-10">

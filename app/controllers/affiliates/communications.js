@@ -93,11 +93,22 @@ function doOpenPDF(item) {
 }
 
 function openInsideNavWindow({model, path}) {
-    Alloy.Globals.privateAreaWin.openWindow(
-        Alloy.createController(path, {
-            model,
-        }).getView()
-    );
+    if (OS_IOS) {
+        Alloy.Globals.privateAreaWin.openWindow(
+            Alloy.createController(path).getView()
+        );
+    } else {
+        Alloy.createController(path).getView().open();
+    }
+}
+
+function doTransform(model) {
+    var transform = model.toJSON();
+
+    transform.pdf_button_height = _.isNull(transform.file_name) ? 0 : 40;
+    console.log(JSON.stringify(transform, null, 2));
+
+    return transform;
 }
 
 function openRemotePdf(url) {

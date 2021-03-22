@@ -1,3 +1,0 @@
-<Alloy >
-  <View id="container" onReturn="handleNext" onPrevious="handleNext" height="Ti.UI.SIZE" layout="vertical" ></View>
-</Alloy>

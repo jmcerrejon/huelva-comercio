@@ -5,10 +5,11 @@
     "main": "index.js",
     "scripts": {
         "run-server": "cd /Users/ulysess/Documents/sc/www/comm && sudo php artisan serve --port=80 --host=192.168.3.5",
-        "purge:dev_mode": "purgetss d",
+        "purge:watch": "purgetss w",
         "purge:production": "purgetss",
         "purge:build_custom": "purgetss b",
         "purge:auto_update": "purgetss a",
+        "purge:dev_mode": "purgetss d",
         "ios-simulator": "tios -f",
         "ios-real-liveview": "tn --ios --device --device-id 00008030-001C691001C0802E -V 'JOSE CERREJON GONZALEZ (324YU3WC5Y)' --liveview",
         "package-for-distribution": "sh builder.sh",

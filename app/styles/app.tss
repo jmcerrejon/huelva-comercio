@@ -579,6 +579,7 @@
 '.h-full': { height: '100%' }
 '.horizontal': { layout: 'horizontal' }
 '.horizontal[platform=ios]': { clipMode: Ti.UI.iOS.CLIP_MODE_DISABLED }
+'.m-2': { top: 8, right: 8, bottom: 8, left: 8 }
 '.m-3': { top: 12, right: 12, bottom: 12, left: 12 }
 '.mb-1': { bottom: 4 }
 '.mb-2': { bottom: 8 }

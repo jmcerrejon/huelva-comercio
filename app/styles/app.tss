@@ -585,6 +585,7 @@
 '.mb-2': { bottom: 8 }
 '.mb-3': { bottom: 12 }
 '.mb-4': { bottom: 16 }
+'.mb-6': { bottom: 24 }
 '.mb-8': { bottom: 32 }
 '.ml-0': { left: 0 }
 '.ml-1': { left: 4 }

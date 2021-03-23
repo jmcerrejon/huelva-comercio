@@ -33,6 +33,7 @@ let updateAffiliate = false;
             email1: args.data.email1 || '',
             email2: args.data.email2 || '',
             email3: args.data.email3 || '',
+            category: args.data.category || '',
             web: args.data.web || 'https://',
         });
     }
@@ -47,6 +48,7 @@ let updateAffiliate = false;
         args.data.email3,
     ]);
     renderElements('websites', [args.data.web]);
+    renderElements('category', [args.data.category]);
 })($.args);
 
 function handleImageLogo(logo = null) {

@@ -42,6 +42,10 @@
                     <View class="separator-half-min no-touch-enable"></View>
                 </View>
 
+                <View class="w-full h-auto vertical mt-2 mb-6">
+                    <Label id="lb_category" class="text-center main-color no-touch-enable w-full" top="5"> - </Label>
+                </View>
+
                 <View id="vw_address" class="v_container" onClick="doAction">
                     <Label class="fa icons no-touch-enable" text="\uf5a0"/>
                     <Label id="lb_address" class="text-center main-color no-touch-enable w-full" top="5"> - </Label>

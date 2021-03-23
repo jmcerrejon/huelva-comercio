@@ -174,10 +174,7 @@ function enableBackground() {
 function resume(e) {
     Ti.API.info('App is resuming from the background');
 
-    if (Alloy.Globals.online) {
-        Alloy.Globals.showMessage(
-            'No hay conexión a internet. Inténtelo de nuevo mas tarde.'
-        );
+    if (Ti.Network.online) {
         return;
     }
 
@@ -216,7 +213,7 @@ function resume(e) {
 
 function checkValidUser() {
     return (
-        Alloy.Globals.online &&
+        Ti.Network.online &&
         Alloy.Globals.token !== null &&
         !Alloy.Globals.guest
     );

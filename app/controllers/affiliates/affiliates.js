@@ -23,6 +23,11 @@ function initListView(query) {
                 listView: 'lView',
                 infScrollWidget: 'is',
             });
+
+            // Just for test purposes
+            // doOpenAffiliates({
+            //     itemId: 1,
+            // });
         }
     );
 }
@@ -115,7 +120,7 @@ function resetListView({model, currentPage, infScrollWidget, refreshControl}) {
 function doOpenAffiliates(e) {
     openView({
         model: 'affiliates',
-        index: e.itemId,
+        index: e.itemId || 1,
         path: 'affiliates/affiliate_detail',
     });
 }

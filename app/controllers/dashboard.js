@@ -59,6 +59,8 @@ let oldTab = 'main';
     }
 })();
 
+// $.tabGroup.setActiveTab($.affiliates); // Just for test purpose
+
 if (OS_ANDROID) {
     $.tabGroup.addEventListener('open', () => {
         _.isNull(Alloy.Globals.androidDataPush) ||

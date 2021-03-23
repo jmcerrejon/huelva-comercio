@@ -174,6 +174,13 @@ function enableBackground() {
 function resume(e) {
     Ti.API.info('App is resuming from the background');
 
+    if (Alloy.Globals.online) {
+        Alloy.Globals.showMessage(
+            'No hay conexión a internet. Inténtelo de nuevo mas tarde.'
+        );
+        return;
+    }
+
     if (isDiffTimePassed()) {
         refreshNewsAndSchedule();
     }

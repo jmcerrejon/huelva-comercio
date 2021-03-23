@@ -10,7 +10,7 @@
 
         <View class="w-11/12 h-full vertical bg-white -mt-5">
             <View id="vwGuest" class="w-full h-auto vertical">
-                <ImageView class="w-1/2" image="images/candidates.png" module="av.imageview"></ImageView>
+                <ImageView class="w-1/2 h-auto" image="images/candidates.png"></ImageView>
 
                 <Label class="text-2xl">Regístrate</Label>
 

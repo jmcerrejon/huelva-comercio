@@ -61,13 +61,6 @@ let oldTab = 'main';
 
 // $.tabGroup.setActiveTab($.affiliates); // Just for test purpose
 
-if (OS_ANDROID) {
-    $.tabGroup.addEventListener('open', () => {
-        _.isNull(Alloy.Globals.androidDataPush) ||
-            notification(Alloy.Globals.androidDataPush);
-    });
-}
-
 function closeToRoot() {
     $.tabGroup.activeTab.popToRootWindow();
 }
@@ -161,10 +154,26 @@ function changeNavBar(index) {
     }
 }
 
+// Handle pause or resume
+
 Ti.App.addEventListener('pause', enableBackground);
-Ti.App.addEventListener('resume', resume);
+
+// HACK This is the only way I found to deal with resume successfully
+if (OS_ANDROID) {
+    Ti.App.addEventListener('resume', resume);
+    // FIX https://gist.github.com/kristjanmik/aefc77b5b05e792ecdd2
+    $.tabGroup.addEventListener('open', () => {
+        _.isNull(Alloy.Globals.androidDataPush) ||
+            notification(Alloy.Globals.androidDataPush);
+    });
+} else {
+    $.tabGroup.addEventListener('open', function () {
+        Ti.App.addEventListener('resumed', resume);
+    });
+}
 
 function enableBackground() {
+    console.log('Pause listener...');
     Ti.App.Properties.setBool('background', true);
     Alloy.Globals.background = true;
 
@@ -172,9 +181,13 @@ function enableBackground() {
 }
 
 function resume(e) {
-    Ti.API.info('App is resuming from the background');
+    Ti.API.info(
+        `App is resuming from the background at ${new Date()}: Ti.Network.online: ${
+            Ti.Network.online
+        }`
+    );
 
-    if (Ti.Network.online) {
+    if (!Ti.Network.online) {
         return;
     }
 
@@ -263,7 +276,7 @@ function notification(data) {
 function closeSession() {
     // TODO Call sign out
     Ti.App.removeEventListener('pause', enableBackground);
-    Ti.App.removeEventListener('resume', resume);
+    Ti.App.removeEventListener('resumed', resume);
     removeProperties();
     require('/dao/database').reset('variable');
     $.tabGroup.close();

@@ -111,6 +111,13 @@ function searchNews() {
 }
 
 function reset() {
+    if (!Ti.Network.online) {
+        $.refreshListView.endRefreshing();
+        Alloy.Globals.showMessage(
+            'Intente primero obtener conexión a internet.'
+        );
+        return;
+    }
     Alloy.Globals.loading.show('Cargando...');
     renderNotFoundTemplate();
     currentPage = 1;

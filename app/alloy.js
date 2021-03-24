@@ -72,14 +72,6 @@ import Reste from 'reste';
 Alloy.Globals.Api = new Reste();
 Alloy.Globals.Api.config(require('net/apiconfig').config);
 
-if (OS_IOS) {
-    Ti.App.addEventListener('resumed', () => {
-        setTimeout(() => {
-            Ti.UI.iOS.appBadge = 0;
-        }, 500);
-    });
-}
-
 // Push notifications
 require('notifications')();
 

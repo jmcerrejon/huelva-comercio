@@ -171,7 +171,10 @@ function doOpenLink(banner) {
 
 function doOpenPost(e) {
     const item = e.section.getItemAt(e.itemIndex);
-    !item.viewPost || openURL(item.viewPost.url);
+
+    if (!_.isUndefined(item.viewPost.url) && !_.isNull(item.viewPost.url)) {
+        !item.viewPost || openURL(item.viewPost.url);
+    }
 }
 
 function goToMeetUsWebLink() {
@@ -200,10 +203,14 @@ function transformCollection(model) {
     let modelJSON = model.toJSON();
     const isExclusive = modelJSON['exclusive'];
 
-    // if (Alloy.Globals.guest === true && isExclusive) {
-    //     modelJSON = {};
-    // }
-    // modelJSON['exclusive'] = isExclusive ? 'red' : 'gray';
+    if (Alloy.Globals.guest === true && isExclusive) {
+        modelJSON = {
+            title: 'Contenido Exclusivo',
+            content:
+                '¡Regístrate para obtener información sobre ofertas y descuentos!',
+        };
+    }
+    modelJSON['exclusive'] = isExclusive ? 'red' : 'gray';
     modelJSON['image'] =
         _.isUndefined(modelJSON['image']) || modelJSON['image'] == ''
             ? 'images/logo_256.png'

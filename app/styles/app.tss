@@ -666,5 +666,6 @@
 // LineIcons styles
 '.lni': { font: { fontFamily: 'LineIcons' } }
 '.lni-16': { font: { fontSize: 16 } }
+'.lni-cog': { text: '\uea6f', title: '\uea6f' }
 '.lni-search-alt': { text: '\ueb7b', title: '\ueb7b' }
 '.lni-user': { text: '\uebde', title: '\uebde' }

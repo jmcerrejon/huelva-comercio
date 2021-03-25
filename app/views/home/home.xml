@@ -3,7 +3,8 @@
 
         <!-- Navigation Bar buttons -->
 
-        <Require id="reqNavbar" src="/partials/navbar" title="Inicio" leftIcon="text-2xl text-white lni lni-user" rightIcon="text-2xl text-white lni lni-search-alt" filterVisibility="text-2xl text-white fas fa-filter" onLogin="doLogin" onClick="doSearch" onFilter="doFilter"></Require>
+        <Require id="reqNavbar" if="Alloy.Globals.guest" src="/partials/navbar" title="Inicio" leftIcon="text-2xl text-white lni lni-user" rightIcon="text-2xl text-white lni lni-search-alt" filterVisibility="text-2xl text-white fas fa-filter" onLogin="doLogin" onClick="doSearch" onFilter="doFilter"></Require>
+        <Require id="reqNavbar" if="!Alloy.Globals.guest" src="/partials/navbar" title="Inicio" leftIcon="text-2xl text-white lni lni-cog" rightIcon="text-2xl text-white lni lni-search-alt" filterVisibility="text-2xl text-white fas fa-filter" onLogin="doLogin" onClick="doSearch" onFilter="doFilter"></Require>
 
         <!-- Body -->
 
@@ -46,7 +47,7 @@
 
             <ListSection id="sectionBanner">
                 <HeaderView>
-                    <View id="vwBody" class="w-full h-auto vertical">
+                    <View id="vwBody" class="w-11/12 h-auto vertical">
                         <ScrollableView class="w-full h-auto mb-4 bg-white" id="scrollableView" dataCollection="banners" onSingletap="doOpenLink" onTouchstart="touchStart">
                             <ImageView image="{img_path}" url="{url}" ns="AvImageview"></ImageView>
                         </ScrollableView>

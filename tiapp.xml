@@ -84,13 +84,10 @@
         <module platform="android" version="11.0.40">ti.playservices</module>
         <module>firebase.core</module>
         <module>firebase.cloudmessaging</module>
-        <module platform="android">ti.bottomsheet</module>
         <module platform="android">com.skypanther.tirotate</module>
-        <module platform="android">org.iotashan.TiTouchImageView</module>
         <module platform="android">fr.squirrel.pdfview</module>
         <module>av.imageview</module>
         <module>ti.animation</module>
-        <!-- <module>hyperloop</module> -->
     </modules>
     <deployment-targets>
         <target device="android">true</target>

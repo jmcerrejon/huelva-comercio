@@ -46,7 +46,7 @@
                             </View>
 
                             <View if="Alloy.Globals.isLeadership" id="vwLeaderShip" class="w-auto h-20" onClick="doOpenLeaderShip">
-                                <Label class="w-auto no-touch-enable m-2">Junta</Label>
+                                <Label class="w-auto no-touch-enable m-2">Junta directiva</Label>
                             </View>
                         </View>
 

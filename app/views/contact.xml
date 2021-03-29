@@ -30,11 +30,11 @@
                         </View>
                     </View>
 
-                    <View class="w-1/2 mt-2" onClick="openTwitter">
+                    <View class="w-1/2 mt-2" onClick="openInstagram">
                         <View id="vwTwitter" class="horizontal no-touch-enable">
-                            <Label class="text-blue-400 fab fa-twitter no-touch-enable"></Label>
+                            <Label class="text-blue-400 fab fa-instagram no-touch-enable"></Label>
 
-                            <Label class="ml-2 text-blue-500 no-touch-enable">Twitter</Label>
+                            <Label class="ml-2 text-blue-500 no-touch-enable">Instagram</Label>
                         </View>
                     </View>
                 </View>
@@ -52,12 +52,23 @@
                         <View id="vwTwitter" class="horizontal no-touch-enable">
                             <Label class="text-blue-5 00 fa fa-mail-bulk no-touch-enable"></Label>
 
-                            <Label class="ml-2 text-blue-500 no-touch-enable">daniel@foe.es</Label>
+                            <Label id="lblEmail" class="ml-2 text-blue-500 no-touch-enable" text="Alloy.CFG.mail"></Label>
                         </View>
                     </View>
                 </View>
 
+                <View class="h-auto mx-8 mt-4 horizontal" onClick="selectLocation">
+                    <View class="info vlayout" id="viewAddress">
+                        <Label class="fa icons" top="10" text="\uf5a0"/>
+                        <Label id="addressInfo"/>
+                    </View>
+                </View>
+
+                <View class="w-full h-2/6 vertical mt-2">
+                    <ImageView class="w-auto h-1/2" image="/images/junta/logo_junta_01.png"></ImageView>
+                </View>
             </View>
+
         </View>
     </ScrollView>
 </Alloy>

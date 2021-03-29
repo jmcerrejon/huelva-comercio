@@ -114,7 +114,7 @@ function doReadPrivacy() {
         .open();
 }
 
-function openTwitter() {
+function openInstagram() {
     Ti.Platform.openURL(Alloy.CFG.twitter);
 }
 

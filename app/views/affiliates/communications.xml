@@ -53,7 +53,7 @@
                         <!-- Header -->
 
                         <View class="w-full h-10">
-                            <Label>Comunicados</Label>
+                            <Label>Circulares</Label>
                         </View>
                     </View>
                 </HeaderView>

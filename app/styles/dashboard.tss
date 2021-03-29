@@ -29,7 +29,7 @@
 
 '#communications': {
     icon: "/images/newspaper.png",
-    title: "Comunicados",
+    title: "Circulares",
     activeTitleColor: Alloy.CFG.COLORS.main,
     activeTintColor: Alloy.CFG.COLORS.main,
     touchFeedback: true,

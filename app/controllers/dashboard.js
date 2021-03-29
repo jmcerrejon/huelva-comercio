@@ -35,7 +35,7 @@ if (Alloy.Globals.isAffiliate) {
     tabStacks.splice(1, 0, {
         tabId: 'communications',
         winId: 'communicationsCtrl',
-        winName: 'Circulares',
+        winName: 'Comunicaciones',
         hasSettingsEnabled: false,
     });
 }

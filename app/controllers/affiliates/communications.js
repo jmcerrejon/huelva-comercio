@@ -106,7 +106,6 @@ function doTransform(model) {
     var transform = model.toJSON();
 
     transform.pdf_button_height = _.isNull(transform.file_name) ? 0 : 40;
-    console.log(JSON.stringify(transform, null, 2));
 
     return transform;
 }

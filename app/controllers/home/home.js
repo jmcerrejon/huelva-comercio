@@ -6,6 +6,7 @@ const OFFSET_CHANGE_HEADER_TITLE = 301;
 const SCROLLABLEVIEW_HEIGHT = 175;
 const TIME_PER_VIEW_MILISECONDS = 8000;
 const cantShare = false;
+const exclusive = getExclusiveValues();
 
 (function constructor() {
     Alloy.Collections.banners.fetch({
@@ -18,7 +19,7 @@ const cantShare = false;
     });
     Alloy.Collections.news.fetch({
         page: currentPage++,
-        guest: Alloy.Globals.guest,
+        exclusive: exclusive,
         success: (res) => {
             Alloy.Globals.loading.hide(); // It comes from login.js
             renderNotFoundTemplate(res.length);
@@ -71,6 +72,7 @@ function myLoader(element) {
     Alloy.Collections.news.fetch({
         page: currentPage,
         query: '',
+        exclusive: exclusive,
         add: true,
         success: function (collection) {
             currentPage++;
@@ -101,6 +103,7 @@ function searchNews() {
 
         Alloy.Collections.news.fetch({
             page: currentPage,
+            exclusive: exclusive,
             query: text,
             success: (data) => {
                 renderNotFoundTemplate(data.length);
@@ -123,6 +126,7 @@ function reset() {
     currentPage = 1;
     Alloy.Collections.news.fetch({
         page: currentPage,
+        exclusive: exclusive,
         query: '',
         success: (resource) => {
             Alloy.Globals.loading.hide();
@@ -246,8 +250,7 @@ function doFilter(e) {
     Alloy.Collections.news.fetch({
         page: currentPage,
         query: '',
-        guest: Alloy.Globals.guest,
-        exclusive: true,
+        exclusive: 1,
         success: (data) => {
             if (data.length === 0) {
                 alert('No se encontraron resultados.');
@@ -262,7 +265,7 @@ function doSearch(e) {
     Alloy.Collections.news.fetch({
         page: currentPage,
         query: e.value,
-        guest: Alloy.Globals.guest,
+        exclusive: exclusive,
         success: (data) => {
             if (data.length === 0) {
                 alert('No se encontraron resultados.');
@@ -306,4 +309,9 @@ function openView({model, index, path}) {
             .getView()
             .open();
     }
+}
+
+// 0 = guest user, '' = all offers
+function getExclusiveValues() {
+    return Alloy.Globals.guest ? 0 : '';
 }

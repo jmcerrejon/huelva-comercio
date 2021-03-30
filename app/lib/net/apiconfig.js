@@ -61,8 +61,7 @@ exports.config = {
         },
         {
             name: 'readNews',
-            get:
-                'news?page=<page>&q=<query>&guest=<guest>&exclusive=<exclusive>',
+            get: 'news?page=<page>&q=<query>&exclusive=<exclusive>',
         },
         {
             name: 'readNewsletter',

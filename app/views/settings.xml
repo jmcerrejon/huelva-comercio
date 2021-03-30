@@ -47,9 +47,10 @@
                         <Label class="lbl_settings_header">Notificaciones</Label>
                     </View>
                 </HeaderView>
-                <ListItem template="tplNotifications" lblAmIAvailable:text="Noticias" lblAmIAvailable:textId="news" lblDescription:text="Cuando está activado, le notificaremos de todas las noticias que publiquemos." swAmIAvailable:id="news" swAmIAvailable:value="false"></ListItem>
-                <ListItem template="tplNotifications" if="Alloy.Globals.isAffiliate" lblAmIAvailable:text="Circulares" lblAmIAvailable:textId="events" lblDescription:text="Cuando está activado, le notificaremos de todas las circulares que publiquemos para los afiliados." swAmIAvailable:id="events" swAmIAvailable:value="false"></ListItem>
-                <!-- <ListItem template="tplNotifications" lblAmIAvailable:text="Centro de Negocios" lblAmIAvailable:textId="demands" lblDescription:text="Cuando está activado, le notificaremos de nuevas publicaciones para su sector en el Centro de negocios si es afiliado." swAmIAvailable:id="demands" swAmIAvailable:value="false"></ListItem> -->
+                <ListItem template="tplNotifications" lblAmIAvailable:text="Ofertas" lblAmIAvailable:textId="offer_notifications" lblDescription:text="Cuando está activado, le notificaremos de todas las ofertas y promociones que publiquemos." swAmIAvailable:id="offer_notifications" swAmIAvailable:value="false"></ListItem>
+                <ListItem template="tplNotifications" if="!Alloy.Globals.guest" lblAmIAvailable:text="Dinamización" lblAmIAvailable:textId="dinamization_notifications" lblDescription:text="Cuando está activado, le notificaremos de todas las noticias que publiquemos." swAmIAvailable:id="dinamization_notifications" swAmIAvailable:value="false"></ListItem>
+                <ListItem template="tplNotifications" if="Alloy.Globals.isAffiliate" lblAmIAvailable:text="Boletines" lblAmIAvailable:textId="communication_notifications" lblDescription:text="Cuando está activado, le notificaremos de todos los boletines que publiquemos." swAmIAvailable:id="communication_notifications" swAmIAvailable:value="false"></ListItem>
+                <ListItem template="tplNotifications" if="Alloy.Globals.isLeadership" lblAmIAvailable:text="Boletines Junta Directiva" lblAmIAvailable:textId="leadership_notifications" lblDescription:text="Cuando está activado, le notificaremos de todos los boletines que publiquemos para la Junta Directiva." swAmIAvailable:id="leadership_notifications" swAmIAvailable:value="false"></ListItem>
             </ListSection>
             <ListSection id="section">
                 <HeaderView platform="ios">

@@ -29,19 +29,27 @@ function setEmail(params) {
 function saveSettings() {
     Ti.App.Properties.setObject('settings', settings);
 
-    // TODO Handle notifications. Refactor this.
-    settings['news']
-        ? fcm.subscribeToTopic('news')
-        : fcm.unsubscribeFromTopic('news');
-    settings['events']
-        ? fcm.subscribeToTopic('events')
-        : fcm.unsubscribeFromTopic('events');
-    // if (!Alloy.Globals.guest) {
-    //     const sectorId = user.association.sector_id;
-    //     settings['demands']
-    //         ? fcm.subscribeToTopic(`sector_${sectorId}`)
-    //         : fcm.unsubscribeFromTopic(`sector_${sectorId}`);
-    // }
+    settings['offer_notifications']
+        ? fcm.subscribeToTopic('offer_notifications')
+        : fcm.unsubscribeFromTopic('offer_notifications');
+
+    if (!Alloy.Globals.guest) {
+        settings['dinamization_notifications']
+            ? fcm.subscribeToTopic('dinamization_notifications')
+            : fcm.unsubscribeFromTopic('dinamization_notifications');
+    }
+
+    if (Alloy.Globals.isAffiliate) {
+        settings['communication_notifications']
+            ? fcm.subscribeToTopic('communication_notifications')
+            : fcm.unsubscribeFromTopic('communication_notifications');
+    }
+
+    if (Alloy.Globals.isLeadership) {
+        settings['leadership_notifications']
+            ? fcm.subscribeToTopic('leadership_notifications')
+            : fcm.unsubscribeFromTopic('leadership_notifications');
+    }
 }
 
 function renderView() {
@@ -74,20 +82,31 @@ function renderView() {
 
 function initSwitchNotifications() {
     const section = $.elementsList.sections[0],
-        itemNew = section.getItemAt(0),
-        itemEvents = section.getItemAt(1);
+        itemOffers = section.getItemAt(0),
+        itemDinamizations = section.getItemAt(1),
+        itemCommunications = section.getItemAt(2),
+        itemLeaderShips = section.getItemAt(3);
 
-    itemDemands = section.getItemAt(2);
+    setSwitchState(itemOffers, 'offer_notifications', 0);
 
-    itemNew.swAmIAvailable.value = settings.news;
-    if (Alloy.Globals.isAffiliate && !_.isUndefined(itemEvents)) {
-        itemEvents.swAmIAvailable.value = settings.events;
+    if (!Alloy.Globals.guest) {
+        setSwitchState(itemDinamizations, 'dinamization_notifications', 1);
     }
-    // itemDemands.swAmIAvailable.value = settings.demands;
 
-    section.updateItemAt(0, itemNew);
-    section.updateItemAt(1, itemEvents);
-    // section.updateItemAt(2, itemDemands);
+    if (Alloy.Globals.isAffiliate) {
+        setSwitchState(itemCommunications, 'communication_notifications', 2);
+    }
+
+    if (Alloy.Globals.isLeadership) {
+        setSwitchState(itemLeaderShips, 'leadership_notifications', 3);
+    }
+}
+
+function setSwitchState(switchItem, settingKey, index) {
+    const section = $.elementsList.sections[0];
+
+    switchItem.swAmIAvailable.value = settings[settingKey];
+    section.updateItemAt(index, switchItem);
 }
 
 function doSelectOption(item) {

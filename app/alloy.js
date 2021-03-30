@@ -30,9 +30,10 @@ Alloy.Globals.showMessage = (message, title = 'Atención') => {
 // Settings
 if (!Ti.App.Properties.hasProperty('settings')) {
     Ti.App.Properties.setObject('settings', {
-        news: true,
-        events: false,
-        demands: true,
+        offer_notifications: true,
+        dinamization_notifications: false,
+        communication_notifications: false,
+        leadership_notifications: false,
     });
 }
 Alloy.Globals.Device = {

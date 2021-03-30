@@ -254,7 +254,7 @@ function notification(data) {
     }
 
     switch (data.tag) {
-        case 'news':
+        case 'offer_notifications':
             title = 'Ofertas y promos';
             Alloy.createController('webviewWin', {
                 url: data.url,
@@ -262,7 +262,15 @@ function notification(data) {
             })
                 .getView()
                 .open();
-        case 'events':
+        // TODO Refactor code
+        case 'dinamization_notifications':
+            refreshNewsAndSchedule();
+            $.tabGroup.setActiveTab($.offers);
+            break;
+        case 'communication_notifications':
+            $.tabGroup.setActiveTab($.communications);
+            break;
+        case 'leadership_notifications':
             refreshNewsAndSchedule();
             $.tabGroup.setActiveTab($.communications);
             break;

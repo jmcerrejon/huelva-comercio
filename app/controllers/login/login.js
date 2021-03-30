@@ -168,6 +168,8 @@ function saveUserAndConnect(user = null) {
 
     Ti.App.Properties.setBool('isConnected', true);
 
+    setNotificationsSettings();
+
     if (!_.isNull(user)) {
         // We need this for refresh token in the file
         Alloy.Globals.Api.setRequestHeaders({
@@ -178,6 +180,25 @@ function saveUserAndConnect(user = null) {
     }
 
     printGlobalVars();
+}
+
+function setNotificationsSettings() {
+    let settings = Ti.App.Properties.getObject('settings');
+
+    settings['dinamization_notifications'] = true;
+    fcm.subscribeToTopic('dinamization_notifications');
+
+    if (Alloy.Globals.isAffiliate) {
+        settings['communication_notifications'] = true;
+        fcm.subscribeToTopic('communication_notifications');
+    }
+
+    if (Alloy.Globals.isLeadership) {
+        settings['leadership_notifications'] = true;
+        fcm.subscribeToTopic('leadership_notifications');
+    }
+
+    Ti.App.Properties.setObject('settings', settings);
 }
 
 function printGlobalVars() {
@@ -216,12 +237,6 @@ function printGlobalVars() {
 }
 
 // TODO Optional features if we are in time
-
-// function handlePushNotifBySectorId(sectorId) {
-//     settings['demands']
-//         ? fcm.subscribeToTopic(`sector_${sectorId}`)
-//         : fcm.unsubscribeFromTopic(`sector_${sectorId}`);
-// }
 
 // function next(e) {
 //     if ($[e.source.next]) $[e.source.next].focus();

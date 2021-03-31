@@ -63,7 +63,7 @@
     activeIcon: "/images/groupActive.png"
 }
 
-'#offers': {
+'#dinamizations': {
     icon: "/images/tags.png",
     title: "Dinamización",
     activeTitleColor: Alloy.CFG.COLORS.main,

@@ -3,7 +3,7 @@
         <Tab id="main" class="tabIconSize">
             <Window id="mainCtrl" class="defaultWinProp">
                 <View id="mainContent" layout="vertical" opacity="0">
-                    <Require src="/home/home"></Require>
+                    <Require id="reqMain" src="/home/home"></Require>
                 </View>
             </Window>
         </Tab>
@@ -21,9 +21,9 @@
                 </View>
             </Window>
         </Tab>
-        <Tab id="offers">
-            <Window id="offersCtrl" class="defaultWinProp" onFocus="focusWindow">
-                <View id="offersContent" opacity="0">
+        <Tab id="dinamizations">
+            <Window id="dinamizationsCtrl" class="defaultWinProp" onFocus="focusWindow">
+                <View id="dinamizationsContent" opacity="0">
                     <Require src="/dinamizations/dinamizations"></Require>
                 </View>
             </Window>

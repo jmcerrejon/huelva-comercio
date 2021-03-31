@@ -49,6 +49,7 @@ function doLogin(params) {
 }
 
 function doFilter() {
+    toggleViewSearchVisibility();
     $.trigger('filter');
 }
 

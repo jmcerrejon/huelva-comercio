@@ -184,7 +184,7 @@ function resume(e) {
     }
 
     if (isDiffTimePassed()) {
-        refreshNewsAndSchedule();
+        fetchAllCollections();
     }
 
     if (checkValidUser()) {
@@ -233,48 +233,62 @@ function isDiffTimePassed() {
 
 Alloy.Globals.events.on('handle_notification', notification);
 
-function refreshNewsAndSchedule() {
-    Alloy.Globals.events.trigger('refreshNews');
-    Alloy.Globals.events.trigger('refreshCommunications');
+function fetchAllCollections() {
+    Alloy.Globals.events.trigger('refreshOffers');
+    // TODO Refresh dinamizations when will be available
+
+    if (Alloy.Globals.isAffiliate) {
+        Alloy.Globals.events.trigger('refreshCommunications');
+    }
 }
 
 function notification(data) {
-    let title = 'Evento';
-
     if (!data && _.isNull(data.tag)) {
         return;
     }
 
     switch (data.tag) {
         case 'offer_notifications':
-            $.tabGroup.setActiveTab($.main);
             closeToRoot();
-            title = 'Ofertas y promos';
+            $.tabGroup.setActiveTab($.main);
+            fetchAllCollections();
             Alloy.createController('webviewWin', {
                 url: data.url,
-                title,
+                title: 'Ofertas y promos',
             })
                 .getView()
                 .open();
             break;
         case 'dinamization_notifications':
-            refreshNewsAndSchedule();
-            $.tabGroup.setActiveTab($.dinamizations);
             closeToRoot();
+            $.tabGroup.setActiveTab($.dinamizations);
+            fetchAllCollections();
             break;
         case 'communication_notifications':
-            $.tabGroup.setActiveTab($.communications);
             closeToRoot();
+            $.tabGroup.setActiveTab($.communications);
+            fetchAllCollections();
             break;
         case 'leadership_notifications':
-            refreshNewsAndSchedule();
-            $.tabGroup.setActiveTab($.communications);
             closeToRoot();
+            $.tabGroup.setActiveTab($.communications);
+            fetchAllCollections();
+            openLeadershipWin();
             break;
     }
 
     if (OS_ANDROID) {
         Alloy.Globals.androidDataPush = null;
+    }
+}
+
+function openLeadershipWin() {
+    if (OS_IOS) {
+        Alloy.Globals.privateAreaTab.openWindow(
+            Alloy.createController('affiliates/leadership').getView()
+        );
+    } else {
+        Alloy.createController('affiliates/leadership').getView().open();
     }
 }
 

@@ -1,11 +1,9 @@
 let currentPage = 1;
 let postsPerPage = 10;
 let query = '';
-const SCROLLABLEVIEW_HEIGHT = 175;
 const collectionName = 'newsletters';
-let pdfFile = null;
 
-(function constructor(args) {
+(function constructor() {
     Alloy.Collections[collectionName].fetch({
         page: currentPage++,
         query,
@@ -21,7 +19,7 @@ let pdfFile = null;
             });
         },
     });
-})($.args);
+})();
 
 function reset() {
     console.log('Refresh with reset()');
@@ -31,7 +29,7 @@ function reset() {
     Alloy.Collections[collectionName].fetch({
         page: currentPage,
         query: '',
-        success: (resource) => {
+        success: () => {
             Alloy.Globals.loading.hide();
             $.refreshListView.endRefreshing();
             currentPage++;
@@ -56,7 +54,7 @@ function myLoader(element) {
                 ? element.success()
                 : element.done();
         },
-        error: function (col) {
+        error: function () {
             Alloy.Globals.showMessage(
                 'No se pueden mostrar. Inténtelo mas tarde.'
             );
@@ -147,5 +145,11 @@ function openRemotePdf(url) {
 }
 
 Alloy.Globals.events.on('refreshCommunications', () => {
+    if (_.isFunction($.listView.setContentOffset)) {
+        $.listView.setContentOffset({
+            x: 0,
+            y: 0,
+        });
+    }
     reset();
 });

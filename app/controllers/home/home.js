@@ -59,7 +59,7 @@ const exclusive = getExclusiveValues();
     }, TIME_PER_VIEW_MILISECONDS);
 })();
 
-Alloy.Globals.events.on('refreshNews', () => {
+Alloy.Globals.events.on('refreshOffers', () => {
     if (_.isFunction($.listView.setContentOffset)) {
         $.listView.setContentOffset({
             x: 0,
@@ -182,19 +182,7 @@ function doOpenPost(e) {
     }
 }
 
-function goToMeetUsWebLink() {
-    openURL('/html/about_us.html', 'Conócenos', cantShare);
-}
-
-function goToCovenantLink() {
-    openURL('https://foe.es/convenios/', 'Convenios (web)');
-}
-
-function goToServicesWebLink() {
-    openURL('/html/services.html', 'Servicios', cantShare);
-}
-
-function openURL(url, title = 'CECA (web)', share) {
+function openURL(url, title = 'Huelva Comercio (web)', share) {
     Alloy.createController('webviewWin', {
         title,
         url,

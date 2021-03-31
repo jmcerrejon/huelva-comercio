@@ -19,6 +19,7 @@ const exclusive = getExclusiveValues();
     });
     Alloy.Collections.news.fetch({
         page: currentPage++,
+        query: '',
         exclusive: exclusive,
         success: (res) => {
             Alloy.Globals.loading.hide(); // It comes from login.js
@@ -83,7 +84,7 @@ function myLoader(element) {
                 ? element.success()
                 : element.done();
         },
-        error: function (col) {
+        error: function () {
             Alloy.Globals.showMessage(
                 'No se pueden mostrar. Inténtelo mas tarde.'
             );
@@ -128,7 +129,7 @@ function reset() {
         page: currentPage,
         exclusive: exclusive,
         query: '',
-        success: (resource) => {
+        success: () => {
             Alloy.Globals.loading.hide();
             $.refreshListView.endRefreshing();
 
@@ -223,7 +224,7 @@ function transformCollection(model) {
     return modelJSON;
 }
 
-function touchStart(e) {
+function touchStart() {
     scrollableLoop = false;
 }
 
@@ -237,7 +238,7 @@ function renderNotFoundTemplate(sizeData) {
     $.is.hide();
 }
 
-function doFilter(e) {
+function doFilter() {
     if (Alloy.Globals.guest) {
         Alloy.Globals.showMessage(
             'Puedes filtrar por contenido exclusivo si eres usuario registrado',
@@ -297,7 +298,7 @@ function doLogin() {
 function openView({model, index, path}) {
     const data = Alloy.Collections[model].get(index).toJSON();
     if (OS_IOS) {
-        Alloy.Globals.affiliatesWin.openWindow(
+        Alloy.Globals.affiliatesTab.openWindow(
             Alloy.createController(path, {
                 data,
             }).getView()

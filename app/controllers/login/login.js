@@ -2,8 +2,14 @@ const fcm = require('firebase.cloudmessaging');
 const isANewRegistry = true;
 const maxTrySignIn = 3;
 
-let settings = Ti.App.Properties.getObject('settings');
 let signInAttempts = 0;
+
+(function constructor() {
+    if (ENV_DEV) {
+        $.txtEmail.value = 'ulysess@gmail.com';
+        $.txtPassword.value = 'secret';
+    }
+})();
 
 function doLostFocus() {
     _.each([$.txtEmail, $.txtPassword], function (val) {

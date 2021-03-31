@@ -10,28 +10,17 @@
 
             <View class="w-11/12 -mt-8 bg-blue-300 shadow-2xl rounded-3xl vertical">
 
-                <!-- Free access -->
-
-                <!-- <View class="mt-4 vertical h-auto w-full">
-                    <Require src="partials/button" text="Acceso libre" onClick="doGoToDashboard"></Require>
-
-                    <View class="w-auto h-auto">
-                        <View class="w-11/12 border-blue-900" height="1"></View>
-
-                        <Label class="w-6 text-center bg-blue-300 text-blue-900">o</Label>
-                    </View>
-                </View> -->
                 <View class="mx-4 mt-4 vertical">
 
                     <!-- Email and Password -->
 
                     <Label class="w-full mt-2 ml-1 text-sm text-left text-blue-900 keyboard-mail">Correo electrónico</Label>
 
-                    <TextField value="ulysess@gmail.com" id="txtEmail" class="w-screen h-10 pl-2 mt-1 text-base text-gray-800 border-blue-500 rounded-xl bg-gray-50" onReturn="doFocusPasswordField" autocorrect="false" autofillType="Ti.UI.AUTOFILL_TYPE_EMAIL" autocapitalization="Ti.UI.TEXT_AUTOCAPITALIZATION_NONE" returnKeyType="Ti.UI.RETURNKEY_NEXT" keyboardType="Ti.UI.KEYBOARD_TYPE_EMAIL" hintText="Email" />
+                    <TextField id="txtEmail" class="w-screen h-10 pl-2 mt-1 text-base text-gray-800 border-blue-500 rounded-xl bg-gray-50" onReturn="doFocusPasswordField" autocorrect="false" autofillType="Ti.UI.AUTOFILL_TYPE_EMAIL" autocapitalization="Ti.UI.TEXT_AUTOCAPITALIZATION_NONE" returnKeyType="Ti.UI.RETURNKEY_NEXT" keyboardType="Ti.UI.KEYBOARD_TYPE_EMAIL" hintText="Email" />
 
                     <Label class="w-full mt-4 ml-1 text-sm text-left text-blue-900">Contraseña</Label>
 
-                    <TextField value="secret" id="txtPassword" class="w-screen h-10 pl-2 mt-1 text-base text-gray-800 border-blue-500 rounded-xl bg-gray-50" returnKeyType="Ti.UI.RETURNKEY_DONE" hintText="Password" passwordMask="true" />
+                    <TextField id="txtPassword" class="w-screen h-10 pl-2 mt-1 text-base text-gray-800 border-blue-500 rounded-xl bg-gray-50" returnKeyType="Ti.UI.RETURNKEY_DONE" hintText="Password" passwordMask="true" />
 
                     <!-- Forgotten password -->
 

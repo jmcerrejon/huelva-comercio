@@ -17,8 +17,9 @@ Alloy.Globals.isLeadership = Ti.App.Properties.getBool('isLeadership', false);
 Alloy.Globals.background = Ti.App.Properties.getBool('background', false);
 Alloy.Globals.candidate = Ti.App.Properties.getObject('candidate', null);
 Alloy.Globals.tabGroup = null;
-Alloy.Globals.privateAreaWin = null;
-Alloy.Globals.affiliatesWin = null;
+Alloy.Globals.homeTab = null;
+Alloy.Globals.privateAreaTab = null;
+Alloy.Globals.affiliatesTab = null;
 Alloy.Globals.androidDataPush = null;
 Alloy.Globals.showMessage = (message, title = 'Atención') => {
     if (!_.isUndefined(Alloy.Globals.loading)) {

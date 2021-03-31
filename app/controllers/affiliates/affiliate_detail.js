@@ -168,7 +168,7 @@ function close() {
 
                     setAffiliateOnUser(response.data);
 
-                    OS_IOS && Alloy.Globals.affiliatesWin.popToRootWindow();
+                    OS_IOS && Alloy.Globals.affiliatesTab.popToRootWindow();
                     OS_ANDROID && $.wAffiliateDetail.close();
 
                     Alloy.Globals.showMessage(response.message);

@@ -3,7 +3,6 @@ let objTab = {};
 var fcm = require('firebase.cloudmessaging');
 let timeSinceBackgroundApp;
 const time2RefreshNewsAndEventsInMinutes = 30;
-
 const tabStacks = [
     {
         tabId: 'main',
@@ -18,9 +17,9 @@ const tabStacks = [
         hasSettingsEnabled: false,
     },
     {
-        tabId: 'offers',
-        winId: 'offersCtrl',
-        winName: 'Demanda',
+        tabId: 'dinamizations',
+        winId: 'dinamizationsCtrl',
+        winName: 'Dinamización',
         hasSettingsEnabled: false,
     },
     {
@@ -50,9 +49,10 @@ let oldTab = 'main';
     Alloy.Globals.events.off('popToRootWindow');
     Alloy.Globals.events.off('openWindowInTab');
     Alloy.Globals.tabGroup = $.tabGroup;
-    Alloy.Globals.privateAreaWin = $.communications;
-    Alloy.Globals.affiliatesWin = $.affiliates;
-    Alloy.Globals.offersWin = $.offers;
+    Alloy.Globals.homeTab = $.main;
+    Alloy.Globals.privateAreaTab = $.communications;
+    Alloy.Globals.affiliatesTab = $.affiliates;
+    Alloy.Globals.dinamizationsWin = $.dinamizations;
     if (OS_IOS) {
         if ($.communicationsCtrl) $.communicationsCtrl.hideNavBar();
         if ($.affiliatesCtrl) $.affiliatesCtrl.hideNavBar();
@@ -69,8 +69,8 @@ Alloy.Globals.events.on('popToRootWindow', closeToRoot);
 
 function focusWindow(e) {
     switch (e.source.id) {
-        case 'offersCtrl':
-            Alloy.Globals.events.trigger('offers');
+        case 'dinamizationsCtrl':
+            Alloy.Globals.events.trigger('dinamizations');
             break;
 
         case 'affiliatesCtrl':
@@ -121,14 +121,6 @@ function openWindow(o) {
 }
 
 Alloy.Globals.events.on('openWindowInTab', openWindow);
-
-function changeTab(e) {
-    if (e.source.idMenu === 'logout') {
-        logout();
-    } else {
-        $.tabGroup.activeTab = objTab[e.source.idMenu].getView();
-    }
-}
 
 function focus(e) {
     if (e.tab && tabStacks[e.index].tabId.indexOf(e.tab.id) > -1) {
@@ -255,6 +247,8 @@ function notification(data) {
 
     switch (data.tag) {
         case 'offer_notifications':
+            $.tabGroup.setActiveTab($.main);
+            closeToRoot();
             title = 'Ofertas y promos';
             Alloy.createController('webviewWin', {
                 url: data.url,
@@ -262,17 +256,20 @@ function notification(data) {
             })
                 .getView()
                 .open();
-        // TODO Refactor code
+            break;
         case 'dinamization_notifications':
             refreshNewsAndSchedule();
-            $.tabGroup.setActiveTab($.offers);
+            $.tabGroup.setActiveTab($.dinamizations);
+            closeToRoot();
             break;
         case 'communication_notifications':
             $.tabGroup.setActiveTab($.communications);
+            closeToRoot();
             break;
         case 'leadership_notifications':
             refreshNewsAndSchedule();
             $.tabGroup.setActiveTab($.communications);
+            closeToRoot();
             break;
     }
 

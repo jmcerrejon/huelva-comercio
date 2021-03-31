@@ -94,7 +94,7 @@ function doOpenPDF(item) {
 
 function openInsideNavWindow({model, path}) {
     if (OS_IOS) {
-        Alloy.Globals.privateAreaWin.openWindow(
+        Alloy.Globals.privateAreaTab.openWindow(
             Alloy.createController(path).getView()
         );
     } else {

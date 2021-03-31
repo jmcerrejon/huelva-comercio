@@ -128,7 +128,7 @@ function doOpenAffiliates(e) {
 function openView({model, index, path}) {
     const data = Alloy.Collections[model].get(index).toJSON();
     if (OS_IOS) {
-        Alloy.Globals.affiliatesWin.openWindow(
+        Alloy.Globals.affiliatesTab.openWindow(
             Alloy.createController(path, {
                 data,
             }).getView()

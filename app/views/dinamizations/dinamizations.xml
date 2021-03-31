@@ -1,5 +1,4 @@
 <Alloy>
-
     <View class="w-full h-full vertical">
 
         <!-- Navigation Bar buttons -->
@@ -9,14 +8,18 @@
         <!-- Body -->
 
         <View class="w-11/12 h-full vertical bg-white -mt-5">
-            <View id="vwGuest" class="w-full h-auto vertical">
-                <ImageView class="w-1/2 h-auto" image="images/candidates.png"></ImageView>
+            <View class="w-full h-11/12">
+                <View id="vwGuest" class="w-full h-auto vertical">
+                    <ImageView class="w-1/2 h-auto" image="images/candidates.png"></ImageView>
 
-                <Label class="text-2xl">Regístrate</Label>
+                    <Label class="text-2xl">Regístrate</Label>
 
-                <Label class="text-xs text-center w-1/2 mt-4">Regístrate o accede para obtener descuentos, sorteos y mucho más</Label>
+                    <Label class="text-xl text-center w-3/4 mt-4">Regístrate para estar al día de eventos y noticias relacionadas con el comercio de Huelva</Label>
 
-                <Require src="partials/button" text="¡Vamos allá!" onClick="doOpenSign"></Require>
+                    <View class="w-full h-4 vertical"></View>
+
+                    <Require src="partials/button" text="¡Vamos allá!" onClick="doOpenSign"></Require>
+                </View>
             </View>
 
             <ScrollView id="scrDinamizations" class="vertical w-0 h-0">

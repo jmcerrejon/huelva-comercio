@@ -1,15 +1,10 @@
-(function constructor(args) {
+(function constructor() {
     if (!Alloy.Globals.guest) {
-        $.vwGuest.width = $.vwGuest.height = 0;
-        $.scrDinamizations.width = '100%';
-        $.scrDinamizations.height = '100%';
-        Alloy.Collections['dinamizations'].fetch({
-            success: (res) => {},
-        });
+        Alloy.Collections['dinamizations'].fetch();
     }
-})($.args);
+})();
 
-function doOpenSign(params) {
+function doOpenSign() {
     Alloy.createController('login/login')
         .getView()
         .open(

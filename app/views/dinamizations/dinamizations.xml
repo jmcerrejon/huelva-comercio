@@ -8,8 +8,8 @@
         <!-- Body -->
 
         <View class="w-11/12 h-full vertical bg-white -mt-5">
-            <View class="w-full h-11/12">
-                <View id="vwGuest" class="w-full h-auto vertical">
+            <View id="vwRegister" if="Alloy.Globals.guest" class="w-full h-11/12">
+                <View class="w-full h-auto vertical">
                     <ImageView class="w-1/2 h-auto" image="images/candidates.png"></ImageView>
 
                     <Label class="text-2xl">Regístrate</Label>
@@ -22,7 +22,7 @@
                 </View>
             </View>
 
-            <ScrollView id="scrDinamizations" class="vertical w-0 h-0">
+            <ScrollView id="scrDinamizations" class="vertical w-full" height="89%">
                 <View id="vwDinamizacions" class="vertical w-full h-auto" dataCollection="dinamizations">
                     <View class="vertical w-full h-auto" id="vwContainer" itemLink="{link}" onClick="doOpenURL">
                         <ImageView class="w-auto no-touch-enable" image="{image}" defaultImage="/images/logo.png" module="av.imageview" height="160" loadingIndicator="true" contentMode="Alloy.Globals.CONTENT_MODE_FILL"></ImageView>

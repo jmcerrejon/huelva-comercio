@@ -595,6 +595,7 @@
 '.ml-2': { left: 8 }
 '.ml-3': { left: 12 }
 '.mr-3': { right: 12 }
+'.mr-7': { right: 28 }
 '.mt-0': { top: 0 }
 '.mt-1': { top: 4 }
 '.mt-10': { top: 40 }
@@ -630,6 +631,7 @@
 '.text-lightBlue-700': { color: '#0369a1' }
 '.text-red-500': { color: '#ef4444' }
 '.text-right': { textAlign: Ti.UI.TEXT_ALIGNMENT_RIGHT }
+'.text-rose-500': { color: '#f43f5e' }
 '.text-sm': { font: { fontSize: 14 } }
 '.text-white': { color: '#ffffff' }
 '.text-xl': { font: { fontSize: 20 } }
@@ -657,9 +659,9 @@
 
 // Default Font Awesome styles
 '.fa':{ font: { fontFamily: 'FontAwesome5Free-Solid' } }
+'.fa-award': { text: '\uf559', title: '\uf559' }
 '.fa-chevron-left': { text: '\uf053', title: '\uf053' }
 '.fa-facebook': { text: '\uf09a', title: '\uf09a' }
-'.fa-filter': { text: '\uf0b0', title: '\uf0b0' }
 '.fa-instagram': { text: '\uf16d', title: '\uf16d' }
 '.fa-mail-bulk': { text: '\uf674', title: '\uf674' }
 '.fa-phone': { text: '\uf095', title: '\uf095' }

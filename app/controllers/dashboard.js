@@ -1,5 +1,5 @@
+import NotificationBanner from 'ti.notificationbanner';
 let currentController = null;
-let objTab = {};
 var fcm = require('firebase.cloudmessaging');
 let timeSinceBackgroundApp;
 const time2RefreshNewsAndEventsInMinutes = 30;
@@ -62,7 +62,9 @@ let oldTab = 'main';
 // $.tabGroup.setActiveTab($.affiliates); // Just for test purpose
 
 function closeToRoot() {
-    $.tabGroup.activeTab.popToRootWindow();
+    if (OS_IOS) {
+        $.tabGroup.activeTab.popToRootWindow();
+    }
 }
 
 Alloy.Globals.events.on('popToRootWindow', closeToRoot);
@@ -172,7 +174,7 @@ function enableBackground() {
     timeSinceBackgroundApp = Alloy.Globals.moment();
 }
 
-function resume(e) {
+function resume() {
     Ti.API.info(
         `App is resuming from the background at ${new Date()}: Ti.Network.online: ${
             Ti.Network.online
@@ -212,8 +214,12 @@ function resume(e) {
             url: fcm.lastData.url || null,
             data: fcm.lastData.data || null,
         };
-        notification(data);
+        if (!_.isNull(data.tag)) {
+            notification(data);
+        }
+        Alloy.Globals.androidDataPush = null;
     }
+    console.log('Alloy.Globals.background ...' + Alloy.Globals.background);
 }
 
 function checkValidUser() {
@@ -243,43 +249,71 @@ function fetchAllCollections() {
 }
 
 function notification(data) {
+    console.log('Alloy.Globals.background=' + Alloy.Globals.background);
     if (!data && _.isNull(data.tag)) {
         return;
     }
 
     switch (data.tag) {
         case 'offer_notifications':
+            if (!Alloy.Globals.background) {
+                showNotificationBanner('Ofertas y promociones', data.body);
+                return;
+            }
             closeToRoot();
             $.tabGroup.setActiveTab($.main);
             fetchAllCollections();
             Alloy.createController('webviewWin', {
-                url: data.url,
+                url: data.url || 'https://foe.es',
                 title: 'Ofertas y promos',
             })
                 .getView()
                 .open();
             break;
         case 'dinamization_notifications':
+            if (!Alloy.Globals.background) {
+                showNotificationBanner('Dinamización', data.body);
+                return;
+            }
             closeToRoot();
             $.tabGroup.setActiveTab($.dinamizations);
             fetchAllCollections();
             break;
         case 'communication_notifications':
+            if (!Alloy.Globals.background) {
+                showNotificationBanner('Circulares', data.body, '#FC5D4E');
+                return;
+            }
             closeToRoot();
             $.tabGroup.setActiveTab($.communications);
             fetchAllCollections();
             break;
         case 'leadership_notifications':
+            if (!Alloy.Globals.background) {
+                showNotificationBanner(
+                    'Circulares Junta Directiva',
+                    data.body,
+                    '#FC5D4E'
+                );
+                return;
+            }
             closeToRoot();
             $.tabGroup.setActiveTab($.communications);
             fetchAllCollections();
             openLeadershipWin();
             break;
     }
+    Ti.App.Properties.setBool('background', false);
+    Alloy.Globals.background = false;
+}
 
-    if (OS_ANDROID) {
-        Alloy.Globals.androidDataPush = null;
-    }
+function showNotificationBanner(title, subtitle, backgroundColor = '#0060a5') {
+    NotificationBanner.show({
+        title,
+        subtitle,
+        duration: 5,
+        backgroundColor,
+    });
 }
 
 function openLeadershipWin() {

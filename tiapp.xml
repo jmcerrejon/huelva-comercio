@@ -88,6 +88,7 @@
         <module platform="android">fr.squirrel.pdfview</module>
         <module>av.imageview</module>
         <module>ti.animation</module>
+        <module>ti.notificationbanner</module>
     </modules>
     <deployment-targets>
         <target device="android">true</target>

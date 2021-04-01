@@ -1,11 +1,10 @@
+import NotificationBanner from 'ti.notificationbanner';
 let currentPage = 1;
 let POSTS_PER_PAGE = 10;
-let isMainTitleChange = false;
 let scrollableLoop = true;
-const OFFSET_CHANGE_HEADER_TITLE = 301;
+const OFFSET_CHANGE_HEADER_TITLE = 200;
 const SCROLLABLEVIEW_HEIGHT = 175;
 const TIME_PER_VIEW_MILISECONDS = 8000;
-const cantShare = false;
 const exclusive = getExclusiveValues();
 
 (function constructor() {
@@ -69,6 +68,23 @@ Alloy.Globals.events.on('refreshOffers', () => {
     reset();
 });
 
+if (OS_IOS) {
+    $.listView.addEventListener('scrolling', (e) => {
+        const offset =
+            $.scrollableView.height === 0
+                ? OFFSET_CHANGE_HEADER_TITLE - SCROLLABLEVIEW_HEIGHT
+                : OFFSET_CHANGE_HEADER_TITLE;
+        $.reqNavbar.lblTitle.text =
+            e.targetContentOffset > offset ? 'Ofertas y promos' : 'Inicio';
+    });
+}
+if (OS_ANDROID) {
+    $.listView.addEventListener('scrollend', (e) => {
+        $.reqNavbar.lblTitle.text =
+            e.firstVisibleItemIndex > 0 ? 'Ofertas y promos' : 'Inicio';
+    });
+}
+
 function myLoader(element) {
     Alloy.Collections.news.fetch({
         page: currentPage,
@@ -122,7 +138,7 @@ function reset() {
         );
         return;
     }
-    Alloy.Globals.loading.show('Cargando...');
+    Alloy.Globals.loading.show('Cargando ofertas...');
     renderNotFoundTemplate();
     currentPage = 1;
     Alloy.Collections.news.fetch({
@@ -204,6 +220,7 @@ function transformCollection(model) {
         };
     }
     modelJSON['exclusive'] = isExclusive ? 'red' : 'gray';
+    modelJSON['exclusiveIcon'] = isExclusive ? Ti.UI.SIZE : 0;
     modelJSON['image'] =
         _.isUndefined(modelJSON['image']) || modelJSON['image'] == ''
             ? 'images/logo_256.png'
@@ -233,6 +250,20 @@ function doFilter() {
             'Información'
         );
         return;
+    }
+
+    NotificationBanner.show({
+        title: 'Promociones',
+        subtitle: 'Se muestran las ofertas y promociones exclusivas.',
+        duration: 3,
+        backgroundColor: '#2178F1',
+    });
+
+    if (_.isFunction($.listView.setContentOffset)) {
+        $.listView.setContentOffset({
+            x: 0,
+            y: 0,
+        });
     }
 
     currentPage = 1;

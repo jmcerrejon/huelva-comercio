@@ -3,8 +3,8 @@
 
         <!-- Navigation Bar buttons -->
 
-        <Require id="reqNavbar" if="Alloy.Globals.guest" src="/partials/navbar" title="Inicio" leftIcon="text-2xl text-white lni lni-user" rightIcon="text-2xl text-white lni lni-search-alt" filterVisibility="text-2xl text-white fas fa-filter" onLogin="doLogin" onClick="doSearch" onFilter="doFilter"></Require>
-        <Require id="reqNavbar" if="!Alloy.Globals.guest" src="/partials/navbar" title="Inicio" leftIcon="text-2xl text-white lni lni-cog" rightIcon="text-2xl text-white lni lni-search-alt" filterVisibility="text-2xl text-white fas fa-filter" onLogin="doLogin" onClick="doSearch" onFilter="doFilter"></Require>
+        <Require id="reqNavbar" if="Alloy.Globals.guest" src="/partials/navbar" title="Inicio" leftIcon="text-2xl text-white lni lni-user" rightIcon="text-2xl text-white lni lni-search-alt" onLogin="doLogin" onClick="doSearch"></Require>
+        <Require id="reqNavbar" if="!Alloy.Globals.guest" src="/partials/navbar" title="Inicio" leftIcon="text-2xl text-white lni lni-cog" rightIcon="text-2xl text-white lni lni-search-alt" filterVisibility="text-3xl text-white fas fa-award" onLogin="doLogin" onClick="doSearch" onFilter="doFilter"></Require>
 
         <!-- Body -->
 
@@ -41,6 +41,7 @@
                                 <Label bindId="postBody" id="postBody" class="w-screen font-normal text-gray-500 text-justify">¡Regístrate para obtener información sobre ofertas y descuentos!</Label>
                             </View>
                         </View>
+                        <Label bindId="lbExclusive" class="h-auto text-3xl text-rose-500 fas fa-award mt-2 mr-7"></Label>
                     </View>
                 </ItemTemplate>
             </Templates>
@@ -63,7 +64,7 @@
                 <ListItem template="noNewsFound"></ListItem>
             </ListSection>
             <ListSection dataCollection="news" dataTransform="transformCollection">
-                <ListItem itemId="{id}" image:backgroundImage="{image}" vwContainer:borderColor="{exclusive}" viewPost:url="{link}" postTitle:text="{title}" postDateFormatted:text="{date_formatted}" postBody:text="{content}" />
+                <ListItem itemId="{id}" image:backgroundImage="{image}" vwContainer:borderColor="{exclusive}" lbExclusive:width="{exclusiveIcon}" viewPost:url="{link}" postTitle:text="{title}" postDateFormatted:text="{date_formatted}" postBody:text="{content}" />
 
                 <FooterView>
                     <View id="lvwFooter" class="w-full h-10">

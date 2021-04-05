@@ -54,10 +54,6 @@ Follow the next steps:
 
 -   Double click on certificates already downloader from Finder.
 
--   On _builder.sh_, change the _PP_UUID_ (You can get the new one it if run _builder.sh_ again).
+-   On _builder.sh_, change the _PP_UUID_ (You can get the new one if you run _appc ti info -t ios_).
 
 -   Open keychain Access and remove old certificates.
-
--   IOS build:
-
-appc "run" "--platform" "ios" "--log-level" "trace" "--project-dir" "/Users/ulysess/Documents/Appcelerator_Studio_Workspace/ceca" "--target" "device" "--device-id" "00008030-001C691001C0802E" "--developer-name" "Apple Development: JOSE CERREJON GONZALEZ (324YU3WC5Y)" "--pp-uuid" "14e72dbd-f2fa-4a50-aa94-e9123d000d5b"

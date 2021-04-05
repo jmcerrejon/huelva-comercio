@@ -65,6 +65,14 @@ function doOpenPDF(item) {
     openRemotePdf(item.source.url);
 }
 
+function doTransform(model) {
+    var transform = model.toJSON();
+
+    transform.pdf_button_height = _.isNull(transform.file_name) ? 0 : 40;
+
+    return transform;
+}
+
 function openRemotePdf(url) {
     Alloy.Globals.loading.show();
     var client = Ti.Network.createHTTPClient({

@@ -13,12 +13,12 @@
             <Templates>
                 <ItemTemplate name="defaultTemplate" height="80">
                     <View class="horizontal w-full">
-                        <View class="logoContainer">
-                            <ImageView bindId="logo" class="logoImage" module="av.imageview"></ImageView>
+                        <View width="20%" class="logoContainer h-11/12">
+                            <ImageView bindId="logo" class="logoImage" module="av.imageview" contentMode="Alloy.Globals.CONTENT_MODE_FIT"></ImageView>
                         </View>
 
                         <View width="79%" class="vertical">
-                            <Label bindId="title" class="lni-16 ml-0 text-lightBlue-600 h-10"/>
+                            <Label bindId="title" class="lni-16 ml-1 text-lightBlue-600 h-10"/>
                         </View>
                     </View>
                 </ItemTemplate>

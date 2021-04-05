@@ -56,9 +56,7 @@ function handleImageLogo(logo = null) {
         return;
     }
 
-    !logo
-        ? ($.vw_logo.height = 0)
-        : ($.logoEdit.image = $.logoShow.image = logo);
+    !logo ? ($.vw_logo.height = 0) : ($.logoShow.image = logo);
 }
 
 function canEdit(affiliateId) {
@@ -263,77 +261,4 @@ function showOptionDialog({title, options, source = ''}) {
 
 function changeLogo() {
     $.pictureDialog.show();
-}
-
-function doPictureSelected({index}) {
-    switch (index) {
-        case 0:
-            utils.requestCameraPermission(function () {
-                Ti.Media.showCamera({
-                    success: uploadImage,
-                    cancel: function () {},
-                    error: function () {
-                        Alloy.Globals.showMessage(
-                            'Hubo un problema al usar la cámara. Revise los permisos en su dispositivo.',
-                            'No se tiene acceso a la cámara'
-                        );
-                    },
-                    saveToPhotoGallery: false,
-                    mediaTypes: [Ti.Media.MEDIA_TYPE_PHOTO],
-                });
-            });
-            break;
-        case 1:
-            Ti.Media.openPhotoGallery({
-                mediaTypes: [Titanium.Media.MEDIA_TYPE_PHOTO],
-                success: uploadImage,
-                error: function () {
-                    Alloy.Globals.showMessage(
-                        'Hubo un problema al abrir la galería. Revise los permisos en su dispositivo.',
-                        'No se tiene acceso a la galería'
-                    );
-                },
-            });
-            break;
-
-        default:
-            break;
-    }
-
-    function uploadImage({media}) {
-        const newWidth = 128;
-        const newHeight = (media.height / media.width) * newWidth;
-        const imageResized = media.imageAsResized(newWidth, newHeight);
-
-        Alloy.Globals.loading.show('Guardando imagen...');
-        let client = Ti.Network.createHTTPClient({
-            onload: function (response) {
-                Alloy.Globals.loading.hide();
-                if (!response.success) {
-                    Alloy.Globals.showMessage(
-                        'Vaya, hubo un problema al obtener la imagen. Inténtelo de nuevo mas tarde.',
-                        'Error en la subida'
-                    );
-                }
-
-                $.logoEdit.image = $.logoShow.image = imageResized;
-            },
-            onerror: function () {
-                Alloy.Globals.loading.hide();
-                Alloy.Globals.showMessage(
-                    'Vaya, hubo un problema al obtener la imagen. Inténtelo de nuevo mas tarde.',
-                    'Error en la subida'
-                );
-            },
-            timeout: 120000,
-        });
-        client.open('POST', Alloy.CFG.baseapi + 'affiliates/upload/logo/');
-        client.setRequestHeader(
-            'Authorization',
-            'Bearer ' + Alloy.Globals.token
-        );
-        client.send({
-            logo: imageResized,
-        });
-    }
 }

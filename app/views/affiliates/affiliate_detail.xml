@@ -3,36 +3,6 @@
         <Require id="reqNavbar" src="/partials/navbar" title="$.args.data.name" leftIcon="text-2xl text-white fas fa-chevron-left" onLogin="close"></Require>
 
         <ScrollView class="scrollView bg-white">
-            <View id="vwEdit" class="v_container" height="0" width="0">
-                <Label class="font12Light main-color" width="Ti.UI.FILL" text="Desde aquí podrá actualizar los datos que tenemos de su empresa. Se actualizarán automáticamente para todos los afiliados."></Label>
-
-                <View class="logoContainer" onClick="changeLogo" height="Ti.UI.SIZE" width="Ti.UI.SIZE">
-                    <ImageView id="logoEdit" class="logoImage" module="av.imageview" right="5"></ImageView>
-
-                    <ImageView class="cameraIcon"></ImageView>
-                </View>
-
-                <Require src="/partials/_checkbox" left="0" id="visible" enabled="true" text="Mi empresa estará visible en esta aplicación" onChange="changeCheckboxVisibleText" onNext="next" next="address"></Require>
-
-                <Label id="lbVisible" class="font12Light" width="0" height="0" left="25" color="gray" text="Desde ajustes en Inicio, puede volver a cambiar la visibilidad de su empresa en la aplicación si cambia de opinión."></Label>
-
-                <Require src="/partials/_textfield" class="textField" id="address" enabled="true" hintText="Dirección" hintTextTitle="Dirección" onNext="next" next="phone1"></Require>
-
-                <Require src="/partials/_textfield" class="textField keyboard-numeric" id="phone1" enabled="true" hintText="Teléfono 1" hintTextTitle="Teléfono 1" onNext="next" onPrevious="previous" next="phone2" previous="address"></Require>
-
-                <Require src="/partials/_textfield" class="textField keyboard-numeric" id="phone2" enabled="true" hintText="Teléfono 2" hintTextTitle="Teléfono 2" onNext="next" onPrevious="previous" next="email1" previous="phone1"></Require>
-
-                <Require src="/partials/_textfield" class="textField keyboard-mail" id="email1" enabled="true" hintText="Email 1" hintTextTitle="Email1" onNext="next" onPrevious="previous" next="email2" previous="phone2"></Require>
-
-                <Require src="/partials/_textfield" class="textField keyboard-mail" id="email2" enabled="true" hintText="Email 2" hintTextTitle="Email2" onNext="next" onPrevious="previous" next="email3" previous="email1"></Require>
-
-                <Require src="/partials/_textfield" class="textField keyboard-mail" id="email3" enabled="true" hintText="Email 3" hintTextTitle="Email3" onNext="next" onPrevious="previous" next="web" previous="email2"></Require>
-
-                <Require src="/partials/_textfield" class="textField keyboard-web" id="web" enabled="true" hintText="Website" hintTextTitle="Website" onPrevious="previous" previous="email3" returnKeyType="Titanium.UI.RETURNKEY_DONE"></Require>
-
-                <View class="separator-min"></View>
-            </View>
-
             <View id="vwShow" class="v_container">
                 <View id="vw_logo" class="v_container">
                     <View class="logoContainer" height="Ti.UI.SIZE" width="Ti.UI.SIZE">
@@ -72,14 +42,5 @@
 
             </View>
         </ScrollView>
-        <OptionDialog id="pictureDialog" title="Seleccione nuevo logo de su empresa desde:" onClick="doPictureSelected">
-            <Options>
-                <Option>Cámara</Option>
-
-                <Option>Galería</Option>
-
-                <Option>Cancelar</Option>
-            </Options>
-        </OptionDialog>
     </Window>
 </Alloy>

@@ -581,7 +581,6 @@
 '.h-auto': { height: Ti.UI.SIZE }
 '.h-full': { height: '100%' }
 '.horizontal': { layout: 'horizontal' }
-'.horizontal[platform=ios]': { clipMode: Ti.UI.iOS.CLIP_MODE_DISABLED }
 '.m-2': { top: 8, right: 8, bottom: 8, left: 8 }
 '.m-3': { top: 12, right: 12, bottom: 12, left: 12 }
 '.mb-1': { bottom: 4 }
@@ -606,12 +605,12 @@
 '.mx-4': { right: 16, left: 16 }
 '.mx-8': { right: 32, left: 32 }
 '.pl-2': { padding: { left: 8 } }
-'.rounded-2xl': { borderRadius: 8 }
-'.rounded-3xl': { borderRadius: 12 }
-'.rounded-lg': { borderRadius: 4 }
-'.rounded-xl': { borderRadius: 6 }
-'.shadow-2xl': { viewShadowOffset: { x: 0, y: 16 }, viewShadowRadius: 16, viewShadowColor: '#77000000' }
-'.shadow-md': { viewShadowOffset: { x: 0, y: 4 }, viewShadowRadius: 4, viewShadowColor: '#77000000' }
+'.rounded-2xl': { borderRadius: 16 }
+'.rounded-3xl': { borderRadius: 24 }
+'.rounded-lg': { borderRadius: 8 }
+'.rounded-xl': { borderRadius: 12 }
+'.shadow-2xl': { viewShadowOffset: { x: 0, y: 16 }, viewShadowRadius: 16, viewShadowColor: '#80000000' }
+'.shadow-md': { viewShadowOffset: { x: 0, y: 4 }, viewShadowRadius: 4, viewShadowColor: '#80000000' }
 '.text-2xl': { font: { fontSize: 24 } }
 '.text-3xl': { font: { fontSize: 30 } }
 '.text-base': { font: { fontSize: 16 } }
@@ -637,7 +636,6 @@
 '.text-xl': { font: { fontSize: 20 } }
 '.text-xs': { font: { fontSize: 12 } }
 '.vertical': { layout: 'vertical' }
-'.vertical[platform=ios]': { clipMode: Ti.UI.iOS.CLIP_MODE_DISABLED }
 '.w-0': { width: 0 }
 '.w-1/12': { width: '8.333333%' }
 '.w-1/2': { width: '50%' }

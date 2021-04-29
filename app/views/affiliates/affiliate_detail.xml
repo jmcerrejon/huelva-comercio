@@ -16,26 +16,30 @@
                     <Label id="lb_category" class="text-center main-color no-touch-enable w-full" top="5"> - </Label>
                 </View>
 
+                <View class="w-full h-auto vertical mt-2 mb-6">
+                    <Label id="lb_description" class="text-left main-color no-touch-enable w-full" top="5"> - </Label>
+                </View>
+
                 <View id="vw_address" class="v_container" onClick="doAction">
-                    <Label class="fa icons no-touch-enable" text="\uf5a0"/>
+                    <Label class="fa icons no-touch-enable" text="\uf276"/>
                     <Label id="lb_address" class="text-center main-color no-touch-enable w-full" top="5"> - </Label>
                     <View class="separator-min no-touch-enable"></View>
                 </View>
 
                 <View id="vw_phones" class="v_container" onClick="doAction">
-                    <Label class="fa icons no-touch-enable" text="\uf095"/>
+                    <Label class="fa icons no-touch-enable" text="\uf3cd"/>
                     <Label id="lb_phones" class="text-center main-color no-touch-enable w-full" top="5"> - </Label>
                     <View class="separator-min no-touch-enable"></View>
                 </View>
 
                 <View id="vw_emails" class="v_container" onClick="doAction">
-                    <Label class="headerSection no-touch-enable">E-MAIL</Label>
+                    <Label class="fa icons no-touch-enable" text="\uf0e0"></Label>
                     <Label id="lb_emails" class="text-center main-color no-touch-enable w-full" top="5"> - </Label>
                     <View class="separator-min no-touch-enable"></View>
                 </View>
 
                 <View id="vw_websites" class="v_container" onClick="doAction">
-                    <Label class="headerSection no-touch-enable">WEB</Label>
+                    <Label class="fa icons no-touch-enable" text="\uf245"></Label>
                     <Label id="lb_websites" class="text-center main-color no-touch-enable w-full" top="5"> - </Label>
                     <View class="separator-min no-touch-enable"></View>
                 </View>

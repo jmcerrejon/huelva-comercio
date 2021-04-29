@@ -48,7 +48,8 @@ let updateAffiliate = false;
         args.data.email3,
     ]);
     renderElements('websites', [args.data.web]);
-    renderElements('category', [args.data.category]);
+    $.lb_category.text = `Categoría: ${args.data.category}`;
+    $.lb_description.text = args.data.description;
 })($.args);
 
 function handleImageLogo(logo = null) {

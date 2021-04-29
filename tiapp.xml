@@ -4,9 +4,9 @@
     <name>Huelva Comercio</name>
     <version>1.0.0</version>
     <publisher>Soporttec, S.L.</publisher>
-    <url>https://ceca.es/</url>
-    <description/>
-    <copyright>not specified</copyright>
+    <url>https://huelvacomercio.com</url>
+    <description>Mantente informado de lo que sucede en el comercio de Huelva: promociones, descuentos y noticias en la palma de tu mano.</description>
+    <copyright>Soporttec, S.L.</copyright>
     <icon>appicon.png</icon>
     <fullscreen>false</fullscreen>
     <navbar-hidden>true</navbar-hidden>
@@ -25,7 +25,7 @@
         <plist>
             <dict>
                 <key>aps-environment</key>
-                <string>development</string>
+                <string>production</string>
                 <key>CFBundleVersion</key>
                 <string>1</string>
                 <key>UIUserInterfaceStyle</key>

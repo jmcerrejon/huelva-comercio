@@ -7,33 +7,62 @@
 
         <!-- Body -->
 
-        <View class="w-11/12 h-full vertical bg-white -mt-5">
-            <View id="vwRegister" if="Alloy.Globals.guest" class="w-full h-11/12">
-                <View class="w-full h-auto vertical">
-                    <ImageView class="w-1/2 h-auto" image="images/candidates.png"></ImageView>
+        <View id="vwRegister" if="Alloy.Globals.guest" class="w-full h-11/12">
+            <View class="w-full h-auto vertical">
+                <ImageView class="w-1/2 h-auto" image="images/candidates.png"></ImageView>
 
-                    <Label class="text-2xl">Regístrate</Label>
+                <Label class="text-2xl">Regístrate</Label>
 
-                    <Label class="text-xl text-center w-3/4 mt-4">Regístrate para estar al día de eventos y noticias relacionadas con el comercio de Huelva</Label>
+                <Label class="text-xl text-center w-3/4 mt-4">Regístrate para estar al día de eventos y noticias relacionadas con el comercio de Huelva</Label>
 
-                    <View class="w-full h-4 vertical"></View>
+                <View class="w-full h-4 vertical"></View>
 
-                    <Require src="partials/button" text="¡Vamos allá!" onClick="doOpenSign"></Require>
-                </View>
+                <Require src="partials/button" text="¡Vamos allá!" onClick="doOpenSign"></Require>
             </View>
-
-            <ScrollView id="scrDinamizations" class="vertical w-full" height="89%">
-                <View id="vwDinamizacions" class="vertical w-full h-auto" dataCollection="dinamizations">
-                    <View class="vertical w-full h-auto" id="vwContainer" itemLink="{link}" onClick="doOpenURL">
-                        <ImageView class="w-auto no-touch-enable" image="{image}" defaultImage="/images/logo.png" module="av.imageview" height="160" loadingIndicator="true" contentMode="Alloy.Globals.CONTENT_MODE_FILL"></ImageView>
-
-                        <Label class="mt-10 text-center no-touch-enable" text="{title}"></Label>
-
-                        <Label class="m-3 h-auto text-justify no-touch-enable" text="{content}"></Label>
-                    </View>
-                </View>
-            </ScrollView>
         </View>
+
+        <ListView id="listView" class="w-11/12 vertical bg-white -mt-5" separatorStyle="Ti.UI.TABLE_VIEW_SEPARATOR_STYLE_NONE" height="90%" onItemclick="doOpenPost" defaultItemTemplate="defaultTemplate">
+            <RefreshControl id="refreshListView" onRefreshstart="reset"/>
+
+            <Widget id="is" src="nl.fokkezb.infiniteScroll" onEnd="myLoader"/>
+
+            <Templates>
+                <ItemTemplate name="noNewsFound">
+                    <View bindId="vwNoNewsFound" class="vertical w-0 h-0">
+                        <Label class="font14 text-center" left="10" right="10" text="No se han encontrado noticias relacionadas.\nVuelva a recargar las noticias." />
+
+                        <Button onClick="reset" title="RECARGAR" top="20"></Button>
+                    </View>
+                </ItemTemplate>
+
+                <ItemTemplate name="defaultTemplate">
+                    <View bindId="vwDinamizations" class="vertical w-full h-auto mt-4">
+                        <View class="vertical w-full h-auto" id="vwContainer">
+                            <ImageView bindId="ivImage" class="w-auto no-touch-enable" defaultImage="/images/logo.png" module="av.imageview" height="160" loadingIndicator="true" contentMode="Alloy.Globals.CONTENT_MODE_FILL"></ImageView>
+
+                            <Label bindId="lbTitle" class="mt-4 text-2xl font-thin text-center no-touch-enable"></Label>
+
+                            <Label bindId="lbContent" class="m-3 h-auto text-justify no-touch-enable"></Label>
+
+                            <View class="w-full border-blue-300" height="2">
+                            </View>
+                        </View>
+                    </View>
+                </ItemTemplate>
+            </Templates>
+
+            <ListSection id="sectionNoNewsFound">
+                <ListItem template="noNewsFound"></ListItem>
+            </ListSection>
+            <ListSection dataCollection="dinamizations">
+                <ListItem itemId="{id}" ivImage:image="{image}" lbTitle:text="{title}" lbContent:text="{content}" vwDinamizations:url="{link}"/>
+
+                <FooterView>
+                    <View id="lvwFooter" class="w-full h-10">
+                    </View>
+                </FooterView>
+            </ListSection>
+        </ListView>
     </View>
 
 </Alloy>

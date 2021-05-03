@@ -81,7 +81,7 @@ exports.config = {
         },
         {
             name: 'readDinamizations',
-            get: 'dinamizations',
+            get: 'dinamizations?page=<page>',
         },
         {
             name: 'readCandidates',

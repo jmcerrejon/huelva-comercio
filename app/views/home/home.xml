@@ -19,7 +19,7 @@
 
                 <ItemTemplate name="noNewsFound">
                     <View bindId="vwNoNewsFound" class="vertical w-0 h-0">
-                        <Label class="font14 text-center" left="10" right="10" text="No se han encontrado noticias relacionadas.\nVuelva a recargar las noticias." />
+                        <Label class="font14 text-center" left="10" right="10" text="No se han encontrado ofertas relacionadas.Vuelva a visitarnos mas tarde." />
 
                         <Button onClick="reset" title="RECARGAR" top="20"></Button>
                     </View>

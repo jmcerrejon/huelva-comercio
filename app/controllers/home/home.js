@@ -1,10 +1,10 @@
 import NotificationBanner from 'ti.notificationbanner';
 let currentPage = 1;
-let POSTS_PER_PAGE = 10;
+let POSTS_PER_PAGE = 15;
 let scrollableLoop = true;
 const OFFSET_CHANGE_HEADER_TITLE = 200;
 const SCROLLABLEVIEW_HEIGHT = 175;
-const TIME_PER_VIEW_MILISECONDS = 8000;
+const TIME_PER_VIEW_MILISECONDS = 1000 * 8;
 const exclusive = getExclusiveValues();
 
 (function constructor() {
@@ -16,12 +16,13 @@ const exclusive = getExclusiveValues();
             }
         },
     });
+    Alloy.Globals.loading.show('Cargando ofertas...');
     Alloy.Collections.news.fetch({
         page: currentPage++,
         query: '',
         exclusive: exclusive,
         success: (res) => {
-            Alloy.Globals.loading.hide(); // It comes from login.js
+            Alloy.Globals.loading.hide();
             renderNotFoundTemplate(res.length);
             POSTS_PER_PAGE = res.length;
             $.is.init($.listView);

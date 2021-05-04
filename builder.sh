@@ -17,7 +17,7 @@ android() {
     # For build keystore: `keytool -genkey -v  -keyalg RSA -validity 10000 -keysize 4096  -dname "CN=Jose Cerrejon, OU=Mobile development, O=Soporttec SL, L=Huelva, ST=Spain, C=ES" -storepass cecaxyz77 -alias ceca -keystore com.soporttec.ceca.jks`
     KEYSTORE="$PROJECT_DIR/cert/android/com.sopportec.ceca.jks"
     OUTPUT_DIR="$PROJECT_DIR/dist"
-    appc run -p android -T dist-playstore --log-level info --project-dir "/Users/ulysess/Documents/Appcelerator/ceca" --output-dir "$OUTPUT_DIR" --keystore "$KEYSTORE" --alias ceca --store-password cecaxyz77
+    appc run --project-dir "$PROJECT_DIR" --log-level info --platform android --color --no-prompt --target dist-playstore --sdk "9.3.2.GA" --output-dir "$OUTPUT_DIR" --keystore "$KEYSTORE" --alias ceca --store-password "cecaxyz77"
 }
 
 clear

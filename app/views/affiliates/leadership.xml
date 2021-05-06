@@ -17,7 +17,7 @@
 
                         <Label bindId="published_at" class="w-full text-sm mb-2 text-right" value="dd/mm/YYYY H:m"></Label>
 
-                        <Label bindId="msgDescription" class="w-full text-justify mb-2"></Label>
+                        <TextArea bindId="msgDescription" class="w-full h-auto text-justify text-base text-blue-700 mb-2" autoLink="Ti.UI.AUTOLINK_URLS" editable="false"></TextArea>
 
                         <View bindId="pdf" id="vwContainer" class="w-1/4 mb-4" url="test.pdf" onClick="doOpenPDF">
                             <View class="w-11/12 no-touch-enable">

@@ -45,8 +45,8 @@ function init({model, currentPage, response, listView, infScrollWidget}) {
     pageControl[currentPage]++;
     $[infScrollWidget].init($[listView]);
     $[infScrollWidget].setOptions({
-        msgTap: '',
-        msgDone: '',
+        msgTap: 'Toca para cargar mas...',
+        msgDone: 'Nada que cargar',
         msgError: 'Toca para intentar de nuevo...',
     });
 }
@@ -62,6 +62,7 @@ function doTransform(model) {
 }
 
 function myLoaderAssociations(e) {
+    console.log('entro');
     myLoader({
         model: 'affiliates',
         currentPage: 'currentPage',

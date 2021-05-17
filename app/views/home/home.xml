@@ -38,7 +38,7 @@
                                     <Label bindId="postDateFormatted" class="w-full text-right mb-2 text-sm font-semibold text-gray-500"></Label>
                                 </View>
 
-                                <Label bindId="postBody" id="postBody" class="w-screen font-normal text-gray-500 text-justify">¡Regístrate para obtener información sobre ofertas y descuentos!</Label>
+                                <Label bindId="postBody" id="postBody" class="w-screen font-normal text-gray-500 text-justify">¡Regístrate para obtener información sobre ofertas y descuentos especiales!</Label>
                             </View>
                         </View>
                         <Label bindId="lbExclusive" class="h-auto text-3xl text-rose-500 fas fa-award mt-2 mr-7"></Label>
@@ -54,7 +54,7 @@
                         </ScrollableView>
 
                         <View id="vwRegisterWarning" if="Alloy.Globals.guest" class="w-11/12 h-auto vertical test rounded-lg mb-2" onClick="doLogin">
-                            <Label class="w-full h-auto text-center text-red-500 mt-2 mb-2">¡Regístrate para obtener información sobre ofertas y descuentos!</Label>
+                            <Label class="w-full h-auto text-center text-red-500 mt-2 mb-2">¡Regístrate para obtener información sobre ofertas y descuentos especiales!</Label>
                         </View>
                     </View>
                 </HeaderView>

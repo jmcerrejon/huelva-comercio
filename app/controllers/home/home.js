@@ -217,7 +217,7 @@ function transformCollection(model) {
         modelJSON = {
             title: 'Contenido Exclusivo',
             content:
-                '¡Regístrate para obtener información sobre ofertas y descuentos!',
+                '¡Regístrate para obtener información sobre ofertas y descuentos especiales!',
         };
     }
     modelJSON['exclusive'] = isExclusive ? 'red' : 'gray';

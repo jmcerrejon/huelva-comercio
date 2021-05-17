@@ -115,7 +115,7 @@ function doReadPrivacy() {
 }
 
 function openInstagram() {
-    Ti.Platform.openURL(Alloy.CFG.twitter);
+    Ti.Platform.openURL(Alloy.CFG.instagram);
 }
 
 function openFacebook() {
@@ -124,4 +124,9 @@ function openFacebook() {
             ? Alloy.CFG.facebook_scheme
             : Alloy.CFG.facebook_url
     );
+}
+
+function openMail() {
+    Ti.UI.Clipboard.setText(Alloy.CFG.mail);
+    Alloy.Globals.showMessage('Email copiado al portapapeles.', '');
 }

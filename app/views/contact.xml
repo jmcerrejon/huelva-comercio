@@ -21,38 +21,38 @@
                     <Require src="partials/button" text="Enviar" onClick="sendEmail"></Require>
                 </View>
 
-                <View class="h-10 mx-8 mt-4 horizontal">
-                    <View class="w-1/2 mt-2" onClick="openFacebook">
-                        <View id="vwFacebook" class="horizontal no-touch-enable">
+                <View class="h-12 mx-8 mt-4 horizontal">
+                    <View class="w-1/2 h-auto mt-2" onClick="openFacebook">
+                        <View id="vwFacebook" class="vertical no-touch-enable">
                             <Label class="text-blue-500 fab fa-facebook no-touch-enable"></Label>
 
-                            <Label class="ml-2 text-blue-500 no-touch-enable">Facebook</Label>
+                            <Label class="text-blue-500 no-touch-enable">Facebook</Label>
                         </View>
                     </View>
 
-                    <View class="w-1/2 mt-2" onClick="openInstagram">
-                        <View id="vwTwitter" class="horizontal no-touch-enable">
+                    <View class="w-1/2 mt-2 h-auto" onClick="openInstagram">
+                        <View id="vwTwitter" class="vertical no-touch-enable">
                             <Label class="text-blue-400 fab fa-instagram no-touch-enable"></Label>
 
-                            <Label class="ml-2 text-blue-500 no-touch-enable">Instagram</Label>
+                            <Label class="text-blue-500 no-touch-enable">Instagram</Label>
                         </View>
                     </View>
                 </View>
 
-                <View class="h-10 mx-8 mt-4 horizontal">
-                    <View class="w-1/2 mt-2" onClick="call">
-                        <View id="vwFacebook" class="horizontal no-touch-enable">
+                <View class="h-12 mx-8 mt-4 horizontal">
+                    <View class="w-1/2 h-auto mt-2" onClick="call">
+                        <View id="vwFacebook" class="vertical no-touch-enable">
                             <Label class="text-blue-500 fa fa-phone no-touch-enable"></Label>
 
-                            <Label class="ml-2 text-blue-500 no-touch-enable">65754224524</Label>
+                            <Label class="text-blue-500 no-touch-enable">65754224524</Label>
                         </View>
                     </View>
 
-                    <View class="w-1/2 mt-2">
-                        <View id="vwTwitter" class="horizontal no-touch-enable">
-                            <Label class="text-blue-5 00 fa fa-mail-bulk no-touch-enable"></Label>
+                    <View class="w-1/2 mt-2" onClick="openMail">
+                        <View id="vwTwitter" class="vertical no-touch-enable">
+                            <Label class="text-blue-500 fa fa-mail-bulk no-touch-enable"></Label>
 
-                            <Label id="lblEmail" class="ml-2 text-blue-500 no-touch-enable" text="Alloy.CFG.mail"></Label>
+                            <Label id="lblEmail" class="text-blue-500 no-touch-enable text-sm" text="Alloy.CFG.mail"></Label>
                         </View>
                     </View>
                 </View>

@@ -6,6 +6,7 @@ const OFFSET_CHANGE_HEADER_TITLE = 200;
 const SCROLLABLEVIEW_HEIGHT = 175;
 const TIME_PER_VIEW_MILISECONDS = 1000 * 8;
 const exclusive = getExclusiveValues();
+const extraURLParameters = '?app=true';
 
 (function constructor() {
     Alloy.Collections.banners.fetch({
@@ -195,7 +196,7 @@ function doOpenPost(e) {
     const item = e.section.getItemAt(e.itemIndex);
 
     if (!_.isUndefined(item.viewPost.url) && !_.isNull(item.viewPost.url)) {
-        !item.viewPost || openURL(item.viewPost.url);
+        !item.viewPost || openURL(item.viewPost.url + extraURLParameters);
     }
 }
 
@@ -285,7 +286,7 @@ function doSearch(e) {
     currentPage = 1;
     Alloy.Collections.news.fetch({
         page: currentPage,
-        query: e.value,
+        query: e.searchText,
         exclusive: exclusive,
         success: (data) => {
             if (data.length === 0) {

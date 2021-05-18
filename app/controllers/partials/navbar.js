@@ -44,7 +44,7 @@ function toggleViewSearchVisibility() {
     }
 }
 
-function doLogin(params) {
+function doLogin() {
     $.trigger('login');
 }
 
@@ -53,13 +53,19 @@ function doFilter() {
     $.trigger('filter');
 }
 
-function doAction(e) {
-    if (e.value.length < MIN_CHARACTER_SEARCH) {
+function searchIconClick() {
+    doAction();
+}
+
+function doAction() {
+    if ($.txtSearch.value < MIN_CHARACTER_SEARCH) {
         Alloy.Globals.showMessage('Por favor, escriba al menos 3 caracteres.');
         return;
     }
     Alloy.Globals.loading.show('Buscando...');
-    $.trigger('click', e);
+    $.trigger('click', {
+        searchText: $.txtSearch.value,
+    });
     $.txtSearch.value = '';
     toggleViewSearchVisibility();
 }

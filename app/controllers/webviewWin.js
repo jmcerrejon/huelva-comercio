@@ -5,16 +5,16 @@ let currentURL = $.args.url || Alloy.CFG.url;
     $.navbar.load({
         btnLeft: {
             title: '\uf00d',
-            visible: true
+            visible: true,
         },
         title: {
             visible: true,
-            text: title || 'Noticias'
+            text: title || 'Noticias',
         },
         btnRight: {
             visible: share,
-            title: (OS_IOS) ? '\uf35d' : '\uf1e0'
-        }
+            title: OS_IOS ? '\uf35d' : '\uf1e0',
+        },
     });
     $.webview.url = url;
 })($.args);
@@ -24,7 +24,6 @@ function close({type}) {
         case 'back':
             if (canGoBack) {
                 $.webview.goBack();
-                handleCanGoBackButton();
             } else {
                 $.webviewWin.close();
             }
@@ -39,11 +38,11 @@ function close({type}) {
 function shareArticle() {
     if (OS_IOS) {
         const docViewer = Ti.UI.iOS.createDocumentViewer({url: currentURL});
-        docViewer.show({view:$.webviewWin, animated: true});
+        docViewer.show({view: $.webviewWin, animated: true});
     } else {
         var content = {
             status: currentURL,
-            androidDialogTitle: 'Compartir'
+            androidDialogTitle: 'Compartir',
         };
 
         require('com.alcoapps.socialshare').share(content);
@@ -53,16 +52,15 @@ function shareArticle() {
 function checkLink(e) {
     currentURL = e.url;
     Ti.API.info(`e.url = ${e.url}`);
-    handleCanGoBackButton(currentURL);
 
     if (OS_ANDROID) {
         if (currentURL.endsWith('.pdf')) {
             $.webview.stopLoading();
-            var win = $.UI.create("Window");
-            var pdfView = require("fr.squirrel.pdfview").createView({
+            var win = $.UI.create('Window');
+            var pdfView = require('fr.squirrel.pdfview').createView({
                 height: Ti.UI.FILL,
                 width: Ti.UI.FILL,
-                url: currentURL
+                url: currentURL,
             });
             win.add(pdfView);
             win.open();
@@ -74,16 +72,6 @@ function checkLink(e) {
         }
     }
     return true;
-}
-
-function handleCanGoBackButton(url = '') {
-    canGoBack = (url.startsWith('https://foe.es/convenio-'));
-
-    $.navbar.load({
-        btnLeft: {
-            title: (canGoBack) ? '\uf053' : '\uf00d'
-        }
-    });
 }
 
 function setCurrentURL(e) {

@@ -1,6 +1,13 @@
+const CONSTANT_TO_REMOVE_FROM_ITEMS_PER_PAGE_FIX_ANDROID_BUG = 2;
 const pageControl = {
     currentPage: 1,
     itemsPerPage: 15,
+};
+const marker = {
+    sectionIndex: 0,
+    itemIndex:
+        pageControl['itemsPerPage'] -
+        CONSTANT_TO_REMOVE_FROM_ITEMS_PER_PAGE_FIX_ANDROID_BUG,
 };
 const search = {
     affiliates: {
@@ -9,10 +16,14 @@ const search = {
 };
 let isSearchBarVisible = false;
 
+function close() {
+    $.wAffiliates.close();
+}
+
 function initListView(query) {
     Alloy.Globals.Api.readAffiliates(
         {
-            page: 1,
+            page: pageControl['currentPage'],
             query: query,
         },
         (response) => {
@@ -21,7 +32,6 @@ function initListView(query) {
                 currentPage: 'currentPage',
                 response,
                 listView: 'lView',
-                infScrollWidget: 'is',
             });
 
             // Just for test purposes
@@ -32,66 +42,47 @@ function initListView(query) {
     );
 }
 
+function addMarker({listView, itemsPerPage, reset = false}) {
+    if (reset) {
+        marker['itemIndex'] =
+            itemsPerPage -
+            CONSTANT_TO_REMOVE_FROM_ITEMS_PER_PAGE_FIX_ANDROID_BUG;
+    }
+    $[listView].addMarker(marker);
+    marker['itemIndex'] +=
+        itemsPerPage - CONSTANT_TO_REMOVE_FROM_ITEMS_PER_PAGE_FIX_ANDROID_BUG;
+}
+
 Alloy.Globals.events.on('affiliates', () => {
     initListView(search['affiliates'].query);
     Alloy.Globals.events.off('affiliates');
 });
 
-function init({model, currentPage, response, listView, infScrollWidget}) {
+$.lView.addEventListener('marker', () => {
+    initListView(search['affiliates'].query);
+});
+
+function init({model, currentPage, response, listView}) {
+    if (response.data.length === 0) {
+        search['affiliates'].query = '';
+        Alloy.Globals.showMessage('No se encontraron resultados.');
+        return;
+    }
+
     if (pageControl[currentPage] == 1) {
         Alloy.Collections[model].reset();
     }
     Alloy.Collections[model].add(response.data);
+
+    if (response.data.length < pageControl['itemsPerPage']) {
+        return;
+    }
+
     pageControl[currentPage]++;
-    $[infScrollWidget].init($[listView]);
-    $[infScrollWidget].setOptions({
-        msgTap: 'Toca para cargar mas...',
-        msgDone: 'Nada que cargar',
-        msgError: 'Toca para intentar de nuevo...',
-    });
-}
 
-function doTransform(model) {
-    var transform = model.toJSON();
-
-    transform.logoUrl = _.isNull(transform.logo_path)
-        ? '/images/logo_256.png'
-        : transform.logo_path;
-
-    return transform;
-}
-
-function myLoaderAssociations(e) {
-    console.log('entro');
-    myLoader({
-        model: 'affiliates',
-        currentPage: 'currentPage',
-        itemsPerPage: 'itemsPerPage',
-        element: e,
-    });
-}
-
-function myLoader({model, currentPage, itemsPerPage, element}) {
-    Alloy.Collections[model].fetch({
-        page: pageControl[currentPage],
-        query: search[model].query,
-        add: true,
-        success: function (collection) {
-            if (_.isUndefined(element)) {
-                return;
-            }
-            if (pageControl[currentPage] === pageControl[itemsPerPage]) {
-                element.done();
-            } else {
-                pageControl[currentPage]++;
-                element.success();
-            }
-        },
-        error: function (col) {
-            Alloy.Globals.showMessage(
-                'No se pueden mostrar. Inténtelo mas tarde.'
-            );
-        },
+    addMarker({
+        listView: listView,
+        itemsPerPage: pageControl['itemsPerPage'],
     });
 }
 
@@ -100,22 +91,35 @@ function reset() {
     resetListView({
         model: 'affiliates',
         currentPage: 'currentPage',
-        infScrollWidget: 'is',
         refreshControl: 'refreshListView',
     });
 }
 
-function resetListView({model, currentPage, infScrollWidget, refreshControl}) {
+function resetListView({model, currentPage, refreshControl}) {
     pageControl[currentPage] = 1;
+
     Alloy.Collections[model].fetch({
         page: pageControl[currentPage],
         query: search[model].query,
         success: (collection) => {
+            pageControl[currentPage]++;
+
             $[refreshControl].endRefreshing();
-            $[infScrollWidget].load();
-            $[infScrollWidget].mark();
+
+            addMarker({
+                listView: 'lView',
+                itemsPerPage: pageControl['itemsPerPage'],
+                reset: true,
+            });
         },
     });
+}
+
+function doSearchAffiliate(e) {
+    pageControl.currentPage = 1;
+    search['affiliates'].query = e.searchText;
+    marker['itemIndex'] = pageControl['itemsPerPage'] - 1;
+    initListView(search['affiliates'].query);
 }
 
 function doOpenAffiliates(e) {
@@ -143,17 +147,12 @@ function openView({model, index, path}) {
     }
 }
 
-function close() {
-    $.wAffiliates.close();
-}
+function doTransform(model) {
+    var transform = model.toJSON();
 
-function doSearchAffiliate(e) {
-    const searchText = e.source.value;
+    transform.logoUrl = _.isNull(transform.logo_path)
+        ? '/images/logo_256.png'
+        : transform.logo_path;
 
-    pageControl.currentPage = 1;
-    search['affiliates'].query = searchText;
-    Alloy.Collections.affiliates.reset();
-    initListView(search['affiliates'].query);
-    $.is.load();
-    $.is.mark();
+    return transform;
 }

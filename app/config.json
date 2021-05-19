@@ -48,7 +48,9 @@
     },
     "os:android": {
         "baseapi": "https://ceca.soporttec.es/api/",
-        "baseurl": "https://ceca.soporttec.es"
+        "baseurl": "https://ceca.soporttec.es",
+        "baseapi_local": "http://10.0.2.2/api/",
+        "baseurl_local": "http://10.0.2.2"
     },
     "os:ios": {},
     "dependencies": {

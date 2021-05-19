@@ -12,38 +12,48 @@
                     <View class="separator-half-min no-touch-enable"></View>
                 </View>
 
-                <View class="w-full h-auto vertical mt-2 mb-6">
-                    <Label id="lb_category" class="text-center main-color no-touch-enable w-full" top="5"> - </Label>
+                <View class="w-full h-auto mt-2 mb-6">
+                    <Label id="lb_category" class="text-center main-color no-touch-enable w-full"> - </Label>
                 </View>
 
                 <View class="w-full h-auto vertical mt-2 mb-6">
                     <Label id="lb_description" class="text-left main-color no-touch-enable w-full" top="5"> - </Label>
                 </View>
 
-                <View id="vw_address" class="v_container" onClick="doAction">
-                    <Label class="fa icons no-touch-enable" text="\uf276"/>
-                    <Label id="lb_address" class="text-center main-color no-touch-enable w-full" top="5"> - </Label>
-                    <View class="separator-min no-touch-enable"></View>
+                <!-- Links -->
+
+                <View id="vw_address" class="w-11/12 h-auto vertical" onClick="doAction">
+                    <View class="w-full border-blue-600 rounded-xl border-4 no-touch-enable" height="80" backgroundImage="/images/backgrounds/gmaps.png">
+                        <Label id="lb_address" class="w-11/12 text-center text-white font-bold no-touch-enable" backgroundColor="#80000000"> - </Label>
+                    </View>
+
+                    <View class="separator-half-min no-touch-enable"></View>
                 </View>
 
-                <View id="vw_phones" class="v_container" onClick="doAction">
-                    <Label class="fa icons no-touch-enable" text="\uf3cd"/>
-                    <Label id="lb_phones" class="text-center main-color no-touch-enable w-full" top="5"> - </Label>
-                    <View class="separator-min no-touch-enable"></View>
+                <View id="vw_phones" class="w-11/12 h-auto vertical" onClick="doAction">
+                    <View class="w-full border-blue-600 rounded-xl border-4 no-touch-enable" height="80" backgroundImage="/images/backgrounds/phonecall.jpg">
+                        <Label id="lb_phones" class="text-white font-bold no-touch-enable" backgroundColor="#80000000"> - </Label>
+                    </View>
+
+                    <View class="separator-half-min no-touch-enable"></View>
+
                 </View>
 
-                <View id="vw_emails" class="v_container" onClick="doAction">
-                    <Label class="fa icons no-touch-enable" text="\uf0e0"></Label>
-                    <Label id="lb_emails" class="text-center main-color no-touch-enable w-full" top="5"> - </Label>
-                    <View class="separator-min no-touch-enable"></View>
+                <View id="vw_emails" class="w-11/12 h-auto vertical" onClick="doAction">
+                    <View class="w-full border-blue-600 rounded-xl border-4 no-touch-enable" height="80" backgroundImage="/images/backgrounds/mail.jpg">
+                        <Label id="lb_emails" class="text-white font-bold no-touch-enable" backgroundColor="#80000000"> - </Label>
+                    </View>
+
+                    <View class="separator-half-min no-touch-enable"></View>
                 </View>
 
-                <View id="vw_websites" class="v_container" onClick="doAction">
-                    <Label class="fa icons no-touch-enable" text="\uf245"></Label>
-                    <Label id="lb_websites" class="text-center main-color no-touch-enable w-full" top="5"> - </Label>
-                    <View class="separator-min no-touch-enable"></View>
-                </View>
+                <View class="w-11/12 h-auto vertical" id="vw_websites" onClick="doAction">
+                    <View class="w-full border-blue-600 rounded-xl border-4 no-touch-enable" height="80" backgroundImage="/images/backgrounds/website.jpg">
+                        <Label id="lb_websites" class="text-white font-bold no-touch-enable" backgroundColor="#80000000"> - </Label>
+                    </View>
 
+                    <View class="separator-half-min no-touch-enable"></View>
+                </View>
             </View>
         </ScrollView>
     </Window>

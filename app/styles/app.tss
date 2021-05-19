@@ -559,8 +559,10 @@
 '.bg-rose-800': { backgroundColor: '#9f1239' }
 '.bg-white': { backgroundColor: '#ffffff' }
 '.border-2': { borderWidth: 2 }
+'.border-4': { borderWidth: 4 }
 '.border-blue-300': { borderColor: '#93c5fd' }
 '.border-blue-500': { borderColor: '#3b82f6' }
+'.border-blue-600': { borderColor: '#2563eb' }
 '.border-gray-400': { borderColor: '#a1a1aa' }
 '.clip-enabled[platform=ios]': { clipMode: Ti.UI.iOS.CLIP_MODE_ENABLED }
 '.font-bold': { font: { fontWeight: 'bold' } }
@@ -592,6 +594,7 @@
 '.mb-8': { bottom: 32 }
 '.ml-1': { left: 4 }
 '.ml-3': { left: 12 }
+'.mr-0': { right: 0 }
 '.mr-3': { right: 12 }
 '.mr-7': { right: 28 }
 '.mt-0': { top: 0 }
@@ -599,6 +602,7 @@
 '.mt-10': { top: 40 }
 '.mt-14': { top: 56 }
 '.mt-2': { top: 8 }
+'.mt-3': { top: 12 }
 '.mt-4': { top: 16 }
 '.mx-0': { right: 0, left: 0 }
 '.mx-4': { right: 16, left: 16 }

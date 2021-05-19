@@ -2,37 +2,27 @@
     <TabGroup id="tabGroup" theme="Theme.Custom" onFocus="focus">
         <Tab id="main" class="tabIconSize">
             <Window id="mainCtrl" class="defaultWinProp">
-                <View id="mainContent" layout="vertical" opacity="0">
-                    <Require id="reqMain" src="/home/home"></Require>
-                </View>
+                <Require id="reqMain" src="/home/home"></Require>
             </Window>
         </Tab>
         <Tab id="communications" if="Alloy.Globals.isAffiliate">
             <Window id="communicationsCtrl" class="defaultWinProp" onFocus="focusWindow">
-                <View id="communicationsContent" opacity="0">
-                    <Require src="/affiliates/communications"></Require>
-                </View>
+                <Require src="/affiliates/communications"></Require>
             </Window>
         </Tab>
         <Tab id="affiliates">
             <Window id="affiliatesCtrl" class="defaultWinProp" onFocus="focusWindow">
-                <View id="affiliatesContent" opacity="0">
-                    <Require src="/affiliates/affiliates"></Require>
-                </View>
+                <Require src="/affiliates/affiliates"></Require>
             </Window>
         </Tab>
         <Tab id="dinamizations">
             <Window id="dinamizationsCtrl" class="defaultWinProp" onFocus="focusWindow">
-                <View id="dinamizationsContent" opacity="0">
-                    <Require src="/dinamizations/dinamizations"></Require>
-                </View>
+                <Require src="/dinamizations/dinamizations"></Require>
             </Window>
         </Tab>
         <Tab id="contact">
-            <Window id="contactCtrl" class="defaultWinProp">
-                <View id="contactContent" opacity="0">
-                    <Require src="/contact"></Require>
-                </View>
+            <Window id="contactCtrl" class="defaultWinProp vertical">
+                <Require src="/contact"></Require>
             </Window>
         </Tab>
     </TabGroup>

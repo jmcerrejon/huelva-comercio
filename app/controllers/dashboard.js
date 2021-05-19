@@ -126,12 +126,6 @@ Alloy.Globals.events.on('openWindowInTab', openWindow);
 
 function focus(e) {
     if (e.tab && tabStacks[e.index].tabId.indexOf(e.tab.id) > -1) {
-        $[`${oldTab}Content`].opacity = 0;
-        oldTab = e.tab.id;
-        $[`${e.tab.id}Content`].animate({
-            opacity: 1,
-            duration: 300,
-        });
         changeNavBar(e.index);
     }
 }

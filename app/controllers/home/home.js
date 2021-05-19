@@ -275,7 +275,7 @@ function doFilter() {
         exclusive: 1,
         success: (data) => {
             if (data.length === 0) {
-                alert('No se encontraron resultados.');
+                Alloy.Globals.showMessage('No se encontraron resultados.');
                 reset();
             }
         },
@@ -290,7 +290,7 @@ function doSearch(e) {
         exclusive: exclusive,
         success: (data) => {
             if (data.length === 0) {
-                alert('No se encontraron resultados.');
+                Alloy.Globals.showMessage('No se encontraron resultados.');
                 reset();
             }
         },

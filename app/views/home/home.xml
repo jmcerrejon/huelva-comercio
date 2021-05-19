@@ -31,15 +31,15 @@
                             <View class="w-full h-52 shadow-md" bindId="image" id="image">
                             </View>
 
-                            <View class="w-full h-auto m-3 text-gray-600 vertical">
-                                <View class="w-screen horizontal">
+                            <View class="w-full h-auto mt-3 mb-3 text-gray-600 vertical">
+                                <View class="w-11/12 horizontal">
                                     <Label bindId="postTitle" id="postTitle" class="w-full text-2xl font-thin text-gray-600">Contenido Exclusivo</Label>
 
-                                    <Label bindId="postDateFormatted" class="w-full text-right mb-2 text-sm font-semibold text-gray-500"></Label>
+                                    <Label bindId="postDateFormatted" class="w-full text-right mr-0 mb-2 text-sm font-semibold text-gray-500"></Label>
                                 </View>
 
                                 <View class="w-full h-auto vertical">
-                                    <Label bindId="postBody" id="postBody" class="w-full font-normal text-gray-500 text-justify">¡Regístrate para obtener información sobre ofertas y descuentos especiales!</Label>
+                                    <Label bindId="postBody" id="postBody" class="w-11/12 font-normal text-gray-500 text-justify">¡Regístrate para obtener información sobre ofertas y descuentos especiales!</Label>
                                 </View>
 
                             </View>

@@ -7,14 +7,39 @@ const SCROLLABLEVIEW_HEIGHT = 175;
 const TIME_PER_VIEW_MILISECONDS = 1000 * 8;
 const exclusive = getExclusiveValues();
 const extraURLParameters = '?app=true';
+let scrollableView;
 
 (function constructor() {
     Alloy.Collections.banners.fetch({
         success: (res) => {
-            if (!_.isUndefined($.scrollableView)) {
-                $.scrollableView.height =
-                    res.length === 0 ? 0 : SCROLLABLEVIEW_HEIGHT;
+            if (res.length === 0) {
+                return;
             }
+
+            let views = [];
+            res.forEach((item) => {
+                var itemJson = item.toJSON();
+
+                views.push(
+                    Ti.UI.createImageView({
+                        height: Ti.UI.SIZE,
+                        width: Ti.UI.FULL,
+                        image: itemJson.img_path,
+                        url: itemJson.url,
+                    })
+                );
+            });
+
+            scrollableView = Ti.UI.createScrollableView({
+                width: Ti.UI.FILL,
+                views,
+                showPagingControl: true,
+            });
+
+            scrollableView.addEventListener('singletap', doOpenLink);
+            scrollableView.addEventListener('touchstart', touchStart);
+
+            $.vwBannerContainer.add(scrollableView);
         },
     });
     Alloy.Globals.loading.show('Cargando ofertas...');
@@ -37,22 +62,19 @@ const extraURLParameters = '?app=true';
 
     const interval = setInterval(function () {
         if (
-            !_.isUndefined($.scrollableView) &&
-            $.scrollableView.views.length === 1
+            !_.isUndefined(scrollableView) &&
+            scrollableView.views.length === 1
         ) {
             scrollableLoop = false;
             clearInterval(interval);
             interval = null;
             return;
         }
-        if (!_.isUndefined($.scrollableView) && scrollableLoop) {
-            if (
-                $.scrollableView.views.length - 1 ==
-                $.scrollableView.currentPage
-            ) {
-                $.scrollableView.scrollToView(0);
+        if (!_.isUndefined(scrollableView) && scrollableLoop) {
+            if (scrollableView.views.length - 1 == scrollableView.currentPage) {
+                scrollableView.scrollToView(0);
             } else {
-                $.scrollableView.moveNext();
+                scrollableView.moveNext();
             }
         } else {
             scrollableLoop = !scrollableLoop;

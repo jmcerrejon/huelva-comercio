@@ -51,13 +51,12 @@
 
             <ListSection id="sectionBanner">
                 <HeaderView>
-                    <View id="vwBody" class="w-11/12 h-auto vertical">
-                        <ScrollableView class="w-full h-auto mb-4 bg-white" id="scrollableView" dataCollection="banners" onSingletap="doOpenLink" onTouchstart="touchStart">
-                            <ImageView image="{img_path}" url="{url}" ns="AvImageview"></ImageView>
-                        </ScrollableView>
+                    <View id="vwBody" class="w-full h-auto">
+                        <View id="vwBannerContainer" top="0" class="w-11/12" height="180">
+                        </View>
 
-                        <View id="vwRegisterWarning" if="Alloy.Globals.guest" class="w-11/12 h-auto vertical test rounded-lg mb-2" onClick="doLogin">
-                            <Label class="w-screen h-auto text-center text-red-500 mt-2 mb-2">¡Regístrate para obtener información sobre ofertas y descuentos especiales!</Label>
+                        <View id="vwRegisterWarning" top="185" if="Alloy.Globals.guest" class="w-11/12 h-auto vertical test rounded-lg mb-2" onClick="doLogin">
+                            <Label class="w-11/12 h-auto text-center text-red-500 m-2">¡Regístrate para obtener información sobre ofertas y descuentos especiales!</Label>
                         </View>
                     </View>
                 </HeaderView>

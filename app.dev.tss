@@ -77,7 +77,7 @@
 
 "ListItem[platform=ios]" : {
     selectionStyle: Ti.UI.iOS.ListViewCellSelectionStyle.NONE,
-    selectedBackgroundColor: "transparent"
+    backgroundSelectedColor: "transparent"
 }
 
 "SearchBar" : {

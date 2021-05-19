@@ -10,4 +10,5 @@ function doOpenURL(params) {
 
 function close() {
     $.covenants.close();
+    $.destroy();
 }

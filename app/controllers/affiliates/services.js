@@ -10,4 +10,5 @@ function doOpenURL(params) {
 
 function close() {
     $.services.close();
+    $.destroy();
 }

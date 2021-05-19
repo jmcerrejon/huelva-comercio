@@ -593,6 +593,7 @@
 '.mb-6': { bottom: 24 }
 '.mb-8': { bottom: 32 }
 '.ml-1': { left: 4 }
+'.ml-2': { left: 8 }
 '.ml-3': { left: 12 }
 '.mr-0': { right: 0 }
 '.mr-3': { right: 12 }
@@ -608,6 +609,7 @@
 '.mx-4': { right: 16, left: 16 }
 '.mx-8': { right: 32, left: 32 }
 '.pl-2': { padding: { left: 8 } }
+'.rounded-2': { borderRadius: 4 }
 '.rounded-2xl': { borderRadius: 16 }
 '.rounded-3xl': { borderRadius: 24 }
 '.rounded-lg': { borderRadius: 8 }

@@ -1,5 +1,6 @@
 let currentPage = 1;
 let POSTS_PER_PAGE = 15;
+const extraURLParameters = '?app=true';
 
 (function constructor() {
     if (!Alloy.Globals.guest) {
@@ -98,7 +99,8 @@ function doOpenPost(e) {
         !_.isUndefined(item.vwDinamizations.url) &&
         !_.isNull(item.vwDinamizations.url)
     ) {
-        !item.vwDinamizations || openURL(item.vwDinamizations.url);
+        !item.vwDinamizations ||
+            openURL(item.vwDinamizations.url + extraURLParameters);
     }
 }
 

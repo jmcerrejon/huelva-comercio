@@ -1,74 +1,76 @@
 <Alloy>
-    <ScrollView id="scrollView">
-        <View class="w-full h-full vertical">
 
-            <!-- Navigation Bar buttons -->
+    <!-- Navigation Bar buttons -->
 
-            <Require id="reqNavbar" src="/partials/navbar" title="Contacto"></Require>
+    <Require id="reqNavbar" src="/partials/navbar" title="Contacto"></Require>
 
-            <!-- Body -->
+    <ScrollView id="scrollView" class="w-full h-auto vertical" showVerticalScrollIndicator="false" scrollType="vertical">
+        <View id="vwBody" class="w-full bg-white vertical">
 
-            <View id="vwBody" class="w-full h-full bg-white vertical">
-                <View class="mx-8 vertical">
-                    <Label class="w-full mt-2 ml-1 text-sm text-left text-blue-900">Correo electrónico</Label>
+            <!-- Form -->
 
-                    <TextField id="user" class="w-screen h-10 pl-2 mt-1 text-base text-gray-800 border-blue-500 rounded-xl bg-gray-50" returnKeyType="Ti.UI.RETURNKEY_NEXT" keyboardType="Ti.UI.KEYBOARD_TYPE_EMAIL" hintText="Email" hintTextColor="#CBD6E9" />
+            <View class="mx-8 vertical">
+                <Label class="w-full mt-2 ml-1 text-sm text-left text-blue-900">Correo electrónico</Label>
 
-                    <Label class="w-full mt-4 ml-1 text-sm text-left text-blue-900">Mensaje</Label>
+                <TextField id="user" class="w-screen h-10 pl-2 mt-1 text-base text-gray-800 border-blue-500 rounded-xl bg-gray-50" returnKeyType="Ti.UI.RETURNKEY_NEXT" keyboardType="Ti.UI.KEYBOARD_TYPE_EMAIL" hintText="Email" hintTextColor="#CBD6E9" />
 
-                    <TextArea id="content" class="w-screen h-20 pl-2 mt-1 mb-2 text-base text-gray-800 border-blue-500 rounded-xl bg-gray-50" hintText="Escribe aquí y ponte en contacto con nosotros" hintTextColor="#CBD6E9" />
+                <Label class="w-full mt-4 ml-1 text-sm text-left text-blue-900">Mensaje</Label>
 
-                    <Require src="partials/button" text="Enviar" onClick="sendEmail"></Require>
-                </View>
+                <TextArea id="content" class="w-screen h-20 pl-2 mt-1 mb-2 text-base text-gray-800 border-blue-500 rounded-xl bg-gray-50" hintText="Escribe aquí y ponte en contacto con nosotros" hintTextColor="#CBD6E9" />
 
-                <View class="h-12 mx-8 mt-4 horizontal">
-                    <View class="w-1/2 h-auto mt-2" onClick="openFacebook">
-                        <View id="vwFacebook" class="vertical no-touch-enable">
-                            <Label class="text-blue-500 fab fa-facebook no-touch-enable"></Label>
+                <Require src="partials/button" text="Enviar" onClick="sendEmail"></Require>
+            </View>
 
-                            <Label class="text-blue-500 no-touch-enable">Facebook</Label>
-                        </View>
-                    </View>
+            <!-- Contact links -->
 
-                    <View class="w-1/2 mt-2 h-auto" onClick="openInstagram">
-                        <View id="vwTwitter" class="vertical no-touch-enable">
-                            <Label class="text-blue-400 fab fa-instagram no-touch-enable"></Label>
+            <View class="h-12 mx-8 mt-4 horizontal">
+                <View class="w-1/2 h-auto mt-2" onClick="openFacebook">
+                    <View id="vwFacebook" class="vertical no-touch-enable">
+                        <Label class="text-blue-500 fab fa-facebook no-touch-enable"></Label>
 
-                            <Label class="text-blue-500 no-touch-enable">Instagram</Label>
-                        </View>
+                        <Label class="text-blue-500 no-touch-enable">Facebook</Label>
                     </View>
                 </View>
 
-                <View class="h-12 mx-8 mt-4 horizontal">
-                    <View class="w-1/2 h-auto mt-2" onClick="call">
-                        <View id="vwFacebook" class="vertical no-touch-enable">
-                            <Label class="text-blue-500 fa fa-phone no-touch-enable"></Label>
+                <View class="w-1/2 mt-2 h-auto" onClick="openInstagram">
+                    <View id="vwTwitter" class="vertical no-touch-enable">
+                        <Label class="text-blue-400 fab fa-instagram no-touch-enable"></Label>
 
-                            <Label class="text-blue-500 no-touch-enable">65754224524</Label>
-                        </View>
+                        <Label class="text-blue-500 no-touch-enable">Instagram</Label>
                     </View>
-
-                    <View class="w-1/2 mt-2" onClick="openMail">
-                        <View id="vwTwitter" class="vertical no-touch-enable">
-                            <Label class="text-blue-500 fa fa-mail-bulk no-touch-enable"></Label>
-
-                            <Label id="lblEmail" class="text-blue-500 no-touch-enable text-sm" text="Alloy.CFG.mail"></Label>
-                        </View>
-                    </View>
-                </View>
-
-                <View class="h-auto mx-8 mt-4 horizontal" onClick="selectLocation">
-                    <View class="info vlayout" id="viewAddress">
-                        <Label class="fa icons" top="10" text="\uf5a0"/>
-                        <Label id="addressInfo"/>
-                    </View>
-                </View>
-
-                <View class="w-full h-2/6 vertical mt-2">
-                    <ImageView class="w-auto h-1/2" image="/images/junta/logo_junta_01.png"></ImageView>
                 </View>
             </View>
 
+            <View class="h-12 mx-8 mt-4 horizontal">
+                <View class="w-1/2 h-auto mt-2" onClick="call">
+                    <View id="vwFacebook" class="vertical no-touch-enable">
+                        <Label class="text-blue-500 fa fa-phone no-touch-enable"></Label>
+
+                        <Label class="text-blue-500 no-touch-enable">65754224524</Label>
+                    </View>
+                </View>
+
+                <View class="w-1/2 mt-2" onClick="openMail">
+                    <View id="vwTwitter" class="vertical no-touch-enable">
+                        <Label class="text-blue-500 fa fa-mail-bulk no-touch-enable"></Label>
+
+                        <Label id="lblEmail" class="text-blue-500 no-touch-enable text-sm" text="Alloy.CFG.mail"></Label>
+                    </View>
+                </View>
+            </View>
+
+            <View class="h-auto mx-8 mt-4 horizontal" onClick="selectLocation">
+                <View class="info vlayout" id="viewAddress">
+                    <Label class="fa icons" top="10" text="\uf5a0"/>
+                    <Label id="addressInfo"/>
+                </View>
+            </View>
+
+            <!-- Logo -->
+
+            <View class="w-full h-2/6 vertical mt-2">
+                <ImageView class="w-auto h-1/2" image="/images/junta/logo_junta_01.png"></ImageView>
+            </View>
         </View>
     </ScrollView>
 </Alloy>

@@ -67,12 +67,13 @@
 }
 
 "TextArea[platform=android]" : {
-    color: Alloy.CFG.COLORS.dark_gray
+    color: Alloy.CFG.COLORS.dark_gray,
+    backgroundColor: 'white',
 }
 
 "ListItem[platform=ios]" : {
     selectionStyle: Ti.UI.iOS.ListViewCellSelectionStyle.NONE,
-    selectedBackgroundColor: "transparent"
+    backgroundSelectedColor: "transparent"
 }
 
 "SearchBar" : {

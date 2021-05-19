@@ -1,4 +1,4 @@
-const CONSTANT_TO_REMOVE_FROM_ITEMS_PER_PAGE_FIX_ANDROID_BUG = 2;
+const REMOVE_FROM_ITEMS_PER_PAGE_FIX_ANDROID_BUG = OS_ANDROID ? 2 : 1;
 const pageControl = {
     currentPage: 1,
     itemsPerPage: 15,
@@ -7,7 +7,7 @@ const marker = {
     sectionIndex: 0,
     itemIndex:
         pageControl['itemsPerPage'] -
-        CONSTANT_TO_REMOVE_FROM_ITEMS_PER_PAGE_FIX_ANDROID_BUG,
+        REMOVE_FROM_ITEMS_PER_PAGE_FIX_ANDROID_BUG,
 };
 const search = {
     affiliates: {
@@ -36,7 +36,7 @@ function initListView(query) {
 
             // Just for test purposes
             // doOpenAffiliates({
-            //     itemId: 1,
+            //     itemId: 2,
             // });
         }
     );
@@ -45,12 +45,11 @@ function initListView(query) {
 function addMarker({listView, itemsPerPage, reset = false}) {
     if (reset) {
         marker['itemIndex'] =
-            itemsPerPage -
-            CONSTANT_TO_REMOVE_FROM_ITEMS_PER_PAGE_FIX_ANDROID_BUG;
+            itemsPerPage - REMOVE_FROM_ITEMS_PER_PAGE_FIX_ANDROID_BUG;
     }
     $[listView].addMarker(marker);
     marker['itemIndex'] +=
-        itemsPerPage - CONSTANT_TO_REMOVE_FROM_ITEMS_PER_PAGE_FIX_ANDROID_BUG;
+        itemsPerPage - REMOVE_FROM_ITEMS_PER_PAGE_FIX_ANDROID_BUG;
 }
 
 Alloy.Globals.events.on('affiliates', () => {

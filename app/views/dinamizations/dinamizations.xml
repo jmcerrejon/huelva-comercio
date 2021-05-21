@@ -28,10 +28,12 @@
 
             <Templates>
                 <ItemTemplate name="noNewsFound">
-                    <View bindId="vwNoNewsFound" class="vertical w-0 h-0">
-                        <Label class="font14 text-center" left="10" right="10" text="No se han encontrado noticias relacionadas.\nVuelva a recargar las noticias." />
+                    <View bindId="vwNoNewsFound" id="vwNoNewsFound" class="w-11/12">
+                        <View class="w-full h-auto vertical">
+                            <Label class="w-auto text-4xl fas fa-bullhorn"></Label>
 
-                        <Button onClick="reset" title="RECARGAR" top="20"></Button>
+                            <Label class="mt-4 text-center" text="¡Estás al día!.\n\nVisita esta sección para ver nuevas noticias pronto..." />
+                        </View>
                     </View>
                 </ItemTemplate>
 
@@ -52,7 +54,7 @@
             </Templates>
 
             <ListSection id="sectionNoNewsFound">
-                <ListItem template="noNewsFound"></ListItem>
+                <ListItem template="noNewsFound" vwNoNewsFound:height="0" width="90%"></ListItem>
             </ListSection>
             <ListSection dataCollection="dinamizations">
                 <ListItem itemId="{id}" ivImage:image="{image}" lbTitle:text="{title}" lbContent:text="{content}" vwDinamizations:url="{link}"/>

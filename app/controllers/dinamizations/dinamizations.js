@@ -68,14 +68,13 @@ function reset() {
     });
 }
 
-function renderNotFoundTemplate(sizeData) {
+function renderNotFoundTemplate(sizeData = 0) {
+    if (sizeData !== 0) {
+        return;
+    }
     let item = $.listView.sections[0].items[0];
-    // item.properties = {
-    //     height: sizeData === 0 ? '250' : 0,
-    // };
-    // $.listView.sections[0].updateItemAt(0, item);
-    // Remove Infinity Scroll when show not items availables on search (Remember do $.is.show() later)
-    $.is.hide();
+    item.vwNoNewsFound.height = '100%';
+    $.listView.sections[0].updateItemAt(0, item);
 }
 
 function doOpenSign() {

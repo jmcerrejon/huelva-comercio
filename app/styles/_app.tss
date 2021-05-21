@@ -1,4 +1,4 @@
-'.no-touch-enable': {
+".no-touch-enable": {
     touchEnabled: false
 }
 
@@ -68,7 +68,8 @@
 
 "TextArea[platform=android]" : {
     color: Alloy.CFG.COLORS.dark_gray,
-    backgroundColor: 'white',
+    backgroundColor: "transparent",
+    borderStyle: Ti.UI.INPUT_BORDERSTYLE_NONE
 }
 
 "ListItem[platform=ios]" : {
@@ -129,28 +130,20 @@
 
 ".keyboard-mail" : {
     keyboardType: Ti.UI.KEYBOARD_TYPE_EMAIL,
-    autocapitalization: Ti.UI.TEXT_AUTOCAPITALIZATION_NONE,
+    autofillType: Ti.UI.AUTOFILL_TYPE_EMAIL,
     autocorrect: false
 }
 
 ".keyboard-web" : {
     keyboardType: Ti.UI.KEYBOARD_TYPE_URL,
-    autocapitalization: Ti.UI.TEXT_AUTOCAPITALIZATION_NONE,
+    autofillType: Titanium.UI.AUTOFILL_TYPE_URL,
     autocorrect: false
 }
 
 "TextField[platform=android]" : {
     hintTextColor: Alloy.CFG.COLORS.gray,
     backgroundColor: "transparent",
-    padding: {
-        left: 30
-    }
-}
-
-"TextField[platform=android formFactor=tablet]" : {
-    padding: {
-        left: 50
-    }
+    borderStyle: Ti.UI.INPUT_BORDERSTYLE_NONE
 }
 
 ".fill-email" : {
@@ -303,152 +296,6 @@
     height: 200
 }
 
-// Fonts
-
-".font10" : {
-    font: {
-        fontSize: 10,
-        fontFamily: "Poppins-Regular"
-    }
-}
-".font11" : {
-    font: {
-        fontSize: 11,
-        fontFamily: "Poppins-Regular"
-    }
-}
-".font10Medium" : {
-    font: {
-        fontSize: 10,
-        fontFamily: "Poppins-Medium"
-    }
-}
-".font11Light" : {
-    font: {
-        fontSize: 11,
-        fontFamily: "Poppins-Medium"
-    }
-}
-".font11Medium" : {
-    font: {
-        fontSize: 11,
-        fontFamily: "Poppins-Medium"
-    }
-}
-".font10Light" : {
-    font: {
-        fontSize: 10,
-        fontFamily: "Poppins-Light"
-    }
-}
-".font8Light" : {
-    font: {
-        fontSize: 8,
-        fontFamily: "Poppins-Light"
-    }
-}
-".font12" : {
-    font: {
-        fontSize: 12,
-        fontFamily: "Poppins-Regular"
-    }
-}
-".font12Medium" : {
-    font: {
-        fontSize: 12,
-        fontFamily: "Poppins-Medium"
-    }
-}
-".font12Light" : {
-    font: {
-        fontSize: 12,
-        fontFamily: "Poppins-Light"
-    }
-}
-".font14" : {
-    font: {
-        fontSize: 14,
-        fontFamily: "Poppins-Regular"
-    }
-}
-".font14Light" : {
-    font: {
-        fontSize: 14,
-        fontFamily: "Poppins-Light"
-    }
-}
-".font14Medium" : {
-    font: {
-        fontSize: 14,
-        fontFamily: "Poppins-Medium"
-    }
-}
-".font15" : {
-    font: {
-        fontSize: 15,
-        fontFamily: "Poppins-Regular"
-    }
-}
-".font15Light" : {
-    font: {
-        fontSize: 15,
-        fontFamily: "Poppins-Light"
-    }
-}
-".font16" : {
-    font: {
-        fontSize: 16,
-        fontFamily: "Poppins-Regular"
-    }
-}
-".font16Light" : {
-    font: {
-        fontSize: 16,
-        fontFamily: "Poppins-Light"
-    }
-}
-".font16Medium" : {
-    font: {
-        fontSize: 16,
-        fontFamily: "Poppins-Medium"
-    }
-}
-".font18" : {
-    font: {
-        fontSize: 18,
-        fontFamily: "Poppins-Regular"
-    }
-}
-".font18Light" : {
-    font: {
-        fontSize: 18,
-        fontFamily: "Poppins-Light"
-    }
-}
-".font18Medium" : {
-    font: {
-        fontSize: 18,
-        fontFamily: "Poppins-Medium"
-    }
-}
-".font20" : {
-    font: {
-        fontSize: 20
-    }
-}
-".font20Light" : {
-    font: {
-        fontSize: 20,
-        fontFamily: "Poppins-Light"
-    }
-}
-".font20Medium" : {
-    font: {
-        fontSize: 20,
-        fontFamily: "Poppins-Medium"
-    }
-}
-
 ".logoContainer" : {
     width: "20%",
     height: 40
@@ -463,80 +310,7 @@
     rounded: false
 }
 
-// Calendar
-".imc-calendar" : {
-    top: 0,
-    width: Ti.UI.FILL,
-    height: Ti.UI.SIZE,
-    backgroundColor: "white",
-    borderColor: "transparent",
-    borderWidth: 1
-}
-
-".imc-calendar-month" : {
-    height: Ti.UI.SIZE,
-    top: 0,
-    layout: "vertical"
-}
-
-".imc-calendar-weeks" : {
-    height: 32,
-    top: 0.5,
-    layout: "horizontal",
-    backgroundColor: "transparent"
-}
-
-".imc-calendar-week" : {
-    width: "14%",
-    height: 32,
-    left: 0.5
-}
-
-".imc-calendar-week-label" : {
-    color: "black",
-    font: {
-        fontSize: 13,
-        fontFamily: "HelveticaNeue-Light"
-    }
-}
-
-".imc-calendar-dates" : {
-    height: Ti.UI.SIZE,
-    bottom: 0.5,
-    layout: "horizontal"
-}
-
-".imc-calendar-date" : {
-    width: "14%",
-    height: 33,
-    top: 0.5,
-    left: 0.5
-}
-
-".imc-calendar-date-label" : {
-    color: "black",
-    font: {
-        fontSize: 13,
-        fontFamily: "HelveticaNeue-Light"
-    },
-    touchEnabled: false
-}
-
-".imc-calendar-today" : {
-    backgroundColor: Alloy.CFG.COLORS.main
-}
-
-".imc-calendar-today-label" : {
-    color: "black"
-}
-
-".imc-calendar-disabled" : {}
-
-".imc-calendar-disabled-label" : {
-    color: "grey"
-}
-
 ".test": {
-    borderColor: 'red',
+    borderColor: "red",
     borderWidth: 2
 }

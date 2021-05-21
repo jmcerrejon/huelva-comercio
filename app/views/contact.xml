@@ -12,7 +12,7 @@
             <View class="mx-8 vertical">
                 <Label class="w-full mt-2 ml-1 text-sm text-left text-blue-900">Correo electrónico</Label>
 
-                <TextField id="user" class="w-screen h-10 pl-2 mt-1 text-base text-gray-800 border-blue-500 rounded-xl bg-gray-50" returnKeyType="Ti.UI.RETURNKEY_NEXT" keyboardType="Ti.UI.KEYBOARD_TYPE_EMAIL" hintText="Email" hintTextColor="#CBD6E9" />
+                <TextField id="user" class="keyboard-mail w-screen h-10 pl-2 mt-1 text-base text-gray-800 border-blue-500 rounded-xl bg-gray-50" returnKeyType="Ti.UI.RETURNKEY_NEXT" hintText="Email" hintTextColor="#CBD6E9" />
 
                 <Label class="w-full mt-4 ml-1 text-sm text-left text-blue-900">Mensaje</Label>
 
@@ -60,7 +60,7 @@
             </View>
 
             <View class="h-auto mx-8 mt-4 horizontal" onClick="selectLocation">
-                <View class="info vlayout" id="viewAddress">
+                <View class="vertical" id="viewAddress">
                     <Label class="fa icons" top="10" text="\uf5a0"/>
                     <Label id="addressInfo"/>
                 </View>

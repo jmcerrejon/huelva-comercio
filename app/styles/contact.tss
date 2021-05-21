@@ -31,37 +31,6 @@
     text: Alloy.CFG.address
 }
 
-".headerLabel" : {
-    top: 0,
-    height: 50,
-    color: Alloy.CFG.COLORS.main,
-    font: {
-        fontSize: 22
-    }
-}
-
-".info" : {
-    top: 5,
-    width: Ti.UI.FILL,
-    height: Ti.UI.SIZE
-}
-
 ".textField[platform=ios]" : {
     height: 40
-}
-
-".textField": {
-    top: 10,
-    left: 40,
-    right: 40,
-    padding: {
-        left: 15
-    },
-    color: "black",
-    autocapitalization:  Titanium.UI.TEXT_AUTOCAPITALIZATION_NONE,
-    autocorrect: false,
-    height: 40,
-    hintTextColor: Alloy.CFG.COLORS.dark_gray,
-    backgroundColor: Alloy.CFG.COLORS.gray,
-    borderRadius: 3,
 }

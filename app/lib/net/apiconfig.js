@@ -13,8 +13,7 @@ exports.config = {
     methods: [
         {
             name: 'signin',
-            post:
-                'auth/user/login?email=<email>&password=<password>&device_name=<device_name>',
+            post: 'auth/user/login?email=<email>&password=<password>&device_name=<device_name>',
             onError: (response, callback) => {
                 Alloy.Globals.loading.hide();
                 if (_.isFunction(callback)) {
@@ -36,7 +35,7 @@ exports.config = {
         },
         {
             name: 'logout',
-            post: 'auth/logout',
+            post: 'logout',
         },
         {
             name: 'me',
@@ -289,7 +288,7 @@ exports.config = {
             return;
         }
         let message = !_.isUndefined(response.message)
-            ? response.messag
+            ? response.message
             : !_.isUndefined(response.error)
             ? response.error
             : response.content.message;
@@ -302,9 +301,10 @@ exports.config = {
 
         // Invalid user
         if (response.code === 401) {
-            Alloy.Globals.events.trigger('closeSession');
-            message =
-                'Por motivos de seguridad, debe volver a iniciar sesión.\nSi no puede autentificarse, contacte con CECA.';
+            if (!Alloy.Globals.guest) {
+                message =
+                    'Por motivos de seguridad, debe volver a iniciar sesión.\nSi no puede autentificarse, contacte con CECA.';
+            }
         }
 
         if (response.code === 503) {
@@ -321,6 +321,10 @@ exports.config = {
         if (message.indexOf('Unable') > -1 || response.code === 503) {
             message =
                 'Servidor en mantenimiento. Inténtelo de nuevo mas tarde. Disculpen las molestias.';
+        }
+
+        if (message === 'HTTP error') {
+            return;
         }
 
         Ti.UI.createAlertDialog({

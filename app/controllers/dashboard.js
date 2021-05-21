@@ -190,11 +190,11 @@ function resume() {
             }
 
             closeSession();
-            setTimeout(() => {
-                Alloy.Globals.showMessage(
-                    'Por motivos de seguridad, se ha cerrado la sesión.'
-                );
-            }, 1000);
+            // setTimeout(() => {
+            //     Alloy.Globals.showMessage(
+            //         'Por motivos de seguridad, se ha cerrado la sesión.'
+            //     );
+            // }, 1000);
         });
     }
 
@@ -217,11 +217,13 @@ function resume() {
 }
 
 function checkValidUser() {
-    return (
+    const isValidUser =
         Ti.Network.online &&
         Alloy.Globals.token !== null &&
-        !Alloy.Globals.guest
-    );
+        !Alloy.Globals.guest;
+    console.log(`isValidUser = ${isValidUser}`);
+
+    return isValidUser;
 }
 
 function isDiffTimePassed() {
@@ -321,17 +323,24 @@ function openLeadershipWin() {
 }
 
 function closeSession() {
-    // TODO Call sign out
     Ti.App.removeEventListener('pause', enableBackground);
     Ti.App.removeEventListener('resumed', resume);
+
     removeProperties();
+    disableNotifications();
     require('/dao/database').reset('variable');
-    $.tabGroup.close();
+
     Alloy.createController('dashboard', {
         closeApp: true,
     })
         .getView()
         .open();
+    $.tabGroup.close();
+    Alloy.Globals.Api.logout({}, (res) => {
+        if (res.success) {
+            console.log('Logout successfully.');
+        }
+    });
 }
 Alloy.Globals.events.on('closeSession', closeSession);
 
@@ -347,4 +356,18 @@ function removeProperties() {
     Alloy.Globals.token = Alloy.Globals.deviceToken = Alloy.Globals.user = null;
     Ti.App.Properties.setBool('isConnected', false);
     Alloy.Globals.events.off();
+    console.log(
+        'guest = ' + Alloy.Globals.guest,
+        'isAffiliate = ' + Alloy.Globals.isAffiliate,
+        'isLeadership = ' + Alloy.Globals.isLeadership,
+        'token = ' + Alloy.Globals.token,
+        'deviceToken = ' + Alloy.Globals.deviceToken,
+        'user = ' + Alloy.Globals.user
+    );
+}
+
+function disableNotifications() {
+    fcm.unsubscribeFromTopic('offer_notifications');
+    fcm.unsubscribeFromTopic('communication_notifications');
+    fcm.unsubscribeFromTopic('leadership_notifications');
 }

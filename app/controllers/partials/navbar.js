@@ -26,22 +26,16 @@ function handleSearchView() {
 }
 
 function toggleViewSearchVisibility() {
-    if (OS_IOS) {
-        $.vwSearch.height = isViewSearchVisible ? 0 : 60;
-        isViewSearchVisible ? $.txtSearch.blur() : $.txtSearch.focus();
-        isViewSearchVisible = !isViewSearchVisible;
-    } else {
-        $.vwSearch.animate(
-            {
-                height: isViewSearchVisible ? 0 : 60,
-                duration: 250,
-            },
-            () => {
-                isViewSearchVisible ? $.txtSearch.blur() : $.txtSearch.focus();
-                isViewSearchVisible = !isViewSearchVisible;
-            }
-        );
-    }
+    $.vwSearch.animate(
+        {
+            height: isViewSearchVisible ? 4 : 60,
+            duration: 250,
+        },
+        () => {
+            isViewSearchVisible ? $.txtSearch.blur() : $.txtSearch.focus();
+            isViewSearchVisible = !isViewSearchVisible;
+        }
+    );
 }
 
 function doLogin() {

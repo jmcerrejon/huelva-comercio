@@ -252,6 +252,7 @@ function notification(data) {
 
     switch (data.tag) {
         case 'offer_notifications':
+        case 'offer_notifications_exclusive':
             if (!Alloy.Globals.background) {
                 showNotificationBanner('Ofertas y promociones', data.body);
                 return;
@@ -368,6 +369,7 @@ function removeProperties() {
 
 function disableNotifications() {
     fcm.unsubscribeFromTopic('offer_notifications');
+    fcm.unsubscribeFromTopic('offer_notifications_exclusive');
     fcm.unsubscribeFromTopic('communication_notifications');
     fcm.unsubscribeFromTopic('leadership_notifications');
 }

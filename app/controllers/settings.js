@@ -29,9 +29,15 @@ function setEmail(params) {
 function saveSettings() {
     Ti.App.Properties.setObject('settings', settings);
 
-    settings['offer_notifications']
-        ? fcm.subscribeToTopic('offer_notifications')
-        : fcm.unsubscribeFromTopic('offer_notifications');
+    if (settings['offer_notifications']) {
+        fcm.subscribeToTopic('offer_notifications');
+        if (!Alloy.Globals.guest) {
+            fcm.subscribeToTopic('offer_notifications_exclusive');
+        }
+    } else {
+        fcm.unsubscribeFromTopic('offer_notifications');
+        fcm.unsubscribeFromTopic('offer_notifications_exclusive');
+    }
 
     if (!Alloy.Globals.guest) {
         settings['dinamization_notifications']

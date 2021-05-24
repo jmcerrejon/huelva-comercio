@@ -63,8 +63,10 @@ $.lView.addEventListener('marker', () => {
 
 function init({model, currentPage, response, listView}) {
     if (response.data.length === 0) {
+        if (search['affiliates'].query !== '') {
+            Alloy.Globals.showMessage('No se encontraron resultados.');
+        }
         search['affiliates'].query = '';
-        Alloy.Globals.showMessage('No se encontraron resultados.');
         return;
     }
 

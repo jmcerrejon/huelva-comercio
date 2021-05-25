@@ -6,7 +6,6 @@ const OFFSET_CHANGE_HEADER_TITLE = 200;
 const SCROLLABLEVIEW_HEIGHT = 175;
 const TIME_PER_VIEW_MILISECONDS = 1000 * 8;
 const exclusive = getExclusiveValues();
-const extraURLParameters = '?app=true';
 let scrollableView;
 
 (function constructor() {
@@ -218,7 +217,8 @@ function doOpenPost(e) {
     const item = e.section.getItemAt(e.itemIndex);
 
     if (!_.isUndefined(item.viewPost.url) && !_.isNull(item.viewPost.url)) {
-        !item.viewPost || openURL(item.viewPost.url + extraURLParameters);
+        !item.viewPost ||
+            openURL(item.viewPost.url + Alloy.CFG.extra_url_parameters);
     }
 }
 

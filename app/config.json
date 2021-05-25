@@ -9,6 +9,7 @@
         "instagram": "https://www.instagram.com/comerciodehuelva",
         "facebook_url": "https://www.facebook.com/ComerciodeHuelva",
         "facebook_scheme": "fb://profile/558589971230602",
+        "extra_url_parameters": "?app=true",
         "FONTS": {
             "light": "Helvetica-Light",
             "regular": "Helvetica-Regular",

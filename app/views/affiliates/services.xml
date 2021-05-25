@@ -8,6 +8,7 @@
                     <ImageView class="no-touch-enable" image="{image}" defaultImage="/images/logo.png" module="av.imageview" height="160" width="Ti.UI.FILL" loadingIndicator="true" contentMode="Alloy.Globals.CONTENT_MODE_FILL"></ImageView>
                     <Label class="mt-10 text-center no-touch-enable" text="{title}"></Label>
                     <Label class="m-3 h-auto text-justify no-touch-enable" text="{content}"></Label>
+                    <View class="w-full h-1 vertical border-blue-500 mb-6"></View>
                 </View>
             </View>
         </ScrollView>

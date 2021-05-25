@@ -5,7 +5,17 @@
 })($.args);
 
 function doOpenURL(params) {
-    Ti.Platform.openURL(params.source.itemLink);
+    openURL(params.source.itemLink + Alloy.CFG.extra_url_parameters);
+}
+
+function openURL(url, title = 'Huelva Comercio (web)', share = true) {
+    Alloy.createController('webviewWin', {
+        title,
+        url,
+        share,
+    })
+        .getView()
+        .open();
 }
 
 function close() {

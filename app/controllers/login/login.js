@@ -58,7 +58,7 @@ function doSignIn(e) {
     Alloy.Globals.loading.show('Comprobando...');
     Alloy.Globals.Api.signin(
         {
-            email: $.txtEmail.value,
+            email: $.txtEmail.value.trim(),
             password: $.txtPassword.value,
             device_name: OS_IOS ? 'ios' : 'android',
         },
@@ -115,7 +115,7 @@ function canSubmit(isRegister = false) {
         return false;
     }
 
-    if (!require('core').valideEmail($.txtEmail.value)) {
+    if (!require('core').valideEmail($.txtEmail.value.trim())) {
         alert('El Email no tiene un formato correcto.', 'Email inválido');
 
         return false;

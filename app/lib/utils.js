@@ -147,7 +147,7 @@ exports.openEmailForm = ({email, messageBody, subject}) => {
     var emailDialog = Ti.UI.createEmailDialog({
         toRecipients: [email],
         messageBody: messageBody || '',
-        subject: subject || 'Correo para Huelva Comercio',
+        subject: subject || 'Correo desde App Huelva Comercio',
     });
 
     if (emailDialog.isSupported()) {

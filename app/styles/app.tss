@@ -307,18 +307,22 @@
 }
 
 ".logoImage" : {
-    width: 120,
-    height: 60,
+    width: 180,
+    height: 180,
+    contentMode: Alloy.Globals.CONTENT_MODE_FILL,
     backgroundColor: Alloy.CFG.COLORS.white,
     defaultImage: "/images/logo.png",
     brokenLinkImage: "/images/logo.png",
     rounded: false
 }
 
+'.lni-ssm': { font: { fontSize: 14 } }
+
 ".test": {
     borderColor: "red",
     borderWidth: 2
 }
+
 // Default Tailwind Styles
 '.-mt-5': { top: -20 }
 '.-mt-8': { top: -32 }
@@ -338,6 +342,7 @@
 '.border-blue-300': { borderColor: '#93c5fd' }
 '.border-blue-500': { borderColor: '#3b82f6' }
 '.border-blue-600': { borderColor: '#2563eb' }
+'.border-blue-800': { borderColor: '#1e40af' }
 '.border-gray-400': { borderColor: '#a1a1aa' }
 '.clip-enabled[platform=ios]': { clipMode: Ti.UI.iOS.CLIP_MODE_ENABLED }
 '.font-bold': { font: { fontWeight: 'bold' } }
@@ -356,12 +361,14 @@
 '.h-4': { height: 16 }
 '.h-52': { height: 208 }
 '.h-8': { height: 32 }
+'.h-9/12': { height: '75%' }
 '.h-auto': { height: Ti.UI.SIZE }
 '.h-full': { height: '100%' }
 '.horizontal': { layout: 'horizontal' }
 '.m-2': { top: 8, right: 8, bottom: 8, left: 8 }
 '.m-3': { top: 12, right: 12, bottom: 12, left: 12 }
 '.mb-1': { bottom: 4 }
+'.mb-10': { bottom: 40 }
 '.mb-2': { bottom: 8 }
 '.mb-3': { bottom: 12 }
 '.mb-4': { bottom: 16 }
@@ -384,6 +391,7 @@
 '.mx-4': { right: 16, left: 16 }
 '.mx-8': { right: 32, left: 32 }
 '.pl-2': { padding: { left: 8 } }
+'.rounded-10': { borderRadius: 20 }
 '.rounded-2': { borderRadius: 4 }
 '.rounded-2xl': { borderRadius: 16 }
 '.rounded-3xl': { borderRadius: 24 }
@@ -410,6 +418,7 @@
 '.text-lg': { font: { fontSize: 18 } }
 '.text-lightBlue-600': { color: '#0284c7' }
 '.text-lightBlue-700': { color: '#0369a1' }
+'.text-lightBlue-800': { color: '#075985' }
 '.text-red-500': { color: '#ef4444' }
 '.text-right': { textAlign: Ti.UI.TEXT_ALIGNMENT_RIGHT }
 '.text-rose-500': { color: '#f43f5e' }
@@ -451,7 +460,7 @@
 
 // LineIcons styles
 '.lni': { font: { fontFamily: 'LineIcons' } }
-'.lni-16': { font: { fontSize: 16 } }
 '.lni-cog': { text: '\uea6f', title: '\uea6f' }
+'.lni-lg': { font: { fontSize: 19.2 } }
 '.lni-search-alt': { text: '\ueb7b', title: '\ueb7b' }
 '.lni-user': { text: '\uebde', title: '\uebde' }

@@ -302,13 +302,16 @@
 }
 
 ".logoImage" : {
-    width: 120,
-    height: 60,
+    width: 180,
+    height: 180,
+    contentMode: Alloy.Globals.CONTENT_MODE_FILL,
     backgroundColor: Alloy.CFG.COLORS.white,
     defaultImage: "/images/logo.png",
     brokenLinkImage: "/images/logo.png",
     rounded: false
 }
+
+'.lni-ssm': { font: { fontSize: 14 } }
 
 ".test": {
     borderColor: "red",

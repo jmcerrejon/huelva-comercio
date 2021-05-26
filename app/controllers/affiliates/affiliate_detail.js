@@ -6,8 +6,6 @@ let elements = {
     websites: [],
     visible: true,
 };
-let editModeEnable = false;
-let updateAffiliate = false;
 
 (function constructor(args) {
     let options = {
@@ -20,26 +18,6 @@ let updateAffiliate = false;
         },
     };
     handleImageLogo(args.data.logo_path);
-    if (canEdit(args.data.affiliate_id)) {
-        options.btnRight = {
-            visible: true,
-            title: '\uf044',
-        };
-        setInputValues({
-            visible: args.data.visible || '',
-            address: args.data.address || '',
-            phone1: args.data.phone1 || '',
-            phone2: args.data.phone2 || '',
-            email1: args.data.email1 || '',
-            email2: args.data.email2 || '',
-            email3: args.data.email3 || '',
-            category: args.data.category || '',
-            web: args.data.web || 'https://',
-        });
-    }
-
-    // $.navbar.load(options);
-
     renderElements('address', [args.data.address]);
     renderElements('phones', [args.data.phone1, args.data.phone2]);
     renderElements('emails', [
@@ -50,6 +28,9 @@ let updateAffiliate = false;
     renderElements('websites', [args.data.web]);
     $.lb_category.text = `Categoría\n${args.data.category}`;
     $.lb_description.text = args.data.description;
+    if (!_.isNull(args.data.social_network)) {
+        renderSocialNetworks(args.data.social_network);
+    }
 })($.args);
 
 function handleImageLogo(logo = null) {
@@ -58,13 +39,6 @@ function handleImageLogo(logo = null) {
     }
 
     !logo ? ($.vw_logo.height = 0) : ($.logoShow.image = logo);
-}
-
-function canEdit(affiliateId) {
-    return (
-        Alloy.Globals.guest === false &&
-        Alloy.Globals.user.affiliate_id === affiliateId
-    );
 }
 
 function renderElements(item, argsData) {
@@ -81,123 +55,17 @@ function renderElements(item, argsData) {
     $['lb_' + item].text = tmpElements.join(' - ');
 }
 
-function setInputValues(item) {
-    for (var key in item) {
-        _.isUndefined($[key].views.buttonWrapper)
-            ? $[key].setValue(item[key])
-            : $[key].setActive(item[key]);
-    }
-    changeCheckboxVisibleText();
-}
-
-function changeCheckboxVisibleText() {
-    $.visible.setText(
-        $.visible.textContent.activer
-            ? 'Mi empresa estará publicada en esta aplicación'
-            : 'NO quiero que mi empresa aparezca en esta aplicación'
-    );
-    $.lbVisible.width = $.lbVisible.height = !$.visible.textContent.activer
-        ? Ti.UI.SIZE
-        : 0;
-}
-
 function doActionNavbar(e) {
     switch (e.type) {
         case 'back':
             close();
             break;
-        case 'action':
-            updateAffiliate = true;
-            editMode();
-            break;
     }
-}
-
-function editMode() {
-    editModeEnable = !editModeEnable;
-    // $.navbar.load({
-    //     btnRight: {
-    //         title: editModeEnable ? '\uf06e' : '\uf044',
-    //     },
-    // });
-    $.vwEdit.height = editModeEnable ? Ti.UI.SIZE : '0';
-    $.vwShow.height = editModeEnable ? '0' : Ti.UI.SIZE;
 }
 
 function close() {
-    if (updateAffiliate) {
-        var alertDialog = Ti.UI.createAlertDialog({
-            title: 'Afiliado actualizado',
-            message:
-                'Ha modificado datos de la empresa. ¿Desea guardar los cambios?',
-            buttonNames: ['No', 'Sí'],
-            cancelButton: 0,
-        });
-        alertDialog.addEventListener('click', function (e) {
-            if (e.index === 0) {
-                $.wAffiliateDetail.close();
-                return;
-            }
-
-            Alloy.Globals.loading.show('Enviando...');
-
-            const body = {
-                visible: $.visible.getValue(),
-                address: $.address.getValue(),
-                phone1: $.phone1.getValue(),
-                phone2: $.phone2.getValue(),
-                email1: $.email1.getValue(),
-                email2: $.email2.getValue(),
-                email3: $.email3.getValue(),
-                web: getWebsiteValue(),
-            };
-
-            Alloy.Globals.Api.updateAffiliate(
-                {
-                    body,
-                },
-                (response) => {
-                    Alloy.Globals.loading.hide();
-                    if (!response.success) {
-                        Alloy.Globals.showMessage(
-                            `Hubo un problema al actualizar el afiliado. Contacte con ${Alloy.CFG.global.mail}`
-                        );
-                        return;
-                    }
-
-                    setAffiliateOnUser(response.data);
-
-                    OS_IOS && Alloy.Globals.affiliatesTab.popToRootWindow();
-                    OS_ANDROID && $.wAffiliateDetail.close();
-
-                    Alloy.Globals.showMessage(response.message);
-                }
-            );
-        });
-        alertDialog.show();
-    } else {
-        $.wAffiliateDetail.close();
-    }
-}
-
-function getWebsiteValue(params) {
-    const PROTOCOL_SIZE = 8;
-    return $.web.getValue().length > PROTOCOL_SIZE ? $.web.getValue() : '';
-}
-
-function setAffiliateOnUser(data) {
-    let user = Ti.App.Properties.getObject('user');
-    user.affiliate = data;
-    Ti.App.Properties.setObject('user', user);
-    Alloy.Globals.user = user;
-}
-
-function next(e) {
-    if ($[e.source.next]) $[e.source.next].focus();
-}
-
-function previous(e) {
-    if ($[e.source.previous]) $[e.source.previous].focus();
+    $.destroy();
+    $.wAffiliateDetail.close();
 }
 
 function doAction(params) {
@@ -260,6 +128,75 @@ function showOptionDialog({title, options, source = ''}) {
     resultOptionDialog.show();
 }
 
-function changeLogo() {
-    $.pictureDialog.show();
+function getSocialNetworkStyle(social) {
+    return (
+        {
+            facebook: {
+                color: '#3b82f6',
+                font: {fontFamily: 'FontAwesome5Brands-Regular'},
+                touchEnabled: false,
+                text: '\uf09a',
+                title: '\uf09a',
+            },
+            whatsapp: {
+                color: '#22c55e',
+                font: {fontFamily: 'FontAwesome5Brands-Regular'},
+                touchEnabled: false,
+                text: '\uf232',
+                title: '\uf232',
+            },
+            instagram: {
+                color: '#d946ef',
+                font: {fontFamily: 'FontAwesome5Brands-Regular'},
+                touchEnabled: false,
+                text: '\uf16d',
+                title: '\uf16d',
+            },
+            twitter: {
+                color: '#60a5fa',
+                font: {fontFamily: 'FontAwesome5Brands-Regular'},
+                touchEnabled: false,
+                text: '\uf099',
+                title: '\uf099',
+            },
+            tripadvisor: {
+                color: '#facc15',
+                font: {fontFamily: 'FontAwesome5Brands-Regular'},
+                touchEnabled: false,
+                text: '\uf262',
+                title: '\uf262',
+            },
+            tiktok: {
+                color: '#000',
+                font: {fontFamily: 'FontAwesome5Brands-Regular'},
+                touchEnabled: false,
+                text: '\ue07b',
+                title: '\ue07b',
+            },
+        }[social] || `text-blue-500 fab fa-${social}`
+    );
+}
+
+function renderSocialNetworks(networks) {
+    const json = JSON.parse(networks);
+
+    Object.entries(json).forEach((entry) => {
+        const [key, value] = entry;
+        const style = getSocialNetworkStyle(key);
+        const view = Ti.UI.createView({
+            width: 48,
+            height: 40,
+        });
+        const label = Ti.UI.createLabel(style);
+
+        view.add(label);
+        view.addEventListener('click', () => {
+            if (!Ti.Platform.canOpenURL(value)) {
+                return;
+            }
+            Ti.Platform.openURL(value);
+        });
+
+        $.vwSocialNetworksContainer.add(view);
+    });
 }

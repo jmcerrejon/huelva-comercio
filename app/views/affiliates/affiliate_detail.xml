@@ -54,6 +54,11 @@
 
                     <View class="separator-half-min no-touch-enable"></View>
                 </View>
+
+                <!-- Social Network -->
+
+                <View id="vwSocialNetworksContainer" class="w-auto h-auto mt-4 mb-10 border-blue-800 horizontal rounded-10">
+                </View>
             </View>
         </ScrollView>
     </Window>

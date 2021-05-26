@@ -10,20 +10,23 @@
 
             <Templates>
                 <ItemTemplate name="defaultTemplate">
-                    <View class="horizontal w-full" height="80">
-                        <View class="logoContainer h-11/12">
-                            <ImageView bindId="logo" class="logoImage" module="av.imageview" contentMode="Alloy.Globals.CONTENT_MODE_FIT"></ImageView>
+                    <View class="horizontal w-full" height="88">
+                        <View class="logoContainer h-9/12">
+                            <ImageView bindId="logo"></ImageView>
                         </View>
 
-                        <View width="79%" class="vertical">
-                            <Label bindId="title" class="lni-16 ml-1 text-lightBlue-600 h-full" />
+                        <View width="79%" class="w-full h-full">
+                            <View class="w-full vertical">
+                                <Label bindId="title" class="lni-lg ml-1 text-lightBlue-800 h-size" />
+                                <Label bindId="category" class="lni-ssm ml-1 text-lightBlue-600 h-size" />
+                            </View>
                         </View>
                     </View>
                 </ItemTemplate>
             </Templates>
 
             <ListSection dataCollection="affiliates" dataTransform="doTransform">
-                <ListItem accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE" itemId="{id}" logo:image="{logoUrl}" title:text="{name}" afiliate:text="{phone1}"/>
+                <ListItem accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE" itemId="{id}" logo:image="{logoUrl}" title:text="{name}" afiliate:text="{phone1}" category:text="{category}"/>
             </ListSection>
         </ListView>
     </View>

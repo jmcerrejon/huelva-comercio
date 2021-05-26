@@ -16,10 +16,6 @@ const search = {
 };
 let isSearchBarVisible = false;
 
-function close() {
-    $.wAffiliates.close();
-}
-
 function initListView(query) {
     Alloy.Globals.Api.readAffiliates(
         {
@@ -36,7 +32,7 @@ function initListView(query) {
 
             // Just for test purposes
             // doOpenAffiliates({
-            //     itemId: 2,
+            //     itemId: 1,
             // });
         }
     );

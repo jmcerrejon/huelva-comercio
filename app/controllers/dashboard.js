@@ -59,7 +59,7 @@ let oldTab = 'main';
     }
 })();
 
-// $.tabGroup.setActiveTab($.affiliates); // Just for test purpose
+// $.tabGroup.activeTab = $.affiliates; // Just for test purpose
 
 function closeToRoot() {
     if (OS_IOS) {

@@ -34,7 +34,7 @@
 
                 <View class="w-1/2 mt-2 h-auto" onClick="openInstagram">
                     <View id="vwTwitter" class="vertical no-touch-enable">
-                        <Label class="text-blue-400 fab fa-instagram no-touch-enable"></Label>
+                        <Label class="text-purple-400 fab fa-instagram no-touch-enable"></Label>
 
                         <Label class="text-blue-500 no-touch-enable">Instagram</Label>
                     </View>
@@ -44,7 +44,7 @@
             <View class="h-12 mx-8 mt-4 horizontal">
                 <View class="w-1/2 h-auto mt-2" onClick="call">
                     <View id="vwFacebook" class="vertical no-touch-enable">
-                        <Label class="text-blue-500 fa fa-phone no-touch-enable"></Label>
+                        <Label class="text-red-400 fa fa-phone no-touch-enable"></Label>
 
                         <Label class="text-blue-500 no-touch-enable">65754224524</Label>
                     </View>
@@ -52,23 +52,23 @@
 
                 <View class="w-1/2 mt-2" onClick="openMail">
                     <View id="vwTwitter" class="vertical no-touch-enable">
-                        <Label class="text-blue-500 fa fa-mail-bulk no-touch-enable"></Label>
+                        <Label class="text-yellow-400 fa fa-mail-bulk no-touch-enable"></Label>
 
                         <Label id="lblEmail" class="text-blue-500 no-touch-enable text-sm" text="Alloy.CFG.mail"></Label>
                     </View>
                 </View>
             </View>
 
-            <View class="h-auto mx-8 mt-4 horizontal" onClick="selectLocation">
-                <View class="vertical" id="viewAddress">
-                    <Label class="fa icons" top="10" text="\uf5a0"/>
-                    <Label id="addressInfo"/>
+            <View class="w-full h-auto mt-4 horizontal" onClick="selectLocation">
+                <View class="w-full h-auto">
+                    <ImageView class="w-full h-auto" image="/images/edificio.jpg"></ImageView>
+                    <Label id="addressInfo" class="ml-1 mt-1 text-white font-bold text-left no-touch-enable text-md" text="Alloy.CFG.address"/>
                 </View>
             </View>
 
             <!-- Logo -->
 
-            <View class="w-full h-2/6 vertical mt-2">
+            <View class="w-full h-2/6 vertical mt-4">
                 <ImageView class="w-auto h-1/2" image="/images/junta/logo_junta_01.png"></ImageView>
             </View>
         </View>

@@ -22,15 +22,6 @@
     text: Alloy.CFG.phone
 }
 
-"#addressInfo" : {
-    top: 60,
-    color: Alloy.CFG.COLORS.main,
-    left: 1,
-    right: 1,
-    textAlign: "center",
-    text: Alloy.CFG.address
-}
-
 ".textField[platform=ios]" : {
     height: 40
 }

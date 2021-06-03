@@ -1,3 +1,51 @@
+"Window[platform=android]" : {
+    theme: "Theme.Custom",
+    windowSoftInputMode: Ti.UI.Android.SOFT_INPUT_ADJUST_PAN
+}
+
+"Window" : {
+    navBarHidden: true,
+    backgroundColor: "white",
+    orientationModes: [Ti.UI.PORTRAIT]
+}
+
+"NavigationWindow" : {
+    orientationModes: [Ti.UI.PORTRAIT]
+}
+
+"ListView" : {
+    showVerticalScrollIndicator: false
+}
+
+"Label" : {
+    color: Alloy.CFG.COLORS.main
+}
+
+"ImageView" : {
+    defaultImage: "/images/logo.png"
+}
+
+"Button[platform=android]" : {
+    backgroundColor: Alloy.CFG.COLORS.main,
+    touchFeedback: true,
+    touchFeedbackColor: "#EEEEEE",
+}
+
+"TextField" : {
+    color: Alloy.CFG.COLORS.dark_gray
+}
+
+"TextArea[platform=android]" : {
+    color: Alloy.CFG.COLORS.dark_gray,
+    backgroundColor: "transparent",
+    borderStyle: Ti.UI.INPUT_BORDERSTYLE_NONE
+}
+
+"ListItem[platform=ios]" : {
+    selectionStyle: Ti.UI.iOS.ListViewCellSelectionStyle.NONE,
+    backgroundSelectedColor: "transparent"
+}
+
 ".no-touch-enable": {
     touchEnabled: false
 }
@@ -37,56 +85,12 @@
     }
 }
 
-"Window[platform=android]" : {
-    theme: "Theme.Custom",
-    windowSoftInputMode: Ti.UI.Android.SOFT_INPUT_ADJUST_PAN
-}
-
-"ListView" : {
-    showVerticalScrollIndicator: false
-}
-
-"Window" : {
-    navBarHidden: true,
-    backgroundColor: "white",
-    orientationModes: [Ti.UI.PORTRAIT]
-}
-
-"NavigationWindow" : {
-    orientationModes: [Ti.UI.PORTRAIT]
-}
-
-"Button[platform=android]" : {
-    backgroundColor: Alloy.CFG.COLORS.main,
-    touchFeedback: true,
-    touchFeedbackColor: "#EEEEEE",
-}
-
-"TextField" : {
-    color: Alloy.CFG.COLORS.dark_gray
-}
-
-"TextArea[platform=android]" : {
-    color: Alloy.CFG.COLORS.dark_gray,
-    backgroundColor: "transparent",
-    borderStyle: Ti.UI.INPUT_BORDERSTYLE_NONE
-}
-
-"ListItem[platform=ios]" : {
-    selectionStyle: Ti.UI.iOS.ListViewCellSelectionStyle.NONE,
-    backgroundSelectedColor: "transparent"
-}
-
 "SearchBar" : {
     autocapitalization: Ti.UI.TEXT_AUTOCAPITALIZATION_NONE,
     autocorrect: false,
     cancelButtonTitle: "Cancelar",
     hiddenBehavior: Ti.UI.HIDDEN_BEHAVIOR_GONE,
     hintText: "Escriba aquí para filtrar"
-}
-
-"Label" : {
-    color: Alloy.CFG.COLORS.main
 }
 
 ".required" : {

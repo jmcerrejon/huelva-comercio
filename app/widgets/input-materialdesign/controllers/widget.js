@@ -160,7 +160,7 @@ function _upInteraction() {
 	_PROPERTIES.set('animation.up.hint.duration', _configuration.animationDuration, true);
 
 	var hintProps = _PROPERTIES.get('animation.up.hint');
-	hintProps.transform = Ti.UI.create2DMatrix({
+	hintProps.transform = Ti.UI.createMatrix2D({
 		scale : 0.7
 	});
 	_.defer(function() {
@@ -217,14 +217,14 @@ function _blurInteraction(event) {
 	var attrsHint = {
 		top : $.textfield.getTop(),
 		color : color,
-		transform : Ti.UI.create2DMatrix().scale(1),
+		transform : Ti.UI.createMatrix2D().scale(1),
 		left : 0,
 		duration : _configuration.animationDuration
 	};
 
 	if ($.textfield.getValue()) {
 		attrsHint.top = 0;
-		attrsHint.transform = Ti.UI.create2DMatrix().scale(0.7);
+		attrsHint.transform = Ti.UI.createMatrix2D().scale(0.7);
 		attrsHint.left = -calculateHintSize();
 	}
 	_ANIMATION.animate($.hint, attrsHint);

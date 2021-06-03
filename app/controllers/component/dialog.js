@@ -51,7 +51,7 @@ function handleOpen(e) {
       loader.start();
     }, 50);
   }
-  var matrix = Ti.UI.create2DMatrix();
+  var matrix = Ti.UI.createMatrix2D();
   var matrix1 = matrix.scale(0.1, 0.1);
   var matrix2 = matrix.scale(1, 1);
   var matrix3 = matrix.scale(1.12, 1.1);
@@ -75,7 +75,7 @@ function handleOpen(e) {
 }
 
 function closeWin() {
-  var matrix = Ti.UI.create2DMatrix();
+  var matrix = Ti.UI.createMatrix2D();
   var matrix1 = matrix.scale(0.1, 0.1);
   var matrix3 = matrix.scale(1.12, 1.1);
   setTimeout(function() {

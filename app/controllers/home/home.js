@@ -49,7 +49,6 @@ let scrollableView;
         success: (res) => {
             Alloy.Globals.loading.hide();
             renderNotFoundTemplate(res.length);
-            POSTS_PER_PAGE = res.length;
             $.is.init($.listView);
             $.is.setOptions({
                 msgTap: '',
@@ -94,7 +93,7 @@ Alloy.Globals.events.on('refreshOffers', () => {
 if (OS_IOS) {
     $.listView.addEventListener('scrolling', (e) => {
         const offset =
-            $.scrollableView.height === 0
+            scrollableView.height === 0
                 ? OFFSET_CHANGE_HEADER_TITLE - SCROLLABLEVIEW_HEIGHT
                 : OFFSET_CHANGE_HEADER_TITLE;
         $.reqNavbar.lblTitle.text =
@@ -164,17 +163,20 @@ function reset() {
     Alloy.Globals.loading.show('Cargando ofertas...');
     renderNotFoundTemplate();
     currentPage = 1;
+    Alloy.Collections.news.reset();
     Alloy.Collections.news.fetch({
         page: currentPage,
         exclusive: exclusive,
         query: '',
-        success: () => {
+        success: (res) => {
             Alloy.Globals.loading.hide();
             $.refreshListView.endRefreshing();
 
-            $.is.show();
-            $.is.mark();
-            currentPage++;
+            if (res.length >= POSTS_PER_PAGE) {
+                $.is.show();
+                $.is.mark();
+                currentPage++;
+            }
         },
     });
 }

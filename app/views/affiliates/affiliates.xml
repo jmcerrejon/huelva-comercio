@@ -5,14 +5,14 @@
 
         <Require id="reqNavbar" src="/partials/navbar" title="Asociados" rightIcon="text-2xl text-white lni lni-search-alt" onClick="doSearchAffiliate" onSearch="doSearchAffiliate" onSearchIconClick="doSearchAffiliate"></Require>
 
-        <ListView id="lView" class="w-11/12 h-size vertical bg-white -mt-5" onItemclick="doOpenAffiliates" defaultItemTemplate="defaultTemplate" canScroll="true">
+        <ListView id="lView" class="w-11/12 h-11/12 vertical bg-white -mt-5" onItemclick="doOpenAffiliates" defaultItemTemplate="defaultTemplate" canScroll="true">
             <RefreshControl id="refreshListView" onRefreshstart="reset"/>
 
             <Templates>
                 <ItemTemplate name="defaultTemplate">
                     <View class="horizontal w-full" height="88">
                         <View class="logoContainer h-9/12">
-                            <ImageView bindId="logo"></ImageView>
+                            <ImageView bindId="logo" contentMode="Alloy.Globals.CONTENT_MODE_FILL" ns="AvImageview"></ImageView>
                         </View>
 
                         <View width="79%" class="w-full h-full">

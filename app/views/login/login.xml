@@ -22,16 +22,6 @@
 
                     <TextField id="txtPassword" class="w-screen h-10 pl-2 mt-1 text-base text-gray-800 border-blue-500 rounded-xl bg-gray-50" returnKeyType="Ti.UI.RETURNKEY_DONE" hintText="Password" passwordMask="true" />
 
-                    <!-- Forgotten password -->
-
-                    <!-- <View class="w-screen mt-1 horizontal">
-                            <View class="w-1/3 mx-0 horizontal">
-                            </View>
-
-                            <View class="w-2/3 mx-0 horizontal" onClick="doGoToDashboard">
-                                <Button class="w-screen text-sm text-right text-blue-800 font-roboto-light">¿Contraseña olvidada?</Button>
-                            </View>
-                        </View> -->
 
                     <!-- Accept privacy policy checkbox -->
 
@@ -47,6 +37,10 @@
                         <Require src="partials/button" text="Registrarse" onClick="doRegister" buttonType="warning"></Require>
 
                         <Require src="partials/button" text="Acceder" onClick="doSignIn"></Require>
+                    </View>
+
+                    <View class="w-full h-auto" onClick="sendChangePassword">
+                        <Label class="w-screen text-sm text-right text-blue-900">¿Olvidaste la contraseña?</Label>
                     </View>
 
                     <!-- Privacy Policy terms -->

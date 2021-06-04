@@ -1,7 +1,6 @@
 const fcm = require('firebase.cloudmessaging');
 const isANewRegistry = true;
 const maxTrySignIn = 3;
-
 let signInAttempts = 0;
 
 (function constructor() {
@@ -10,6 +9,11 @@ let signInAttempts = 0;
         $.txtPassword.value = 'secret';
     }
 })();
+
+function close() {
+    $.login.close();
+    $.destroy();
+}
 
 function doLostFocus() {
     _.each([$.txtEmail, $.txtPassword], function (val) {
@@ -26,8 +30,6 @@ function validatePasswordAndRegister() {
     doRegister();
 }
 
-// Register
-
 function doRegister() {
     if (!canSubmit(isANewRegistry)) return;
 
@@ -38,19 +40,17 @@ function doRegister() {
                 email: $.txtEmail.value,
                 password: $.txtPassword.value,
             },
-        },
-        function (response) {
-            if (response.success) {
-                alert(
-                    'Revise la bandeja de su correo electrónico y valide su usuario.',
-                    'Registro'
-                );
+        }, (response) => {
+            if (!response.success) {
+                alert('Hubo un problema en el registro. Revise si el correo es correcto o inténtelo de nuevo mas tarde.');
+
+                return;
             }
+
+            alert(response.message);
         }
     );
 }
-
-// Sign In
 
 function doSignIn(e) {
     if (!canSubmit()) return;
@@ -61,8 +61,7 @@ function doSignIn(e) {
             email: $.txtEmail.value.trim(),
             password: $.txtPassword.value,
             device_name: OS_IOS ? 'ios' : 'android',
-        },
-        (response) => {
+        }, (response) => {
             if (!response.success) {
                 signInAttempts++;
                 if (signInAttempts === maxTrySignIn) {
@@ -75,12 +74,10 @@ function doSignIn(e) {
             }
             saveUserAndConnect(response.data);
             Alloy.createController('index').getView();
-            $.login.close();
+            close();
         }
     );
 }
-
-// Forgot Password
 
 function sendChangePassword() {
     var dialog = Ti.UI.createAlertDialog({
@@ -90,22 +87,30 @@ function sendChangePassword() {
         buttonNames: ['No', 'Si, por favor'],
         cancel: 0,
     });
-    dialog.addEventListener('click', function (e) {
+
+    function onClick(e) {
+        dialog.removeEventListener('click', onClick);
         if (e.index === e.source.cancel) {
             signInAttempts = 0;
+
             return;
         }
 
-        // TODO Reset password
+        if (!$.txtEmail.hasText()) {
+            alert('Escriba en el formulario el Correo electrónico.');
+
+            return false;
+        }
+
         Alloy.Globals.Api.resetPassword(
             {
-                email: $.txtEmail.value,
-            },
-            (response) => {
+                email: $.txtEmail.value.trim(),
+            }, (response) => {
                 alert(response.message, 'Cambio de contraseña');
             }
         );
-    });
+    }
+    dialog.addEventListener('click', onClick);
     dialog.show();
 }
 
@@ -122,7 +127,6 @@ function canSubmit(isRegister = false) {
     }
 
     if (isRegister) {
-        console.log(`isRegister = ${isRegister}`);
         if ($.accept_privacy.getValue() === false) {
             alert('Primero debe aceptar las condiciones de privacidad.');
             return false;
@@ -145,8 +149,8 @@ function doReadPrivacy() {
 function doGoToDashboard() {
     Alloy.Globals.loading.show('Cargando contenido...');
     saveUserAndConnect();
-    $.login.close();
     Alloy.createController('dashboard').getView().open();
+    close();
 }
 
 function saveUserAndConnect(user = null) {
@@ -184,8 +188,6 @@ function saveUserAndConnect(user = null) {
             Authorization: 'Bearer ' + Alloy.Globals.token,
         });
     }
-
-    printGlobalVars();
 }
 
 function setNotificationsSettings() {
@@ -206,57 +208,3 @@ function setNotificationsSettings() {
 
     Ti.App.Properties.setObject('settings', settings);
 }
-
-function printGlobalVars() {
-    console.log('printGlobalVars...');
-    console.log(
-        'guest = ' +
-            Ti.App.Properties.getBool('guest') +
-            ' | Alloy.Globals.guest = ' +
-            Alloy.Globals.guest
-    );
-
-    console.log(
-        'user = ' +
-            JSON.stringify(Ti.App.Properties.getObject('user'), null, 2) +
-            ' | Alloy.Globals.user = ' +
-            JSON.stringify(Alloy.Globals.user, null, 2)
-    );
-    console.log(
-        'token = ' +
-            Ti.App.Properties.getString('token') +
-            ' | Alloy.Globals.token = ' +
-            Alloy.Globals.token
-    );
-    console.log(
-        'is affiliate = ' +
-            Ti.App.Properties.getBool('isAffiliate') +
-            ' | Alloy.Globals.isAffiliate = ' +
-            Alloy.Globals.isAffiliate
-    );
-    console.log(
-        'is leadership = ' +
-            Ti.App.Properties.getBool('isLeadership') +
-            ' | Alloy.Globals.isLeadership = ' +
-            Alloy.Globals.isLeadership
-    );
-}
-
-// TODO Optional features if we are in time
-
-// function next(e) {
-//     if ($[e.source.next]) $[e.source.next].focus();
-// }
-
-// function previous(e) {
-//     if ($[e.source.previous]) $[e.source.previous].focus();
-// }
-
-// function activePasswordMask(e) {
-//     var isMasked = $.password.lblRight.text === '\uf06e';
-//     $.password.textfield.setPasswordMask(isMasked);
-//     $.password.lblRight = {
-//         text: !isMasked ? '\uf06e' : '\uf070',
-//         color: 'gray',
-//     };
-// }

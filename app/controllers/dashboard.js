@@ -251,17 +251,20 @@ function notification(data) {
     }
 
     switch (data.tag) {
+        case 'test_notifications':
         case 'offer_notifications':
         case 'offer_notifications_exclusive':
             if (!Alloy.Globals.background) {
+                fetchAllCollections();
                 showNotificationBanner('Ofertas y promociones', data.body);
+
                 return;
             }
             closeToRoot();
-            $.tabGroup.setActiveTab($.main);
+            $.tabGroup.activeTab = $.main;
             fetchAllCollections();
             Alloy.createController('webviewWin', {
-                url: data.url || 'https://foe.es',
+                url: data.url + Alloy.CFG.extra_url_parameters || Alloy.CFG.url,
                 title: 'Ofertas y promos',
             })
                 .getView()
@@ -269,11 +272,13 @@ function notification(data) {
             break;
         case 'dinamization_notifications':
             if (!Alloy.Globals.background) {
+                fetchAllCollections();
                 showNotificationBanner('Dinamización', data.body);
+
                 return;
             }
             closeToRoot();
-            $.tabGroup.setActiveTab($.dinamizations);
+            $.tabGroup.activeTab = $.dinamizations;
             fetchAllCollections();
             break;
         case 'communication_notifications':
@@ -282,7 +287,7 @@ function notification(data) {
                 return;
             }
             closeToRoot();
-            $.tabGroup.setActiveTab($.communications);
+            $.tabGroup.activeTab = $.communications;
             fetchAllCollections();
             break;
         case 'leadership_notifications':
@@ -295,7 +300,7 @@ function notification(data) {
                 return;
             }
             closeToRoot();
-            $.tabGroup.setActiveTab($.communications);
+            $.tabGroup.activeTab = $.communications;
             fetchAllCollections();
             openLeadershipWin();
             break;

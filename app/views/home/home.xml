@@ -28,8 +28,7 @@
                 <ItemTemplate name="defaultTemplate">
                     <View bindId="viewPost" class="w-full h-auto mb-3 bg-white">
                         <View bindId="vwContainer" class="w-11/12 bg-white rounded-xl vertical clip-enabled">
-                            <View class="w-full h-52 shadow-md" bindId="image" id="image">
-                            </View>
+                            <ImageView bindId="image" id="image" class="w-full h-52 shadow-md bg-white" contentMode="Alloy.Globals.CONTENT_MODE_FILL" ns="AvImageview"></ImageView>
 
                             <View class="w-full h-auto mt-3 mb-3 text-gray-600 vertical">
                                 <View class="w-11/12 horizontal">
@@ -66,7 +65,8 @@
                 <ListItem template="noNewsFound"></ListItem>
             </ListSection>
             <ListSection dataCollection="news" dataTransform="transformCollection">
-                <ListItem itemId="{id}" image:backgroundImage="{image}" vwContainer:borderColor="{exclusive}" lbExclusive:width="{exclusiveIcon}" viewPost:url="{link}" postTitle:text="{title}" postDateFormatted:text="{date_formatted}" postBody:text="{content}" />
+                <ListItem itemId="{id}" image:image="{image}" vwContainer:borderColor="{exclusive}" lbExclusive:width="{exclusiveIcon}" viewPost:url="{link}" postTitle:text="{title}" postDateFormatted:text="{date_formatted}" postBody:text="{content}" />
+
 
                 <FooterView>
                     <View id="lvwFooter" class="w-full h-10">

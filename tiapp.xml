@@ -2,7 +2,7 @@
 <ti:app xmlns:ti="http://ti.appcelerator.org">
     <id>com.soporttec.ceca</id>
     <name>Huelva Comercio</name>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <publisher>Soporttec, S.L.</publisher>
     <url>https://huelvacomercio.com</url>
     <description>Mantente informado de lo que sucede en el comercio de Huelva: promociones, descuentos y noticias en la palma de tu mano.</description>
@@ -27,7 +27,7 @@
                 <key>aps-environment</key>
                 <string>production</string>
                 <key>CFBundleVersion</key>
-                <string>9</string>
+                <string>10</string>
                 <key>UIUserInterfaceStyle</key>
                 <string>Light</string>
                 <key>ITSAppUsesNonExemptEncryption</key>
@@ -66,7 +66,7 @@
         </entitlements>
     </ios>
     <android xmlns:android="http://schemas.android.com/apk/res/android">
-        <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.sopportec.ceca" android:versionCode="9" android:versionName="1.0.1">
+        <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.sopportec.ceca" android:versionCode="10" android:versionName="1.0.2">
             <uses-sdk android:minSdkVersion="22" android:targetSdkVersion="30" />
             <application android:theme="@style/Theme.Titanium" android:hardwareAccelerated="true" android:allowBackup="false" android:requestLegacyExternalStorage="true" android:icon="@mipmap/ic_launcher" android:roundIcon="@mipmap/ic_launcher_round">
                 <meta-data android:name="com.google.firebase.messaging.default_notification_icon" android:resource="@drawable/notification_icon" />

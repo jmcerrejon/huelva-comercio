@@ -102,6 +102,7 @@
             Ti.App.Properties.setString('deviceToken', e.fcmToken);
             Alloy.Globals.deviceToken = e.fcmToken;
             fcm.subscribeToTopic('offer_notifications');
+            fcm.subscribeToTopic('test_notifications');
         }
 
         function onMessage(response) {

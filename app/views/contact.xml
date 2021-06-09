@@ -66,11 +66,7 @@
                 </View>
             </View>
 
-            <!-- Logo -->
-
-            <View class="w-full h-2/6 vertical mt-4">
-                <ImageView class="w-auto h-1/2" image="/images/junta/logo_junta_01.png"></ImageView>
-            </View>
+            <View class="w-full vertical" height="50"></View>
         </View>
     </ScrollView>
 </Alloy>

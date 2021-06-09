@@ -8,7 +8,7 @@ function doOpenURL(params) {
     openURL(params.source.itemLink + Alloy.CFG.extra_url_parameters);
 }
 
-function openURL(url, title = 'Huelva Comercio (web)', share = true) {
+function openURL(url, title = 'Huelva Comercio', share = true) {
     Alloy.createController('webviewWin', {
         title,
         url,

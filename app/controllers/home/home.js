@@ -224,7 +224,7 @@ function doOpenPost(e) {
     }
 }
 
-function openURL(url, title = 'Huelva Comercio (web)', share) {
+function openURL(url, title = 'Huelva Comercio', share) {
     Alloy.createController('webviewWin', {
         title,
         url,

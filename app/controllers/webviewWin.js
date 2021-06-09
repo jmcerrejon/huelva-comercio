@@ -36,12 +36,14 @@ function close({type}) {
 }
 
 function shareArticle() {
+    const cleanedURL = currentURL.replace(Alloy.CFG.extra_url_parameters, '');
+
     if (OS_IOS) {
-        const docViewer = Ti.UI.iOS.createDocumentViewer({url: currentURL});
+        const docViewer = Ti.UI.iOS.createDocumentViewer({url: cleanedURL});
         docViewer.show({view: $.webviewWin, animated: true});
     } else {
         var content = {
-            status: currentURL,
+            status: cleanedURL,
             androidDialogTitle: 'Compartir',
         };
 
@@ -67,7 +69,7 @@ function checkLink(e) {
             return false;
         }
     } else {
-        if (currentURL.startsWith('tel:') || currentURL.startsWith('mailto:')) {
+        if (currentURL.startsWith('http') || currentURL.startsWith('tel:') || currentURL.startsWith('mailto:')) {
             Ti.Platform.openURL(currentURL);
         }
     }

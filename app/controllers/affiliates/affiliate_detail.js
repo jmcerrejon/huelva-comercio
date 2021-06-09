@@ -182,6 +182,9 @@ function renderSocialNetworks(networks) {
 
     Object.entries(json).forEach((entry) => {
         const [key, value] = entry;
+
+        if (!(!!value)) return;
+
         const style = getSocialNetworkStyle(key);
         const view = Ti.UI.createView({
             width: 48,
